@@ -1,0 +1,36 @@
+{
+  "name": "club-expense-approval",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24 <25" },
+  "scripts": {
+    "postinstall": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "node --env-file-if-exists=.env --import tsx server/src/seed.ts",
+    "dev:api": "node --env-file-if-exists=.env --watch --import tsx server/src/index.ts",
+    "dev:web": "vite",
+    "build": "tsc --noEmit && tsc -p tsconfig.server.json && vite build",
+    "start": "node --env-file-if-exists=.env dist/server/index.js",
+    "test": "node --env-file-if-exists=.env --import tsx --test server/test/auth.test.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "6.19.3",
+    "argon2": "^0.44.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.2.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "prisma": "6.19.3",
+    "tsx": "^4.21.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.7"
+  }
+}
