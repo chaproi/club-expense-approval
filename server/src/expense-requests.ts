@@ -93,8 +93,13 @@ export function createExpenseRouter(database: PrismaClient, appOrigin: string, d
   });
 
   expenses.get("/:id", async (request, response: ExpenseResponse) => {
+    const { id } = request.params;
+    if (id.includes("\0")) {
+      response.status(400).json({ error: { code: "INVALID_INPUT", message: "Invalid expense request ID." } });
+      return;
+    }
     const expense = await database.expenseRequest.findFirst({
-      where: { id: request.params.id, ...visibleTo(response.locals.user) },
+      where: { id, ...visibleTo(response.locals.user) },
       select: detailFields,
     });
     if (!expense) {

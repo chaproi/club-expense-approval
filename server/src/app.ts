@@ -38,6 +38,10 @@ export function createApp(options: AppOptions) {
       response.status(error.status).json({ error: { code: "INVALID_INPUT", message: "Invalid request body." } });
       return;
     }
+    if (error.status === 400 && error instanceof URIError) {
+      response.status(400).json({ error: { code: "INVALID_INPUT", message: "Invalid request URL." } });
+      return;
+    }
     console.error("Unhandled API error:", error.name ?? "Error");
     response.status(500).json({ error: { code: "INTERNAL_ERROR", message: "An unexpected error occurred." } });
   };

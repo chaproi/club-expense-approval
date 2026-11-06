@@ -12,6 +12,8 @@ test("T-05: expense input accepts valid title and whole-baht boundaries", () => 
   }
   const longest = "a".repeat(120);
   assert.deepEqual(parseExpenseInput({ ...base, title: ` ${longest} ` }), { ...base, title: longest });
+  const unicodeTitle = "ค่าเดินทาง 🚆";
+  assert.deepEqual(parseExpenseInput({ ...base, title: unicodeTitle }), { ...base, title: unicodeTitle });
 });
 
 test("T-05: expense input rejects invalid title, category, amount and extra fields", () => {

@@ -9,7 +9,9 @@ export function parseExpenseInput(body: unknown) {
       !Object.values(ExpenseCategory).includes(category as ExpenseCategory)) return null;
 
   const trimmedTitle = title.trim();
-  if (trimmedTitle.length < 1 || trimmedTitle.length > 120 || trimmedTitle.includes("\0")) return null;
+  // Unicode mode matches unpaired surrogates while allowing valid surrogate pairs.
+  const invalidText = /[\0\uD800-\uDFFF]/u;
+  if (trimmedTitle.length < 1 || trimmedTitle.length > 120 || invalidText.test(trimmedTitle)) return null;
 
   return { title: trimmedTitle, category: category as ExpenseCategory, amountBaht };
 }
