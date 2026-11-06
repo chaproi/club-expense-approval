@@ -156,12 +156,34 @@ test("T-06: only the owner and assigned reviewer can read an expense, and review
   assert.equal(assignedList.status, 200);
   assert.ok((await assignedList.json()).items.some((item: { id: string }) => item.id === id));
   assert.equal((await expenseRequest("assigned", `/${id}`)).status, 200);
+  assert.equal((await expenseRequest("owner", "/missing")).status, 404);
   for (const actor of ["other", "unrelated"] as const) {
     const list = await expenseRequest(actor);
     assert.equal(list.status, 200);
     assert.deepEqual(await list.json(), { items: [] });
     assert.equal((await expenseRequest(actor, `/${id}`)).status, 404);
   }
+});
+
+for (const path of ["/%00", "/%E0%A4%A"]) {
+  test(`expense detail rejects a malformed URL segment (${path})`, async () => {
+    const response = await expenseRequest("owner", path);
+    assert.equal(response.status, 400);
+    assert.equal((await response.json()).error.code, "INVALID_INPUT");
+  });
+}
+
+test("T-05: API rejects a title with an unpaired UTF-16 surrogate without inserting a record", async () => {
+  const before = await expenseRequest("owner");
+  assert.equal(before.status, 200);
+  const original = await before.json();
+  const response = await expenseRequest("owner", "", "POST", { ...validExpense, title: "\ud800" });
+  assert.equal(response.status, 400);
+  assert.equal((await response.json()).error.code, "INVALID_INPUT");
+
+  const after = await expenseRequest("owner");
+  assert.equal(after.status, 200);
+  assert.deepEqual(await after.json(), original);
 });
 
 test("T-03 extension: anonymous requests cannot list, read or submit expenses", async () => {
