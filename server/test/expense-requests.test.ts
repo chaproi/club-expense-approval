@@ -63,9 +63,9 @@ after(async () => {
         listener.close((error) => error ? reject(error) : resolve());
       });
     }
-    await database.user.deleteMany({
-      where: { email: { in: Object.values(accounts).map(({ email }) => email) } },
-    });
+    const email = { in: Object.values(accounts).map((account) => account.email) };
+    await database.expenseRequest.deleteMany({ where: { requester: { email } } });
+    await database.user.deleteMany({ where: { email } });
   } finally {
     await database.$disconnect();
   }
@@ -98,6 +98,19 @@ test("T-04: requester submits a read-only expense and reads its stored history",
   assert.equal(expense.category, validExpense.category);
   assert.equal(expense.amountBaht, validExpense.amountBaht);
   assert.equal(expense.status, "SUBMITTED");
+  const stored = await database.expenseRequest.findUniqueOrThrow({
+    where: { id: expense.id },
+    select: {
+      requester: { select: { email: true } },
+      assignedReviewer: { select: { email: true } },
+      status: true,
+    },
+  });
+  assert.deepEqual(stored, {
+    requester: { email: accounts.owner.email },
+    assignedReviewer: { email: accounts.assigned.email },
+    status: "SUBMITTED",
+  });
   assert.deepEqual(expense.history.map(({ type, actorDisplayName, reason }: {
     type: string; actorDisplayName: string; reason: string | null;
   }) => ({ type, actorDisplayName, reason })), [
@@ -160,4 +173,21 @@ test("T-03 extension: anonymous requests cannot list, read or submit expenses", 
 test("an authenticated browser cannot submit an expense from another origin", async () => {
   const response = await expenseRequest("owner", "", "POST", validExpense, "http://untrusted.example");
   assert.equal(response.status, 403);
+});
+
+test("submission fails without creating an expense when the assigned account is not a reviewer", async () => {
+  const where = { email: accounts.assigned.email };
+  const list = await expenseRequest("owner");
+  assert.equal(list.status, 200);
+  const original = await list.json();
+  await database.user.update({ where, data: { role: "REQUESTER" } });
+  try {
+    const response = await expenseRequest("owner", "", "POST", validExpense);
+    assert.equal(response.status, 503);
+    const after = await expenseRequest("owner");
+    assert.equal(after.status, 200);
+    assert.deepEqual(await after.json(), original);
+  } finally {
+    await database.user.update({ where, data: { role: "REVIEWER" } });
+  }
 });

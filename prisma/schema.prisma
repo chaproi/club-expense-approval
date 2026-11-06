@@ -12,13 +12,34 @@ enum Role {
   REVIEWER
 }
 
+enum ExpenseCategory {
+  EQUIPMENT
+  ACTIVITY
+  TRAVEL
+}
+
+enum ExpenseStatus {
+  SUBMITTED
+  APPROVED
+  REJECTED
+}
+
+enum RequestEventType {
+  SUBMITTED
+  APPROVED
+  REJECTED
+}
+
 model User {
-  id           String    @id @default(uuid())
-  email        String    @unique
-  displayName  String
-  passwordHash String
-  role         Role
-  sessions     Session[]
+  id                String           @id @default(uuid())
+  email             String           @unique
+  displayName       String
+  passwordHash      String
+  role              Role
+  sessions          Session[]
+  submittedRequests ExpenseRequest[] @relation("RequestOwner")
+  assignedRequests  ExpenseRequest[] @relation("AssignedReviewer")
+  requestEvents     RequestEvent[]
 }
 
 model Session {
@@ -28,4 +49,35 @@ model Session {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+}
+
+model ExpenseRequest {
+  id                 String          @id @default(uuid())
+  requesterId        String
+  assignedReviewerId String
+  title              String
+  category           ExpenseCategory
+  amountBaht         Int
+  status             ExpenseStatus   @default(SUBMITTED)
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+  requester          User            @relation("RequestOwner", fields: [requesterId], references: [id])
+  assignedReviewer   User            @relation("AssignedReviewer", fields: [assignedReviewerId], references: [id])
+  events             RequestEvent[]
+
+  @@index([requesterId, createdAt, id])
+  @@index([assignedReviewerId, createdAt, id])
+}
+
+model RequestEvent {
+  id        String           @id @default(uuid())
+  requestId String
+  actorId   String
+  type      RequestEventType
+  reason    String?
+  createdAt DateTime         @default(now())
+  request   ExpenseRequest   @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  actor     User             @relation(fields: [actorId], references: [id])
+
+  @@index([requestId, createdAt, id])
 }

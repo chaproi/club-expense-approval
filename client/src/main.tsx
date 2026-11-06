@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { createRoot } from "react-dom/client";
+import { ExpenseRequests } from "./expense-requests.js";
 
 type User = {
   id: string;
@@ -82,6 +83,7 @@ function App() {
         <>
           <p>Signed in as {user.displayName} ({user.role === "REQUESTER" ? "Requester" : "Reviewer"})</p>
           <button type="button" disabled={pending} onClick={() => void logOut()}>Log out</button>
+          <ExpenseRequests key={user.id} role={user.role} />
         </>
       ) : (
         <form onSubmit={logIn}>

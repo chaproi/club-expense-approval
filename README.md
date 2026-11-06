@@ -14,13 +14,13 @@ npm.cmd run db:migrate
 npm.cmd run db:seed
 ```
 
-For development, run `npm.cmd run dev:api` and `npm.cmd run dev:web` in two terminals, then open http://localhost:5173. Keep `APP_ORIGIN=http://localhost:5173` in `.env` for this setup. Log in with a seeded email such as `requester1@example.test` or `reviewer1@example.test` and the demo password you set.
+For development, run `npm.cmd run dev:api` and `npm.cmd run dev:web` in two terminals, then open http://localhost:5173. Keep `APP_ORIGIN=http://localhost:5173` in `.env` for this setup. Log in with a seeded email such as `requester1@example.test` or `reviewer1@example.test` and the demo password you set. The app assigns new expenses to the seeded Reviewer in `DEFAULT_REVIEWER_EMAIL`. A requester can submit from My Requests. The assigned reviewer can open the submitted request from Assigned Requests.
 
 To verify the bundled app, run `npm.cmd run build`, set `APP_ORIGIN=http://localhost:3000` in `.env`, then run `npm.cmd start` and open http://localhost:3000. If you change `PORT`, use the matching origin for the bundled app.
 
-## Run the F-01 API tests
+## Run the tests
 
-Migrate the separate test database using its connection URL, then run the suite with `TEST_DATABASE_URL` from `.env`. The suite creates and removes its own uniquely named test accounts.
+Migrate the separate test database using its connection URL, then run the unit and API suites with `TEST_DATABASE_URL` from `.env`. The API suites create and remove their own uniquely named test accounts and requests.
 
 ```powershell
 # In a fresh PowerShell terminal, use the same test URL as in .env.

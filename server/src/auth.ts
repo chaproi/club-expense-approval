@@ -31,6 +31,16 @@ export async function readSessionUser(database: PrismaClient, request: Request) 
   return session?.user ?? null;
 }
 
+export function requireSameOrigin(appOrigin: string): RequestHandler {
+  return (request, response, next) => {
+    if (request.get("Origin") !== appOrigin) {
+      response.status(403).json({ error: { code: "FORBIDDEN_ORIGIN", message: "Request origin is not allowed." } });
+      return;
+    }
+    next();
+  };
+}
+
 export function createAuthRouter(database: PrismaClient, appOrigin: string) {
   const auth = Router();
   const cookieOptions: CookieOptions = {
@@ -39,13 +49,7 @@ export function createAuthRouter(database: PrismaClient, appOrigin: string) {
     secure: new URL(appOrigin).protocol === "https:",
     path: "/",
   };
-  const sameOrigin: RequestHandler = (request, response, next) => {
-    if (request.get("Origin") !== appOrigin) {
-      response.status(403).json({ error: { code: "FORBIDDEN_ORIGIN", message: "Request origin is not allowed." } });
-      return;
-    }
-    next();
-  };
+  const sameOrigin = requireSameOrigin(appOrigin);
 
   auth.post("/login", sameOrigin, async (request, response) => {
     const body = request.body;
