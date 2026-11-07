@@ -11,7 +11,7 @@ if (!databaseUrl) {
   throw new Error("Set TEST_DATABASE_URL to a migrated PostgreSQL test database.");
 }
 
-const database = new PrismaClient({ datasourceUrl: databaseUrl });
+let database = new PrismaClient({ datasourceUrl: databaseUrl });
 const appOrigin = "http://localhost:5173";
 const uniqueId = randomUUID();
 const password = randomUUID();
@@ -32,15 +32,7 @@ before(async () => {
     data: Object.values(accounts).map((account) => ({ ...account, passwordHash })),
   });
 
-  const options = { database, appOrigin, defaultReviewerEmail: accounts.assigned.email };
-  const app = createApp(options);
-  server = await new Promise<Server>((resolve, reject) => {
-    const listener = app.listen(0, "127.0.0.1", () => resolve(listener));
-    listener.once("error", reject);
-  });
-  const address = server.address();
-  assert.ok(address && typeof address !== "string");
-  apiUrl = `http://127.0.0.1:${address.port}/api`;
+  await startServer();
 
   for (const actor of ["owner", "other", "assigned", "unrelated"] as const) {
     const response = await fetch(`${apiUrl}/auth/login`, {
@@ -55,14 +47,31 @@ before(async () => {
   }
 });
 
+async function startServer() {
+  const app = createApp({ database, appOrigin, defaultReviewerEmail: accounts.assigned.email });
+  server = await new Promise<Server>((resolve, reject) => {
+    const listener = app.listen(0, "127.0.0.1", () => resolve(listener));
+    listener.once("error", reject);
+  });
+  const address = server.address();
+  assert.ok(address && typeof address !== "string");
+  apiUrl = `http://127.0.0.1:${address.port}/api`;
+
+}
+
+async function stopServer() {
+  const listener = server;
+  if (listener) {
+    await new Promise<void>((resolve, reject) => {
+      listener.close((error) => error ? reject(error) : resolve());
+    });
+    server = undefined;
+  }
+}
+
 after(async () => {
   try {
-    const listener = server;
-    if (listener) {
-      await new Promise<void>((resolve, reject) => {
-        listener.close((error) => error ? reject(error) : resolve());
-      });
-    }
+    await stopServer();
     const email = { in: Object.values(accounts).map((account) => account.email) };
     await database.expenseRequest.deleteMany({ where: { requester: { email } } });
     await database.user.deleteMany({ where: { email } });
@@ -190,6 +199,103 @@ test("T-03 extension: anonymous requests cannot list, read or submit expenses", 
   assert.equal((await expenseRequest()).status, 401);
   assert.equal((await expenseRequest(undefined, "/unknown")).status, 401);
   assert.equal((await expenseRequest(undefined, "", "POST", validExpense)).status, 401);
+  assert.equal((await expenseRequest(undefined, "/unknown/decision", "POST", { decision: "APPROVED" })).status, 401);
+});
+
+async function submitForDecision() {
+  const response = await expenseRequest("owner", "", "POST", validExpense);
+  assert.equal(response.status, 201);
+  return response.json();
+}
+
+test("T-07: assigned reviewer approves or rejects and the owner reads the recorded decision", async () => {
+  const approved = await submitForDecision();
+  const approval = await expenseRequest("assigned", `/${approved.id}/decision`, "POST", { decision: "APPROVED" });
+  assert.equal(approval.status, 200);
+  assert.equal((await approval.json()).status, "APPROVED");
+
+  const rejected = await submitForDecision();
+  for (const reason of ["", "   ", "x".repeat(301), "invalid\0reason", "\ud800"]) {
+    const invalid = await expenseRequest("assigned", `/${rejected.id}/decision`, "POST", { decision: "REJECTED", reason });
+    assert.equal(invalid.status, 400);
+    const unchanged = await expenseRequest("owner", `/${rejected.id}`);
+    assert.deepEqual(await unchanged.json(), rejected);
+  }
+  const rejection = await expenseRequest("assigned", `/${rejected.id}/decision`, "POST", {
+    decision: "REJECTED", reason: "  Missing activity details  ",
+  });
+  assert.equal(rejection.status, 200);
+  const saved = await expenseRequest("owner", `/${rejected.id}`);
+  const detail = await saved.json();
+  assert.equal(detail.status, "REJECTED");
+  assert.deepEqual(detail.history.map(({ type, reason, actorDisplayName }: {
+    type: string; reason: string | null; actorDisplayName: string;
+  }) => ({ type, reason, actorDisplayName })), [
+    { type: "SUBMITTED", reason: null, actorDisplayName: accounts.owner.displayName },
+    { type: "REJECTED", reason: "Missing activity details", actorDisplayName: accounts.assigned.displayName },
+  ]);
+});
+
+test("T-06 / T-10: requesters, unassigned reviewers and a self-reviewer cannot decide", async () => {
+  const expense = await submitForDecision();
+  const path = `/${expense.id}/decision`;
+  assert.equal((await expenseRequest("owner", path, "POST", { decision: "APPROVED" })).status, 403);
+  assert.equal((await expenseRequest("unrelated", path, "POST", { decision: "APPROVED" })).status, 404);
+  assert.equal((await expenseRequest("assigned", path, "POST", { decision: "APPROVED" }, "http://untrusted.example")).status, 403);
+  assert.deepEqual(await (await expenseRequest("owner", `/${expense.id}`)).json(), expense);
+
+  const reviewer = await database.user.findUniqueOrThrow({ where: { email: accounts.assigned.email } });
+  const selfRequest = await database.expenseRequest.create({
+    data: {
+      ...validExpense, category: "ACTIVITY", requesterId: reviewer.id, assignedReviewerId: reviewer.id,
+      events: { create: { actorId: reviewer.id, type: "SUBMITTED" } },
+    },
+  });
+  const selfDecision = await expenseRequest("assigned", `/${selfRequest.id}/decision`, "POST", { decision: "APPROVED" });
+  assert.equal(selfDecision.status, 403);
+  const saved = await database.expenseRequest.findUniqueOrThrow({
+    where: { id: selfRequest.id }, include: { events: true },
+  });
+  assert.equal(saved.status, "SUBMITTED");
+  assert.equal(saved.events.length, 1);
+});
+
+test("T-11: sequential decisions return 200 then 409 and keep one decision event", async () => {
+  const expense = await submitForDecision();
+  const path = `/${expense.id}/decision`;
+  assert.equal((await expenseRequest("assigned", path, "POST", { decision: "APPROVED" })).status, 200);
+  assert.equal((await expenseRequest("assigned", path, "POST", { decision: "REJECTED", reason: "Too late" })).status, 409);
+  const saved = await (await expenseRequest("owner", `/${expense.id}`)).json();
+  assert.equal(saved.status, "APPROVED");
+  assert.deepEqual(saved.history.map((event: { type: string }) => event.type), ["SUBMITTED", "APPROVED"]);
+});
+
+test("T-11: concurrent decisions produce one success, one conflict and one decision event", async () => {
+  const expense = await submitForDecision();
+  const path = `/${expense.id}/decision`;
+  const responses = await Promise.all([
+    expenseRequest("assigned", path, "POST", { decision: "APPROVED" }),
+    expenseRequest("assigned", path, "POST", { decision: "REJECTED", reason: "Concurrent rejection" }),
+  ]);
+  assert.deepEqual(responses.map((response) => response.status).sort(), [200, 409]);
+  const saved = await (await expenseRequest("owner", `/${expense.id}`)).json();
+  assert.equal(saved.history.length, 2);
+  assert.equal(saved.history[1].type, saved.status);
+  assert.equal(saved.history[1].actorDisplayName, accounts.assigned.displayName);
+});
+
+test("T-08: owner reads the decision after restarting the app and database client", async () => {
+  const expense = await submitForDecision();
+  const decided = await expenseRequest("assigned", `/${expense.id}/decision`, "POST", { decision: "APPROVED" });
+  assert.equal(decided.status, 200);
+  const expected = await decided.json();
+  await stopServer();
+  await database.$disconnect();
+  database = new PrismaClient({ datasourceUrl: databaseUrl });
+  await startServer();
+  const reloaded = await expenseRequest("owner", `/${expense.id}`);
+  assert.equal(reloaded.status, 200);
+  assert.deepEqual(await reloaded.json(), expected);
 });
 
 test("an authenticated browser cannot submit an expense from another origin", async () => {
