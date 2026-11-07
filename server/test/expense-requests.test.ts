@@ -56,7 +56,6 @@ async function startServer() {
   const address = server.address();
   assert.ok(address && typeof address !== "string");
   apiUrl = `http://127.0.0.1:${address.port}/api`;
-
 }
 
 async function stopServer() {
@@ -195,7 +194,7 @@ test("T-05: API rejects a title with an unpaired UTF-16 surrogate without insert
   assert.deepEqual(await after.json(), original);
 });
 
-test("T-03 extension: anonymous requests cannot list, read or submit expenses", async () => {
+test("T-03 extension: anonymous requests cannot list, read, submit or decide expenses", async () => {
   assert.equal((await expenseRequest()).status, 401);
   assert.equal((await expenseRequest(undefined, "/unknown")).status, 401);
   assert.equal((await expenseRequest(undefined, "", "POST", validExpense)).status, 401);

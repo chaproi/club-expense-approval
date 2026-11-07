@@ -31,3 +31,16 @@ npm.cmd test
 ```
 
 In Bash, use `npm` in place of `npm.cmd`. To migrate the test database, run `DATABASE_URL='<your local test database URL>' npm run db:migrate` followed by `npm test`.
+
+## Verify the decision workflow
+
+Log in as the assigned reviewer and open a submitted request. Approve saves the final status and history entry. Reject requires a reason of 1–300 characters after trimming. The requester sees the result and rejection reason after loading the details again. A repeat decision returns 409 and reloads the current status.
+
+The API suite covers sequential and concurrent decisions, access restrictions, and reading the result after restarting the app and its Prisma connection. For the automated browser checks, install Chromium once and run Playwright.
+
+```powershell
+npx.cmd playwright install chromium
+npm.cmd run test:e2e
+```
+
+Playwright uses `TEST_DATABASE_URL`, applies the migrations, builds and starts the bundled app on port 4173, and creates isolated accounts and requests that it removes after the suite. Close any existing app on that port before running it. The two browser tests cover the Requester → Reviewer → Requester journey for approval/rejection and a stale decision returning 409.

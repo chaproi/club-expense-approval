@@ -9,5 +9,5 @@
     "skipLibCheck": true,
     "esModuleInterop": true
   },
-  "include": ["server/**/*.ts", "client/**/*.tsx", "vite.config.ts"]
+  "include": ["server/**/*.ts", "client/**/*.tsx", "client/test/**/*.ts", "vite.config.ts", "playwright.config.ts"]
 }

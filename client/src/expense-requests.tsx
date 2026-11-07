@@ -16,9 +16,16 @@ type ExpenseWithHistory = Expense & {
   history: { type: string; actorDisplayName: string; createdAt: string; reason: string | null }[];
 };
 
-function ExpenseDetail({ id }: { id: string }) {
+function ExpenseDetail({ id, role, onDecision }: {
+  id: string;
+  role: "REQUESTER" | "REVIEWER";
+  onDecision: () => void;
+}) {
   const [detail, setDetail] = useState<ExpenseWithHistory | null>(null);
   const [error, setError] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [decisionError, setDecisionError] = useState("");
+  const [reload, setReload] = useState(0);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -34,14 +41,59 @@ function ExpenseDetail({ id }: { id: string }) {
 
     void loadDetail();
     return () => controller.abort();
-  }, [id]);
+  }, [id, reload]);
+
+  async function decide(body: { decision: "APPROVED" } | { decision: "REJECTED"; reason: string }) {
+    setPending(true);
+    setDecisionError("");
+    try {
+      const response = await fetch(`${endpoint}/${encodeURIComponent(id)}/decision`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setDecisionError(data.error?.message ?? "Could not save the decision.");
+        if (response.status === 409) {
+          setDetail(null);
+          setError(false);
+          setReload((count) => count + 1);
+          onDecision();
+        }
+        return;
+      }
+      setDetail(data);
+      onDecision();
+    } catch {
+      setDecisionError("Could not save the decision.");
+    } finally {
+      setPending(false);
+    }
+  }
+
+  function reject(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const values = new FormData(event.currentTarget);
+    void decide({ decision: "REJECTED", reason: String(values.get("reason") ?? "") });
+  }
 
   return (
     <section aria-labelledby="expense-details">
       <h3 id="expense-details">Request details</h3>
+      {decisionError && <p role="alert">{decisionError}</p>}
       {error ? <p role="alert">Could not load request details.</p> : detail ? (
         <>
           <p>{detail.title} · {categoryLabels[detail.category]} · {detail.amountBaht} baht · {detail.status}</p>
+          {role === "REVIEWER" && detail.status === "SUBMITTED" && (
+            <div>
+              <button type="button" disabled={pending} onClick={() => void decide({ decision: "APPROVED" })}>Approve</button>
+              <form onSubmit={reject}>
+                <p><label>Rejection reason <textarea name="reason" required disabled={pending} /></label></p>
+                <button type="submit" disabled={pending}>Reject</button>
+              </form>
+            </div>
+          )}
           <h4>History</h4>
           <ol>
             {detail.history.map((event, index) => (
@@ -148,7 +200,7 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
           ))}
         </ul>
       )}
-      {selectedId && <ExpenseDetail key={selectedId} id={selectedId} />}
+      {selectedId && <ExpenseDetail key={selectedId} id={selectedId} role={role} onDecision={() => setRefresh((count) => count + 1)} />}
     </section>
   );
 }
