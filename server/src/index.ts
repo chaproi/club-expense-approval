@@ -16,7 +16,12 @@ const database = new PrismaClient();
 await database.$connect();
 
 const port = Number(process.env.PORT ?? "3000");
-const app = createApp({ database, appOrigin, webRoot: resolve("dist/client") });
+const app = createApp({
+  database,
+  appOrigin,
+  defaultReviewerEmail: process.env.DEFAULT_REVIEWER_EMAIL,
+  webRoot: resolve("dist/client"),
+});
 const server = app.listen(port, () => console.log(`API listening on port ${port}`));
 
 function shutdown() {
