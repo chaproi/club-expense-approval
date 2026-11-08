@@ -12,7 +12,8 @@
     "dev:web": "vite",
     "build": "tsc --noEmit && tsc -p tsconfig.server.json && vite build",
     "start": "node --env-file-if-exists=.env dist/server/index.js",
-    "test": "node --env-file-if-exists=.env --import tsx --test server/test/*.test.ts"
+    "test": "node --env-file-if-exists=.env --import tsx --test server/test/*.test.ts",
+    "test:e2e": "node --env-file-if-exists=.env node_modules/@playwright/test/cli.js test"
   },
   "dependencies": {
     "@prisma/client": "6.19.3",
@@ -23,6 +24,7 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.62.1",
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
     "@types/node": "^24.0.0",

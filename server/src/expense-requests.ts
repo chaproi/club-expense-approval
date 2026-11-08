@@ -1,7 +1,7 @@
-import type { Prisma, PrismaClient } from "@prisma/client";
+import type { ExpenseRequest, Prisma, PrismaClient, User } from "@prisma/client";
 import { Router, type Response } from "express";
 import { readSessionUser, requireSameOrigin } from "./auth.js";
-import { parseExpenseInput } from "./expense-input.js";
+import { parseDecisionInput, parseExpenseInput } from "./expense-input.js";
 
 const listFields = {
   id: true, title: true, category: true, amountBaht: true, status: true, createdAt: true,
@@ -18,6 +18,13 @@ const detailFields = {
 
 type SessionUser = NonNullable<Awaited<ReturnType<typeof readSessionUser>>>;
 type ExpenseResponse = Response<unknown, { user: SessionUser }>;
+
+export function canDecideExpense(
+  user: Pick<User, "id" | "role">,
+  expense: Pick<ExpenseRequest, "requesterId" | "assignedReviewerId">,
+) {
+  return user.role === "REVIEWER" && expense.assignedReviewerId === user.id && expense.requesterId !== user.id;
+}
 
 function visibleTo(user: SessionUser): Prisma.ExpenseRequestWhereInput {
   return user.role === "REQUESTER" ? { requesterId: user.id } : { assignedReviewerId: user.id };
@@ -90,6 +97,51 @@ export function createExpenseRouter(database: PrismaClient, appOrigin: string, d
       orderBy: [{ createdAt: "desc" }, { id: "desc" }],
     });
     response.json({ items });
+  });
+
+  expenses.post("/:id/decision", requireSameOrigin(appOrigin), async (request, response: ExpenseResponse) => {
+    const user = response.locals.user;
+    if (user.role !== "REVIEWER") {
+      response.status(403).json({ error: { code: "FORBIDDEN", message: "Only assigned reviewers can decide requests." } });
+      return;
+    }
+    const { id } = request.params;
+    const input = parseDecisionInput(request.body);
+    if (typeof id !== "string" || id.includes("\0") || !input) {
+      response.status(400).json({
+        error: { code: "INVALID_INPUT", message: "Choose Approve or Reject. A rejection needs a reason of 1–300 characters." },
+      });
+      return;
+    }
+    const result = await database.$transaction(async (transaction) => {
+      const expense = await transaction.expenseRequest.findFirst({
+        where: { id, assignedReviewerId: user.id },
+        select: { requesterId: true, assignedReviewerId: true },
+      });
+      if (!expense) {
+        return { status: 404, error: { code: "NOT_FOUND", message: "Expense request not found." } };
+      }
+      if (!canDecideExpense(user, expense)) {
+        return { status: 403, error: { code: "FORBIDDEN", message: "You cannot decide your own request." } };
+      }
+      const updated = await transaction.expenseRequest.updateMany({
+        where: { id, assignedReviewerId: user.id, status: "SUBMITTED" },
+        data: { status: input.decision },
+      });
+      if (updated.count === 0) {
+        return { status: 409, error: { code: "INVALID_STATE", message: "This request has already been decided. Review its latest status." } };
+      }
+      await transaction.requestEvent.create({
+        data: { requestId: id, actorId: user.id, type: input.decision, reason: input.reason },
+      });
+      const saved = await transaction.expenseRequest.findUniqueOrThrow({ where: { id }, select: detailFields });
+      return { expense: saved };
+    });
+    if (result.error) {
+      response.status(result.status).json({ error: result.error });
+      return;
+    }
+    response.json(toDetail(result.expense));
   });
 
   expenses.get("/:id", async (request, response: ExpenseResponse) => {
