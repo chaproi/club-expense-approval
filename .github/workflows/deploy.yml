@@ -110,7 +110,7 @@ jobs:
           PORT_ARGS=()
           if [ -n "$APP_PORT" ]; then PORT_ARGS=(--port "$APP_PORT"); fi
           gcloud run deploy "$SERVICE_NAME" --image "$IMAGE" --region "$REGION" --project "$PROJECT_ID" \
-            --update-env-vars "APP_ORIGIN=$APP_ORIGIN" "${PORT_ARGS[@]}" --quiet
+            --update-env-vars "APP_ORIGIN=$APP_ORIGIN,DEFAULT_REVIEWER_EMAIL=reviewer1@example.test" "${PORT_ARGS[@]}" --quiet
 
       - name: Summary
         run: |
