@@ -5,7 +5,7 @@
 Use Git and Docker with the Compose plugin. Run the PowerShell commands from a new checkout. The standard setup uses port 3000. Use the parallel setup below if an existing stack already uses that port.
 
 ```powershell
-git clone --branch lab5/shared-cloud https://github.com/chaproi/club-expense-approval.git
+git clone --branch main https://github.com/chaproi/club-expense-approval.git
 Set-Location club-expense-approval
 docker compose version
 ```
