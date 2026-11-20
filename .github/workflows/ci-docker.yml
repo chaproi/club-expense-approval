@@ -1,0 +1,67 @@
+name: CI and Docker build
+
+on:
+  pull_request:
+    branches: [staging/sprint-1, main]
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      postgres:
+        image: postgres:17-bookworm
+        env:
+          # These credentials are only for this job's disposable service.
+          POSTGRES_USER: club_ci
+          POSTGRES_PASSWORD: ci_only_password
+          POSTGRES_DB: club_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -h 127.0.0.1 -U club_ci -d club_ci"
+          --health-interval 3s
+          --health-timeout 3s
+          --health-retries 20
+
+    env:
+      DATABASE_URL: postgresql://club_ci:ci_only_password@127.0.0.1:5432/club_ci?schema=public
+      TEST_DATABASE_URL: postgresql://club_ci:ci_only_password@127.0.0.1:5432/club_ci?schema=public
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install dependencies and generate Prisma Client
+        run: npm ci
+
+      - name: Apply database migrations
+        run: npm run db:migrate
+
+      - name: Run unit and API tests
+        run: npm test
+
+      - name: Build application
+        run: npm run build
+
+      - name: Install Chromium and browser dependencies
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright tests
+        run: npm run test:e2e
+
+      - name: Build Docker image
+        run: docker build -t club-expense-approval:ci .
