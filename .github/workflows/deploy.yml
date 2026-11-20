@@ -1,0 +1,122 @@
+# ============================================================================
+# deploy.yml - deploy this repository to the Google Cloud resources of your team
+# Save as: .github/workflows/deploy.yml  (the file name and the branch main must stay exactly like this)
+#
+# How it works
+#   - Triggers: push to main, or run it by hand (workflow_dispatch).
+#   - It signs in to Google Cloud with Workload Identity Federation (WIF): no key file, no secret in GitHub.
+#   - It builds the Dockerfile at the root of the repository, pushes the image to your team's Artifact Registry
+#     repository and deploys it to your team's Cloud Run service.
+#
+# Do not rename (the portal WIF rule is bound to these):
+#   - this file name deploy.yml on branch main
+#   - environment: demo   (create it in GitHub: Settings -> Environments -> New environment -> demo)
+#   - permissions id-token: write
+#
+# Set these four variables in the GitHub environment demo (values: portal, Team resources tab):
+#   GCP_PROJECT_ID, GCP_REGION, WIF_PROVIDER, WIF_SERVICE_ACCOUNT
+# Also set MIGRATE_COMMAND in demo to the required database migration command (npm run db:migrate).
+# APP_PORT is optional when the service uses the default container port.
+# ============================================================================
+name: Deploy to Google Cloud
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-demo
+  cancel-in-progress: false
+
+jobs:
+  ci:
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/ci-docker.yml
+
+  deploy:
+    needs: ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: github.ref == 'refs/heads/main'
+    environment: demo
+    permissions:
+      contents: read
+      id-token: write # required for the keyless Google Cloud sign-in (WIF)
+    defaults:
+      run:
+        shell: bash
+    env:
+      PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+      REGION: ${{ vars.GCP_REGION }}
+      # Names of your team's resources (assigned by the portal)
+      SERVICE_NAME: s981b09c9
+      MIGRATE_JOB_NAME: s981b09c9-migrate
+      AR_REPOSITORY: s981b09c9
+      IMAGE_NAME: s981b09c9
+      APP_PORT: ${{ vars.APP_PORT }}
+      MIGRATE_COMMAND: ${{ vars.MIGRATE_COMMAND }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check settings and Dockerfile
+        env:
+          WIF_PROVIDER: ${{ vars.WIF_PROVIDER }}
+          WIF_SERVICE_ACCOUNT: ${{ vars.WIF_SERVICE_ACCOUNT }}
+        run: |
+          for name in PROJECT_ID REGION WIF_PROVIDER WIF_SERVICE_ACCOUNT MIGRATE_COMMAND; do
+            [ -n "${!name//[[:space:]]/}" ] || { echo "Missing GitHub variable for $name (see the portal, Team resources tab)"; exit 1; }
+          done
+          [ -f Dockerfile ] || { echo 'No Dockerfile at the root of the repository'; exit 1; }
+
+      - name: Sign in to Google Cloud (no key file)
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
+        with:
+          workload_identity_provider: ${{ vars.WIF_PROVIDER }}
+          service_account: ${{ vars.WIF_SERVICE_ACCOUNT }}
+
+      - uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db # v3.0.1
+
+      - name: Read the existing Cloud Run HTTPS origin
+        run: |
+          APP_ORIGIN="$(gcloud run services describe "$SERVICE_NAME" --region "$REGION" --project "$PROJECT_ID" --format='value(status.url)')"
+          if [[ ! "$APP_ORIGIN" =~ ^https://[a-zA-Z0-9.-]+$ ]]; then
+            echo 'The existing Cloud Run service must have an HTTPS origin' >&2
+            exit 1
+          fi
+          echo "APP_ORIGIN=$APP_ORIGIN" >> "$GITHUB_ENV"
+
+      - name: Build and push the image
+        run: |
+          gcloud auth configure-docker "$REGION-docker.pkg.dev" --quiet
+          IMAGE="$REGION-docker.pkg.dev/$PROJECT_ID/$AR_REPOSITORY/$IMAGE_NAME:$GITHUB_SHA"
+          echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
+          docker build --tag "$IMAGE" .
+          docker push "$IMAGE"
+
+      - name: Run the required database migration
+        run: |
+          gcloud run jobs update "$MIGRATE_JOB_NAME" --image "$IMAGE" --region "$REGION" --project "$PROJECT_ID" \
+            --command=sh --args="^@@^-c@@$MIGRATE_COMMAND" --quiet
+          gcloud run jobs execute "$MIGRATE_JOB_NAME" --region "$REGION" --project "$PROJECT_ID" --wait
+
+      - name: Deploy to Cloud Run
+        run: |
+          PORT_ARGS=()
+          if [ -n "$APP_PORT" ]; then PORT_ARGS=(--port "$APP_PORT"); fi
+          gcloud run deploy "$SERVICE_NAME" --image "$IMAGE" --region "$REGION" --project "$PROJECT_ID" \
+            --update-env-vars "APP_ORIGIN=$APP_ORIGIN" "${PORT_ARGS[@]}" --quiet
+
+      - name: Summary
+        run: |
+          URL="$(gcloud run services describe "$SERVICE_NAME" --region "$REGION" --project "$PROJECT_ID" --format='value(status.url)')"
+          {
+            echo '### Deployed'
+            echo "- Image: \`$IMAGE\`"
+            echo "- URL: $URL"
+          } >> "$GITHUB_STEP_SUMMARY"
