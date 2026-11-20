@@ -1,0 +1,17 @@
+# Secrets must be supplied at runtime, never copied into the image.
+.env
+.env.*
+**/.env
+**/.env.*
+
+.git
+**/.git
+node_modules
+**/node_modules
+dist
+**/dist
+test-results
+**/test-results
+playwright-report
+**/playwright-report
+npm-debug.log*

@@ -1,0 +1,61 @@
+name: club-expense-approval-lab5
+
+# Start with docker compose --env-file .env.compose up --build.
+# Set LAB5_DB_PASSWORD to a URL-safe local password in the ignored .env.compose.
+# For demo users, set LAB5_DEMO_PASSWORD (at least 12 characters) in the same file,
+# then run docker compose --env-file .env.compose run --rm seed.
+x-app-image: &app-image club-expense-approval:lab5
+x-database-url: &database-url "postgresql://club_expense:${LAB5_DB_PASSWORD:?Set a URL-safe LAB5_DB_PASSWORD in .env.compose}@db:5432/club_expense?schema=public"
+
+services:
+  db:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: club_expense
+      POSTGRES_PASSWORD: "${LAB5_DB_PASSWORD:?Set a URL-safe LAB5_DB_PASSWORD in .env.compose}"
+      POSTGRES_DB: club_expense
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U club_expense -d club_expense"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  migrate:
+    image: *app-image
+    pull_policy: never
+    command: ["npm", "run", "db:migrate"]
+    environment:
+      DATABASE_URL: *database-url
+    depends_on:
+      db:
+        condition: service_healthy
+
+  app:
+    image: *app-image
+    build: .
+    environment:
+      DATABASE_URL: *database-url
+      APP_ORIGIN: http://localhost:3000
+      DEFAULT_REVIEWER_EMAIL: reviewer1@example.test
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  seed:
+    profiles: ["demo"]
+    image: *app-image
+    pull_policy: never
+    command: ["npm", "run", "db:seed"]
+    environment:
+      DATABASE_URL: *database-url
+      SEED_DEMO_PASSWORD: "${LAB5_DEMO_PASSWORD:-}"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+volumes:
+  db-data:
