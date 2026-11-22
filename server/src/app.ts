@@ -26,6 +26,17 @@ export function createApp(options: AppOptions) {
   });
 
   if (options.webRoot) {
+    const canonicalHost = new URL(options.appOrigin).host.toLowerCase();
+    app.use((request, response, next) => {
+      // Normalize browser navigation before rendering a form bound to APP_ORIGIN.
+      // API routes above retain their JSON responses and strict Origin guard.
+      if ((request.method === "GET" || request.method === "HEAD") &&
+          request.get("Host")?.toLowerCase() !== canonicalHost) {
+        response.redirect(308, options.appOrigin + request.originalUrl);
+        return;
+      }
+      next();
+    });
     app.use(express.static(options.webRoot));
   }
 

@@ -1,6 +1,12 @@
 # Lab 6 Part A — Sprint 1 UAT handoff (TH-038 ↔ TH-033_P3)
 
-**Status: preparation draft, NOT EXECUTED and NOT ACCEPTED.**
+**Document status: historical preparation handoff; current execution and acceptance are recorded separately.**
+
+This handoff was first prepared on 21 November 2026. TH-033_P3 used documentation commit `402bf67ea94c840283241549b0284acc0248e858` for its initial UAT. The original document remains available at that immutable commit. The PENDING account/version/session entries below describe that preparation snapshot; they are not a claim that the completed handoff or subsequent execution never occurred.
+
+Formal documentation review of PR #29 is being requested on 22 November, **after** independent execution. Do not backdate that review or describe it as pre-UAT approval. This revision corrects requirement references only; numbered actions, input boundaries and expected behavior are unchanged.
+
+For current incoming results, defect disposition and correction evidence, see [the versioned correction record](https://github.com/chaproi/club-expense-approval/blob/43aa8d7472aa8852654d0d634d7239c3765c5869/docs/labs/lab-06/defect-correction.md), [reviewed source PR #32](https://github.com/chaproi/club-expense-approval/pull/32) and [deployed release PR #33](https://github.com/chaproi/club-expense-approval/pull/33). The initial partner report records 18 scripted sub-cases PASS and two exploratory Medium defects; corrected-release independent retest and final acceptance remain pending at this documentation update. These results do not turn the reusable blank templates into executed records.
 Tracking: [Issue #28](https://github.com/chaproi/club-expense-approval/issues/28).
 Course deadline: 22 November 2026, 23:59 Asia/Bangkok. Agree an initial session and a correction/retest session before the deadline.
 
@@ -100,7 +106,7 @@ Use concrete case-created IDs where a path contains `<id>`. GET list returns `{i
 
 ### UAT-03 — Rejection validation and recorded reason
 
-**References:** F-03, BR-03/BR-04, AC-07. **Category:** business-rule rejection/state. **Roles:** R1, V1. **Input:** fresh U03 title, ACTIVITY, 100; invalid reasons three spaces and 301 ASCII `x` characters; valid input `  UAT6 budget unavailable  `.
+**References:** F-03, BR-03/BR-04/BR-07, AC-07. **Category:** business-rule rejection/state. **Roles:** R1, V1. **Input:** fresh U03 title, ACTIVITY, 100; invalid reasons three spaces and 301 ASCII `x` characters; valid input `  UAT6 budget unavailable  `.
 
 1. R1 creates a fresh U03 expense; record ID, SUBMITTED and initial one-event history.
 2. V1 opens it. Try Reject with an empty reason in the UI. The browser may block the empty required field; record what actually happens. Use the helper to POST `/api/expense-requests/<id>/decision` with `{decision:"REJECTED",reason:"   "}`, then repeat with `reason:"x".repeat(301)`.
@@ -137,7 +143,7 @@ Use a unique subcase title for every attempt. Before each attempt record the own
 
 ### UAT-05 — Ownership and unassigned-reviewer denial
 
-**References:** F-02/F-03, BR-07, AC-06. **Category:** forbidden ownership. **Roles:** R1, R2, V1, V2. **Input:** independent fresh U05 expense created by R1; ID known only from this authorized setup.
+**References:** F-02/F-03, BR-03, NFR-01, AC-06. **Category:** forbidden ownership. **Roles:** R1, R2, V1, V2. **Input:** independent fresh U05 expense created by R1; ID known only from this authorized setup.
 
 1. R1 creates U05 and records its fields/status/one-event history; V1 verifies it is assigned.
 2. As R2, load My Requests and GET the protected detail by its exact ID.

@@ -1,6 +1,8 @@
 # Lab 6 execution and acceptance records — templates only
 
-**Status: NOT EXECUTED. No PASS, defect finding, controlled exercise or independent acceptance is claimed.**
+**Template status: blank reusable forms, not the current execution ledger.**
+
+These forms were prepared before UAT at documentation commit `402bf67ea94c840283241549b0284acc0248e858`. NOT EXECUTED, PENDING and NOT PERFORMED values below are placeholders in that original template, not statements about today's project progress. Actual received results and version-specific evidence are maintained separately in the partner's submitted report and the [correction/release record](https://github.com/chaproi/club-expense-approval/blob/43aa8d7472aa8852654d0d634d7239c3765c5869/docs/labs/lab-06/defect-correction.md). Final independent acceptance remains pending; do not sign or populate it from developer CI or smoke results. Formal review of these documents is retrospective and must retain its actual date.
 Tracking [Issue #28](https://github.com/chaproi/club-expense-approval/issues/28).
 Read [the TH-038 handoff and cases](handoff.md) first.
 

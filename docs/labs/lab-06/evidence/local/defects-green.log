@@ -1,0 +1,32 @@
+PHASE green
+SOURCE /workspace/scratch/310a2486b8d2/club-expense-approval-lab6
+HEAD 36908efe3e5ac178836531a4d53d9c205fbef657
+UTC 2026-11-22T11:49:05.067Z
+RUNTIME Node v24.22.3; PGlite PostgreSQL WASM engine over TCP (not standalone PostgreSQL)
+COMMAND /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node --import tsx --test --test-concurrency=1 server/test/auth.test.ts server/test/canonical-origin.test.ts
+
+✔ T-01: seeded roles log in and resolve their own identity from a session (281.506196ms)
+✔ T-02: invalid credentials fail and logout revokes a previously issued cookie (214.408479ms)
+✔ T-03: current user endpoint rejects a request without a session (2.214902ms)
+✔ a browser request from another origin cannot create a session (5.063266ms)
+✔ an expired PostgreSQL session cannot identify a user (86.317634ms)
+✔ DEF-TH038-01: login rejects an email containing NUL byte without changing sessions (97.707015ms)
+✔ DEF-TH038-01: login rejects an email containing unpaired high surrogate without changing sessions (79.158462ms)
+✔ DEF-TH038-01: login rejects an email containing unpaired low surrogate without changing sessions (82.067343ms)
+✔ DEF-TH038-01: valid paired Unicode in an unknown email remains invalid credentials (34.307618ms)
+✔ DEF-TH038-02: the official Cloud Run alias redirects before serving the login form (30.297589ms)
+✔ DEF-TH038-02: canonical host serves the page without a redirect loop (6.245776ms)
+✔ DEF-TH038-02: alias HEAD navigation redirects to the same canonical URL (1.713149ms)
+✔ DEF-TH038-02: redirect destination cannot be supplied by Host, path or forwarded headers (2.224689ms)
+✔ DEF-TH038-02: alias and untrusted API writes stay blocked instead of redirecting (14.917235ms)
+✔ DEF-TH038-02: anonymous API reads retain their JSON contract on the alias (1.868441ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1561.164497
+
+EXIT CODE 0
