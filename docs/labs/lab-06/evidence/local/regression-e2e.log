@@ -1,0 +1,39 @@
+PHASE regression
+SOURCE /workspace/scratch/310a2486b8d2/club-expense-approval-lab6
+HEAD 36908efe3e5ac178836531a4d53d9c205fbef657
+UTC 2026-11-22T11:49:52.372Z
+RUNTIME Node v24.22.3; PGlite PostgreSQL WASM engine over TCP (not standalone PostgreSQL)
+COMMAND npm run test:e2e -- --config /workspace/scratch/310a2486b8d2/capture-runtime/lab6.playwright.config.ts
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> club-expense-approval@0.1.0 test:e2e
+> node --env-file-if-exists=.env node_modules/@playwright/test/cli.js test --config /workspace/scratch/310a2486b8d2/capture-runtime/lab6.playwright.config.ts
+
+.env not found. Continuing without it.
+[WebServer] (node:944) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+[WebServer] (node:973) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:997) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+[WebServer] (node:1056) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+[WebServer] .env not found. Continuing without it.
+[WebServer] (node:1069) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+.env not found. Continuing without it.
+(node:1092) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 client/test/expense-decisions.spec.ts:50:1 › T-09: requester submits, reviewer approves or rejects, and requester reads both outcomes (1.8s)
+  ✓  2 client/test/expense-decisions.spec.ts:79:1 › reviewer reloads the latest status after a stale decision returns 409 (752ms)
+
+  2 passed (12.3s)
+
+EXIT CODE 0

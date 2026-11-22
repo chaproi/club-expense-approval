@@ -7,6 +7,8 @@ export const passwordHashOptions = { type: argon2id, memoryCost: 19456, timeCost
 const userIdentity = { id: true, displayName: true, role: true } as const;
 const sessionCookie = "club_session";
 const sessionLifetimeMs = 8 * 60 * 60 * 1000;
+// Reject PostgreSQL-incompatible text while allowing valid Unicode surrogate pairs.
+const invalidEmailText = /[\0\uD800-\uDFFF]/u;
 
 // Verify an equivalent hash when the email is unknown.
 const unknownUserHash = "$argon2id$v=19$m=19456,t=2,p=1$rpTtKoC7qq9iAF2Yz2Okaw$1EtG4tG/dnT189W8qYK255JE/YfdbQ2ggUQlJSuVdvs";
@@ -55,7 +57,7 @@ export function createAuthRouter(database: PrismaClient, appOrigin: string) {
     const body = request.body;
     if (!body || Object.keys(body).length !== 2 || typeof body.email !== "string" ||
         typeof body.password !== "string" || body.password.length === 0 || body.password.length > 1024 ||
-        body.email.trim().length === 0 || body.email.length > 254) {
+        body.email.trim().length === 0 || body.email.length > 254 || invalidEmailText.test(body.email)) {
       response.status(400).json({ error: { code: "INVALID_INPUT", message: "Enter an email and password." } });
       return;
     }
