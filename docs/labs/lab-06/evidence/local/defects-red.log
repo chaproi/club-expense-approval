@@ -1,0 +1,145 @@
+PHASE red
+SOURCE /workspace/scratch/310a2486b8d2/club-expense-approval-lab6
+HEAD 460c6470bef91238c238361dcbe268d385c3b711
+UTC 2026-11-22T11:48:06.448Z
+RUNTIME Node v24.22.3; PGlite PostgreSQL WASM engine over TCP (not standalone PostgreSQL)
+COMMAND /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node --import tsx --test --test-concurrency=1 server/test/auth.test.ts server/test/canonical-origin.test.ts
+
+✔ T-01: seeded roles log in and resolve their own identity from a session (388.07781ms)
+✔ T-02: invalid credentials fail and logout revokes a previously issued cookie (153.910644ms)
+✔ T-03: current user endpoint rejects a request without a session (2.119542ms)
+✔ a browser request from another origin cannot create a session (3.373592ms)
+✔ an expired PostgreSQL session cannot identify a user (99.924828ms)
+Unhandled API error: PrismaClientUnknownRequestError
+✖ DEF-TH038-01: login rejects an email containing NUL byte without changing sessions (121.922706ms)
+Unhandled API error: PrismaClientKnownRequestError
+✖ DEF-TH038-01: login rejects an email containing unpaired high surrogate without changing sessions (75.568802ms)
+Unhandled API error: PrismaClientKnownRequestError
+✖ DEF-TH038-01: login rejects an email containing unpaired low surrogate without changing sessions (98.605802ms)
+✔ DEF-TH038-01: valid paired Unicode in an unknown email remains invalid credentials (43.082006ms)
+✖ DEF-TH038-02: the official Cloud Run alias redirects before serving the login form (40.820585ms)
+✔ DEF-TH038-02: canonical host serves the page without a redirect loop (5.473141ms)
+✖ DEF-TH038-02: alias HEAD navigation redirects to the same canonical URL (2.120797ms)
+✖ DEF-TH038-02: redirect destination cannot be supplied by Host, path or forwarded headers (3.154382ms)
+✔ DEF-TH038-02: alias and untrusted API writes stay blocked instead of redirecting (15.916664ms)
+✔ DEF-TH038-02: anonymous API reads retain their JSON contract on the alias (2.154354ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 9
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1977.90457
+
+✖ failing tests:
+
+test at server/test/auth.test.ts:1:4562
+✖ DEF-TH038-01: login rejects an email containing NUL byte without changing sessions (121.922706ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 400
+  
+      at TestContext.<anonymous> (/workspace/scratch/310a2486b8d2/club-expense-approval-lab6/server/test/auth.test.ts:147:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/auth.test.ts:1:4562
+✖ DEF-TH038-01: login rejects an email containing unpaired high surrogate without changing sessions (75.568802ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 400
+  
+      at TestContext.<anonymous> (/workspace/scratch/310a2486b8d2/club-expense-approval-lab6/server/test/auth.test.ts:147:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/auth.test.ts:1:4562
+✖ DEF-TH038-01: login rejects an email containing unpaired low surrogate without changing sessions (98.605802ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 400
+  
+      at TestContext.<anonymous> (/workspace/scratch/310a2486b8d2/club-expense-approval-lab6/server/test/auth.test.ts:147:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/canonical-origin.test.ts:1:1860
+✖ DEF-TH038-02: the official Cloud Run alias redirects before serving the login form (40.820585ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 308
+  
+      at TestContext.<anonymous> (/workspace/scratch/310a2486b8d2/club-expense-approval-lab6/server/test/canonical-origin.test.ts:61:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 308,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/canonical-origin.test.ts:1:2453
+✖ DEF-TH038-02: alias HEAD navigation redirects to the same canonical URL (2.120797ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 308
+  
+      at TestContext.<anonymous> (/workspace/scratch/310a2486b8d2/club-expense-approval-lab6/server/test/canonical-origin.test.ts:77:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 308,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/canonical-origin.test.ts:1:2747
+✖ DEF-TH038-02: redirect destination cannot be supplied by Host, path or forwarded headers (3.154382ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 308
+  
+      at TestContext.<anonymous> (/workspace/scratch/310a2486b8d2/club-expense-approval-lab6/server/test/canonical-origin.test.ts:87:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 308,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+EXIT CODE 1

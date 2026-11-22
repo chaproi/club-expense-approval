@@ -130,3 +130,38 @@ test("an expired PostgreSQL session cannot identify a user", async () => {
   const current = await fetch(`${apiUrl}/api/auth/me`, { headers: { Cookie: cookie } });
   assert.equal(current.status, 401);
 });
+
+for (const [name, email] of [
+  ["NUL byte", "a\0b@example.test"],
+  ["unpaired high surrogate", "a\uD800b@example.test"],
+  ["unpaired low surrogate", "a\uDC00b@example.test"],
+]) {
+  test(`DEF-TH038-01: login rejects an email containing ${name} without changing sessions`, async () => {
+    const loggedIn = await login();
+    assert.equal(loggedIn.status, 200);
+    const cookie = sessionCookie(loggedIn);
+    const user = await database.user.findUniqueOrThrow({ where: { email: requesterEmail } });
+    const beforeCount = await database.session.count({ where: { userId: user.id } });
+
+    const response = await login(email, "x");
+    assert.equal(response.status, 400);
+    assert.deepEqual(await response.json(), {
+      error: { code: "INVALID_INPUT", message: "Enter an email and password." },
+    });
+    assert.equal(response.headers.get("set-cookie"), null);
+    assert.equal(await database.session.count({ where: { userId: user.id } }), beforeCount);
+
+    const current = await fetch(`${apiUrl}/api/auth/me`, { headers: { Cookie: cookie } });
+    assert.equal(current.status, 200);
+    assert.equal((await current.json()).id, user.id);
+  });
+}
+
+test("DEF-TH038-01: valid paired Unicode in an unknown email remains invalid credentials", async () => {
+  const response = await login(`unknown-😀-${uniqueId}@example.test`, "x");
+  assert.equal(response.status, 401);
+  assert.deepEqual(await response.json(), {
+    error: { code: "INVALID_CREDENTIALS", message: "Invalid email or password." },
+  });
+  assert.equal(response.headers.get("set-cookie"), null);
+});

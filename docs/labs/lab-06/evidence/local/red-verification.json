@@ -1,0 +1,27 @@
+{
+  "phase": "red",
+  "capturedAt": "2026-11-22T11:48:08.517Z",
+  "applicationBaseline": "1cc7df74c3f3240cff0c8a4d422f3f685a8acbce",
+  "standalonePostgreSQL": false,
+  "runtime": "PGlite PostgreSQL WASM engine over TCP; Node v24.22.3",
+  "sourceHashes": {
+    "server/src/auth.ts": "4ae22d7ae360673cb9c224242d56ea8211a2755fafdcda86ab5837187807b214",
+    "server/src/app.ts": "dce04e54a3b9ae2104a6fd020e35a1d7ea9feeacb0b03f9760ea0310871d0413",
+    "server/test/auth.test.ts": "0f46c2fffdce11b76153c224cd55040ecd9d410545ef79029eb74e4f04c549aa",
+    "server/test/canonical-origin.test.ts": "134cb3a3a65cbe3cd828c87e745db9fedb6bfce6891afe9b448e32e23b244801"
+  },
+  "results": [
+    {
+      "label": "setup-red",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "log": "setup-red.log"
+    },
+    {
+      "label": "defects-red",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "log": "defects-red.log"
+    }
+  ]
+}
