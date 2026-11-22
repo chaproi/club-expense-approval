@@ -1,0 +1,39 @@
+{
+  "phase": "regression",
+  "capturedAt": "2026-11-22T11:50:05.738Z",
+  "applicationBaseline": "1cc7df74c3f3240cff0c8a4d422f3f685a8acbce",
+  "standalonePostgreSQL": false,
+  "runtime": "PGlite PostgreSQL WASM engine over TCP; Node v24.22.3",
+  "sourceHashes": {
+    "server/src/auth.ts": "d6b570aa18ff2d478e6f311032f67e8ee89712bf2eaf58ace8983eeace5fa069",
+    "server/src/app.ts": "21a230f59e4d8707302841489a55771e10b6fe6b7329182d0067136f48b91c1e",
+    "server/test/auth.test.ts": "0f46c2fffdce11b76153c224cd55040ecd9d410545ef79029eb74e4f04c549aa",
+    "server/test/canonical-origin.test.ts": "134cb3a3a65cbe3cd828c87e745db9fedb6bfce6891afe9b448e32e23b244801"
+  },
+  "results": [
+    {
+      "label": "setup-regression",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "log": "setup-regression.log"
+    },
+    {
+      "label": "regression-unit-api",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "log": "regression-unit-api.log"
+    },
+    {
+      "label": "regression-build",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "log": "regression-build.log"
+    },
+    {
+      "label": "regression-e2e",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "log": "regression-e2e.log"
+    }
+  ]
+}

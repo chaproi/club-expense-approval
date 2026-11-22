@@ -1,0 +1,31 @@
+PHASE red
+SOURCE /workspace/scratch/310a2486b8d2/club-expense-approval-lab6
+HEAD 460c6470bef91238c238361dcbe268d385c3b711
+UTC 2026-11-22T11:48:05.185Z
+RUNTIME Node v24.22.3; PGlite PostgreSQL WASM engine over TCP (not standalone PostgreSQL)
+COMMAND npm run db:migrate
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> club-expense-approval@0.1.0 db:migrate
+> prisma migrate deploy
+
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": PostgreSQL database "postgres", schema "public" at "127.0.0.1:55661"
+
+2 migrations found in prisma/migrations
+
+Applying migration `20261106000000_auth_foundation`
+Applying migration `20261107000000_expense_requests`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261106000000_auth_foundation/
+    └─ migration.sql
+  └─ 20261107000000_expense_requests/
+    └─ migration.sql
+      
+All migrations have been successfully applied.
+
+EXIT CODE 0
