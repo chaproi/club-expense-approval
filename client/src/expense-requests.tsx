@@ -9,6 +9,7 @@ type Expense = {
   category: keyof typeof categoryLabels;
   amountBaht: number;
   status: string;
+  revision: number;
   createdAt: string;
 };
 
@@ -26,6 +27,7 @@ function ExpenseDetail({ id, role, onDecision }: {
   const [pending, setPending] = useState(false);
   const [decisionError, setDecisionError] = useState("");
   const [reload, setReload] = useState(0);
+  const [editDirty, setEditDirty] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -43,20 +45,22 @@ function ExpenseDetail({ id, role, onDecision }: {
     return () => controller.abort();
   }, [id, reload]);
 
-  async function decide(body: { decision: "APPROVED" } | { decision: "REJECTED"; reason: string }) {
+  async function mutate(path: string, method: string, body: object) {
+    if (!detail) return;
     setPending(true);
     setDecisionError("");
     try {
-      const response = await fetch(`${endpoint}/${encodeURIComponent(id)}/decision`, {
-        method: "POST",
+      const response = await fetch(`${endpoint}/${encodeURIComponent(id)}${path}`, {
+        method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+        body: JSON.stringify({ ...body, expectedRevision: detail.revision }),
       });
       const data = await response.json();
       if (!response.ok) {
         setDecisionError(data.error?.message ?? "Could not save the decision.");
         if (response.status === 409) {
           setDetail(null);
+          setEditDirty(false);
           setError(false);
           setReload((count) => count + 1);
           onDecision();
@@ -64,6 +68,7 @@ function ExpenseDetail({ id, role, onDecision }: {
         return;
       }
       setDetail(data);
+      setEditDirty(false);
       onDecision();
     } catch {
       setDecisionError("Could not save the decision.");
@@ -72,10 +77,25 @@ function ExpenseDetail({ id, role, onDecision }: {
     }
   }
 
+  function decide(body: { decision: "APPROVED" } | { decision: "REJECTED" | "RETURNED"; reason: string }) {
+    return mutate("/decision", "POST", body);
+  }
+
   function reject(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const values = new FormData(event.currentTarget);
     void decide({ decision: "REJECTED", reason: String(values.get("reason") ?? "") });
+  }
+
+  function returnForCorrection(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    void decide({ decision: "RETURNED", reason: String(new FormData(event.currentTarget).get("returnReason") ?? "") });
+  }
+
+  function saveEdit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const values = new FormData(event.currentTarget);
+    void mutate("", "PATCH", { title: values.get("editTitle"), category: values.get("editCategory"), amountBaht: Number(values.get("editAmount")) });
   }
 
   return (
@@ -92,6 +112,28 @@ function ExpenseDetail({ id, role, onDecision }: {
                 <p><label>Rejection reason <textarea name="reason" required disabled={pending} /></label></p>
                 <button type="submit" disabled={pending}>Reject</button>
               </form>
+              <form onSubmit={returnForCorrection}>
+                <p><label>Return reason <textarea name="returnReason" required maxLength={300} disabled={pending} /></label></p>
+                <button type="submit" disabled={pending}>Return for correction</button>
+              </form>
+            </div>
+          )}
+          {role === "REQUESTER" && detail.status === "RETURNED" && (
+            <div>
+              <form key={`${detail.id}-${detail.revision}`} onSubmit={saveEdit} onChange={event => {
+                const values = new FormData(event.currentTarget);
+                setEditDirty(String(values.get("editTitle")) !== detail.title || values.get("editCategory") !== detail.category || Number(values.get("editAmount")) !== detail.amountBaht);
+              }}>
+                <h4>Correct returned request</h4>
+                <p><label>Corrected title <input name="editTitle" defaultValue={detail.title} required maxLength={120} disabled={pending} /></label></p>
+                <p><label>Corrected category <select name="editCategory" defaultValue={detail.category} disabled={pending}>
+                  {Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+                </select></label></p>
+                <p><label>Corrected amount (baht) <input name="editAmount" type="number" min="1" max="100000" step="1" defaultValue={detail.amountBaht} required disabled={pending} /></label></p>
+                <button type="submit" disabled={pending || !editDirty}>Save changes</button>
+              </form>
+              {editDirty && <p role="status">Save your changes before resubmitting.</p>}
+              <button type="button" disabled={pending || editDirty} onClick={() => void mutate("/resubmit", "POST", {})}>Resubmit request</button>
             </div>
           )}
           <h4>History</h4>
@@ -171,6 +213,7 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
   return (
     <section aria-labelledby="expense-requests">
       <h2 id="expense-requests">{role === "REQUESTER" ? "My Requests" : "Assigned Requests"}</h2>
+      {role === "REVIEWER" && <StatusSummary refresh={refresh} />}
       {role === "REQUESTER" && (
         <form onSubmit={submitExpense}>
           <h3>New expense request</h3>
@@ -203,4 +246,25 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
       {selectedId && <ExpenseDetail key={selectedId} id={selectedId} role={role} onDecision={() => setRefresh((count) => count + 1)} />}
     </section>
   );
+}
+
+function StatusSummary({ refresh }: { refresh: number }) {
+  const [summary, setSummary] = useState<{ counts: Record<string, number>; total: number } | null>(null);
+  const [error, setError] = useState(false);
+  useEffect(() => {
+    const controller = new AbortController();
+    setError(false);
+    void fetch(`${endpoint}/summary`, { signal: controller.signal }).then(async response => {
+      if (!response.ok) throw new Error("Could not load summary.");
+      const data = await response.json();
+      if (!controller.signal.aborted) setSummary(data);
+    }).catch(() => { if (!controller.signal.aborted) setError(true); });
+    return () => controller.abort();
+  }, [refresh]);
+  return <section aria-labelledby="status-summary"><h3 id="status-summary">Status summary</h3>
+    {error ? <p role="alert">Could not load status summary.</p> : summary ? <>
+      <dl>{Object.entries(summary.counts).map(([status, count]) => <div key={status}><dt>{status}</dt><dd data-testid={`summary-${status}`}>{count}</dd></div>)}</dl>
+      <p>Total requests: <span data-testid="summary-total">{summary.total}</span></p>
+    </> : <p role="status">Loading status summary…</p>}
+  </section>;
 }
