@@ -126,9 +126,9 @@ function ExpenseDetail({ id, role, onDecision }: {
               }}>
                 <h4>Correct returned request</h4>
                 <p><label>Corrected title <input name="editTitle" defaultValue={detail.title} required maxLength={120} disabled={pending} /></label></p>
-                <p><label>Corrected category <select name="editCategory" defaultValue={detail.category} disabled={pending}>
+                <p><label htmlFor="expense-edit-category">Corrected category</label>{" "}<select id="expense-edit-category" name="editCategory" defaultValue={detail.category} disabled={pending}>
                   {Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-                </select></label></p>
+                </select></p>
                 <p><label>Corrected amount (baht) <input name="editAmount" type="number" min="1" max="100000" step="1" defaultValue={detail.amountBaht} required disabled={pending} /></label></p>
                 <button type="submit" disabled={pending || !editDirty}>Save changes</button>
               </form>
