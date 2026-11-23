@@ -1,0 +1,15 @@
+
+> club-expense-approval@0.1.0 test:e2e
+> node --env-file-if-exists=.env node_modules/@playwright/test/cli.js test
+
+.env not found. Continuing without it.
+[WebServer] .env not found. Continuing without it.
+
+Running 3 tests using 1 worker
+
+.env not found. Continuing without it.
+  ✓  1 client/test/expense-decisions.spec.ts:50:1 › T-09: requester submits, reviewer approves or rejects, and requester reads both outcomes (1.4s)
+  ✓  2 client/test/expense-decisions.spec.ts:79:1 › reviewer reloads the latest status after a stale decision returns 409 (705ms)
+  ✓  3 client/test/expense-decisions.spec.ts:102:1 › T-F04-05/T-F05-06/T-F06-04: return, saved correction, resubmit and final readback update the DB summary (1.8s)
+
+  3 passed (12.1s)

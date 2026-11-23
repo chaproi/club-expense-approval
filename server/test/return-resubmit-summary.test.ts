@@ -81,6 +81,7 @@ test("T-F04-02: return reason/revision/shape boundaries reject without state cha
     { decision: "RETURNED", reason: "ok" },
     { decision: "RETURNED", reason: "ok", expectedRevision: -1 },
     { decision: "RETURNED", reason: "ok", expectedRevision: 1.5 },
+    { decision: "RETURNED", reason: "ok", expectedRevision: 2147483648 },
     { decision: "RETURNED", reason: "ok", expectedRevision: 0, requesterId: "forged" },
   ]) { const r = await req("reviewer", `/${item.id}/decision`, "POST", body); assert.equal(r.status, 400); assert.deepEqual(await detail(item.id), before); }
   for (const reason of ["a", "x".repeat(300), "ยืนยัน 🚆"]) assert.equal((await returned(reason)).history.at(-1).reason, reason);
@@ -93,6 +94,13 @@ test("T-F04-03: wrong principals and origins cannot return or alter protected hi
   }
   assert.equal((await req("reviewer", `/${item.id}/decision`, "POST", body, "https://untrusted.example")).status, 403);
   assert.deepEqual(await detail(item.id), before);
+  const reviewer = await db.user.findUniqueOrThrow({ where: { email: actors.reviewer.email } });
+  const self = await db.expenseRequest.create({ data: { ...valid, requesterId: reviewer.id, assignedReviewerId: reviewer.id } });
+  try {
+    assert.equal((await req("reviewer", `/${self.id}/decision`, "POST", body)).status, 403);
+    assert.deepEqual(await db.expenseRequest.findUniqueOrThrow({ where: { id: self.id } }), self);
+    assert.equal(await db.requestEvent.count({ where: { requestId: self.id } }), 0);
+  } finally { await db.expenseRequest.delete({ where: { id: self.id } }); }
 });
 test("T-F04-04: terminal, repeated and concurrent decisions produce only one transition", async () => {
   for (const decision of ["APPROVED", "REJECTED", "RETURNED"]) {
@@ -108,6 +116,11 @@ test("T-F04-04: terminal, repeated and concurrent decisions produce only one tra
   ]);
   assert.deepEqual(results.map(r => r.status).sort(), [200, 409]);
   assert.equal((await detail(item.id)).history.length, 2);
+  const exhausted = await create();
+  await db.expenseRequest.update({ where: { id: exhausted.id }, data: { revision: 2147483647 } });
+  const snapshot = await detail(exhausted.id);
+  assert.equal((await req("reviewer", `/${exhausted.id}/decision`, "POST", { decision: "RETURNED", reason: "Overflow", expectedRevision: 2147483647 })).status, 409);
+  assert.deepEqual(await detail(exhausted.id), snapshot);
 });
 test("T-F05-01/04: edit then resubmit preserves ID, assignment, createdAt and older history", async () => {
   const item = await returned(); const stored = await db.expenseRequest.findUniqueOrThrow({ where: { id: item.id } });
@@ -153,6 +166,11 @@ test("T-F05-03: owner/role/state/Origin restrictions protect both edit and resub
     assert.equal((await req("owner", `/${fresh.id}/resubmit`, "POST", { expectedRevision: snapshot.revision })).status, 409);
     assert.deepEqual(await detail(fresh.id), snapshot);
   }
+  await db.expenseRequest.update({ where: { id: item.id }, data: { revision: 2147483647 } });
+  const exhausted = await detail(item.id);
+  assert.equal((await req("owner", `/${item.id}`, "PATCH", { ...valid, expectedRevision: 2147483647 })).status, 409);
+  assert.equal((await req("owner", `/${item.id}/resubmit`, "POST", { expectedRevision: 2147483647 })).status, 409);
+  assert.deepEqual(await detail(item.id), exhausted);
 });
 test("T-F05-05: stale edits and repeated concurrent resubmits never duplicate events", async () => {
   const item = await returned();

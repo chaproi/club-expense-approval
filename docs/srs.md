@@ -1,6 +1,6 @@
 # Current product SRS — Deliverable 2 working baseline
 
-v0.4-design · 24 Nov 2026 · contract revision before implementation; acceptance pending
+v0.4-candidate · 24 Nov 2026 · initial design preceded code; implementation/source verification now recorded, independent acceptance pending
 
 
 ชมรมนักศึกษาต้องการให้สมาชิกส่งคำขอเบิกและกลับมาดูผลได้จากที่เดียว เหรัญญิกต้องรู้ว่าต้องตรวจคำขอไหนและเคยตัดสินอย่างไร ระบบรองรับชมรมเดียวและคำขอละหนึ่งรายการ Sprint 1–2 ใช้ผู้ตรวจหนึ่งคนต่อคำขอ เมื่อส่ง Final ระบบต้องมีการอนุมัติสองขั้นและตัวกรองรายการคำขอตามสถานะ
