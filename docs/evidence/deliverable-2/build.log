@@ -1,0 +1,13 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> club-expense-approval@0.1.0 build
+> tsc --noEmit && tsc -p tsconfig.server.json && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 28 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/client/index.html                  0.33 kB │ gzip:  0.24 kB
+../dist/client/assets/index-NDLAik9-.js  232.01 kB │ gzip: 72.08 kB
+✓ built in 904ms

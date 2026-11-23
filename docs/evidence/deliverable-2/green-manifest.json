@@ -1,0 +1,21 @@
+{
+  "utc": "2026-11-23T18:12:39.336931+00:00",
+  "phase": "backend GREEN, independent review/release pending",
+  "runtime": "Node v24.22.3; native PostgreSQL 17.12, disposable isolated database",
+  "command": "npm test",
+  "executed": 47,
+  "pass": 47,
+  "fail": 0,
+  "skip": 0,
+  "production_build": "PASS npm run build",
+  "migration_compatibility": "3 pre-upgrade request rows and 3 event rows exact; revision=0 after additive upgrade",
+  "test_design_note": "RED assertions and inputs retained. A category literal received a TypeScript const annotation only; no runtime fixture/assertion weakened. Original Sprint1 PATCH404 changed to valid SUBMITTED edit409 with exact unchanged detail per precommitted F05 contract.",
+  "browser_local": "3 browser tests could not launch Chromium: Unix socket Operation not permitted before page creation; not counted as application failures or PASS. Hosted CI pending.",
+  "sha256": {
+    "server/src/expense-requests.ts": "d814d63dafebd7569646e10bc16cb660af331ade0221ce773b17f51f9d339122",
+    "server/src/expense-input.ts": "67fa4d7558c9bc1fceae9ca3668b5f8f86bd66dd11b2afb9a2f2ecda052f7493",
+    "prisma/schema.prisma": "a1aa0fb1c8237145728b6277261726b642aea53567adbd63158478313a4e3ffc",
+    "server/test/return-resubmit-summary.test.ts": "df9b0fc11d8cc59ab0dfd85baa4fd167de6238d1d8ddd20d00d3d19641877b8b",
+    "server/test/expense-requests.test.ts": "1f45b43bad2f43f5c4aae37c08d8eb7edcd091425b3c11485024be2aa1fa3c3e"
+  }
+}

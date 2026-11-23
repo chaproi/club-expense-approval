@@ -1,0 +1,139 @@
+{
+  "check": "Native PostgreSQL 17.12 additive migration compatibility",
+  "requestsCompared": 3,
+  "eventsCompared": 3,
+  "oldRequestsExact": true,
+  "oldEventsExact": true,
+  "revisionBackfill": 0,
+  "states": [
+    "SUBMITTED",
+    "APPROVED",
+    "REJECTED"
+  ],
+  "outcome": "PASS",
+  "beforeRequests": [
+    {
+      "id": "migration-0",
+      "requesterId": "migration-owner",
+      "assignedReviewerId": "migration-reviewer",
+      "title": "Legacy SUBMITTED",
+      "category": "ACTIVITY",
+      "amountBaht": 100,
+      "status": "SUBMITTED",
+      "createdAt": "2026-11-08T00:00:00.000Z",
+      "updatedAt": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "migration-1",
+      "requesterId": "migration-owner",
+      "assignedReviewerId": "migration-reviewer",
+      "title": "Legacy APPROVED",
+      "category": "ACTIVITY",
+      "amountBaht": 100,
+      "status": "APPROVED",
+      "createdAt": "2026-11-08T00:00:00.000Z",
+      "updatedAt": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "migration-2",
+      "requesterId": "migration-owner",
+      "assignedReviewerId": "migration-reviewer",
+      "title": "Legacy REJECTED",
+      "category": "ACTIVITY",
+      "amountBaht": 100,
+      "status": "REJECTED",
+      "createdAt": "2026-11-08T00:00:00.000Z",
+      "updatedAt": "2026-11-09T00:00:00.000Z"
+    }
+  ],
+  "afterRequests": [
+    {
+      "id": "migration-0",
+      "requesterId": "migration-owner",
+      "assignedReviewerId": "migration-reviewer",
+      "title": "Legacy SUBMITTED",
+      "category": "ACTIVITY",
+      "amountBaht": 100,
+      "status": "SUBMITTED",
+      "createdAt": "2026-11-08T00:00:00.000Z",
+      "updatedAt": "2026-11-09T00:00:00.000Z",
+      "revision": 0
+    },
+    {
+      "id": "migration-1",
+      "requesterId": "migration-owner",
+      "assignedReviewerId": "migration-reviewer",
+      "title": "Legacy APPROVED",
+      "category": "ACTIVITY",
+      "amountBaht": 100,
+      "status": "APPROVED",
+      "createdAt": "2026-11-08T00:00:00.000Z",
+      "updatedAt": "2026-11-09T00:00:00.000Z",
+      "revision": 0
+    },
+    {
+      "id": "migration-2",
+      "requesterId": "migration-owner",
+      "assignedReviewerId": "migration-reviewer",
+      "title": "Legacy REJECTED",
+      "category": "ACTIVITY",
+      "amountBaht": 100,
+      "status": "REJECTED",
+      "createdAt": "2026-11-08T00:00:00.000Z",
+      "updatedAt": "2026-11-09T00:00:00.000Z",
+      "revision": 0
+    }
+  ],
+  "beforeEvents": [
+    {
+      "id": "migration-event-0",
+      "requestId": "migration-0",
+      "actorId": "migration-owner",
+      "type": "SUBMITTED",
+      "reason": null,
+      "createdAt": "2026-11-08T00:00:00.000Z"
+    },
+    {
+      "id": "migration-event-1",
+      "requestId": "migration-1",
+      "actorId": "migration-owner",
+      "type": "SUBMITTED",
+      "reason": null,
+      "createdAt": "2026-11-08T00:00:00.000Z"
+    },
+    {
+      "id": "migration-event-2",
+      "requestId": "migration-2",
+      "actorId": "migration-owner",
+      "type": "SUBMITTED",
+      "reason": null,
+      "createdAt": "2026-11-08T00:00:00.000Z"
+    }
+  ],
+  "afterEvents": [
+    {
+      "id": "migration-event-0",
+      "requestId": "migration-0",
+      "actorId": "migration-owner",
+      "type": "SUBMITTED",
+      "reason": null,
+      "createdAt": "2026-11-08T00:00:00.000Z"
+    },
+    {
+      "id": "migration-event-1",
+      "requestId": "migration-1",
+      "actorId": "migration-owner",
+      "type": "SUBMITTED",
+      "reason": null,
+      "createdAt": "2026-11-08T00:00:00.000Z"
+    },
+    {
+      "id": "migration-event-2",
+      "requestId": "migration-2",
+      "actorId": "migration-owner",
+      "type": "SUBMITTED",
+      "reason": null,
+      "createdAt": "2026-11-08T00:00:00.000Z"
+    }
+  ]
+}

@@ -20,12 +20,16 @@ enum ExpenseCategory {
 
 enum ExpenseStatus {
   SUBMITTED
+  RETURNED
   APPROVED
   REJECTED
 }
 
 enum RequestEventType {
   SUBMITTED
+  RETURNED
+  EDITED
+  RESUBMITTED
   APPROVED
   REJECTED
 }
@@ -59,6 +63,7 @@ model ExpenseRequest {
   category           ExpenseCategory
   amountBaht         Int
   status             ExpenseStatus   @default(SUBMITTED)
+  revision           Int             @default(0)
   createdAt          DateTime        @default(now())
   updatedAt          DateTime        @updatedAt
   requester          User            @relation("RequestOwner", fields: [requesterId], references: [id])

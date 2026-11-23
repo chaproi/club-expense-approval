@@ -22,7 +22,7 @@ type Actor = keyof typeof actors;
 const cookies = new Map<Actor, string>();
 let server: Server;
 let api: string;
-const valid = { title: "Returnable expense", category: "ACTIVITY", amountBaht: 250 };
+const valid = { title: "Returnable expense", category: "ACTIVITY" as const, amountBaht: 250 };
 
 async function start() {
   const app = createApp({ database: db, appOrigin: origin, defaultReviewerEmail: actors.reviewer.email });
