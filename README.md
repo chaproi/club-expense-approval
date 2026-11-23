@@ -2,6 +2,8 @@
 
 CPE 334 project TH-038. The [Sprint 1 baseline](docs/sprint-1-baseline.md) describes the feature contracts and acceptance tests.
 
+The current review candidate adds Sprint 2 Return/Edit/Resubmit and the Sprint 3 DB status-count checkpoint. See the [current SRS](docs/srs.md), [feature status](docs/features.md), [full traceability](docs/traceability.md), and [independent review/release handoff](docs/reviewer-handoff.md). Source verification and independent release acceptance are recorded separately. Two-stage approval, status filters and approved-category totals remain planned Final work.
+
 ## Run locally
 
 Install Node.js 24, npm and PostgreSQL. Create a local development database and a separate test database. From the repository root, copy `.env.example` to `.env` and set both connection URLs. Set `SEED_DEMO_PASSWORD` to a local demo password of at least 12 characters. The seed creates two Requesters and two Reviewers with the email addresses in `server/src/seed.ts`. Rerunning it leaves existing demo accounts unchanged.
@@ -43,4 +45,12 @@ npx.cmd playwright install chromium
 npm.cmd run test:e2e
 ```
 
-Playwright uses `TEST_DATABASE_URL`, applies the migrations, builds and starts the bundled app on port 4173, and creates isolated accounts and requests that it removes after the suite. Close any existing app on that port before running it. The two browser tests cover the Requester → Reviewer → Requester journey for approval/rejection and a stale decision returning 409.
+Playwright uses `TEST_DATABASE_URL`, applies the migrations, builds and starts the bundled app on port 4173, and creates isolated accounts and requests that it removes after the suite. Close any existing app on that port before running it. The three browser tests cover the Requester → Reviewer → Requester journey for approval/rejection, a stale decision returning 409, and Return → owner correction/save/resubmit → reviewer approval → owner history/DB readback with actual summary counts.
+
+## Verify return, correction and DB counts
+
+As the assigned Reviewer, open SUBMITTED and choose Return for correction with a reason. Its owner can open RETURNED, change title/category/whole-baht amount, Save changes, then Resubmit request. Unsaved edits disable Resubmit. The reviewer can decide the new submission, and the owner can read the complete retained timeline. Each write carries the loaded revision; stale/replayed writes return409 without adding events. Other states remain read-only for the requester.
+
+Reviewer Status summary reads current assigned records from `GET /api/expense-requests/summary`; it does not count history events or other reviewers' data. Requesters cannot access this endpoint. Detailed API/data/error contracts and AC/STS are under `docs/contracts`.
+
+Reviewed staging integration and a peer-reviewed main release are required before deployment. The existing main workflow runs CI, builds/pushes the image, executes the migration job, then deploys Cloud Run. Preserve existing shared data; do not reset or seed the assessed database during an upgrade. Record the actual main SHA, run, revision/digest, traffic and post-deploy retest separately from PR checks.
