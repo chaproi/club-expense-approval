@@ -54,6 +54,10 @@ test.beforeAll(async () => {
   });
 });
 
+test.beforeEach(async ({ page }) => {
+  await page.goto("/");
+});
+
 test.afterEach(async () => {
   // A passing test can leave its worker alive for the next case.
   await database.expenseRequest.deleteMany({ where: { requester: { email: { in: emails } } } });
@@ -98,7 +102,6 @@ function snapshot(id: string) {
 }
 
 async function login(page: Page, email = ownerEmail) {
-  await page.goto("/");
   await page.getByLabel("Email", { exact: true }).fill(email);
   await page.getByLabel("Password", { exact: true }).fill(password);
   const loginResponse = page.waitForResponse(response => responseMatches(response, "/api/auth/login", "POST"));
@@ -108,7 +111,9 @@ async function login(page: Page, email = ownerEmail) {
 }
 
 async function logout(page: Page) {
+  const response = page.waitForResponse(r => responseMatches(r, "/api/auth/logout", "POST"));
   await page.getByRole("button", { name: "Log out", exact: true }).click();
+  expect((await response).status()).toBe(204);
   await expect(page.getByRole("button", { name: "Log in", exact: true })).toBeVisible();
 }
 
@@ -329,9 +334,68 @@ test("T-F05-09a revoked owner session cannot read or recover the stale draft", a
   await expect(titleField(page)).toHaveCount(0);
   expect(writes).toHaveLength(1);
   expect(await snapshot(item.id)).toEqual(before);
+  await logout(page);
   await login(page);
   await openReturned(page, { ...item, ...newerFields });
   await expect(draft(page)).toHaveCount(0);
+});
+
+test("T-F05-09a real access denial clears an established draft without ending the account session", async ({ page, sessions }) => {
+  const item = await createReturned(sessions.owner, sessions.reviewer);
+  const companion = await createReturned(sessions.owner, sessions.reviewer, { ...startFields, title: "Accessible companion expense" });
+  await login(page);
+  await openReturned(page, item);
+  const { saved, before, writes } = await triggerConflict(page, sessions.owner, item, newerFields, { title: draftTitle });
+  await expect(draft(page).getByText(draftTitle, { exact: false }), "a real draft exists before access is revoked").toBeVisible();
+  const documentNavigations: string[] = [];
+  page.on("framenavigated", frame => { if (frame === page.mainFrame()) documentNavigations.push(frame.url()); });
+  await openReturned(page, companion);
+  await expect(draft(page)).toHaveCount(0);
+
+  const other = await database.user.findUniqueOrThrow({ where: { email: otherEmail } });
+  const itemPath = endpoint + "/" + item.id;
+  // Change only this disposable fixture owner so the ordinary detail route denies access.
+  await database.expenseRequest.update({ where: { id: item.id }, data: { requesterId: other.id, updatedAt: before.updatedAt } });
+  try {
+    const denial = page.waitForResponse(r => responseMatches(r, itemPath));
+    await page.getByRole("button", { name: saved.title, exact: true }).click();
+    const response = await denial;
+    expect(response.status(), "detail GET is a genuine backend 404").toBe(404);
+    expect(await response.json()).toMatchObject({ error: { code: "NOT_FOUND" } });
+    await expect(detail(page).getByRole("alert")).toBeVisible();
+    await expect(draft(page)).toHaveCount(0);
+    await expect(detail(page).getByText(draftTitle, { exact: false })).toHaveCount(0);
+    await expect(restore(page)).toHaveCount(0);
+    await expect(save(page)).toHaveCount(0);
+    await expect(resubmit(page)).toHaveCount(0);
+    expect(writes).toHaveLength(1);
+    expect(await snapshot(item.id)).toEqual({ ...before, requesterId: other.id });
+  } finally {
+    await database.expenseRequest.update({ where: { id: item.id }, data: { requesterId: before.requesterId, updatedAt: before.updatedAt } });
+  }
+
+  // Save a different request to refetch the authorized list even if denial removed the old row.
+  await openReturned(page, companion);
+  const editedCompanionTitle = "Updated accessible companion expense";
+  await titleField(page).fill(editedCompanionTitle);
+  const companionSaved = page.waitForResponse(r => responseMatches(r, endpoint + "/" + companion.id, "PATCH"));
+  const list = page.waitForResponse(r => responseMatches(r, endpoint));
+  await save(page).click();
+  expect((await companionSaved).status()).toBe(200);
+  expect((await list).status()).toBe(200);
+  await expect(page.getByRole("button", { name: editedCompanionTitle, exact: true })).toBeVisible();
+  await openReturned(page, saved);
+  await expect(draft(page)).toHaveCount(0);
+  await expect(restore(page)).toHaveCount(0);
+  await expect(reloadWarning(page)).toHaveCount(0);
+  await expect(page.getByText("Signed in as Draft Requester (Requester)", { exact: true })).toBeVisible();
+  expect(documentNavigations, "denial and reauthorization stay on the original document").toEqual([]);
+  expect(page.context().pages()).toEqual([page]);
+  expect(writes.map(({ method, suffix }) => ({ method, suffix }))).toEqual([
+    { method: "PATCH", suffix: "/" + item.id },
+    { method: "PATCH", suffix: "/" + companion.id },
+  ]);
+  expect(await snapshot(item.id)).toEqual(before);
 });
 
 test("T-F05-09b keeps a draft only for its request and clears it when the account changes", async ({ page, sessions }) => {
@@ -343,9 +407,13 @@ test("T-F05-09b keeps a draft only for its request and clears it when the accoun
   await openReturned(page, otherRequest);
   await expect(draft(page)).toHaveCount(0);
   await page.getByRole("button", { name: saved.title, exact: true }).click();
-  await expect.soft(draft(page).getByText(draftTitle, { exact: false }), "reselecting the same request retains only its draft").toBeVisible();
+  await expect(draft(page).getByText(draftTitle, { exact: false }), "reselecting the same request retains its draft before logout").toBeVisible();
+  const documentNavigations: string[] = [];
+  page.on("framenavigated", frame => { if (frame === page.mainFrame()) documentNavigations.push(frame.url()); });
   await logout(page);
+  await expect(draft(page)).toHaveCount(0);
   await login(page, otherEmail);
+  await expect(page.getByText("Signed in as Other Requester (Requester)", { exact: true })).toBeVisible();
   const foreign = await sessions.other.get(endpoint + "/" + item.id);
   expect(foreign.status(), "real cross-owner read denial").toBe(404);
   await expect(page.getByText("No expense requests yet.", { exact: true })).toBeVisible();
@@ -353,8 +421,13 @@ test("T-F05-09b keeps a draft only for its request and clears it when the accoun
   await expect(page.getByRole("button", { name: saved.title, exact: true })).toHaveCount(0);
   await logout(page);
   await login(page);
+  await expect(page.getByText("Signed in as Draft Requester (Requester)", { exact: true })).toBeVisible();
   await openReturned(page, saved);
   await expect(draft(page)).toHaveCount(0);
+  await expect(restore(page)).toHaveCount(0);
+  await expect(reloadWarning(page)).toHaveCount(0);
+  expect(documentNavigations, "account switch stays on the original document").toEqual([]);
+  expect(page.context().pages()).toEqual([page]);
   expect(writes).toHaveLength(1);
   expect(await snapshot(item.id)).toEqual(before);
 });
@@ -365,6 +438,7 @@ test("T-F05-09b warns about reload and clears the draft on page reload", async (
   await openReturned(page, item);
   const { saved, writes, before } = await triggerConflict(page, sessions.owner, item, newerFields, { title: draftTitle });
   await expect.soft(reloadWarning(page), "warns that reloading discards the in-memory draft").toBeVisible();
+  await expect(draft(page).getByText(draftTitle, { exact: false }), "a real draft exists before the deliberate page reload").toBeVisible();
   await page.reload();
   await openReturned(page, saved);
   await expect(draft(page)).toHaveCount(0);
