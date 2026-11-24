@@ -1,0 +1,72 @@
+2026-11-24T21:17:06.078Z $ npm.cmd run test:e2e -- client/test/f05-draft-recovery.spec.ts --reporter=list,json
+
+> club-expense-approval@0.1.0 test:e2e
+> node --env-file-if-exists=.env node_modules/@playwright/test/cli.js test client/test/f05-draft-recovery.spec.ts --reporter=list,json
+
+
+Running 14 tests using 1 worker
+
+  x   1 client\test\f05-draft-recovery.spec.ts:196:1 › T-F05-07 keeps latest values and the conflicted draft separate after real stale Save (20.8s)
+  x   2 client\test\f05-draft-recovery.spec.ts:218:3 › T-F05-08a Restore keeps the latest untouched category and waits for manual Save (5.8s)
+  x   3 client\test\f05-draft-recovery.spec.ts:218:3 › T-F05-08a Restore keeps the latest untouched amount and waits for manual Save (5.8s)
+  x   4 client\test\f05-draft-recovery.spec.ts:252:1 › T-F05-08b Discard keeps latest saved fields and performs no mutation (5.8s)
+  x   5 client\test\f05-draft-recovery.spec.ts:272:3 › T-F05-09a shows read-only draft when the latest state is SUBMITTED (10.8s)
+  x   6 client\test\f05-draft-recovery.spec.ts:272:3 › T-F05-09a shows read-only draft when the latest state is APPROVED (10.8s)
+  ok  7 client\test\f05-draft-recovery.spec.ts:305:1 › T-F05-09a revoked owner session cannot read or recover the stale draft (1.0s)
+  x   8 client\test\f05-draft-recovery.spec.ts:343:1 › T-F05-09a real access denial clears an established draft without ending the account session (5.7s)
+  x   9 client\test\f05-draft-recovery.spec.ts:401:1 › T-F05-09b keeps a draft only for its request and clears it when the account changes (5.8s)
+  x  10 client\test\f05-draft-recovery.spec.ts:435:1 › T-F05-09b warns about reload and clears the draft on page reload (10.7s)
+  x  11 client\test\f05-draft-recovery.spec.ts:450:1 › T-F05-10a a failed refresh retains the draft and deliberate retry makes only reads (10.8s)
+  x  12 client\test\f05-draft-recovery.spec.ts:491:1 › T-F05-10b a second stale Save retains the new attempt and the newer database revision (5.8s)
+  x  13 client\test\f05-draft-recovery.spec.ts:519:3 › T-F05-11a Save transport error retains state and identifies the failed action (5.8s)
+  x  14 client\test\f05-draft-recovery.spec.ts:519:3 › T-F05-11b Resubmit transport error retains state and identifies the failed action (5.7s)
+
+
+Failure assertion excerpts (reporter output):
+    Error: latest saved panel after a real 409
+    Error: element(s) not found
+    Error: unsaved draft remains visible after a real 409
+    Error: element(s) not found
+    Error: attempted title is still readable
+    Error: element(s) not found
+    Error: same-field Title conflict is identified
+    Error: element(s) not found
+    Error: explicit Restore is offered after observed real 409
+    Error: element(s) not found
+    Error: explicit Restore is offered after observed real 409
+    Error: element(s) not found
+    Error: explicit Discard is offered after observed real 409
+    Error: element(s) not found
+    Error: read-only draft survives status change
+    Error: element(s) not found
+    Error: read-only draft can be explicitly discarded
+    Error: element(s) not found
+    Error: read-only draft survives status change
+    Error: element(s) not found
+    Error: read-only draft can be explicitly discarded
+    Error: element(s) not found
+    Error: a real draft exists before access is revoked
+    Error: element(s) not found
+    Error: reselecting the same request retains its draft before logout
+    Error: element(s) not found
+    Error: warns that reloading discards the in-memory draft
+    Error: element(s) not found
+    Error: a real draft exists before the deliberate page reload
+    Error: element(s) not found
+    Error: failed GET preserves the local draft
+    Error: element(s) not found
+    Error: explicit read-only retry after the controlled abort
+    Error: element(s) not found
+    Error: first conflict must permit Restore before exercising a second conflict
+    Error: element(s) not found
+    Error: error text identifies the failed Requester action
+    Error: error text identifies the failed Requester action
+
+Final result and warnings (deduplicated):
+  13 failed
+  1 passed (2.1m)
+.env not found. Continuing without it.
+[WebServer] Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] .env not found. Continuing without it.
+Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+{"id":"05-focused","startedAt":"2026-11-24T21:17:06.078Z","command":"npm.cmd run test:e2e -- client/test/f05-draft-recovery.spec.ts --reporter=list,json","exit":1,"elapsedMs":129383,"signal":null,"spawnError":null}
