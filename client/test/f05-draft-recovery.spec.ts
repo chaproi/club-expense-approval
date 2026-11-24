@@ -192,14 +192,14 @@ test("T-F05-07 keeps latest values and the conflicted draft separate after real 
   const item = await createReturned(sessions.owner, sessions.reviewer);
   await login(page);
   await openReturned(page, item);
-  const conflict = await triggerConflict(page, sessions.owner, item, newerFields, { title: draftTitle, amountBaht: 550 });
+  const conflict = await triggerConflict(page, sessions.owner, item, { ...newerFields, amountBaht: item.amountBaht }, { title: draftTitle, amountBaht: 550 });
   await expect.soft(latest(page), "latest saved panel after a real 409").toBeVisible();
   await expect.soft(draft(page), "unsaved draft remains visible after a real 409").toBeVisible();
   await expect.soft(draft(page).getByText(draftTitle, { exact: false }), "attempted title is still readable").toBeVisible();
-  const conflictNotice = detail(page).getByText(/title.*conflict|conflict.*title|title.*changed|changed.*title/i).first();
+  const conflictNotice = detail(page).getByText(/^(?:title(?: has a)? conflict|conflict (?:on|for) title|title (?:was )?changed in both versions)[.:]?$/i);
   await expect.soft(conflictNotice, "same-field Title conflict is identified").toBeVisible();
   if (await latest(page).isVisible() && await draft(page).isVisible()) {
-    for (const value of [parallelTitle, "Travel", "725", "RETURNED"]) {
+    for (const value of [parallelTitle, "Travel", "500", "RETURNED"]) {
       await expect(latest(page)).toContainText(value);
     }
     await expect(latest(page)).toContainText(new RegExp("revision\\s*:?\\s*" + conflict.saved.revision + "\\b", "i"));
