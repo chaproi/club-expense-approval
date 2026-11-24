@@ -1,9 +1,9 @@
 # System-Level SDS — Deliverable 2 working design
 
-24 Nov 2026 · v0.4-design; current/target differences explicit
+24 Nov 2026 · v0.4-candidate; historical/current/target differences explicit
 
 
-### สถาปัตยกรรมและข้อมูล
+### สถาปัตยกรรมและข้อมูล Sprint 1 (ประวัติเดิม; ส่วนเพิ่ม candidate อยู่ท้ายเอกสาร)
 
 ใช้ React + Vite + TypeScript สำหรับ UI, Express + TypeScript สำหรับ REST API และ Prisma + PostgreSQL สำหรับ persistence เพราะเป็น stack เดียวกับ TokTickIT แยก auth, expense requests และ decisions ภายในแอปเดียว โดย Express บังคับใช้กฎธุรกิจและสิทธิ์ หน้าเว็บเรียก API แบบ same-origin ผ่าน Vite proxy ระหว่างพัฒนา และให้ Express เสิร์ฟเว็บที่ build แล้วสำหรับ deployment
 

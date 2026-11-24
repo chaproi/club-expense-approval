@@ -1,6 +1,6 @@
 # F-06 — Permission-scoped decision summary
 
-Contract v1.0 · 24 Nov 2026 · TH-038 · pre-implementation design
+Contract v1.1 · 24 Nov 2026 · TH-038 · pre-implementation design
 
 Issue: #37. Requirements: FR-06; NFR-01/02; F-05 checkpoint / F-07 final dependency. Author: chaproi with AI assistance. Review: pending independent peer review.
 
@@ -14,7 +14,7 @@ API checkpoint: GET `/api/expense-requests/summary` before dynamic `/:id` route.
 
 Data: no migration for counts; GROUP BY current status on ExpenseRequest, with the existing assignment predicate. RETURNED is zero on pre-F04 schema and populated when integrated. Repeated return/resubmit cannot inflate total. Unknown future statuses require a versioned contract extension, not silent omission.
 
-Final planned API extension: add `approvedAmountByCategory` for EQUIPMENT/ACTIVITY/TRAVEL, integer baht, only final APPROVED requests counted once. Under F-07, responsibility is the permitted assigned-reviewer scope (both assigned stages where allowed), never a join that doubles a request. PENDING_FINAL is a distinct non-approved count. Scope/security and reporting consistency must be tested before accepting those AC.
+Final planned API extension: add `approvedAmountByCategory` for EQUIPMENT/ACTIVITY/TRAVEL, integer baht, only final APPROVED requests counted once. Under F-07, responsibility is the permitted assigned-reviewer scope (both assigned stages where allowed), never a join that doubles a request. PENDING_FINAL_REVIEW is a distinct non-approved count. Scope/security and reporting consistency must be tested before accepting those AC.
 
 ## Acceptance criteria and STS
 
@@ -25,7 +25,7 @@ Final planned API extension: add `approvedAmountByCategory` for EQUIPMENT/ACTIVI
 | AC-F06-03 | Zero states/empty set and restart readback correct | T-F06-03 API/DB: empty scope all zeros; app/Prisma restart→same counts | Planned until executed |
 | AC-F06-04 | Reviewer UI displays/refetches actual summary safely | T-F06-04 E2E: return/resubmit/decision→expected displayed counts; requester no summary | Planned until executed |
 | AC-F06-05 | Approved integer amounts grouped by category without double counting | T-F06-05 API/DB: known approved amounts plus rejected/returned/intermediate approvals→exact final sums | Final work, not implemented in count-only checkpoint |
-| AC-F06-06 | F-07 scopes and PENDING_FINAL semantics preserve reporting correctness | T-F06-06 cross-feature DB/E2E: two reviewers and resubmitted round→no double count/no unauthorized totals | Final work, depends F-07 |
+| AC-F06-06 | F-07 scopes and PENDING_FINAL_REVIEW semantics preserve reporting correctness | T-F06-06 cross-feature DB/E2E: two reviewers and resubmitted round→no double count/no unauthorized totals | Final work, depends F-07 |
 
 ## Common response, safety and delivery rules
 
@@ -34,3 +34,5 @@ JSON errors use `{error:{code,message}}`. Invalid input 400 INVALID_INPUT; anony
 Each feature is implemented through an Issue, versioned contract/test-design commit, meaningful automated RED before production code, GREEN plus regression, peer-reviewed PR to sprint staging, integration and reviewed main release. Preserve actual command, SHA, runtime and pass/fail/skip output; no accepted/deployed claim before the corresponding gate. Real PostgreSQL persistence/access tests and selected browser journeys supplement unit tests. Existing synthetic fixtures and old history must survive additive migration; no shared DB reset/seed.
 
 Definition of Done: every in-scope AC maps to an executed actual test/check with version/result, UI normal/loading/empty/error/pending/conflict behavior is verified, relevant negative/concurrent/persistence paths pass, contract revisions and implementation diff reviewed, CI/build/Docker pass, integrated main release and post-deploy check recorded. Planned AC never count as passed. Reviewer approval is not fabricated by the author or AI.
+
+Design consistency revision v1.1: use PENDING_FINAL_REVIEW, the same intermediate-state name as the original System SDS/baseline. This is a planned contract correction before F-07/F-08 code, not a deployed API change.

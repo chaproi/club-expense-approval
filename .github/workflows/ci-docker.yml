@@ -61,7 +61,21 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run Playwright tests
-        run: npm run test:e2e
+        run: |
+          set -o pipefail
+          mkdir -p docs/evidence/deliverable-2
+          npm run test:e2e 2>&1 | tee docs/evidence/deliverable-2/ci-browser-results.txt
+
+      - name: Retain selected browser evidence
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: browser-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            docs/evidence/deliverable-2/*.png
+            docs/evidence/deliverable-2/ci-browser-results.txt
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Build Docker image
         run: docker build -t club-expense-approval:ci .
