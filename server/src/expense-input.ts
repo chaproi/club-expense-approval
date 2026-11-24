@@ -19,13 +19,31 @@ export function parseExpenseInput(body: unknown) {
 
 export function parseDecisionInput(body: unknown) {
   if (!body || typeof body !== "object") return null;
-  const { decision, reason } = body as Record<string, unknown>;
+  const { decision, reason, expectedRevision } = body as Record<string, unknown>;
+  const versioned = Object.hasOwn(body, "expectedRevision");
+  if (versioned && !validRevision(expectedRevision)) return null;
+  const version = versioned ? { expectedRevision: expectedRevision as number } : {};
   const fieldCount = Object.keys(body).length;
-  if (decision === "APPROVED" && fieldCount === 1) {
-    return { decision: "APPROVED" as const, reason: null };
+  if (decision === "APPROVED" && fieldCount === 1 + Number(versioned)) {
+    return { decision: "APPROVED" as const, reason: null, ...version };
   }
-  if (decision !== "REJECTED" || fieldCount !== 2 || typeof reason !== "string") return null;
+  if ((decision !== "REJECTED" && decision !== "RETURNED") ||
+      (decision === "RETURNED" && !versioned) ||
+      fieldCount !== 2 + Number(versioned) || typeof reason !== "string") return null;
   const trimmedReason = reason.trim();
   if (trimmedReason.length < 1 || trimmedReason.length > 300 || invalidText.test(trimmedReason)) return null;
-  return { decision: "REJECTED" as const, reason: trimmedReason };
+  return { decision: decision as "REJECTED" | "RETURNED", reason: trimmedReason, ...version };
+}
+
+export function validRevision(value: unknown): value is number {
+  return typeof value === "number" && Number.isInteger(value) && value >= 0 && value <= 2_147_483_647;
+}
+
+export function parseReturnedInput(body: unknown, edit: boolean) {
+  if (!body || typeof body !== "object" || Array.isArray(body)) return null;
+  const { expectedRevision, ...fields } = body as Record<string, unknown>;
+  if (!validRevision(expectedRevision)) return null;
+  if (!edit) return Object.keys(fields).length === 0 ? { expectedRevision, fields: {} } : null;
+  const input = parseExpenseInput(fields);
+  return input ? { expectedRevision, fields: input } : null;
 }

@@ -130,8 +130,10 @@ test("T-04: requester submits a read-only expense and reads its stored history",
   const { items } = await list.json();
   assert.ok(items.some((item: { id: string }) => item.id === expense.id));
   const detailPath = `/${expense.id}`;
-  const attemptedEdit = await expenseRequest("owner", detailPath, "PATCH", { title: "Edited title" });
-  assert.equal(attemptedEdit.status, 404);
+  // F-05 adds PATCH for RETURNED only. Preserve the read-only invariant for
+  // SUBMITTED using a valid edit body, rather than the old endpoint absence.
+  const attemptedEdit = await expenseRequest("owner", detailPath, "PATCH", { ...validExpense, title: "Edited title", expectedRevision: expense.revision });
+  assert.equal(attemptedEdit.status, 409);
   const detail = await expenseRequest("owner", detailPath);
   assert.equal(detail.status, 200);
   assert.deepEqual(await detail.json(), expense);
