@@ -54,6 +54,11 @@ test.beforeAll(async () => {
   });
 });
 
+test.afterEach(async () => {
+  // A passing test can leave its worker alive for the next case.
+  await database.expenseRequest.deleteMany({ where: { requester: { email: { in: emails } } } });
+});
+
 test.afterAll(async () => {
   try {
     await database.expenseRequest.deleteMany({ where: { requester: { email: { in: emails } } } });
