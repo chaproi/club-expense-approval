@@ -49,4 +49,18 @@ All API identifiers below name tests in `server/test/return-resubmit-summary.tes
 | AC-F06-04 | API above plus combined browser journey | Real summary values refreshed after return/final approval; loading/error/pending manual review still required |
 | AC-F06-05/06 | Planned T-F06-05/06 | Not implemented/executed; Final work |
 
+## F-05 v1.1 planned verification
+
+The FR-05 and dependent business-rule PASS evidence above applies to the original AC-F05-01 through AC-F05-06. Scope and dispositions for the follow-up are documented in the [F-05 v1.1 contract](contracts/f-05-edit-resubmit.md#v11-draft-recovery-ac-and-system-test-specifications) and [staging triage](evidence/deliverable-2/f05-draft-recovery-triage.md). Track the correction in [Issue #42](https://github.com/chaproi/club-expense-approval/issues/42), related to the original [Issue #36](https://github.com/chaproi/club-expense-approval/issues/36).
+
+| Contract AC | Proposed STS | Status |
+|---|---|---|
+| AC-F05-07 | T-F05-07: stale Save, separate draft and latest detail, overlap indicators | Planned / unexecuted |
+| AC-F05-08 | T-F05-08a/b: explicit Restore/Discard and current-revision manual Save | Planned / unexecuted |
+| AC-F05-09 | T-F05-09a/b: read-only state changes, access, request/account scope and draft lifetime | Planned / unexecuted |
+| AC-F05-10 | T-F05-10a/b: failed refresh, read-only retry and repeated conflict | Planned / unexecuted |
+| AC-F05-11 | T-F05-11a/b: Save/Resubmit error feedback and unchanged persisted state | Planned / unexecuted |
+
+Dependency-audit disposition and populated Sprint 1 database upgrade verification remain separate release gates. The fresh staging test database does not establish migration preservation for existing data.
+
 Version/result provenance: baseline34/34; meaningful new RED0/13; GREEN47/47; hosted run45237202381 at830346b has47/47 API and3/3 browser, build/Docker PASS. Later explicit self/overflow assertions: final-api-verification.log47/47 local PASS; latest PR41 exact-head CI must also pass. Peer manual inspection of new UI loading/empty/error/pending/conflict states and deployed persistence remains a release gate, not assumed from a happy-path screenshot.

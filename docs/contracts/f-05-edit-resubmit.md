@@ -1,14 +1,26 @@
 # F-05 — Edit and resubmit returned requests
 
-Contract v1.0 · 24 Nov 2026 · TH-038 · pre-implementation design
+Contract v1.1 · 25 Nov 2026 · TH-038 · draft recovery design pending review. The original v1.0 design was recorded on 24 Nov 2026.
 
-Issue: #36. Requirements: FR-05; BR-01, BR-05/06/09; NFR-01/02. Author: chaproi with AI assistance. Review: pending independent peer review.
+Original [Issue #36](https://github.com/chaproi/club-expense-approval/issues/36). Draft-recovery defect [Issue #42](https://github.com/chaproi/club-expense-approval/issues/42). Requirements: FR-05; BR-01, BR-05/06/09; NFR-01/02. Author: chaproi with AI assistance. Review: pending independent peer review.
 
 ## Feature SDS, workflow and layers
 
 Depends on F-04. Only the owning Requester may save edits or resubmit while RETURNED. Save and resubmit are separate explicit actions: Save changes retains RETURNED; Resubmit changes to SUBMITTED. Request ID, assigned reviewer and all old events remain. A resubmission does not create another request. Future F-07 restarts stage one; that integration remains planned.
 
 UI: display edit title/category/whole-baht amount and Save changes/Resubmit only on an owner RETURNED detail. Values initialize from current saved detail. Save success must be visible; disable resubmit when unsaved form values differ from the last saved detail so edits are not silently dropped. Pending writes disable all conflicting controls. Errors preserve editable input; conflict refreshes saved detail/list. Other states remain read-only.
+
+### Save conflict and draft recovery (v1.1)
+
+1. Before each Save, capture the attempted title, category and whole-baht amount, the saved values and revision on which the edit was based, and the set of fields changed against those saved values. Keep the attempted form values distinct from the snapshot. Compare the same form representation on both sides to avoid treating formatting or type conversion alone as a change. Preserve existing request validation and normalization when sending Save.
+2. On `409 INVALID_STATE` from Save, keep that snapshot as a local unsaved draft and fetch the latest authorized detail and list. Show the latest saved status, revision and field values separately from the labelled draft. For each locally changed field whose latest value differs from both its original saved value and its draft value, show the named field and both competing values before the owner chooses what to do. A field where the latest value agrees with the draft needs no conflict marker.
+3. Once the current detail is loaded and is still `RETURNED` and editable by its owner, offer **Restore draft** and **Discard draft**. Restore stages only the captured changed fields on top of the latest saved values. Unchanged fields keep the latest values. The resulting form is unsaved if it differs from the latest values. Discard clears the draft and leaves only the latest saved values. Refresh, Restore and Discard issue no mutation. Block Save and Resubmit until the conflict refresh and recovery choice are resolved; after Restore, keep Resubmit disabled while the form is dirty.
+4. A later explicit Save uses the loaded latest revision and passes the existing owner, status, input and concurrency checks. If that Save also returns 409, capture/retain the new attempted fields against the base for that Save and repeat recovery. A successful Save clears the draft for that request. Never retry Save, Resubmit, or send any other write automatically.
+5. If the refreshed record is still visible to the authenticated owner but is no longer `RETURNED`, keep the official detail and draft read-only. Offer Discard only. Restore, Save and Resubmit are unavailable. If a refresh fails transiently (transport or server error), retain the draft and offer **Retry loading latest details**. Retry performs only authorized reads. Do not enable edits using a stale snapshot. If the session or access is denied (`401`, `403` or `404`), clear the applicable draft and use safe auth/access feedback without displaying it.
+6. Keep drafts in memory for the current signed-in account and request ID in this browser tab. Reselecting a request within that session recovers only its own draft. Clear the request's draft after successful Save or Discard. Clear account drafts on logout, account change or page reload. While a draft exists, show the warning **Reloading this page will discard your unsaved draft.** Do not persist drafts to browser storage, the server or logs.
+7. Non-conflict Save failures preserve the editable input and use Save-specific feedback, such as **Could not save changes. Try again.** Resubmit failures use Resubmit-specific feedback, such as **Could not resubmit the request. Try again.** A Resubmit conflict still refreshes according to the existing workflow, with no retry of the write. Keep appropriate safe server feedback and use the requested action in the UI message or its framing. Reviewer decision wording stays separate.
+
+**Impact.** Draft snapshots, field reconciliation, recovery controls and message framing belong in the Requester UI. The existing detail and list reads return authorized saved state and revision. The existing PATCH and POST endpoints already enforce owner, state, Origin and revision and return `409 INVALID_STATE` without inserting another event. No API, database schema or migration changes are needed. No client-only draft produces a history event.
 
 API: PATCH `/api/expense-requests/:id` accepts exactly `{title,category,amountBaht,expectedRevision}`; POST `/:id/resubmit` accepts exactly `{expectedRevision}`. Both return 200 saved detail, increment revision once and append EDITED or RESUBMITTED event atomically. Validation matches existing BR-01 (trimmed title1–120 UTF-16 code units, existing categories, integer baht1–100000); existing title Unicode limitation is retained and disclosed. expectedRevision must be nonnegative int32 and current. Stale/wrong state409; hidden owner404; reviewer403. UI and all post-first-round decision calls send the returned revision.
 
@@ -28,6 +40,18 @@ Original Sprint 1 AC-04/T-04 PATCH404 meant no edit endpoint existed. From this 
 | AC-F05-04 | Resubmit is one atomic transition retaining old history | T-F05-04 API/DB: return→save→resubmit→SUBMITTED rev3 and RESUBMITTED event; later reviewer decide with rev3 succeeds |
 | AC-F05-05 | Stale and concurrent saves/resubmits/old-round decisions fail safely | T-F05-05 API/DB: two same-revision writes exactly one200/one409; replay older revision409; legacy decision without revision after return/resubmit409; no duplicate event |
 | AC-F05-06 | End-to-end user loop and persistence remain correct | T-F05-06 E2E: request→return→owner edit/save/resubmit→review→owner final history; app/Prisma restart readback exact |
+
+### v1.1 draft-recovery AC and system test specifications
+
+All five criteria below are **Planned / unexecuted**. The staging observation establishes the existing behavior and retains its original provenance.
+
+| AC | Observable outcome | STS (planned) | Status |
+|---|---|---|---|
+| AC-F05-07 | A stale Save retains the attempted values and changed-field set, refreshes authorized latest detail/list, and exposes overlapping edits separately. | T-F05-07 Browser/API/DB: use two sessions of one owner. Session A changes title and amount; B saves title and category from the same starting revision. A's stale PATCH gets 409. Assert latest and draft values, title conflict, exact persisted revision/history and no further write. | Planned / unexecuted |
+| AC-F05-08 | Restore and Discard are explicit. Restore keeps newer changes to untouched fields. Only a manual Save writes using the latest revision. | T-F05-08a/b Browser/API/DB: restore only A's title and amount, retain B's category and block dirty Resubmit. Before manual Save, assert no HTTP write. Then assert current revision, same ID and one added EDITED event. In a separate fixture, Discard restores clean saved values and emits no write. | Planned / unexecuted |
+| AC-F05-09 | Drafts stay in tab memory by account and request. A non-RETURNED record stays read-only and denied reads expose no draft. | T-F05-09a/b Browser/API: resubmit in the second session before stale Save; cover SUBMITTED and a terminal decision, then check no Restore/Save/Resubmit. Test two request selections, discard, successful save, logout/account switch and page reload, including the reload warning. A revoked/hidden access response hides and clears its draft. | Planned / unexecuted |
+| AC-F05-10 | A failed refresh preserves the draft and provides a read-only retry. A subsequent 409 repeats recovery using the newly attempted draft. | T-F05-10a/b Browser/API/DB: after real 409 abort only the refresh GET; assert blocked writes, retained draft and explicit GET-only recovery. Then induce another genuine stale Save after Restore and verify the newer authoritative revision/history and newly staged draft. | Planned / unexecuted |
+| AC-F05-11 | Save and Resubmit report action-specific errors. Failed Save retains editable input and leaves data unchanged. | T-F05-11a/b Browser/API/DB: abort separately a valid Save and a valid Resubmit once, before delivery to the backend; assert action-specific messages, pending controls settle, Save values stay editable, dirty Resubmit remains blocked, and no persisted fields, revision or history change. | Planned / unexecuted |
 
 ## Common response, safety and delivery rules
 
