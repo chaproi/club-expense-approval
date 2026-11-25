@@ -1,0 +1,548 @@
+{
+  "review": "https://github.com/chaproi/club-expense-approval/pull/43#pullrequestreview-6052693657",
+  "reviewedHead": "67050d629d45efa4677ca72eba0a362b1f698d35",
+  "historicalCI": "https://github.com/chaproi/club-expense-approval/actions/runs/45553875619/job/139001178059",
+  "redTestCommit": "95d7d2b6c41f8f3ef48e77ceeac69a02cd6f993b",
+  "cleanSourceCommit": "cb05d627c0bb1cdaf76f636c17f3f2458c81b71f",
+  "attempts": [
+    {
+      "id": "B1-red",
+      "mode": "red",
+      "testedSha": "95d7d2b6c41f8f3ef48e77ceeac69a02cd6f993b",
+      "pendingUiSha256": null,
+      "startedAt": "2026-11-25T10:59:47.144Z",
+      "finishedAt": "2026-11-25T11:00:59.938Z",
+      "runtime": {
+        "node": "v24.14.0",
+        "npm": "11.9.0",
+        "chromium": "151.0.7922.34",
+        "docker": "29.9.3 29.9.3",
+        "postgres": "17.12 (Debian 17.12-1.pgdg12+1)"
+      },
+      "commands": [
+        {
+          "id": "02-ci",
+          "command": "npm.cmd ci",
+          "startedAt": "2026-11-25T10:59:49.871Z",
+          "exit": 0,
+          "elapsedMs": 21576,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "02-tsc",
+          "command": "npm.cmd exec -- tsc --noEmit",
+          "startedAt": "2026-11-25T11:00:11.448Z",
+          "exit": 0,
+          "elapsedMs": 3629,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "02-chromium",
+          "command": "npm.cmd exec -- playwright install chromium",
+          "startedAt": "2026-11-25T11:00:15.078Z",
+          "exit": 0,
+          "elapsedMs": 1676,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "04-migrate",
+          "command": "npm.cmd run db:migrate",
+          "startedAt": "2026-11-25T11:00:26.747Z",
+          "exit": 0,
+          "elapsedMs": 1942,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "05-focused",
+          "command": "npm.cmd run test:e2e -- client/test/f05-draft-recovery.spec.ts --reporter=list,json --grep BF-01",
+          "startedAt": "2026-11-25T11:00:28.690Z",
+          "exit": 1,
+          "elapsedMs": 29210,
+          "signal": null,
+          "spawnError": null
+        }
+      ],
+      "counts": {
+        "collected": 2,
+        "executed": 2,
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0
+      },
+      "workerCount": 1,
+      "retries": [
+        0
+      ],
+      "playwrightMs": 28099.955,
+      "isolation": {
+        "version": "17.12 (Debian 17.12-1.pgdg12+1)",
+        "schema": "public",
+        "initialTables": 0,
+        "loopback": true,
+        "distinctFromLocalTargets": true
+      },
+      "cleanup": {
+        "rows": {
+          "users": 0,
+          "sessions": 0,
+          "requests": 0,
+          "events": 0
+        },
+        "temporarySecretAndRawReportRemoved": true,
+        "disposableContainerAndVolumeRemoved": true,
+        "originalContainersUnchanged": true,
+        "originalEnvFilesUnchanged": true,
+        "originalAndIsolatedGitTreesClean": true,
+        "listener4173Closed": true,
+        "isolatedCheckoutRemoved": true
+      }
+    },
+    {
+      "id": "B2-focused",
+      "mode": "focused",
+      "testedSha": "95d7d2b6c41f8f3ef48e77ceeac69a02cd6f993b",
+      "pendingUiSha256": "0a96ae7f170e3da38be1efd892154858260ef089b642b5ee4bdf1bb90f65d805",
+      "startedAt": "2026-11-25T11:01:31.673Z",
+      "finishedAt": "2026-11-25T11:02:22.627Z",
+      "runtime": {
+        "node": "v24.14.0",
+        "npm": "11.9.0",
+        "chromium": "151.0.7922.34",
+        "docker": "29.9.3 29.9.3",
+        "postgres": "17.12 (Debian 17.12-1.pgdg12+1)"
+      },
+      "commands": [
+        {
+          "id": "02-ci",
+          "command": "npm.cmd ci",
+          "startedAt": "2026-11-25T11:01:33.137Z",
+          "exit": 0,
+          "elapsedMs": 14900,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "02-tsc",
+          "command": "npm.cmd exec -- tsc --noEmit",
+          "startedAt": "2026-11-25T11:01:48.037Z",
+          "exit": 0,
+          "elapsedMs": 3249,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "02-chromium",
+          "command": "npm.cmd exec -- playwright install chromium",
+          "startedAt": "2026-11-25T11:01:51.287Z",
+          "exit": 0,
+          "elapsedMs": 1668,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "04-migrate",
+          "command": "npm.cmd run db:migrate",
+          "startedAt": "2026-11-25T11:01:55.569Z",
+          "exit": 0,
+          "elapsedMs": 1788,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "05-focused",
+          "command": "npm.cmd run test:e2e -- client/test/f05-draft-recovery.spec.ts --reporter=list,json",
+          "startedAt": "2026-11-25T11:01:57.358Z",
+          "exit": 0,
+          "elapsedMs": 23302,
+          "signal": null,
+          "spawnError": null
+        }
+      ],
+      "counts": {
+        "collected": 16,
+        "executed": 16,
+        "passed": 16,
+        "failed": 0,
+        "skipped": 0
+      },
+      "workerCount": 1,
+      "retries": [
+        0
+      ],
+      "playwrightMs": 22336.201,
+      "isolation": {
+        "version": "17.12 (Debian 17.12-1.pgdg12+1)",
+        "schema": "public",
+        "initialTables": 0,
+        "loopback": true,
+        "distinctFromLocalTargets": true
+      },
+      "cleanup": {
+        "rows": {
+          "users": 0,
+          "sessions": 0,
+          "requests": 0,
+          "events": 0
+        },
+        "temporarySecretAndRawReportRemoved": true,
+        "disposableContainerAndVolumeRemoved": true,
+        "originalContainersUnchanged": true,
+        "originalEnvFilesUnchanged": true,
+        "originalAndIsolatedGitTreesClean": true,
+        "listener4173Closed": true,
+        "isolatedCheckoutRemoved": true
+      }
+    },
+    {
+      "id": "B3-source-confirmation",
+      "mode": "confirmation",
+      "testedSha": "cb05d627c0bb1cdaf76f636c17f3f2458c81b71f",
+      "pendingUiSha256": null,
+      "startedAt": "2026-11-25T11:03:04.759Z",
+      "finishedAt": "2026-11-25T11:04:24.103Z",
+      "runtime": {
+        "node": "v24.14.0",
+        "npm": "11.9.0",
+        "chromium": "151.0.7922.34",
+        "docker": "29.9.3 29.9.3",
+        "postgres": "17.12 (Debian 17.12-1.pgdg12+1)"
+      },
+      "commands": [
+        {
+          "id": "02-ci",
+          "command": "npm.cmd ci",
+          "startedAt": "2026-11-25T11:03:06.178Z",
+          "exit": 0,
+          "elapsedMs": 13531,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "02-tsc",
+          "command": "npm.cmd exec -- tsc --noEmit",
+          "startedAt": "2026-11-25T11:03:19.710Z",
+          "exit": 0,
+          "elapsedMs": 3250,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "02-chromium",
+          "command": "npm.cmd exec -- playwright install chromium",
+          "startedAt": "2026-11-25T11:03:22.960Z",
+          "exit": 0,
+          "elapsedMs": 1779,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "04-migrate",
+          "command": "npm.cmd run db:migrate",
+          "startedAt": "2026-11-25T11:03:27.618Z",
+          "exit": 0,
+          "elapsedMs": 2110,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "05-build",
+          "command": "npm.cmd run build",
+          "startedAt": "2026-11-25T11:03:29.729Z",
+          "exit": 0,
+          "elapsedMs": 5432,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "05-unit-api",
+          "command": "npm.cmd test",
+          "startedAt": "2026-11-25T11:03:35.162Z",
+          "exit": 0,
+          "elapsedMs": 3492,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "05-browser",
+          "command": "npm.cmd run test:e2e -- --reporter=list,json",
+          "startedAt": "2026-11-25T11:03:38.655Z",
+          "exit": 0,
+          "elapsedMs": 28581,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "id": "06-docker-build",
+          "command": "docker.exe --context desktop-linux build -t club-expense-approval:f05-lifecycle-6d99276b9c .",
+          "startedAt": "2026-11-25T11:04:07.508Z",
+          "exit": 0,
+          "elapsedMs": 14356,
+          "signal": null,
+          "spawnError": null
+        }
+      ],
+      "counts": {
+        "collected": 19,
+        "executed": 19,
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0
+      },
+      "workerCount": 1,
+      "retries": [
+        0
+      ],
+      "playwrightMs": 27356.439,
+      "isolation": {
+        "version": "17.12 (Debian 17.12-1.pgdg12+1)",
+        "schema": "public",
+        "initialTables": 0,
+        "loopback": true,
+        "distinctFromLocalTargets": true
+      },
+      "cleanup": {
+        "generatedLegacyScreenshotsRemoved": [
+          "docs/evidence/deliverable-2/return-summary.png",
+          "docs/evidence/deliverable-2/resubmitted-final-history.png"
+        ],
+        "rows": {
+          "users": 0,
+          "sessions": 0,
+          "requests": 0,
+          "events": 0
+        },
+        "ownedBuildImageRemoved": true,
+        "temporarySecretAndRawReportRemoved": true,
+        "disposableContainerAndVolumeRemoved": true,
+        "originalContainersUnchanged": true,
+        "originalEnvFilesUnchanged": true,
+        "originalAndIsolatedGitTreesClean": true,
+        "listener4173Closed": true,
+        "isolatedCheckoutRemoved": true
+      }
+    }
+  ],
+  "redFailures": [
+    {
+      "file": "client/test/f05-draft-recovery.spec.ts",
+      "line": 629,
+      "title": "BF-01 AC-F05-08/09 same-value Restore clears the clean draft before explicit Resubmit",
+      "status": "failed",
+      "durationMs": 9020,
+      "errors": [
+        "Error: Before Resubmit clears the recovery UI for a clean request\n\nBefore Resubmit clears the recovery UI for a clean request\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  - 2\n+ Received  + 2\n\n  Object {\n-   \"discard\": 0,\n+   \"discard\": 1,\n    \"draft\": 0,\n    \"latest\": 0,\n    \"recoveryReadOnly\": 0,\n    \"restore\": 0,\n-   \"warning\": 0,\n+   \"warning\": 1,\n  }\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  584 |     warning: await reloadWarning(page).count(),\n  585 |     recoveryReadOnly: await page.getByText(\"This request is read-only.\", { exact: true }).count(),\n> 586 |   }), { message: stage + \" clears the recovery UI for a clean request\" }).toEqual({\n      |                                                                           ^\n  587 |     draft: 0, latest: 0, restore: 0, discard: 0, warning: 0, recoveryReadOnly: 0,\n  588 |   });\n  589 | }\n    at expectRecoveryCleared (client\\test\\f05-draft-recovery.spec.ts:586:75)\n    at resubmitCleanDraft (client\\test\\f05-draft-recovery.spec.ts:599:9)\n    at client\\test\\f05-draft-recovery.spec.ts:641:3",
+        "Error: After Resubmit clears the recovery UI for a clean request\n\nAfter Resubmit clears the recovery UI for a clean request\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  - 5\n+ Received  + 5\n\n  Object {\n-   \"discard\": 0,\n-   \"draft\": 0,\n-   \"latest\": 0,\n-   \"recoveryReadOnly\": 0,\n+   \"discard\": 1,\n+   \"draft\": 1,\n+   \"latest\": 1,\n+   \"recoveryReadOnly\": 1,\n    \"restore\": 0,\n-   \"warning\": 0,\n+   \"warning\": 1,\n  }\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  584 |     warning: await reloadWarning(page).count(),\n  585 |     recoveryReadOnly: await page.getByText(\"This request is read-only.\", { exact: true }).count(),\n> 586 |   }), { message: stage + \" clears the recovery UI for a clean request\" }).toEqual({\n      |                                                                           ^\n  587 |     draft: 0, latest: 0, restore: 0, discard: 0, warning: 0, recoveryReadOnly: 0,\n  588 |   });\n  589 | }\n    at expectRecoveryCleared (client\\test\\f05-draft-recovery.spec.ts:586:75)\n    at resubmitCleanDraft (client\\test\\f05-draft-recovery.spec.ts:615:9)\n    at client\\test\\f05-draft-recovery.spec.ts:641:3"
+      ]
+    },
+    {
+      "file": "client/test/f05-draft-recovery.spec.ts",
+      "line": 644,
+      "title": "BF-01 AC-F05-08/09 reverting a dirty restored draft clears it before explicit Resubmit",
+      "status": "failed",
+      "durationMs": 8936,
+      "errors": [
+        "Error: Before Resubmit clears the recovery UI for a clean request\n\nBefore Resubmit clears the recovery UI for a clean request\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  - 2\n+ Received  + 2\n\n  Object {\n-   \"discard\": 0,\n+   \"discard\": 1,\n    \"draft\": 0,\n    \"latest\": 0,\n    \"recoveryReadOnly\": 0,\n    \"restore\": 0,\n-   \"warning\": 0,\n+   \"warning\": 1,\n  }\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  584 |     warning: await reloadWarning(page).count(),\n  585 |     recoveryReadOnly: await page.getByText(\"This request is read-only.\", { exact: true }).count(),\n> 586 |   }), { message: stage + \" clears the recovery UI for a clean request\" }).toEqual({\n      |                                                                           ^\n  587 |     draft: 0, latest: 0, restore: 0, discard: 0, warning: 0, recoveryReadOnly: 0,\n  588 |   });\n  589 | }\n    at expectRecoveryCleared (client\\test\\f05-draft-recovery.spec.ts:586:75)\n    at resubmitCleanDraft (client\\test\\f05-draft-recovery.spec.ts:599:9)\n    at client\\test\\f05-draft-recovery.spec.ts:664:3",
+        "Error: After Resubmit clears the recovery UI for a clean request\n\nAfter Resubmit clears the recovery UI for a clean request\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  - 5\n+ Received  + 5\n\n  Object {\n-   \"discard\": 0,\n-   \"draft\": 0,\n-   \"latest\": 0,\n-   \"recoveryReadOnly\": 0,\n+   \"discard\": 1,\n+   \"draft\": 1,\n+   \"latest\": 1,\n+   \"recoveryReadOnly\": 1,\n    \"restore\": 0,\n-   \"warning\": 0,\n+   \"warning\": 1,\n  }\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  584 |     warning: await reloadWarning(page).count(),\n  585 |     recoveryReadOnly: await page.getByText(\"This request is read-only.\", { exact: true }).count(),\n> 586 |   }), { message: stage + \" clears the recovery UI for a clean request\" }).toEqual({\n      |                                                                           ^\n  587 |     draft: 0, latest: 0, restore: 0, discard: 0, warning: 0, recoveryReadOnly: 0,\n  588 |   });\n  589 | }\n    at expectRecoveryCleared (client\\test\\f05-draft-recovery.spec.ts:586:75)\n    at resubmitCleanDraft (client\\test\\f05-draft-recovery.spec.ts:615:9)\n    at client\\test\\f05-draft-recovery.spec.ts:664:3"
+      ]
+    }
+  ],
+  "cleanSource": {
+    "environment": {
+      "windowsKernel": "10.0.26200.0",
+      "node": "v24.14.0",
+      "npm": "11.9.0",
+      "prisma": "6.19.3",
+      "playwright": "1.62.1",
+      "chromium": "151.0.7922.34",
+      "postgres": "17.12 (Debian 17.12-1.pgdg12+1)",
+      "docker": "29.9.3 29.9.3"
+    },
+    "unitApi": {
+      "tests": 47,
+      "pass": 47,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 2874.5948
+    },
+    "browserCases": [
+      {
+        "file": "client/test/expense-decisions.spec.ts",
+        "line": 50,
+        "title": "T-09: requester submits, reviewer approves or rejects, and requester reads both outcomes",
+        "status": "passed",
+        "durationMs": 1689
+      },
+      {
+        "file": "client/test/expense-decisions.spec.ts",
+        "line": 79,
+        "title": "reviewer reloads the latest status after a stale decision returns 409",
+        "status": "passed",
+        "durationMs": 737
+      },
+      {
+        "file": "client/test/expense-decisions.spec.ts",
+        "line": 102,
+        "title": "T-F04-05/T-F05-06/T-F06-04: return, saved correction, resubmit and final readback update the DB summary",
+        "status": "passed",
+        "durationMs": 1931
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 196,
+        "title": "T-F05-07 keeps latest values and the conflicted draft separate after real stale Save",
+        "status": "passed",
+        "durationMs": 639
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 218,
+        "title": "T-F05-08a Restore keeps the latest untouched category and waits for manual Save",
+        "status": "passed",
+        "durationMs": 690
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 218,
+        "title": "T-F05-08a Restore keeps the latest untouched amount and waits for manual Save",
+        "status": "passed",
+        "durationMs": 796
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 252,
+        "title": "T-F05-08b Discard keeps latest saved fields and performs no mutation",
+        "status": "passed",
+        "durationMs": 744
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 272,
+        "title": "T-F05-09a shows read-only draft when the latest state is SUBMITTED",
+        "status": "passed",
+        "durationMs": 710
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 272,
+        "title": "T-F05-09a shows read-only draft when the latest state is APPROVED",
+        "status": "passed",
+        "durationMs": 742
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 305,
+        "title": "T-F05-09a revoked owner session cannot read or recover the stale draft",
+        "status": "passed",
+        "durationMs": 1052
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 343,
+        "title": "T-F05-09a real access denial clears an established draft without ending the account session",
+        "status": "passed",
+        "durationMs": 1132
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 401,
+        "title": "T-F05-09b keeps a draft only for its request and clears it when the account changes",
+        "status": "passed",
+        "durationMs": 1267
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 435,
+        "title": "T-F05-09b warns about reload and clears the draft on page reload",
+        "status": "passed",
+        "durationMs": 784
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 450,
+        "title": "T-F05-10a a failed refresh retains the draft and deliberate retry makes only reads",
+        "status": "passed",
+        "durationMs": 718
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 491,
+        "title": "T-F05-10b a second stale Save retains the new attempt and the newer database revision",
+        "status": "passed",
+        "durationMs": 817
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 519,
+        "title": "T-F05-11a Save transport error retains state and identifies the failed action",
+        "status": "passed",
+        "durationMs": 672
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 519,
+        "title": "T-F05-11b Resubmit transport error retains state and identifies the failed action",
+        "status": "passed",
+        "durationMs": 645
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 629,
+        "title": "BF-01 AC-F05-08/09 same-value Restore clears the clean draft before explicit Resubmit",
+        "status": "passed",
+        "durationMs": 828
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 644,
+        "title": "BF-01 AC-F05-08/09 reverting a dirty restored draft clears it before explicit Resubmit",
+        "status": "passed",
+        "durationMs": 882
+      }
+    ]
+  },
+  "outputExcerpts": {
+    "red": [
+      "Error: Before Resubmit clears the recovery UI for a clean request",
+      "Error: After Resubmit clears the recovery UI for a clean request",
+      "Error: Before Resubmit clears the recovery UI for a clean request",
+      "Error: After Resubmit clears the recovery UI for a clean request",
+      "2 failed"
+    ],
+    "focused": [
+      "Running 16 tests using 1 worker",
+      "16 passed (22.3s)"
+    ],
+    "cleanSourceUnitApi": [
+      "ℹ tests 47",
+      "ℹ pass 47",
+      "ℹ fail 0",
+      "ℹ cancelled 0",
+      "ℹ skipped 0",
+      "ℹ todo 0",
+      "ℹ duration_ms 2874.5948"
+    ],
+    "cleanSourceBrowser": [
+      "Running 19 tests using 1 worker",
+      "19 passed (27.4s)",
+      "[WebServer] (node) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.",
+      "(node) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set."
+    ],
+    "cleanSourceBuild": [
+      "vite v7.3.7 building client environment for production...",
+      "✓ built in 897ms"
+    ],
+    "cleanSourceDocker": [
+      "#21 naming to docker.io/library/club-expense-approval:f05-lifecycle-6d99276b9c done"
+    ],
+    "install": [
+      "✔ Generated Prisma Client (v6.19.3) to .\\node_modules\\@prisma\\client in 58ms",
+      "4 high severity vulnerabilities"
+    ]
+  }
+}
