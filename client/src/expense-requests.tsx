@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useState, type Dispatch, type FormEvent, type SetStateAction } from "react";
 
 const endpoint = "/api/expense-requests";
 const categoryLabels = { EQUIPMENT: "Equipment", ACTIVITY: "Activity", TRAVEL: "Travel" };
@@ -17,68 +17,193 @@ type ExpenseWithHistory = Expense & {
   history: { type: string; actorDisplayName: string; createdAt: string; reason: string | null }[];
 };
 
-function ExpenseDetail({ id, role, onDecision }: {
+type EditValues = { title: string; category: Expense["category"]; amountBaht: string };
+type EditField = keyof EditValues;
+type Draft = {
+  base: { revision: number; values: EditValues };
+  values: EditValues;
+  changedFields: EditField[];
+  restored: boolean;
+};
+type Drafts = ReadonlyMap<string, Draft>;
+
+const editLabels = { title: "Title", category: "Category", amountBaht: "Amount (baht)" } satisfies Record<EditField, string>;
+const editFields: EditField[] = ["title", "category", "amountBaht"];
+
+function savedValues(detail: Expense): EditValues {
+  return { title: detail.title, category: detail.category, amountBaht: String(detail.amountBaht) };
+}
+
+function sameValue(field: EditField, left: EditValues, right: EditValues) {
+  if (field === "title") return left.title.trim() === right.title.trim();
+  if (field === "amountBaht") return Number(left.amountBaht) === Number(right.amountBaht);
+  return left.category === right.category;
+}
+
+function captureDraft(detail: Expense, values: EditValues, restored = false): Draft {
+  const base = { revision: detail.revision, values: savedValues(detail) };
+  return { base, values, changedFields: editFields.filter(field => !sameValue(field, base.values, values)), restored };
+}
+
+function displayValue(values: EditValues, field: EditField) {
+  return field === "category" ? categoryLabels[values.category] : values[field];
+}
+
+function FieldValues({ values }: { values: EditValues }) {
+  return <dl>{editFields.map(field => (
+    <div key={field}><dt>{editLabels[field]}</dt><dd>{displayValue(values, field)}</dd></div>
+  ))}</dl>;
+}
+
+function accessDenied(status: number) {
+  return status === 401 || status === 403 || status === 404;
+}
+
+const mutations = {
+  save: { suffix: "", method: "PATCH", error: "Could not save changes." },
+  resubmit: { suffix: "/resubmit", method: "POST", error: "Could not resubmit the request." },
+  decision: { suffix: "/decision", method: "POST", error: "Could not save the decision." },
+} as const;
+
+function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
   id: string;
   role: "REQUESTER" | "REVIEWER";
-  onDecision: () => void;
+  onRefresh: () => void;
+  draft: Draft | undefined;
+  setDrafts: Dispatch<SetStateAction<Drafts>>;
 }) {
   const [detail, setDetail] = useState<ExpenseWithHistory | null>(null);
-  const [error, setError] = useState(false);
+  const [loadError, setLoadError] = useState<{ kind: "failed" | "denied"; message: string } | null>(null);
   const [pending, setPending] = useState(false);
-  const [decisionError, setDecisionError] = useState("");
+  const [mutationError, setMutationError] = useState("");
+  const [saveNotice, setSaveNotice] = useState("");
   const [reload, setReload] = useState(0);
-  const [editDirty, setEditDirty] = useState(false);
+  const [editValues, setEditValues] = useState<EditValues | null>(null);
+  const detailUrl = endpoint + "/" + encodeURIComponent(id);
+
+  const updateDraft = useCallback((next?: Draft) => {
+    setDrafts(previous => {
+      if (!next && !previous.has(id)) return previous;
+      const drafts = new Map(previous);
+      if (next) drafts.set(id, next);
+      else drafts.delete(id);
+      return drafts;
+    });
+  }, [id, setDrafts]);
+
+  const denyDetail = useCallback((status: number, message?: string, actionError = "Could not load request details.") => {
+    if (status === 401) setDrafts(previous => previous.size ? new Map() : previous);
+    else updateDraft();
+    setDetail(null);
+    setEditValues(null);
+    setLoadError({ kind: "denied", message: actionError + " " + (message || "Sign in again if your session ended.") });
+  }, [setDrafts, updateDraft]);
 
   useEffect(() => {
     const controller = new AbortController();
     async function loadDetail() {
       try {
-        const response = await fetch(`${endpoint}/${encodeURIComponent(id)}`, { signal: controller.signal });
+        const response = await fetch(detailUrl, { signal: controller.signal });
+        if (controller.signal.aborted) return;
+        if (accessDenied(response.status)) {
+          const failure = await response.json().catch(() => null);
+          if (!controller.signal.aborted) denyDetail(response.status, failure?.error?.message);
+          return;
+        }
         if (!response.ok) throw new Error("Could not load expense details.");
-        setDetail(await response.json());
+        const saved: ExpenseWithHistory = await response.json();
+        if (!controller.signal.aborted) setDetail(saved);
       } catch {
-        if (!controller.signal.aborted) setError(true);
+        if (!controller.signal.aborted) setLoadError({ kind: "failed", message: "Could not load request details." });
       }
     }
 
     void loadDetail();
     return () => controller.abort();
-  }, [id, reload]);
+  }, [detailUrl, reload, denyDetail]);
 
-  async function mutate(path: string, method: string, body: object) {
-    if (!detail) return;
+  const current = detail && savedValues(detail);
+  const recovering = !!draft && (!detail || !draft.restored || draft.base.revision !== detail.revision || detail.status !== "RETURNED");
+  const editable = role === "REQUESTER" && detail?.status === "RETURNED" && !recovering;
+  const values = editValues ?? (draft?.restored && !recovering ? draft.values : current);
+  const dirty = !!current && !!values && editFields.some(field => !sameValue(field, current, values));
+
+  function refreshDetail() {
+    setDetail(null);
+    setLoadError(null);
+    setEditValues(null);
+    setReload(count => count + 1);
+    onRefresh();
+  }
+
+  function restoreDraft() {
+    if (!detail || detail.status !== "RETURNED" || !current || !draft) return;
+    const next = { ...current };
+    for (const field of draft.changedFields) {
+      Object.assign(next, { [field]: draft.values[field] });
+    }
+    setEditValues(next);
+    updateDraft(captureDraft(detail, next, true));
+    setMutationError("");
+  }
+
+  function discardDraft() {
+    updateDraft();
+    setEditValues(null);
+    setMutationError("");
+  }
+
+  function changeEdit(next: EditValues) {
+    setSaveNotice("");
+    setEditValues(next);
+    if (detail && draft?.restored) updateDraft(captureDraft(detail, next, true));
+  }
+
+  async function mutate(action: keyof typeof mutations, body: object, attempted?: Draft) {
+    if (!detail || pending) return;
+    const operation = mutations[action];
     setPending(true);
-    setDecisionError("");
+    setMutationError("");
+    setSaveNotice("");
     try {
-      const response = await fetch(`${endpoint}/${encodeURIComponent(id)}${path}`, {
-        method,
+      const response = await fetch(detailUrl + operation.suffix, {
+        method: operation.method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...body, expectedRevision: detail.revision }),
       });
+      if (action !== "decision" && accessDenied(response.status)) {
+        const failure = await response.json().catch(() => null);
+        denyDetail(response.status, failure?.error?.message, operation.error);
+        return;
+      }
       const data = await response.json();
       if (!response.ok) {
-        setDecisionError(data.error?.message ?? "Could not save the decision.");
+        const message = data.error?.message;
+        setMutationError(message
+          ? action === "decision" ? message : operation.error + " " + message
+          : operation.error);
         if (response.status === 409) {
-          setDetail(null);
-          setEditDirty(false);
-          setError(false);
-          setReload((count) => count + 1);
-          onDecision();
+          if (attempted && data.error?.code === "INVALID_STATE") updateDraft(attempted);
+          refreshDetail();
         }
         return;
       }
       setDetail(data);
-      setEditDirty(false);
-      onDecision();
+      setEditValues(null);
+      if (action === "save") {
+        updateDraft();
+        setSaveNotice("Changes saved.");
+      }
+      onRefresh();
     } catch {
-      setDecisionError("Could not save the decision.");
+      setMutationError(action === "decision" ? operation.error : operation.error + " Try again.");
     } finally {
       setPending(false);
     }
   }
 
   function decide(body: { decision: "APPROVED" } | { decision: "REJECTED" | "RETURNED"; reason: string }) {
-    return mutate("/decision", "POST", body);
+    return mutate("decision", body);
   }
 
   function reject(event: FormEvent<HTMLFormElement>) {
@@ -89,21 +214,35 @@ function ExpenseDetail({ id, role, onDecision }: {
 
   function returnForCorrection(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    void decide({ decision: "RETURNED", reason: String(new FormData(event.currentTarget).get("returnReason") ?? "") });
+    const values = new FormData(event.currentTarget);
+    void decide({ decision: "RETURNED", reason: String(values.get("returnReason") ?? "") });
   }
 
   function saveEdit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const values = new FormData(event.currentTarget);
-    void mutate("", "PATCH", { title: values.get("editTitle"), category: values.get("editCategory"), amountBaht: Number(values.get("editAmount")) });
+    if (!detail || !editable || !values || !dirty) return;
+    void mutate("save", { ...values, amountBaht: Number(values.amountBaht) }, captureDraft(detail, values));
   }
+
+  const conflicts = draft && current ? draft.changedFields.filter(field =>
+    !sameValue(field, draft.base.values, current) && !sameValue(field, draft.values, current)) : [];
 
   return (
     <section aria-labelledby="expense-details">
       <h3 id="expense-details">Request details</h3>
-      {decisionError && <p role="alert">{decisionError}</p>}
-      {error ? <p role="alert">Could not load request details.</p> : detail ? (
+      {loadError?.kind !== "denied" && mutationError && <p role="alert">{mutationError}</p>}
+      {saveNotice && <p role="status">{saveNotice}</p>}
+      {loadError ? (
+        <p role="alert">{loadError.message}</p>
+      ) : detail ? (
         <>
+          {recovering && current && (
+            <section aria-labelledby="latest-saved-values">
+              <h4 id="latest-saved-values">Latest saved values</h4>
+              <FieldValues values={current} />
+              <p>Status: {detail.status} · Revision: {detail.revision}</p>
+            </section>
+          )}
           <p>{detail.title} · {categoryLabels[detail.category]} · {detail.amountBaht} baht · {detail.status}</p>
           {role === "REVIEWER" && detail.status === "SUBMITTED" && (
             <div>
@@ -118,22 +257,20 @@ function ExpenseDetail({ id, role, onDecision }: {
               </form>
             </div>
           )}
-          {role === "REQUESTER" && detail.status === "RETURNED" && (
+          {editable && values && (
             <div>
-              <form key={`${detail.id}-${detail.revision}`} onSubmit={saveEdit} onChange={event => {
-                const values = new FormData(event.currentTarget);
-                setEditDirty(String(values.get("editTitle")) !== detail.title || values.get("editCategory") !== detail.category || Number(values.get("editAmount")) !== detail.amountBaht);
-              }}>
+              <form onSubmit={saveEdit}>
                 <h4>Correct returned request</h4>
-                <p><label>Corrected title <input name="editTitle" defaultValue={detail.title} required maxLength={120} disabled={pending} /></label></p>
-                <p><label htmlFor="expense-edit-category">Corrected category</label>{" "}<select id="expense-edit-category" name="editCategory" defaultValue={detail.category} disabled={pending}>
+                <p><label>Corrected title <input name="editTitle" value={values.title} onChange={event => changeEdit({ ...values, title: event.currentTarget.value })} required maxLength={120} disabled={pending} /></label></p>
+                <p><label htmlFor="expense-edit-category">Corrected category</label>{" "}<select id="expense-edit-category" name="editCategory" value={values.category} onChange={event => changeEdit({ ...values, category: event.currentTarget.value as Expense["category"] })} disabled={pending}>
                   {Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
                 </select></p>
-                <p><label>Corrected amount (baht) <input name="editAmount" type="number" min="1" max="100000" step="1" defaultValue={detail.amountBaht} required disabled={pending} /></label></p>
-                <button type="submit" disabled={pending || !editDirty}>Save changes</button>
+                <p><label>Corrected amount (baht) <input name="editAmount" type="number" min="1" max="100000" step="1" value={values.amountBaht} onChange={event => changeEdit({ ...values, amountBaht: event.currentTarget.value })} required disabled={pending} /></label></p>
+                <button type="submit" disabled={pending || !dirty}>Save changes</button>
               </form>
-              {editDirty && <p role="status">Save your changes before resubmitting.</p>}
-              <button type="button" disabled={pending || editDirty} onClick={() => void mutate("/resubmit", "POST", {})}>Resubmit request</button>
+              {dirty && <p role="status">Save your changes before resubmitting.</p>}
+              <button type="button" disabled={pending || dirty} onClick={() => void mutate("resubmit", {})}>Resubmit request</button>
+              {draft?.restored && <button type="button" disabled={pending} onClick={discardDraft}>Discard draft</button>}
             </div>
           )}
           <h4>History</h4>
@@ -147,11 +284,39 @@ function ExpenseDetail({ id, role, onDecision }: {
           </ol>
         </>
       ) : <p role="status">Loading request details…</p>}
+      {draft && recovering && (detail || loadError?.kind === "failed") && (
+        <section aria-labelledby="unsaved-draft">
+          <h4 id="unsaved-draft">Unsaved draft</h4>
+          <FieldValues values={draft.values} />
+          {detail?.status === "RETURNED" && (
+            <>
+              <p>Restore applies your changed fields to the latest values as unsaved edits.</p>
+              <button type="button" disabled={pending} onClick={restoreDraft}>Restore draft</button>
+            </>
+          )}
+          {detail && detail.status !== "RETURNED" && <p>This request is read-only.</p>}
+          <button type="button" disabled={pending} onClick={discardDraft}>Discard draft</button>
+        </section>
+      )}
+      {draft && recovering && current && conflicts.length > 0 && (
+        <ul>{conflicts.map(field => (
+          <li key={field}>
+            <strong>{editLabels[field]} conflict</strong>
+            <div>Latest saved: {displayValue(current, field)}</div>
+            <div>Your draft: {displayValue(draft.values, field)}</div>
+          </li>
+        ))}</ul>
+      )}
+      {loadError?.kind === "failed" && role === "REQUESTER" && (
+        <button type="button" onClick={refreshDetail}>Retry loading latest details</button>
+      )}
     </section>
   );
 }
 
 export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
+  // App keys this view by signed-in user. Logout and account changes unmount it.
+  const [drafts, setDrafts] = useState<Drafts>(() => new Map());
   const [items, setItems] = useState<Expense[] | null>(null);
   const [listError, setListError] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -166,7 +331,10 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
         const response = await fetch(endpoint, { signal: controller.signal });
         if (!response.ok) throw new Error("Could not load expense requests.");
         const { items } = await response.json();
-        setItems(items);
+        if (!controller.signal.aborted) {
+          setListError(false);
+          setItems(items);
+        }
       } catch {
         if (!controller.signal.aborted) setListError(true);
       }
@@ -231,7 +399,12 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
           {submission && <p role={submission.ok ? "status" : "alert"}>{submission.message}</p>}
         </form>
       )}
-      {listError ? <p role="alert">Could not load expense requests.</p> : !items ? (
+      {listError ? (
+        <div>
+          <p role="alert">Could not load expense requests.</p>
+          {role === "REQUESTER" && <button type="button" onClick={() => setRefresh(count => count + 1)}>Retry loading requests</button>}
+        </div>
+      ) : !items ? (
         <p role="status">Loading expense requests…</p>
       ) : items.length === 0 ? <p>No expense requests yet.</p> : (
         <ul>
@@ -243,7 +416,8 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
           ))}
         </ul>
       )}
-      {selectedId && <ExpenseDetail key={selectedId} id={selectedId} role={role} onDecision={() => setRefresh((count) => count + 1)} />}
+      {drafts.size > 0 && <p role="status">Reloading this page will discard your unsaved draft.</p>}
+      {selectedId && <ExpenseDetail key={selectedId} id={selectedId} role={role} draft={drafts.get(selectedId)} setDrafts={setDrafts} onRefresh={() => setRefresh(count => count + 1)} />}
     </section>
   );
 }
