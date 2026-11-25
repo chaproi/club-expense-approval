@@ -1,0 +1,282 @@
+npm.cmd ci
+
+> club-expense-approval@0.1.0 postinstall
+> prisma generate
+
+Prisma schema loaded from prisma\schema.prisma
+
+✔ Generated Prisma Client (v6.19.3) to .\node_modules\@prisma\client in 61ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+
+
+added 152 packages, and audited 153 packages in 13s
+
+40 packages are looking for funding
+  run `npm fund` for details
+
+4 high severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+
+{"id":"before-ci","command":"npm.cmd ci","exit":0,"signal":null,"spawnError":null,"elapsedMs":13344}
+
+npm.cmd ci
+
+> club-expense-approval@0.1.0 postinstall
+> prisma generate
+
+Prisma schema loaded from prisma\schema.prisma
+
+✔ Generated Prisma Client (v6.19.3) to .\node_modules\@prisma\client in 89ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+
+added 152 packages, and audited 153 packages in 12s
+
+41 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+┌─────────────────────────────────────────────────────────┐
+│  Update available 6.19.3 -> 8.0.0-rc.35                 │
+│                                                         │
+│  This is a major update - please follow the guide at    │
+│  https://pris.ly/d/major-version-upgrade                │
+│                                                         │
+│  Run the following to update                            │
+│    npm i --save-dev prisma@latest                       │
+│    npm i @prisma/client@latest                          │
+└─────────────────────────────────────────────────────────┘
+
+{"id":"candidate-ci","command":"npm.cmd ci","exit":0,"signal":null,"spawnError":null,"elapsedMs":12649}
+
+npm.cmd exec -- prisma validate
+Prisma schema loaded from prisma\schema.prisma
+The schema at prisma\schema.prisma is valid 🚀
+
+
+{"id":"candidate-validate","command":"npm.cmd exec -- prisma validate","exit":0,"signal":null,"spawnError":null,"elapsedMs":2279}
+
+npm.cmd exec -- prisma generate
+Prisma schema loaded from prisma\schema.prisma
+
+✔ Generated Prisma Client (v6.19.3) to .\node_modules\@prisma\client in 89ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+
+
+{"id":"candidate-generate","command":"npm.cmd exec -- prisma generate","exit":0,"signal":null,"spawnError":null,"elapsedMs":2497}
+
+2026-11-25T16:50:02.398Z $ npm.cmd test
+
+> club-expense-approval@0.1.0 test
+> node --env-file-if-exists=.env --import tsx --test server/test/*.test.ts
+
+.env not found. Continuing without it.
+✔ T-01: seeded roles log in and resolve their own identity from a session (410.2958ms)
+✔ T-02: invalid credentials fail and logout revokes a previously issued cookie (173.2663ms)
+✔ T-03: current user endpoint rejects a request without a session (2.7199ms)
+✔ a browser request from another origin cannot create a session (2.9377ms)
+✔ an expired PostgreSQL session cannot identify a user (78.7599ms)
+✔ DEF-TH038-01: login rejects an email containing NUL byte without changing sessions (76.7438ms)
+✔ DEF-TH038-01: login rejects an email containing unpaired high surrogate without changing sessions (68.1325ms)
+✔ DEF-TH038-01: login rejects an email containing unpaired low surrogate without changing sessions (65.8777ms)
+✔ DEF-TH038-01: valid paired Unicode in an unknown email remains invalid credentials (29.5706ms)
+.env not found. Continuing without it.
+✔ DEF-TH038-02: the official Cloud Run alias redirects before serving the login form (47.9429ms)
+✔ DEF-TH038-02: canonical host serves the page without a redirect loop (16.3979ms)
+✔ DEF-TH038-02: alias HEAD navigation redirects to the same canonical URL (2.4805ms)
+✔ DEF-TH038-02: redirect destination cannot be supplied by Host, path or forwarded headers (3.8971ms)
+✔ DEF-TH038-02: alias and untrusted API writes stay blocked instead of redirecting (36.5955ms)
+✔ DEF-TH038-02: anonymous API reads retain their JSON contract on the alias (1.9433ms)
+.env not found. Continuing without it.
+✔ T-07: decision input accepts approval and trimmed rejection reason boundaries (1.8671ms)
+✔ T-07: decision input rejects invalid shapes, reasons and extra fields (0.2935ms)
+✔ T-10: decision policy permits only an assigned reviewer who is not the requester (0.2ms)
+.env not found. Continuing without it.
+✔ T-05: expense input accepts valid title and whole-baht boundaries (3.0198ms)
+✔ T-05: expense input rejects invalid title, category, amount and extra fields (0.5456ms)
+.env not found. Continuing without it.
+✔ T-04: requester submits a read-only expense and reads its stored history (635.7675ms)
+✔ T-05: API rejects an invalid amount or client-supplied assignment without inserting a record (28.1886ms)
+✔ T-06: only the owner and assigned reviewer can read an expense, and reviewers cannot submit (81.2871ms)
+✔ expense detail rejects a malformed URL segment (/%00) (7.562ms)
+✔ expense detail rejects a malformed URL segment (/%E0%A4%A) (5.4745ms)
+✔ T-05: API rejects a title with an unpaired UTF-16 surrogate without inserting a record (18.4432ms)
+✔ T-03 extension: anonymous requests cannot list, read, submit or decide expenses (6.0483ms)
+✔ T-07: assigned reviewer approves or rejects and the owner reads the recorded decision (147.2673ms)
+✔ T-06 / T-10: requesters, unassigned reviewers and a self-reviewer cannot decide (68.6238ms)
+✔ T-11: sequential decisions return 200 then 409 and keep one decision event (49.5207ms)
+✔ T-11: concurrent decisions produce one success, one conflict and one decision event (70.606ms)
+✔ T-08: owner reads the decision after restarting the app and database client (79.8015ms)
+✔ an authenticated browser cannot submit an expense from another origin (8.3195ms)
+✔ submission fails without creating an expense when the assigned account is not a reviewer (38.6829ms)
+.env not found. Continuing without it.
+✔ T-F04-01: return persists one trimmed reason, owner identity and atomic history (632.4356ms)
+✔ T-F04-02: return reason/revision/shape boundaries reject without state changes (296.3119ms)
+✔ T-F04-03: wrong principals and origins cannot return or alter protected history (114.2153ms)
+✔ T-F04-04: terminal, repeated and concurrent decisions produce only one transition (316.1024ms)
+✔ T-F05-01/04: edit then resubmit preserves ID, assignment, createdAt and older history (69.4195ms)
+✔ T-F05-02: invalid and forged edits do not mutate returned fields/history (257.1657ms)
+✔ T-F05-03: owner/role/state/Origin restrictions protect both edit and resubmit (257.4679ms)
+✔ T-F05-05: stale edits and repeated concurrent resubmits never duplicate events (111.9991ms)
+✔ T-F05-05: edit-versus-resubmit race uses the same revision predicate (37.345ms)
+✔ T-F04-05/T-F05-06: return/edit/resubmit detail survives a new app and Prisma client (64.8944ms)
+✔ T-F06-01/02/03: real DB counts include only assigned current records and explicit zeros (30.9765ms)
+✔ T-F06-01: returning, editing and resubmitting change counts without inflating total (72.2281ms)
+✔ T-F06-03: empty summary and readback after restart remain exact (34.443ms)
+ℹ tests 47
+ℹ suites 0
+ℹ pass 47
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2921.2548
+
+.env not found. Continuing without it.
+
+
+{"id":"05-unit-api","startedAt":"2026-11-25T16:50:02.398Z","command":"npm.cmd test","exit":0,"elapsedMs":3514,"signal":null,"spawnError":null}
+
+
+2026-11-25T16:50:05.913Z $ npm.cmd run test:e2e -- --reporter=list,json
+
+> club-expense-approval@0.1.0 test:e2e
+> node --env-file-if-exists=.env node_modules/@playwright/test/cli.js test --reporter=list,json
+
+
+Running 19 tests using 1 worker
+
+  ok  1 client\test\expense-decisions.spec.ts:50:1 › T-09: requester submits, reviewer approves or rejects, and requester reads both outcomes (1.4s)
+  ok  2 client\test\expense-decisions.spec.ts:79:1 › reviewer reloads the latest status after a stale decision returns 409 (752ms)
+  ok  3 client\test\expense-decisions.spec.ts:102:1 › T-F04-05/T-F05-06/T-F06-04: return, saved correction, resubmit and final readback update the DB summary (1.9s)
+  ok  4 client\test\f05-draft-recovery.spec.ts:196:1 › T-F05-07 keeps latest values and the conflicted draft separate after real stale Save (653ms)
+  ok  5 client\test\f05-draft-recovery.spec.ts:218:3 › T-F05-08a Restore keeps the latest untouched category and waits for manual Save (699ms)
+  ok  6 client\test\f05-draft-recovery.spec.ts:218:3 › T-F05-08a Restore keeps the latest untouched amount and waits for manual Save (743ms)
+  ok  7 client\test\f05-draft-recovery.spec.ts:252:1 › T-F05-08b Discard keeps latest saved fields and performs no mutation (667ms)
+  ok  8 client\test\f05-draft-recovery.spec.ts:272:3 › T-F05-09a shows read-only draft when the latest state is SUBMITTED (728ms)
+  ok  9 client\test\f05-draft-recovery.spec.ts:272:3 › T-F05-09a shows read-only draft when the latest state is APPROVED (702ms)
+  ok 10 client\test\f05-draft-recovery.spec.ts:305:1 › T-F05-09a revoked owner session cannot read or recover the stale draft (1.0s)
+  ok 11 client\test\f05-draft-recovery.spec.ts:343:1 › T-F05-09a real access denial clears an established draft without ending the account session (1.2s)
+  ok 12 client\test\f05-draft-recovery.spec.ts:401:1 › T-F05-09b keeps a draft only for its request and clears it when the account changes (1.3s)
+  ok 13 client\test\f05-draft-recovery.spec.ts:435:1 › T-F05-09b warns about reload and clears the draft on page reload (816ms)
+  ok 14 client\test\f05-draft-recovery.spec.ts:450:1 › T-F05-10a a failed refresh retains the draft and deliberate retry makes only reads (645ms)
+  ok 15 client\test\f05-draft-recovery.spec.ts:491:1 › T-F05-10b a second stale Save retains the new attempt and the newer database revision (811ms)
+  ok 16 client\test\f05-draft-recovery.spec.ts:519:3 › T-F05-11a Save transport error retains state and identifies the failed action (706ms)
+  ok 17 client\test\f05-draft-recovery.spec.ts:519:3 › T-F05-11b Resubmit transport error retains state and identifies the failed action (716ms)
+  ok 18 client\test\f05-draft-recovery.spec.ts:629:1 › BF-01 AC-F05-08/09 same-value Restore clears the clean draft before explicit Resubmit (801ms)
+  ok 19 client\test\f05-draft-recovery.spec.ts:644:1 › BF-01 AC-F05-08/09 reverting a dirty restored draft clears it before explicit Resubmit (860ms)
+
+  19 passed (26.9s)
+
+.env not found. Continuing without it.
+[WebServer] (node:66716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] .env not found. Continuing without it.
+.env not found. Continuing without it.
+(node:30580) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+{"id":"05-browser","startedAt":"2026-11-25T16:50:05.913Z","command":"npm.cmd run test:e2e -- --reporter=list,json","exit":0,"elapsedMs":27943,"signal":null,"spawnError":null}
+
+
+2026-11-25T16:51:06.492Z $ docker.exe --context desktop-linux run --rm --network f05-lifecycle-894cf209b0-network --env-file C:\Users\ACER\AppData\Local\Temp\f05-lifecycle-4rmq8T\image.env club-expense-approval:f05-lifecycle-894cf209b0 node -e const fs=require("fs"),path=require("path"),{createRequire}=require("module");const r=createRequire(require.resolve("@prisma/config"));function v(n){let p=path.dirname(r.resolve(n));while(!fs.existsSync(path.join(p,"package.json")))p=path.dirname(p);return JSON.parse(fs.readFileSync(path.join(p,"package.json"))).version;}console.log(JSON.stringify({prisma:require("prisma/package.json").version,client:require("@prisma/client/package.json").version,deepmerge:v("deepmerge-ts"),effect:v("effect")}));
+{"prisma":"6.19.3","client":"6.19.3","deepmerge":"8.0.0","effect":"3.22.1"}
+
+
+
+{"id":"06-image-versions","startedAt":"2026-11-25T16:51:06.492Z","command":"docker.exe --context desktop-linux run --rm --network f05-lifecycle-894cf209b0-network --env-file C:\\Users\\ACER\\AppData\\Local\\Temp\\f05-lifecycle-4rmq8T\\image.env club-expense-approval:f05-lifecycle-894cf209b0 node -e const fs=require(\"fs\"),path=require(\"path\"),{createRequire}=require(\"module\");const r=createRequire(require.resolve(\"@prisma/config\"));function v(n){let p=path.dirname(r.resolve(n));while(!fs.existsSync(path.join(p,\"package.json\")))p=path.dirname(p);return JSON.parse(fs.readFileSync(path.join(p,\"package.json\"))).version;}console.log(JSON.stringify({prisma:require(\"prisma/package.json\").version,client:require(\"@prisma/client/package.json\").version,deepmerge:v(\"deepmerge-ts\"),effect:v(\"effect\")}));","exit":0,"elapsedMs":751,"signal":null,"spawnError":null}
+
+
+2026-11-25T16:51:07.727Z $ docker.exe --context desktop-linux run --rm --network f05-lifecycle-894cf209b0-network --env-file C:\Users\ACER\AppData\Local\Temp\f05-lifecycle-4rmq8T\image.env club-expense-approval:f05-lifecycle-894cf209b0 npm run db:migrate
+
+> club-expense-approval@0.1.0 db:migrate
+> prisma migrate deploy
+
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": PostgreSQL database "test_f05_lifecycle_894cf209b0_image", schema "public" at "f05-lifecycle-894cf209b0:5432"
+
+3 migrations found in prisma/migrations
+
+Applying migration `20261106000000_auth_foundation`
+Applying migration `20261107000000_expense_requests`
+Applying migration `20261124000000_return_resubmit`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261106000000_auth_foundation/
+    └─ migration.sql
+  └─ 20261107000000_expense_requests/
+    └─ migration.sql
+  └─ 20261124000000_return_resubmit/
+    └─ migration.sql
+
+All migrations have been successfully applied.
+
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+
+
+{"id":"06-image-real-migrate","startedAt":"2026-11-25T16:51:07.727Z","command":"docker.exe --context desktop-linux run --rm --network f05-lifecycle-894cf209b0-network --env-file C:\\Users\\ACER\\AppData\\Local\\Temp\\f05-lifecycle-4rmq8T\\image.env club-expense-approval:f05-lifecycle-894cf209b0 npm run db:migrate","exit":0,"elapsedMs":1355,"signal":null,"spawnError":null}
+
+
+2026-11-25T16:51:09.084Z $ docker.exe --context desktop-linux run --rm --network f05-lifecycle-894cf209b0-network --env-file C:\Users\ACER\AppData\Local\Temp\f05-lifecycle-4rmq8T\image.env club-expense-approval:f05-lifecycle-894cf209b0 npm run db:seed
+
+> club-expense-approval@0.1.0 db:seed
+> node --env-file-if-exists=.env --import tsx server/src/seed.ts
+
+Created 4 local demo accounts.
+
+.env not found. Continuing without it.
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+
+
+{"id":"06-image-real-seed","startedAt":"2026-11-25T16:51:09.084Z","command":"docker.exe --context desktop-linux run --rm --network f05-lifecycle-894cf209b0-network --env-file C:\\Users\\ACER\\AppData\\Local\\Temp\\f05-lifecycle-4rmq8T\\image.env club-expense-approval:f05-lifecycle-894cf209b0 npm run db:seed","exit":0,"elapsedMs":983,"signal":null,"spawnError":null}
+
+
+2026-11-25T16:51:11.398Z $ docker.exe --context desktop-linux exec 3465a275437c0408ab1454863919126a3c4e486f0edd3a7c952e68fa444fd821 psql -U test_f05_lifecycle_894cf209b0 -d test_f05_lifecycle_894cf209b0 -At -c select count(*) from pg_stat_activity where datname='test_f05_lifecycle_894cf209b0_image' and backend_type='client backend';
+0
+
+
+
+{"id":"06-image-connections","startedAt":"2026-11-25T16:51:11.398Z","command":"docker.exe --context desktop-linux exec 3465a275437c0408ab1454863919126a3c4e486f0edd3a7c952e68fa444fd821 psql -U test_f05_lifecycle_894cf209b0 -d test_f05_lifecycle_894cf209b0 -At -c select count(*) from pg_stat_activity where datname='test_f05_lifecycle_894cf209b0_image' and backend_type='client backend';","exit":0,"elapsedMs":157,"signal":null,"spawnError":null}
+
+
+2026-11-25T16:52:09.672Z $ node populated-upgrade-worker.mjs baseline
+{"mode":"baseline","result":"PASS","checks":["Sprint 1 real login/submit/approve/reject created 3 requests and 5 events"],"requests":3,"events":5}
+
+
+
+{"id":"05-baseline-fixtures","startedAt":"2026-11-25T16:52:09.672Z","command":"node populated-upgrade-worker.mjs baseline","exit":0,"elapsedMs":702,"signal":null,"spawnError":null}
+
+
+2026-11-25T16:52:12.135Z $ node populated-upgrade-worker.mjs candidate
+{"mode":"candidate","result":"PASS","checks":["Immediate migration preservation exact, all 3 revisions backfilled to zero","Candidate owner and assigned reviewer list/detail/history retain all legacy data","Authorized legacy reads preserve domain","Anonymous/role/ownership/terminal denials preserve exact domain","Legacy SUBMITTED completes real Return/Edit/Resubmit/Decide with same ID, 4 new events and preserved earlier history","New Express listener and Prisma client read exact final records/history after restart"],"requests":3,"events":9}
+
+
+
+{"id":"06-candidate-verification","startedAt":"2026-11-25T16:52:12.135Z","command":"node populated-upgrade-worker.mjs candidate","exit":0,"elapsedMs":1021,"signal":null,"spawnError":null}
