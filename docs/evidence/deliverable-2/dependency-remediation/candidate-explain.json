@@ -1,0 +1,273 @@
+[
+  {
+    "name": "deepmerge-ts",
+    "version": "8.0.0",
+    "location": "node_modules/deepmerge-ts",
+    "isWorkspace": false,
+    "dependents": [
+      {
+        "type": "prod",
+        "name": "deepmerge-ts",
+        "spec": "8.0.0",
+        "rawSpec": "7.1.5",
+        "overridden": true,
+        "from": {
+          "name": "@prisma/config",
+          "version": "6.19.3",
+          "location": "node_modules/@prisma/config",
+          "isWorkspace": false,
+          "dependents": [
+            {
+              "type": "prod",
+              "name": "@prisma/config",
+              "spec": "6.19.3",
+              "from": {
+                "name": "prisma",
+                "version": "6.19.3",
+                "location": "node_modules/prisma",
+                "isWorkspace": false,
+                "dependents": [
+                  {
+                    "type": "dev",
+                    "name": "prisma",
+                    "spec": "6.19.3",
+                    "from": {
+                      "location": "C:\\Users\\ACER\\.codex\\visualizations\\2026\\10\\04\\***\\issue-42-f05-green\\security-remediation\\checkout"
+                    }
+                  },
+                  {
+                    "type": "peerOptional",
+                    "name": "prisma",
+                    "spec": "*",
+                    "from": {
+                      "name": "@prisma/client",
+                      "version": "6.19.3",
+                      "location": "node_modules/@prisma/client",
+                      "isWorkspace": false,
+                      "dependents": [
+                        {
+                          "type": "prod",
+                          "name": "@prisma/client",
+                          "spec": "6.19.3",
+                          "from": {
+                            "location": "C:\\Users\\ACER\\.codex\\visualizations\\2026\\10\\04\\***\\issue-42-f05-green\\security-remediation\\checkout"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "dev": false,
+                "optional": false,
+                "devOptional": true,
+                "peer": false,
+                "bundled": false,
+                "overridden": false
+              }
+            }
+          ],
+          "dev": false,
+          "optional": false,
+          "devOptional": true,
+          "peer": false,
+          "bundled": false,
+          "overridden": true
+        }
+      }
+    ],
+    "dev": false,
+    "optional": false,
+    "devOptional": true,
+    "peer": false,
+    "bundled": false,
+    "overridden": true
+  },
+  {
+    "name": "effect",
+    "version": "3.22.1",
+    "location": "node_modules/effect",
+    "isWorkspace": false,
+    "dependents": [
+      {
+        "type": "prod",
+        "name": "effect",
+        "spec": "3.22.1",
+        "rawSpec": "3.21.0",
+        "overridden": true,
+        "from": {
+          "name": "@prisma/config",
+          "version": "6.19.3",
+          "location": "node_modules/@prisma/config",
+          "isWorkspace": false,
+          "dependents": [
+            {
+              "type": "prod",
+              "name": "@prisma/config",
+              "spec": "6.19.3",
+              "from": {
+                "name": "prisma",
+                "version": "6.19.3",
+                "location": "node_modules/prisma",
+                "isWorkspace": false,
+                "dependents": [
+                  {
+                    "type": "dev",
+                    "name": "prisma",
+                    "spec": "6.19.3",
+                    "from": {
+                      "location": "C:\\Users\\ACER\\.codex\\visualizations\\2026\\10\\04\\***\\issue-42-f05-green\\security-remediation\\checkout"
+                    }
+                  },
+                  {
+                    "type": "peerOptional",
+                    "name": "prisma",
+                    "spec": "*",
+                    "from": {
+                      "name": "@prisma/client",
+                      "version": "6.19.3",
+                      "location": "node_modules/@prisma/client",
+                      "isWorkspace": false,
+                      "dependents": [
+                        {
+                          "type": "prod",
+                          "name": "@prisma/client",
+                          "spec": "6.19.3",
+                          "from": {
+                            "location": "C:\\Users\\ACER\\.codex\\visualizations\\2026\\10\\04\\***\\issue-42-f05-green\\security-remediation\\checkout"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "dev": false,
+                "optional": false,
+                "devOptional": true,
+                "peer": false,
+                "bundled": false,
+                "overridden": false
+              }
+            }
+          ],
+          "dev": false,
+          "optional": false,
+          "devOptional": true,
+          "peer": false,
+          "bundled": false,
+          "overridden": true
+        }
+      }
+    ],
+    "dev": false,
+    "optional": false,
+    "devOptional": true,
+    "peer": false,
+    "bundled": false,
+    "overridden": true
+  },
+  {
+    "name": "@prisma/config",
+    "version": "6.19.3",
+    "location": "node_modules/@prisma/config",
+    "isWorkspace": false,
+    "dependents": [
+      {
+        "type": "prod",
+        "name": "@prisma/config",
+        "spec": "6.19.3",
+        "from": {
+          "name": "prisma",
+          "version": "6.19.3",
+          "location": "node_modules/prisma",
+          "isWorkspace": false,
+          "dependents": [
+            {
+              "type": "dev",
+              "name": "prisma",
+              "spec": "6.19.3",
+              "from": {
+                "location": "C:\\Users\\ACER\\.codex\\visualizations\\2026\\10\\04\\***\\issue-42-f05-green\\security-remediation\\checkout"
+              }
+            },
+            {
+              "type": "peerOptional",
+              "name": "prisma",
+              "spec": "*",
+              "from": {
+                "name": "@prisma/client",
+                "version": "6.19.3",
+                "location": "node_modules/@prisma/client",
+                "isWorkspace": false,
+                "dependents": [
+                  {
+                    "type": "prod",
+                    "name": "@prisma/client",
+                    "spec": "6.19.3",
+                    "from": {
+                      "location": "C:\\Users\\ACER\\.codex\\visualizations\\2026\\10\\04\\***\\issue-42-f05-green\\security-remediation\\checkout"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "dev": false,
+          "optional": false,
+          "devOptional": true,
+          "peer": false,
+          "bundled": false,
+          "overridden": false
+        }
+      }
+    ],
+    "dev": false,
+    "optional": false,
+    "devOptional": true,
+    "peer": false,
+    "bundled": false,
+    "overridden": true
+  },
+  {
+    "name": "prisma",
+    "version": "6.19.3",
+    "location": "node_modules/prisma",
+    "isWorkspace": false,
+    "dependents": [
+      {
+        "type": "dev",
+        "name": "prisma",
+        "spec": "6.19.3",
+        "from": {
+          "location": "C:\\Users\\ACER\\.codex\\visualizations\\2026\\10\\04\\***\\issue-42-f05-green\\security-remediation\\checkout"
+        }
+      },
+      {
+        "type": "peerOptional",
+        "name": "prisma",
+        "spec": "*",
+        "from": {
+          "name": "@prisma/client",
+          "version": "6.19.3",
+          "location": "node_modules/@prisma/client",
+          "isWorkspace": false,
+          "dependents": [
+            {
+              "type": "prod",
+              "name": "@prisma/client",
+              "spec": "6.19.3",
+              "from": {
+                "location": "C:\\Users\\ACER\\.codex\\visualizations\\2026\\10\\04\\***\\issue-42-f05-green\\security-remediation\\checkout"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "dev": false,
+    "optional": false,
+    "devOptional": true,
+    "peer": false,
+    "bundled": false,
+    "overridden": false
+  }
+]

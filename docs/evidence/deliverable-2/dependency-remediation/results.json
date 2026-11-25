@@ -1,0 +1,1161 @@
+{
+  "planCommit": "45f7046f754cf3eda8adb7c1ab0b1f3d3174a396",
+  "candidateCommit": "a6c93abd350b9926cb51ff287339cd4d02ff2013",
+  "base": "7ab41689df7961ec8bab279cdd98d1afddf7a912",
+  "issue": 44,
+  "dependencyChecks": {
+    "steps": [
+      {
+        "id": "before-ci",
+        "command": "npm.cmd ci",
+        "exit": 0,
+        "signal": null,
+        "spawnError": null,
+        "elapsedMs": 13344
+      },
+      {
+        "id": "before-audit",
+        "command": "npm.cmd audit --json",
+        "exit": 1,
+        "signal": null,
+        "spawnError": null,
+        "elapsedMs": 2044
+      },
+      {
+        "id": "before-audit-omit-dev",
+        "command": "npm.cmd audit --omit=dev --json",
+        "exit": 1,
+        "signal": null,
+        "spawnError": null,
+        "elapsedMs": 2129
+      },
+      {
+        "id": "candidate-lock",
+        "command": "npm.cmd install --package-lock-only --ignore-scripts",
+        "exit": 0,
+        "signal": null,
+        "spawnError": null,
+        "elapsedMs": 1539
+      },
+      {
+        "id": "candidate-ci",
+        "command": "npm.cmd ci",
+        "exit": 0,
+        "signal": null,
+        "spawnError": null,
+        "elapsedMs": 12649
+      },
+      {
+        "id": "candidate-explain",
+        "command": "npm.cmd explain deepmerge-ts effect @prisma/config prisma --json",
+        "exit": 0,
+        "signal": null,
+        "spawnError": null,
+        "elapsedMs": 1252
+      },
+      {
+        "id": "candidate-ls",
+        "command": "npm.cmd ls prisma @prisma/client @prisma/config deepmerge-ts effect --all --json",
+        "exit": 0,
+        "signal": null,
+        "spawnError": null,
+        "elapsedMs": 1211
+      },
+      {
+        "id": "candidate-validate",
+        "command": "npm.cmd exec -- prisma validate",
+        "exit": 0,
+        "signal": null,
+        "spawnError": null,
+        "elapsedMs": 2279
+      },
+      {
+        "id": "candidate-generate",
+        "command": "npm.cmd exec -- prisma generate",
+        "exit": 0,
+        "signal": null,
+        "spawnError": null,
+        "elapsedMs": 2497
+      },
+      {
+        "id": "candidate-audit",
+        "command": "npm.cmd audit --json",
+        "exit": 0,
+        "signal": null,
+        "spawnError": null,
+        "elapsedMs": 1502
+      },
+      {
+        "id": "candidate-audit-omit-dev",
+        "command": "npm.cmd audit --omit=dev --json",
+        "exit": 0,
+        "signal": null,
+        "spawnError": null,
+        "elapsedMs": 1451
+      }
+    ],
+    "changedPackageLocations": [
+      "node_modules/deepmerge-ts",
+      "node_modules/effect"
+    ],
+    "result": "PASS"
+  },
+  "confirmation": {
+    "startedAt": "2026-11-25T16:49:29.593Z",
+    "finishedAt": "2026-11-25T16:51:14.267Z",
+    "testedSha": "a6c93abd350b9926cb51ff287339cd4d02ff2013",
+    "node": "v24.14.0",
+    "npm": "11.9.0",
+    "docker": "29.9.3 29.9.3",
+    "chromium": "151.0.7922.34",
+    "target": {
+      "version": "17.12 (Debian 17.12-1.pgdg12+1)",
+      "schema": "public",
+      "initialTables": 0,
+      "loopback": true,
+      "distinctFromLocalTargets": true
+    },
+    "commands": [
+      {
+        "id": "01-original-sha",
+        "startedAt": "2026-11-25T16:49:29.595Z",
+        "command": "git.exe rev-parse HEAD",
+        "exit": 0,
+        "elapsedMs": 56,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "01-original-tree",
+        "startedAt": "2026-11-25T16:49:29.654Z",
+        "command": "git.exe status --porcelain=v1",
+        "exit": 0,
+        "elapsedMs": 72,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "01-clone",
+        "startedAt": "2026-11-25T16:49:29.727Z",
+        "command": "git.exe clone --no-local --single-branch --branch fix/prisma-config-security-overrides -- [candidate-checkout] [temporary-checkout]",
+        "exit": 0,
+        "elapsedMs": 357,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "01-clone-sha",
+        "startedAt": "2026-11-25T16:49:30.085Z",
+        "command": "git.exe rev-parse HEAD",
+        "exit": 0,
+        "elapsedMs": 61,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "01-clone-tree",
+        "startedAt": "2026-11-25T16:49:30.146Z",
+        "command": "git.exe status --porcelain=v1",
+        "exit": 0,
+        "elapsedMs": 97,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "01-node",
+        "startedAt": "2026-11-25T16:49:30.244Z",
+        "command": "node.exe --version",
+        "exit": 0,
+        "elapsedMs": 46,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "01-npm",
+        "startedAt": "2026-11-25T16:49:30.290Z",
+        "command": "npm.cmd --version",
+        "exit": 0,
+        "elapsedMs": 364,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "01-docker",
+        "startedAt": "2026-11-25T16:49:30.655Z",
+        "command": "docker.exe --context desktop-linux version --format {{.Client.Version}} {{.Server.Version}}",
+        "exit": 0,
+        "elapsedMs": 84,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "02-ci",
+        "startedAt": "2026-11-25T16:49:30.740Z",
+        "command": "npm.cmd ci",
+        "exit": 0,
+        "elapsedMs": 12753,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "02-tsc",
+        "startedAt": "2026-11-25T16:49:43.493Z",
+        "command": "npm.cmd exec -- tsc --noEmit",
+        "exit": 0,
+        "elapsedMs": 2998,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "02-chromium",
+        "startedAt": "2026-11-25T16:49:46.492Z",
+        "command": "npm.cmd exec -- playwright install chromium",
+        "exit": 0,
+        "elapsedMs": 1624,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "02-chromium-version",
+        "startedAt": "2026-11-25T16:49:48.117Z",
+        "command": "Playwright Chromium launch/version check",
+        "exit": 0,
+        "elapsedMs": 545,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "03-containers-before",
+        "startedAt": "2026-11-25T16:49:48.663Z",
+        "command": "docker.exe --context desktop-linux ps -a --format {{.ID}}|{{.Names}}|{{.State}}",
+        "exit": 0,
+        "elapsedMs": 82,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "03-create",
+        "startedAt": "2026-11-25T16:49:48.763Z",
+        "command": "docker.exe --context desktop-linux run -d --name f05-lifecycle-894cf209b0 --label lab.f05.lifecycle=f05-lifecycle-894cf209b0 --env-file C:\\Users\\ACER\\AppData\\Local\\Temp\\f05-lifecycle-4rmq8T\\pg.env -p 127.0.0.1::5432 postgres:17-bookworm",
+        "exit": 0,
+        "elapsedMs": 4755,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "03-volume",
+        "startedAt": "2026-11-25T16:49:53.519Z",
+        "command": "docker.exe --context desktop-linux inspect --format {{range .Mounts}}{{if eq .Type \"volume\"}}{{println .Name}}{{end}}{{end}} 3465a275437c0408ab1454863919126a3c4e486f0edd3a7c952e68fa444fd821",
+        "exit": 0,
+        "elapsedMs": 99,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "03-binding",
+        "startedAt": "2026-11-25T16:49:53.619Z",
+        "command": "docker.exe --context desktop-linux port 3465a275437c0408ab1454863919126a3c4e486f0edd3a7c952e68fa444fd821 5432/tcp",
+        "exit": 0,
+        "elapsedMs": 100,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "03-ready-1",
+        "startedAt": "2026-11-25T16:49:53.720Z",
+        "command": "docker.exe --context desktop-linux exec 3465a275437c0408ab1454863919126a3c4e486f0edd3a7c952e68fa444fd821 pg_isready -h 127.0.0.1 -U test_f05_lifecycle_894cf209b0 -d test_f05_lifecycle_894cf209b0",
+        "exit": 2,
+        "elapsedMs": 164,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "03-ready-2",
+        "startedAt": "2026-11-25T16:49:54.892Z",
+        "command": "docker.exe --context desktop-linux exec 3465a275437c0408ab1454863919126a3c4e486f0edd3a7c952e68fa444fd821 pg_isready -h 127.0.0.1 -U test_f05_lifecycle_894cf209b0 -d test_f05_lifecycle_894cf209b0",
+        "exit": 0,
+        "elapsedMs": 171,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "03-target",
+        "startedAt": "2026-11-25T16:49:55.064Z",
+        "command": "Verify Prisma live disposable DB name, owner, schema, version and empty tables",
+        "exit": 0,
+        "elapsedMs": 125,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "04-migrate",
+        "startedAt": "2026-11-25T16:49:55.189Z",
+        "command": "npm.cmd run db:migrate",
+        "exit": 0,
+        "elapsedMs": 1887,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "05-build",
+        "startedAt": "2026-11-25T16:49:57.077Z",
+        "command": "npm.cmd run build",
+        "exit": 0,
+        "elapsedMs": 5320,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "05-unit-api",
+        "startedAt": "2026-11-25T16:50:02.398Z",
+        "command": "npm.cmd test",
+        "exit": 0,
+        "elapsedMs": 3514,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "05-browser",
+        "startedAt": "2026-11-25T16:50:05.913Z",
+        "command": "npm.cmd run test:e2e -- --reporter=list,json",
+        "exit": 0,
+        "elapsedMs": 27943,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "05-generated-paths-untracked",
+        "startedAt": "2026-11-25T16:50:33.857Z",
+        "command": "git.exe ls-files -- docs/evidence/deliverable-2/return-summary.png docs/evidence/deliverable-2/resubmitted-final-history.png",
+        "exit": 0,
+        "elapsedMs": 60,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-fixture-cleanup",
+        "startedAt": "2026-11-25T16:50:33.921Z",
+        "command": "Independent Prisma count of fixture data before disposal",
+        "exit": 0,
+        "elapsedMs": 143,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-image-preflight",
+        "startedAt": "2026-11-25T16:50:34.065Z",
+        "command": "docker.exe --context desktop-linux image ls club-expense-approval:f05-lifecycle-894cf209b0 --format {{.ID}}",
+        "exit": 0,
+        "elapsedMs": 102,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-docker-build",
+        "startedAt": "2026-11-25T16:50:34.168Z",
+        "command": "docker.exe --context desktop-linux build -t club-expense-approval:f05-lifecycle-894cf209b0 .",
+        "exit": 0,
+        "elapsedMs": 31866,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-create-image-db",
+        "startedAt": "2026-11-25T16:51:06.035Z",
+        "command": "docker.exe --context desktop-linux exec 3465a275437c0408ab1454863919126a3c4e486f0edd3a7c952e68fa444fd821 psql -U test_f05_lifecycle_894cf209b0 -d test_f05_lifecycle_894cf209b0 -c CREATE DATABASE \"test_f05_lifecycle_894cf209b0_image\"",
+        "exit": 0,
+        "elapsedMs": 176,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-network-create",
+        "startedAt": "2026-11-25T16:51:06.212Z",
+        "command": "docker.exe --context desktop-linux network create --label lab.security.owner=f05-lifecycle-894cf209b0 f05-lifecycle-894cf209b0-network",
+        "exit": 0,
+        "elapsedMs": 166,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-network-connect",
+        "startedAt": "2026-11-25T16:51:06.378Z",
+        "command": "docker.exe --context desktop-linux network connect f05-lifecycle-894cf209b0-network 3465a275437c0408ab1454863919126a3c4e486f0edd3a7c952e68fa444fd821",
+        "exit": 0,
+        "elapsedMs": 110,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-image-versions",
+        "startedAt": "2026-11-25T16:51:06.492Z",
+        "command": "docker.exe --context desktop-linux run --rm --network f05-lifecycle-894cf209b0-network --env-file C:\\Users\\ACER\\AppData\\Local\\Temp\\f05-lifecycle-4rmq8T\\image.env club-expense-approval:f05-lifecycle-894cf209b0 node -e const fs=require(\"fs\"),path=require(\"path\"),{createRequire}=require(\"module\");const r=createRequire(require.resolve(\"@prisma/config\"));function v(n){let p=path.dirname(r.resolve(n));while(!fs.existsSync(path.join(p,\"package.json\")))p=path.dirname(p);return JSON.parse(fs.readFileSync(path.join(p,\"package.json\"))).version;}console.log(JSON.stringify({prisma:require(\"prisma/package.json\").version,client:require(\"@prisma/client/package.json\").version,deepmerge:v(\"deepmerge-ts\"),effect:v(\"effect\")}));",
+        "exit": 0,
+        "elapsedMs": 751,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-image-db-identity",
+        "startedAt": "2026-11-25T16:51:07.245Z",
+        "command": "docker.exe --context desktop-linux run --rm --network f05-lifecycle-894cf209b0-network --env-file C:\\Users\\ACER\\AppData\\Local\\Temp\\f05-lifecycle-4rmq8T\\image.env club-expense-approval:f05-lifecycle-894cf209b0 node -e const {PrismaClient}=require(\"@prisma/client\");const p=new PrismaClient();(async()=>{try{console.log(JSON.stringify(await p.$queryRawUnsafe(\"select current_database() as db,current_schema() as schema,(select count(*)::int from information_schema.tables where table_schema=current_schema()) as tables\")));}finally{await p.$disconnect();}})();",
+        "exit": 0,
+        "elapsedMs": 481,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-image-real-migrate",
+        "startedAt": "2026-11-25T16:51:07.727Z",
+        "command": "docker.exe --context desktop-linux run --rm --network f05-lifecycle-894cf209b0-network --env-file C:\\Users\\ACER\\AppData\\Local\\Temp\\f05-lifecycle-4rmq8T\\image.env club-expense-approval:f05-lifecycle-894cf209b0 npm run db:migrate",
+        "exit": 0,
+        "elapsedMs": 1355,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-image-real-seed",
+        "startedAt": "2026-11-25T16:51:09.084Z",
+        "command": "docker.exe --context desktop-linux run --rm --network f05-lifecycle-894cf209b0-network --env-file C:\\Users\\ACER\\AppData\\Local\\Temp\\f05-lifecycle-4rmq8T\\image.env club-expense-approval:f05-lifecycle-894cf209b0 npm run db:seed",
+        "exit": 0,
+        "elapsedMs": 983,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-image-app-start",
+        "startedAt": "2026-11-25T16:51:10.067Z",
+        "command": "docker.exe --context desktop-linux run -d --name f05-lifecycle-894cf209b0-app --label lab.security.owner=f05-lifecycle-894cf209b0 --network f05-lifecycle-894cf209b0-network --env-file C:\\Users\\ACER\\AppData\\Local\\Temp\\f05-lifecycle-4rmq8T\\image.env -p 127.0.0.1:64297:3000 club-expense-approval:f05-lifecycle-894cf209b0",
+        "exit": 0,
+        "elapsedMs": 315,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-image-app-stop",
+        "startedAt": "2026-11-25T16:51:11.041Z",
+        "command": "docker.exe --context desktop-linux rm -f 003ddb75dc9a0add360daccc07cae088a9e600e0323a9343bd0b0be71a4edfd3",
+        "exit": 0,
+        "elapsedMs": 354,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-image-connections",
+        "startedAt": "2026-11-25T16:51:11.398Z",
+        "command": "docker.exe --context desktop-linux exec 3465a275437c0408ab1454863919126a3c4e486f0edd3a7c952e68fa444fd821 psql -U test_f05_lifecycle_894cf209b0 -d test_f05_lifecycle_894cf209b0 -At -c select count(*) from pg_stat_activity where datname='test_f05_lifecycle_894cf209b0_image' and backend_type='client backend';",
+        "exit": 0,
+        "elapsedMs": 157,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-network-disconnect",
+        "startedAt": "2026-11-25T16:51:11.556Z",
+        "command": "docker.exe --context desktop-linux network disconnect f05-lifecycle-894cf209b0-network 3465a275437c0408ab1454863919126a3c4e486f0edd3a7c952e68fa444fd821",
+        "exit": 0,
+        "elapsedMs": 201,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-network-remove",
+        "startedAt": "2026-11-25T16:51:11.758Z",
+        "command": "docker.exe --context desktop-linux network rm f05-lifecycle-894cf209b0-network",
+        "exit": 0,
+        "elapsedMs": 289,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-image-id",
+        "startedAt": "2026-11-25T16:51:12.048Z",
+        "command": "docker.exe --context desktop-linux image ls club-expense-approval:f05-lifecycle-894cf209b0 --format {{.ID}}",
+        "exit": 0,
+        "elapsedMs": 131,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-image-remove",
+        "startedAt": "2026-11-25T16:51:12.179Z",
+        "command": "docker.exe --context desktop-linux image rm club-expense-approval:f05-lifecycle-894cf209b0",
+        "exit": 0,
+        "elapsedMs": 250,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-image-absence",
+        "startedAt": "2026-11-25T16:51:12.432Z",
+        "command": "docker.exe --context desktop-linux image ls club-expense-approval:f05-lifecycle-894cf209b0 --format {{.ID}}",
+        "exit": 0,
+        "elapsedMs": 84,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "07-db-ownership",
+        "startedAt": "2026-11-25T16:51:12.517Z",
+        "command": "docker.exe --context desktop-linux inspect --format {{index .Config.Labels \"lab.f05.lifecycle\"}} 3465a275437c0408ab1454863919126a3c4e486f0edd3a7c952e68fa444fd821",
+        "exit": 0,
+        "elapsedMs": 107,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "07-remove-db",
+        "startedAt": "2026-11-25T16:51:12.625Z",
+        "command": "docker.exe --context desktop-linux rm -fv 3465a275437c0408ab1454863919126a3c4e486f0edd3a7c952e68fa444fd821",
+        "exit": 0,
+        "elapsedMs": 360,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "07-db-absence",
+        "startedAt": "2026-11-25T16:51:12.986Z",
+        "command": "docker.exe --context desktop-linux ps -aq --filter label=lab.f05.lifecycle=f05-lifecycle-894cf209b0",
+        "exit": 0,
+        "elapsedMs": 98,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "07-volumes-after",
+        "startedAt": "2026-11-25T16:51:13.085Z",
+        "command": "docker.exe --context desktop-linux volume ls -q",
+        "exit": 0,
+        "elapsedMs": 107,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "07-containers-after",
+        "startedAt": "2026-11-25T16:51:13.192Z",
+        "command": "docker.exe --context desktop-linux ps -a --format {{.ID}}|{{.Names}}|{{.State}}",
+        "exit": 0,
+        "elapsedMs": 108,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "07-original-sha",
+        "startedAt": "2026-11-25T16:51:13.301Z",
+        "command": "git.exe rev-parse HEAD",
+        "exit": 0,
+        "elapsedMs": 45,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "07-original-tree",
+        "startedAt": "2026-11-25T16:51:13.347Z",
+        "command": "git.exe status --porcelain=v1",
+        "exit": 0,
+        "elapsedMs": 56,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "07-isolated-tree",
+        "startedAt": "2026-11-25T16:51:13.403Z",
+        "command": "git.exe status --porcelain=v1",
+        "exit": 0,
+        "elapsedMs": 52,
+        "signal": null,
+        "spawnError": null
+      }
+    ],
+    "unitApi": {
+      "tests": 47,
+      "pass": 47,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 2921.2548
+    },
+    "browser": {
+      "collected": 19,
+      "executed": 19,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0
+    },
+    "browserCases": [
+      {
+        "file": "client/test/expense-decisions.spec.ts",
+        "line": 50,
+        "title": "T-09: requester submits, reviewer approves or rejects, and requester reads both outcomes",
+        "status": "passed",
+        "durationMs": 1427
+      },
+      {
+        "file": "client/test/expense-decisions.spec.ts",
+        "line": 79,
+        "title": "reviewer reloads the latest status after a stale decision returns 409",
+        "status": "passed",
+        "durationMs": 752
+      },
+      {
+        "file": "client/test/expense-decisions.spec.ts",
+        "line": 102,
+        "title": "T-F04-05/T-F05-06/T-F06-04: return, saved correction, resubmit and final readback update the DB summary",
+        "status": "passed",
+        "durationMs": 1884
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 196,
+        "title": "T-F05-07 keeps latest values and the conflicted draft separate after real stale Save",
+        "status": "passed",
+        "durationMs": 653
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 218,
+        "title": "T-F05-08a Restore keeps the latest untouched category and waits for manual Save",
+        "status": "passed",
+        "durationMs": 699
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 218,
+        "title": "T-F05-08a Restore keeps the latest untouched amount and waits for manual Save",
+        "status": "passed",
+        "durationMs": 743
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 252,
+        "title": "T-F05-08b Discard keeps latest saved fields and performs no mutation",
+        "status": "passed",
+        "durationMs": 667
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 272,
+        "title": "T-F05-09a shows read-only draft when the latest state is SUBMITTED",
+        "status": "passed",
+        "durationMs": 728
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 272,
+        "title": "T-F05-09a shows read-only draft when the latest state is APPROVED",
+        "status": "passed",
+        "durationMs": 702
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 305,
+        "title": "T-F05-09a revoked owner session cannot read or recover the stale draft",
+        "status": "passed",
+        "durationMs": 1025
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 343,
+        "title": "T-F05-09a real access denial clears an established draft without ending the account session",
+        "status": "passed",
+        "durationMs": 1183
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 401,
+        "title": "T-F05-09b keeps a draft only for its request and clears it when the account changes",
+        "status": "passed",
+        "durationMs": 1299
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 435,
+        "title": "T-F05-09b warns about reload and clears the draft on page reload",
+        "status": "passed",
+        "durationMs": 816
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 450,
+        "title": "T-F05-10a a failed refresh retains the draft and deliberate retry makes only reads",
+        "status": "passed",
+        "durationMs": 645
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 491,
+        "title": "T-F05-10b a second stale Save retains the new attempt and the newer database revision",
+        "status": "passed",
+        "durationMs": 811
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 519,
+        "title": "T-F05-11a Save transport error retains state and identifies the failed action",
+        "status": "passed",
+        "durationMs": 706
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 519,
+        "title": "T-F05-11b Resubmit transport error retains state and identifies the failed action",
+        "status": "passed",
+        "durationMs": 716
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 629,
+        "title": "BF-01 AC-F05-08/09 same-value Restore clears the clean draft before explicit Resubmit",
+        "status": "passed",
+        "durationMs": 801
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 644,
+        "title": "BF-01 AC-F05-08/09 reverting a dirty restored draft clears it before explicit Resubmit",
+        "status": "passed",
+        "durationMs": 860
+      }
+    ],
+    "workers": 1,
+    "retries": [
+      0
+    ],
+    "imageVersions": {
+      "prisma": "6.19.3",
+      "client": "6.19.3",
+      "deepmerge": "8.0.0",
+      "effect": "3.22.1"
+    },
+    "imageSmoke": {
+      "http": 200,
+      "login": 200,
+      "currentRequester": 200,
+      "emptyOwnedList": 200,
+      "create": 201,
+      "detail": 200,
+      "logout": 204,
+      "revokedSession": 401,
+      "realMigration": true,
+      "realSeed": true
+    },
+    "cleanup": {
+      "generatedLegacyScreenshotsRemoved": [
+        "docs/evidence/deliverable-2/return-summary.png",
+        "docs/evidence/deliverable-2/resubmitted-final-history.png"
+      ],
+      "rows": {
+        "users": 0,
+        "sessions": 0,
+        "requests": 0,
+        "events": 0
+      },
+      "imageConnectionsZero": true,
+      "ownedBuildImageRemoved": true,
+      "temporarySecretAndRawReportRemoved": true,
+      "disposableContainerAndVolumeRemoved": true,
+      "originalContainersUnchanged": true,
+      "originalEnvFilesUnchanged": true,
+      "originalAndIsolatedGitTreesClean": true,
+      "listener4173Closed": true,
+      "isolatedCheckoutRemoved": true
+    }
+  },
+  "populatedUpgrade": {
+    "startedAt": "2026-11-25T16:51:27.446Z",
+    "finishedAt": "2026-11-25T16:52:16.214Z",
+    "baseline": "43aa8d7472aa8852654d0d634d7239c3765c5869",
+    "candidate": "a6c93abd350b9926cb51ff287339cd4d02ff2013",
+    "dependencies": {
+      "prisma": "6.19.3",
+      "client": "6.19.3",
+      "overrides": {
+        "@prisma/config@6.19.3": {
+          "deepmerge-ts": "8.0.0",
+          "effect": "3.22.1"
+        }
+      }
+    },
+    "commands": [
+      {
+        "id": "01-original-head",
+        "startedAt": "2026-11-25T16:51:27.448Z",
+        "command": "git.exe rev-parse HEAD",
+        "exit": 0,
+        "elapsedMs": 85,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "01-original-status",
+        "startedAt": "2026-11-25T16:51:27.535Z",
+        "command": "git.exe status --porcelain=v1",
+        "exit": 0,
+        "elapsedMs": 50,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "01-node",
+        "startedAt": "2026-11-25T16:51:27.585Z",
+        "command": "node.exe --version",
+        "exit": 0,
+        "elapsedMs": 48,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "01-npm",
+        "startedAt": "2026-11-25T16:51:27.634Z",
+        "command": "npm.cmd --version",
+        "exit": 0,
+        "elapsedMs": 384,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "01-containers-before",
+        "startedAt": "2026-11-25T16:51:28.019Z",
+        "command": "docker.exe --context desktop-linux ps -a --format {{.ID}}|{{.Names}}|{{.State}}",
+        "exit": 0,
+        "elapsedMs": 189,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "02-clone-candidate",
+        "startedAt": "2026-11-25T16:51:28.209Z",
+        "command": "git.exe clone --no-local -- [candidate-checkout] [temporary-checkout]",
+        "exit": 0,
+        "elapsedMs": 407,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "02-candidate-fetch",
+        "startedAt": "2026-11-25T16:51:28.617Z",
+        "command": "git.exe fetch [candidate-checkout] a6c93abd350b9926cb51ff287339cd4d02ff2013",
+        "exit": 0,
+        "elapsedMs": 162,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "02-candidate-checkout",
+        "startedAt": "2026-11-25T16:51:28.779Z",
+        "command": "git.exe checkout --detach a6c93abd350b9926cb51ff287339cd4d02ff2013",
+        "exit": 0,
+        "elapsedMs": 68,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "02-candidate-sha",
+        "startedAt": "2026-11-25T16:51:28.848Z",
+        "command": "git.exe rev-parse HEAD",
+        "exit": 0,
+        "elapsedMs": 66,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "02-clone-baseline",
+        "startedAt": "2026-11-25T16:51:28.918Z",
+        "command": "git.exe clone --no-local -- [candidate-checkout] [temporary-checkout]",
+        "exit": 0,
+        "elapsedMs": 377,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "02-baseline-fetch",
+        "startedAt": "2026-11-25T16:51:29.297Z",
+        "command": "git.exe fetch [candidate-checkout] 43aa8d7472aa8852654d0d634d7239c3765c5869",
+        "exit": 0,
+        "elapsedMs": 218,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "02-baseline-checkout",
+        "startedAt": "2026-11-25T16:51:29.515Z",
+        "command": "git.exe checkout --detach 43aa8d7472aa8852654d0d634d7239c3765c5869",
+        "exit": 0,
+        "elapsedMs": 151,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "02-baseline-sha",
+        "startedAt": "2026-11-25T16:51:29.666Z",
+        "command": "git.exe rev-parse HEAD",
+        "exit": 0,
+        "elapsedMs": 60,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "03-baseline-ci",
+        "startedAt": "2026-11-25T16:51:29.727Z",
+        "command": "npm.cmd ci",
+        "exit": 0,
+        "elapsedMs": 14097,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "03-baseline-build",
+        "startedAt": "2026-11-25T16:51:43.825Z",
+        "command": "npm.cmd run build",
+        "exit": 0,
+        "elapsedMs": 4523,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "03-candidate-ci",
+        "startedAt": "2026-11-25T16:51:48.349Z",
+        "command": "npm.cmd ci",
+        "exit": 0,
+        "elapsedMs": 12373,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "03-candidate-build",
+        "startedAt": "2026-11-25T16:52:00.724Z",
+        "command": "npm.cmd run build",
+        "exit": 0,
+        "elapsedMs": 5200,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "04-create",
+        "startedAt": "2026-11-25T16:52:05.926Z",
+        "command": "docker.exe --context desktop-linux run -d --name upgrade-ab4fe327f171 --label upgrade.owner=upgrade-ab4fe327f171 --env-file C:\\Users\\ACER\\AppData\\Local\\Temp\\f05-lifecycle-8GYhTa\\pg.env -p 127.0.0.1::5432 postgres:17-bookworm",
+        "exit": 0,
+        "elapsedMs": 326,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "04-volumes",
+        "startedAt": "2026-11-25T16:52:06.253Z",
+        "command": "docker.exe --context desktop-linux inspect --format {{range .Mounts}}{{if eq .Type \"volume\"}}{{println .Name}}{{end}}{{end}} 52ea151fb9c0b3142236e0214d47ccd06d4ca171936ebea4f93a611c01fd2166",
+        "exit": 0,
+        "elapsedMs": 82,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "04-binding",
+        "startedAt": "2026-11-25T16:52:06.336Z",
+        "command": "docker.exe --context desktop-linux port 52ea151fb9c0b3142236e0214d47ccd06d4ca171936ebea4f93a611c01fd2166 5432/tcp",
+        "exit": 0,
+        "elapsedMs": 87,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "04-readiness-0",
+        "startedAt": "2026-11-25T16:52:06.423Z",
+        "command": "docker.exe --context desktop-linux exec 52ea151fb9c0b3142236e0214d47ccd06d4ca171936ebea4f93a611c01fd2166 pg_isready -U test_upgrade_ab4fe327f171 -d test_upgrade_ab4fe327f171",
+        "exit": 2,
+        "elapsedMs": 152,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "04-readiness-1",
+        "startedAt": "2026-11-25T16:52:07.580Z",
+        "command": "docker.exe --context desktop-linux exec 52ea151fb9c0b3142236e0214d47ccd06d4ca171936ebea4f93a611c01fd2166 pg_isready -U test_upgrade_ab4fe327f171 -d test_upgrade_ab4fe327f171",
+        "exit": 0,
+        "elapsedMs": 152,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "04-identity",
+        "startedAt": "2026-11-25T16:52:07.735Z",
+        "command": "docker.exe --context desktop-linux exec 52ea151fb9c0b3142236e0214d47ccd06d4ca171936ebea4f93a611c01fd2166 psql -U test_upgrade_ab4fe327f171 -d test_upgrade_ab4fe327f171 -At -c select current_database(),current_user,current_schema(),(select count(*) from information_schema.tables where table_schema='public'),current_setting('server_version');",
+        "exit": 0,
+        "elapsedMs": 160,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "05-baseline-migrate",
+        "startedAt": "2026-11-25T16:52:07.896Z",
+        "command": "npm.cmd run db:migrate",
+        "exit": 0,
+        "elapsedMs": 1775,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "05-baseline-fixtures",
+        "startedAt": "2026-11-25T16:52:09.672Z",
+        "command": "node populated-upgrade-worker.mjs baseline",
+        "exit": 0,
+        "elapsedMs": 702,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-candidate-migrate",
+        "startedAt": "2026-11-25T16:52:10.375Z",
+        "command": "npm.cmd run db:migrate",
+        "exit": 0,
+        "elapsedMs": 1759,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-candidate-verification",
+        "startedAt": "2026-11-25T16:52:12.135Z",
+        "command": "node populated-upgrade-worker.mjs candidate",
+        "exit": 0,
+        "elapsedMs": 1021,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "06-migrations",
+        "startedAt": "2026-11-25T16:52:13.157Z",
+        "command": "docker.exe --context desktop-linux exec 52ea151fb9c0b3142236e0214d47ccd06d4ca171936ebea4f93a611c01fd2166 psql -U test_upgrade_ab4fe327f171 -d test_upgrade_ab4fe327f171 -At -c select migration_name from \"_prisma_migrations\" where finished_at is not null order by migration_name;",
+        "exit": 0,
+        "elapsedMs": 184,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "07-final-rows",
+        "startedAt": "2026-11-25T16:52:13.343Z",
+        "command": "docker.exe --context desktop-linux exec 52ea151fb9c0b3142236e0214d47ccd06d4ca171936ebea4f93a611c01fd2166 psql -U test_upgrade_ab4fe327f171 -d test_upgrade_ab4fe327f171 -At -c select (select count(*) from \"User\"),(select count(*) from \"ExpenseRequest\"),(select count(*) from \"RequestEvent\");",
+        "exit": 0,
+        "elapsedMs": 173,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "08-client-absence",
+        "startedAt": "2026-11-25T16:52:13.516Z",
+        "command": "docker.exe --context desktop-linux exec 52ea151fb9c0b3142236e0214d47ccd06d4ca171936ebea4f93a611c01fd2166 psql -U test_upgrade_ab4fe327f171 -d test_upgrade_ab4fe327f171 -At -c select count(*) from pg_stat_activity where datname=current_database() and pid<>pg_backend_pid() and backend_type='client backend';",
+        "exit": 0,
+        "elapsedMs": 193,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "08-ownership",
+        "startedAt": "2026-11-25T16:52:13.710Z",
+        "command": "docker.exe --context desktop-linux inspect --format {{index .Config.Labels \"upgrade.owner\"}} 52ea151fb9c0b3142236e0214d47ccd06d4ca171936ebea4f93a611c01fd2166",
+        "exit": 0,
+        "elapsedMs": 111,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "08-remove",
+        "startedAt": "2026-11-25T16:52:13.821Z",
+        "command": "docker.exe --context desktop-linux rm -fv 52ea151fb9c0b3142236e0214d47ccd06d4ca171936ebea4f93a611c01fd2166",
+        "exit": 0,
+        "elapsedMs": 459,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "08-container-absence",
+        "startedAt": "2026-11-25T16:52:14.281Z",
+        "command": "docker.exe --context desktop-linux ps -aq --filter label=upgrade.owner=upgrade-ab4fe327f171",
+        "exit": 0,
+        "elapsedMs": 89,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "08-volume-absence",
+        "startedAt": "2026-11-25T16:52:14.371Z",
+        "command": "docker.exe --context desktop-linux volume ls -q",
+        "exit": 0,
+        "elapsedMs": 85,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "08-original-containers",
+        "startedAt": "2026-11-25T16:52:14.457Z",
+        "command": "docker.exe --context desktop-linux ps -a --format {{.ID}}|{{.Names}}|{{.State}}",
+        "exit": 0,
+        "elapsedMs": 140,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "08-original-head",
+        "startedAt": "2026-11-25T16:52:14.598Z",
+        "command": "git.exe rev-parse HEAD",
+        "exit": 0,
+        "elapsedMs": 45,
+        "signal": null,
+        "spawnError": null
+      },
+      {
+        "id": "08-original-status",
+        "startedAt": "2026-11-25T16:52:14.643Z",
+        "command": "git.exe status --porcelain=v1",
+        "exit": 0,
+        "elapsedMs": 62,
+        "signal": null,
+        "spawnError": null
+      }
+    ],
+    "baselineOutcome": {
+      "mode": "baseline",
+      "result": "PASS",
+      "checks": [
+        "Sprint 1 real login/submit/approve/reject created 3 requests and 5 events"
+      ],
+      "requests": 3,
+      "events": 5
+    },
+    "candidateOutcome": {
+      "mode": "candidate",
+      "result": "PASS",
+      "checks": [
+        "Immediate migration preservation exact, all 3 revisions backfilled to zero",
+        "Candidate owner and assigned reviewer list/detail/history retain all legacy data",
+        "Authorized legacy reads preserve domain",
+        "Anonymous/role/ownership/terminal denials preserve exact domain",
+        "Legacy SUBMITTED completes real Return/Edit/Resubmit/Decide with same ID, 4 new events and preserved earlier history",
+        "New Express listener and Prisma client read exact final records/history after restart"
+      ],
+      "requests": 3,
+      "events": 9
+    },
+    "target": {
+      "dedicatedOwnedContainer": true,
+      "loopback": true,
+      "distinctFromExisting": true,
+      "schema": "public",
+      "initialTables": 0,
+      "postgres": "17.12 (Debian 17.12-1.pgdg12+1)"
+    },
+    "migrations": [
+      "20261106000000_auth_foundation",
+      "20261107000000_expense_requests",
+      "20261124000000_return_resubmit"
+    ],
+    "finalRows": "4|3|9",
+    "verdict": "PASS",
+    "cleanup": {
+      "noRemainingDatabaseClients": true,
+      "ownedContainerVolumeRemoved": true,
+      "originalContainersUnchanged": true,
+      "originalEnvironmentUnchanged": true,
+      "originalCheckoutPreserved": true,
+      "ownedTempRemoved": true
+    }
+  }
+}
