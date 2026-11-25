@@ -1,0 +1,530 @@
+{
+  "source": "ffefb2da0c812f5dee17309cefcfd3e01b30313e",
+  "redEvidence": "0a006d364ce0a73fb6877822faeb3818a985df7e",
+  "redTests": "1667ec2877ba926ad9ca902de50947c14037bf4a",
+  "runtime": {
+    "windowsKernel": "10.0.26200.0",
+    "node": "v24.14.0",
+    "npm": "11.9.0",
+    "dockerClientServer": "29.9.3 29.9.3",
+    "chromium": "151.0.7922.34",
+    "playwright": "1.62.1",
+    "prisma": "6.19.3",
+    "postgres": "17.12 (Debian 17.12-1.pgdg12+1)"
+  },
+  "attempts": [
+    {
+      "id": "G1-focused",
+      "mode": "focused with pending UI patch",
+      "revision": "0a006d364ce0a73fb6877822faeb3818a985df7e",
+      "pendingUiSha256": "afbbf4f6a18c16f193640ef9292954dd22d1efa7d45e7311726ba3c056dcee56",
+      "startedAt": "2026-11-25T04:47:47.010Z",
+      "finishedAt": "2026-11-25T04:48:06.238Z",
+      "commands": [
+        {
+          "command": "npm.cmd ci",
+          "startedAt": "2026-11-25T04:47:48.476Z",
+          "exit": 0,
+          "elapsedMs": 14324,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd exec -- tsc --noEmit",
+          "startedAt": "2026-11-25T04:48:02.801Z",
+          "exit": 2,
+          "elapsedMs": 3213,
+          "signal": null,
+          "spawnError": null
+        }
+      ],
+      "browser": null,
+      "browserFailures": []
+    },
+    {
+      "id": "G2-focused",
+      "mode": "focused with pending UI patch",
+      "revision": "0a006d364ce0a73fb6877822faeb3818a985df7e",
+      "pendingUiSha256": "b1e61ea8fe671e7a676df62acb08f487b14960d8681321fb2b80e737768bbc82",
+      "startedAt": "2026-11-25T04:48:36.430Z",
+      "finishedAt": "2026-11-25T04:49:58.855Z",
+      "commands": [
+        {
+          "command": "npm.cmd ci",
+          "startedAt": "2026-11-25T04:48:37.749Z",
+          "exit": 0,
+          "elapsedMs": 13636,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd exec -- tsc --noEmit",
+          "startedAt": "2026-11-25T04:48:51.386Z",
+          "exit": 0,
+          "elapsedMs": 3087,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd exec -- playwright install chromium",
+          "startedAt": "2026-11-25T04:48:54.474Z",
+          "exit": 0,
+          "elapsedMs": 1531,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd run db:migrate",
+          "startedAt": "2026-11-25T04:48:59.075Z",
+          "exit": 0,
+          "elapsedMs": 1685,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd run test:e2e -- client/test/f05-draft-recovery.spec.ts --reporter=list,json",
+          "startedAt": "2026-11-25T04:49:00.761Z",
+          "exit": 1,
+          "elapsedMs": 57026,
+          "signal": null,
+          "spawnError": null
+        }
+      ],
+      "browser": {
+        "collected": 14,
+        "executed": 14,
+        "passed": 12,
+        "failed": 2,
+        "skipped": 0
+      },
+      "browserFailures": [
+        {
+          "title": "T-F05-07 keeps latest values and the conflicted draft separate after real stale Save",
+          "outcome": "failed"
+        },
+        {
+          "title": "T-F05-09a real access denial clears an established draft without ending the account session",
+          "outcome": "timedOut"
+        }
+      ]
+    },
+    {
+      "id": "G3-denial-diagnostic",
+      "mode": "pending UI with temporary test-local observation in isolated checkout",
+      "revision": "0a006d364ce0a73fb6877822faeb3818a985df7e",
+      "pendingUiSha256": "b1e61ea8fe671e7a676df62acb08f487b14960d8681321fb2b80e737768bbc82",
+      "startedAt": "2026-11-25T04:50:47.563Z",
+      "finishedAt": "2026-11-25T04:51:53.784Z",
+      "commands": [
+        {
+          "command": "npm.cmd ci",
+          "startedAt": "2026-11-25T04:50:48.752Z",
+          "exit": 0,
+          "elapsedMs": 13780,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd exec -- tsc --noEmit",
+          "startedAt": "2026-11-25T04:51:02.534Z",
+          "exit": 0,
+          "elapsedMs": 3513,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd exec -- playwright install chromium",
+          "startedAt": "2026-11-25T04:51:06.048Z",
+          "exit": 0,
+          "elapsedMs": 1834,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd run db:migrate",
+          "startedAt": "2026-11-25T04:51:10.538Z",
+          "exit": 0,
+          "elapsedMs": 1814,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd run test:e2e -- client/test/f05-draft-recovery.spec.ts --reporter=list,json --grep established",
+          "startedAt": "2026-11-25T04:51:12.353Z",
+          "exit": 1,
+          "elapsedMs": 40481,
+          "signal": null,
+          "spawnError": null
+        }
+      ],
+      "browser": {
+        "collected": 1,
+        "executed": 1,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0
+      },
+      "browserFailures": [
+        {
+          "title": "T-F05-09a real access denial clears an established draft without ending the account session",
+          "outcome": "timedOut"
+        }
+      ]
+    },
+    {
+      "id": "G4-focused",
+      "mode": "focused with pending UI patch",
+      "revision": "0a006d364ce0a73fb6877822faeb3818a985df7e",
+      "pendingUiSha256": "18290f77d56e358f3a7fb1898f18cd0c4fc0395560c27a3223c33a7fa0636161",
+      "startedAt": "2026-11-25T04:53:17.838Z",
+      "finishedAt": "2026-11-25T04:54:20.478Z",
+      "commands": [
+        {
+          "command": "npm.cmd ci",
+          "startedAt": "2026-11-25T04:53:19.240Z",
+          "exit": 0,
+          "elapsedMs": 14951,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd exec -- tsc --noEmit",
+          "startedAt": "2026-11-25T04:53:34.191Z",
+          "exit": 0,
+          "elapsedMs": 8726,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd exec -- playwright install chromium",
+          "startedAt": "2026-11-25T04:53:42.918Z",
+          "exit": 0,
+          "elapsedMs": 4284,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd run db:migrate",
+          "startedAt": "2026-11-25T04:53:51.868Z",
+          "exit": 0,
+          "elapsedMs": 2163,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd run test:e2e -- client/test/f05-draft-recovery.spec.ts --reporter=list,json",
+          "startedAt": "2026-11-25T04:53:54.033Z",
+          "exit": 0,
+          "elapsedMs": 25385,
+          "signal": null,
+          "spawnError": null
+        }
+      ],
+      "browser": {
+        "collected": 14,
+        "executed": 14,
+        "passed": 14,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserFailures": []
+    },
+    {
+      "id": "G5-source-confirmation",
+      "mode": "clean commit confirmation",
+      "revision": "ffefb2da0c812f5dee17309cefcfd3e01b30313e",
+      "pendingUiSha256": null,
+      "startedAt": "2026-11-25T04:56:07.459Z",
+      "finishedAt": "2026-11-25T04:57:30.286Z",
+      "commands": [
+        {
+          "command": "npm.cmd ci",
+          "startedAt": "2026-11-25T04:56:08.832Z",
+          "exit": 0,
+          "elapsedMs": 14730,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd exec -- tsc --noEmit",
+          "startedAt": "2026-11-25T04:56:23.564Z",
+          "exit": 0,
+          "elapsedMs": 4651,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd exec -- playwright install chromium",
+          "startedAt": "2026-11-25T04:56:28.217Z",
+          "exit": 0,
+          "elapsedMs": 2075,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd run db:migrate",
+          "startedAt": "2026-11-25T04:56:33.058Z",
+          "exit": 0,
+          "elapsedMs": 1852,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd run build",
+          "startedAt": "2026-11-25T04:56:34.910Z",
+          "exit": 0,
+          "elapsedMs": 4836,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd test",
+          "startedAt": "2026-11-25T04:56:39.748Z",
+          "exit": 0,
+          "elapsedMs": 4053,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "npm.cmd run test:e2e -- --reporter=list,json",
+          "startedAt": "2026-11-25T04:56:43.804Z",
+          "exit": 0,
+          "elapsedMs": 29955,
+          "signal": null,
+          "spawnError": null
+        },
+        {
+          "command": "docker.exe --context desktop-linux build -t club-expense-approval:f05-lifecycle-208e6df416 .",
+          "startedAt": "2026-11-25T04:57:14.061Z",
+          "exit": 0,
+          "elapsedMs": 14247,
+          "signal": null,
+          "spawnError": null
+        }
+      ],
+      "browser": {
+        "collected": 17,
+        "executed": 17,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserFailures": []
+    }
+  ],
+  "sourceConfirmation": {
+    "unitApi": {
+      "tests": 47,
+      "pass": 47,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 3521.5376
+    },
+    "browser": {
+      "collected": 17,
+      "executed": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    },
+    "playwrightMs": 28907,
+    "browserFiles": [
+      "client/test/expense-decisions.spec.ts",
+      "client/test/f05-draft-recovery.spec.ts"
+    ],
+    "browserCases": [
+      {
+        "file": "client/test/expense-decisions.spec.ts",
+        "line": 50,
+        "title": "T-09: requester submits, reviewer approves or rejects, and requester reads both outcomes",
+        "status": "passed",
+        "durationMs": 1781
+      },
+      {
+        "file": "client/test/expense-decisions.spec.ts",
+        "line": 79,
+        "title": "reviewer reloads the latest status after a stale decision returns 409",
+        "status": "passed",
+        "durationMs": 808
+      },
+      {
+        "file": "client/test/expense-decisions.spec.ts",
+        "line": 102,
+        "title": "T-F04-05/T-F05-06/T-F06-04: return, saved correction, resubmit and final readback update the DB summary",
+        "status": "passed",
+        "durationMs": 2178
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 196,
+        "title": "T-F05-07 keeps latest values and the conflicted draft separate after real stale Save",
+        "status": "passed",
+        "durationMs": 840
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 218,
+        "title": "T-F05-08a Restore keeps the latest untouched category and waits for manual Save",
+        "status": "passed",
+        "durationMs": 877
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 218,
+        "title": "T-F05-08a Restore keeps the latest untouched amount and waits for manual Save",
+        "status": "passed",
+        "durationMs": 919
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 252,
+        "title": "T-F05-08b Discard keeps latest saved fields and performs no mutation",
+        "status": "passed",
+        "durationMs": 864
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 272,
+        "title": "T-F05-09a shows read-only draft when the latest state is SUBMITTED",
+        "status": "passed",
+        "durationMs": 977
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 272,
+        "title": "T-F05-09a shows read-only draft when the latest state is APPROVED",
+        "status": "passed",
+        "durationMs": 879
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 305,
+        "title": "T-F05-09a revoked owner session cannot read or recover the stale draft",
+        "status": "passed",
+        "durationMs": 1030
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 343,
+        "title": "T-F05-09a real access denial clears an established draft without ending the account session",
+        "status": "passed",
+        "durationMs": 1238
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 401,
+        "title": "T-F05-09b keeps a draft only for its request and clears it when the account changes",
+        "status": "passed",
+        "durationMs": 1475
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 435,
+        "title": "T-F05-09b warns about reload and clears the draft on page reload",
+        "status": "passed",
+        "durationMs": 876
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 450,
+        "title": "T-F05-10a a failed refresh retains the draft and deliberate retry makes only reads",
+        "status": "passed",
+        "durationMs": 954
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 491,
+        "title": "T-F05-10b a second stale Save retains the new attempt and the newer database revision",
+        "status": "passed",
+        "durationMs": 896
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 519,
+        "title": "T-F05-11a Save transport error retains state and identifies the failed action",
+        "status": "passed",
+        "durationMs": 749
+      },
+      {
+        "file": "client/test/f05-draft-recovery.spec.ts",
+        "line": 519,
+        "title": "T-F05-11b Resubmit transport error retains state and identifies the failed action",
+        "status": "passed",
+        "durationMs": 756
+      }
+    ]
+  },
+  "disposal": {
+    "guard": {
+      "version": "17.12 (Debian 17.12-1.pgdg12+1)",
+      "schema": "public",
+      "initialTables": 0,
+      "loopback": true,
+      "distinctFromLocalTargets": true
+    },
+    "cleanup": {
+      "generatedLegacyScreenshotsRemoved": [
+        "docs/evidence/deliverable-2/return-summary.png",
+        "docs/evidence/deliverable-2/resubmitted-final-history.png"
+      ],
+      "rows": {
+        "users": 0,
+        "sessions": 0,
+        "requests": 0,
+        "events": 0
+      },
+      "ownedBuildImageRemoved": true,
+      "temporarySecretAndRawReportRemoved": true,
+      "disposableContainerAndVolumeRemoved": true,
+      "originalContainersUnchanged": true,
+      "originalEnvFilesUnchanged": true,
+      "originalAndIsolatedGitTreesClean": true,
+      "listener4173Closed": true,
+      "isolatedCheckoutRemoved": true
+    }
+  },
+  "outputExcerpts": {
+    "g1TypeScript": [
+      "client/src/expense-requests.tsx(304,46): error TS18048: 'draft' is possibly 'undefined'."
+    ],
+    "g2Browser": [
+      "Expected pattern: /revision\\s*:?\\s*2\\b/i",
+      "Received string:  \"Latest saved valuesStatus: RETURNED · Revision: 2TitleNewer saved training titleCategoryTravelAmount (baht)500\"",
+      "Test timeout of 30000ms exceeded."
+    ],
+    "g3Diagnostic": [
+      "denial observer response 404 target",
+      "denial observer: wait resolved 404",
+      "Test timeout of 30000ms exceeded.",
+      "{\"id\":\"05-focused\",\"startedAt\":\"2026-11-25T04:51:12.353Z\",\"command\":\"npm.cmd run test:e2e -- client/test/f05-draft-recovery.spec.ts --reporter=list,json --grep established\",\"exit\":1,\"elapsedMs\":40481,\"signal\":null,\"spawnError\":null}"
+    ],
+    "g5UnitApi": [
+      "ℹ tests 47",
+      "ℹ pass 47",
+      "ℹ fail 0",
+      "ℹ cancelled 0",
+      "ℹ skipped 0",
+      "ℹ todo 0",
+      "ℹ duration_ms 3521.5376"
+    ],
+    "g5Browser": [
+      "Running 17 tests using 1 worker",
+      "17 passed (28.9s)",
+      "[WebServer] (node) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.",
+      "(node) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set."
+    ],
+    "g5Build": [
+      "vite v7.3.7 building client environment for production...",
+      "✓ built in 732ms"
+    ],
+    "g5Docker": [
+      "#21 naming to docker.io/library/club-expense-approval:f05-lifecycle-208e6df416 done"
+    ],
+    "g5Install": [
+      "✔ Generated Prisma Client (v6.19.3) to .\\node_modules\\@prisma\\client in 67ms",
+      "4 high severity vulnerabilities"
+    ]
+  }
+}
