@@ -574,3 +574,92 @@ for (const action of ["Save", "Resubmit"] as const) {
     );
   });
 }
+
+async function expectRecoveryCleared(page: Page, stage: string) {
+  await expect.configure({ soft: true }).poll(async () => ({
+    draft: await draft(page).count(),
+    latest: await latest(page).count(),
+    restore: await restore(page).count(),
+    discard: await discard(page).count(),
+    warning: await reloadWarning(page).count(),
+    recoveryReadOnly: await page.getByText("This request is read-only.", { exact: true }).count(),
+  }), { message: stage + " clears the recovery UI for a clean request" }).toEqual({
+    draft: 0, latest: 0, restore: 0, discard: 0, warning: 0, recoveryReadOnly: 0,
+  });
+}
+
+async function resubmitCleanDraft(
+  page: Page, { before, saved, writes }: Awaited<ReturnType<typeof triggerConflict>>,
+) {
+  await expect(titleField(page)).toHaveValue(saved.title);
+  await expect(categoryField(page)).toHaveValue(saved.category);
+  await expect(amountField(page)).toHaveValue(String(saved.amountBaht));
+  await expect(save(page)).toBeDisabled();
+  await expect(resubmit(page)).toBeEnabled();
+  await expectRecoveryCleared(page, "Before Resubmit");
+  expect(writes, "clearing the clean draft did not write").toHaveLength(1);
+  expect(await snapshot(saved.id), "cleaning the draft preserved fields, revision and history").toEqual(before);
+
+  const suffix = "/" + saved.id + "/resubmit";
+  const response = page.waitForResponse(r => responseMatches(r, endpoint + suffix, "POST"));
+  await resubmit(page).click();
+  const result = await response;
+  expect(result.status(), "explicit Resubmit succeeds using the latest revision").toBe(200);
+  expect(await result.json()).toMatchObject({
+    id: saved.id, title: saved.title, category: saved.category, amountBaht: saved.amountBaht,
+    status: "SUBMITTED", revision: saved.revision + 1,
+  });
+  await expect(detail(page)).toContainText("SUBMITTED");
+  await expect(save(page)).toHaveCount(0);
+  await expect(resubmit(page)).toHaveCount(0);
+  await expectRecoveryCleared(page, "After Resubmit");
+
+  expect(writes.slice(1)).toEqual([
+    { method: "POST", suffix, body: { expectedRevision: saved.revision } },
+  ]);
+  const after = await snapshot(saved.id);
+  expect(after).toMatchObject({
+    id: saved.id, title: saved.title, category: saved.category, amountBaht: saved.amountBaht,
+    status: "SUBMITTED", revision: saved.revision + 1,
+  });
+  expect(after.events.slice(0, before.events.length)).toEqual(before.events);
+  expect(after.events.slice(before.events.length).map(({ type }) => type)).toEqual(["RESUBMITTED"]);
+}
+
+test("BF-01 AC-F05-08/09 same-value Restore clears the clean draft before explicit Resubmit", async ({ page, sessions }) => {
+  const item = await createReturned(sessions.owner, sessions.reviewer);
+  await login(page);
+  await openReturned(page, item);
+  const conflict = await triggerConflict(
+    page, sessions.owner, item, { ...startFields, title: draftTitle, category: "TRAVEL" }, { title: draftTitle },
+  );
+  await expect(draft(page)).toContainText(draftTitle);
+  await expect(latest(page)).toContainText("Travel");
+  await expect(detail(page).getByText("Title conflict", { exact: true })).toHaveCount(0);
+
+  await restore(page).click();
+  await resubmitCleanDraft(page, conflict);
+});
+
+test("BF-01 AC-F05-08/09 reverting a dirty restored draft clears it before explicit Resubmit", async ({ page, sessions }) => {
+  const item = await createReturned(sessions.owner, sessions.reviewer);
+  await login(page);
+  await openReturned(page, item);
+  const conflict = await triggerConflict(
+    page, sessions.owner, item, { ...startFields, title: parallelTitle, category: "TRAVEL" }, { title: draftTitle },
+  );
+  await expect(draft(page)).toContainText(draftTitle);
+
+  await restore(page).click();
+  await expect(titleField(page)).toHaveValue(draftTitle);
+  await expect(categoryField(page)).toHaveValue(conflict.saved.category);
+  await expect(save(page)).toBeEnabled();
+  await expect(resubmit(page)).toBeDisabled();
+  await expect(discard(page)).toBeVisible();
+  await expect(reloadWarning(page)).toBeVisible();
+  expect(conflict.writes, "Restore of a dirty draft did not write").toHaveLength(1);
+  expect(await snapshot(item.id)).toEqual(conflict.before);
+
+  await titleField(page).fill(conflict.saved.title);
+  await resubmitCleanDraft(page, conflict);
+});
