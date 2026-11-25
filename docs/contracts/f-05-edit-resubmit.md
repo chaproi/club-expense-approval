@@ -43,7 +43,9 @@ Original Sprint 1 AC-04/T-04 PATCH404 meant no edit endpoint existed. From this 
 
 ### v1.1 draft-recovery AC and system test specifications
 
-All five criteria below are **Planned / unexecuted**. The staging observation establishes the existing behavior and retains its original provenance.
+The table preserves the **Planned / unexecuted** design checkpoint from [`cda5069`](https://github.com/chaproi/club-expense-approval/commit/cda506993dbab0b15af1bd70c96265b69117ef6a). The staging observation retains its original provenance.
+
+Draft recovery for [Issue #42](https://github.com/chaproi/club-expense-approval/issues/42) is implemented and tested PASS at [`ffefb2d`](https://github.com/chaproi/club-expense-approval/commit/ffefb2da0c812f5dee17309cefcfd3e01b30313e). See [executed AC and test mapping](../traceability.md#f-05-v11-executed-verification) and [GREEN evidence](../evidence/deliverable-2/f05-draft-recovery-green.md). Independent peer review, integration and deployment acceptance remain pending.
 
 | AC | Observable outcome | STS (planned) | Status |
 |---|---|---|---|
