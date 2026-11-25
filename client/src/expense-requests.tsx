@@ -136,14 +136,20 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
     onRefresh();
   }
 
+  function stageRestoredDraft(saved: Expense, next: EditValues) {
+    const staged = captureDraft(saved, next, true);
+    const hasChanges = staged.changedFields.length > 0;
+    setEditValues(hasChanges ? next : null);
+    updateDraft(hasChanges ? staged : undefined);
+  }
+
   function restoreDraft() {
     if (!detail || detail.status !== "RETURNED" || !current || !draft) return;
     const next = { ...current };
     for (const field of draft.changedFields) {
       Object.assign(next, { [field]: draft.values[field] });
     }
-    setEditValues(next);
-    updateDraft(captureDraft(detail, next, true));
+    stageRestoredDraft(detail, next);
     setMutationError("");
   }
 
@@ -155,8 +161,8 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
 
   function changeEdit(next: EditValues) {
     setSaveNotice("");
-    setEditValues(next);
-    if (detail && draft?.restored) updateDraft(captureDraft(detail, next, true));
+    if (detail && draft?.restored) stageRestoredDraft(detail, next);
+    else setEditValues(next);
   }
 
   async function mutate(action: keyof typeof mutations, body: object, attempted?: Draft) {
@@ -190,10 +196,8 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
       }
       setDetail(data);
       setEditValues(null);
-      if (action === "save") {
-        updateDraft();
-        setSaveNotice("Changes saved.");
-      }
+      if (action === "save" || action === "resubmit") updateDraft();
+      if (action === "save") setSaveNotice("Changes saved.");
       onRefresh();
     } catch {
       setMutationError(action === "decision" ? operation.error : operation.error + " Try again.");
