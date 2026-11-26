@@ -1,5 +1,7 @@
 # Lab 6: incoming UAT triage and correction
 
+**Historical correction checkpoint preserved.** Later independent retest/acceptance is now reconciled in [Lab 6 status](retest-status-2026-11-26.md): #30/#31 resolved on release43aa8d7, revision00007-9wq, Accepted with documented minor limitations by TH-033_P3 on22Nov. Original Pending/Conditional statements and checkboxes below describe the earlier checkpoint only. They do not create an additional external acceptance requirement for D2.
+
 Status on 2026-11-22: two Medium defects accepted and corrected on a feature branch; release and independent retest are pending. This document does not declare final acceptance.
 
 ## Incoming independent evidence

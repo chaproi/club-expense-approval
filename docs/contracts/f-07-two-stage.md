@@ -1,5 +1,7 @@
 # F-07 — Fixed two-stage approval (planned)
 
+**Current status summary — 26 Nov 2026:** Design/AC/STS recorded and reviewed; all implementation/verification remains PLANNED, with no execution claim at main cc6b04c8e98191be591a3b755d25988148523909. Actual review chain: PR #39 design; release PR #48; later UI PR #47 preserves behavior. [Per-AC status](../sprints/d2-completion-2026-11-26.md) and [deployed checks](../evidence/deliverable-2/postdeploy-2026-11-26/evidence.md) distinguish source/CI and live coverage. Normative wording, original design dates and historical Pending/Planned entries below are preserved; they do not override this status summary. Owner final D2 acceptance is unrecorded; new external peer UAT is not required for D2.
+
 Contract v1.1 · 24 Nov 2026 · TH-038 · pre-implementation design
 
 Issue: #38. Requirements: FR-07; BR-03/08/09; NFR-01/02. Author: chaproi with AI assistance. Review: pending independent peer review.

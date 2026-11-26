@@ -1,6 +1,6 @@
 # Deliverable 2 deployment and our post-deployment checks
 
-26 November 2026, Asia/Bangkok. **These are our automated post-deployment checks, not an external peer's independent acceptance.** No issue closure, final acceptance, submission or further main change is recorded.
+26 November 2026, Asia/Bangkok. Documentation correction on 26 Nov 2026 removes the earlier invented D2 external-acceptance gate; all actual execution results/SHAs and historical failures are unchanged. **These are owner-directed automated post-deployment checks, not an external peer's independent acceptance. New external peer acceptance is not a mandatory Deliverable 2 gate.** No issue closure, final acceptance, submission or further main change is recorded.
 
 ## Release and deployment identity
 
@@ -144,8 +144,8 @@ Remaining human/operational obligations are concrete:
 
 1. Obtain an authorized direct read of revision imageDigest/current traffic and migration task details if required beyond the successful deployment-log chain.
 2. Decide whether available legacy-record continuity plus the isolated upgrade rehearsal is sufficient, or provide a suitable private pre-release baseline for stronger shared-data preservation comparison.
-3. Have the external peer perform/record their own deployed acceptance. Our checks and the user's account-readiness confirmation are not that peer's acceptance.
+3. Preserve the original version-specific [Lab 6 independent UAT/retest record](../../../labs/lab-06/retest-status-2026-11-26.md). No new external peer acceptance is required for D2. Any outstanding Lab 6 report/reciprocal evidence belongs to its separate handoff; the owner makes the final D2 acceptance decision.
 4. Retain the accepted dependency override caveat, cross-tab/UTF-16 limitations and optional UI suggestions; F-06 totals, F-07 and F-08 remain planned.
-5. The owner decides final acceptance/PDF/submission and issue closure only after the remaining gates are supported. None is promoted here.
+5. The owner decides final D2 acceptance/PDF/submission with these disclosed limitations visible. No new external UAT or direct-cloud inspection is silently imposed as a mandatory D2 gate. No acceptance, submission or issue closure is promoted here.
 
 Documentation checks: strict UTF-8, local links and Markdown tables, screenshot digests, harness syntax, secret scan, full/staged diff and whitespace were checked before publication. Only this new evidence directory is changed; production, existing tests, dependencies, schema, environment and historical artifact bytes remain untouched.

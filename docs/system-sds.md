@@ -1,5 +1,7 @@
 # System-Level SDS — Deliverable 2 working design
 
+**Current implementation checkpoint — 26 Nov 2026:** reviewed main cc6b04c8e98191be591a3b755d25988148523909 is deployed, with passing [main CI and owner-directed live checks](evidence/deliverable-2/postdeploy-2026-11-26/evidence.md). The architecture/state rules below retain their historical/current/Final distinctions. F-07/F-08 and F-06 totals are target designs only. No new external peer UAT is imposed for D2; owner acceptance remains a separate decision.
+
 24 Nov 2026 · v0.4-candidate; historical/current/target differences explicit
 
 

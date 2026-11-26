@@ -1,4 +1,25 @@
-# Feature inventory — current review candidate
+# Feature inventory — released Deliverable 2 checkpoint
+
+26 Nov 2026. Main **cc6b04c8e98191be591a3b755d25988148523909** is reviewed, released and deployed. Exact-main CI47/19 and owner-directed live18 checks passed. [Per-feature/per-AC completion](sprints/d2-completion-2026-11-26.md) distinguishes technical verification from the owner's final acceptance/submission, which is not recorded. A new external peer UAT is not a mandatory D2 gate.
+
+| Feature | Current implementation / actual result | Current delivery / next work |
+|---|---|---|
+| F-01 | Auth/session/Origin and Sprint1 fixes retained; exact-main CI and live account/logout/denial checks PASS | Released/deployed cc6b04c; original Lab6 independent acceptance stays at43aa8d7 |
+| F-02 | Owned submit/list/detail/history; access and validation tests PASS; live new/legacy readback PASS | Released/deployed cc6b04c; exact preservation only within postdeploy session, not across release |
+| F-03 | Assigned approve/reject, reason/history and stale protections; CI/live PASS | Released/deployed cc6b04c |
+| F-04 | Return/reason/revision/API/UI/history AC01–05 mapped and PASS | Reviewed #40/#41, released/deployed cc6b04c |
+| F-05 | RETURNED Save/Resubmit; draft recovery AC01–11/BF-01 mapped and PASS | Reviewed #40/#41/#43; released/deployed cc6b04c; live Restore/manual Save PASS |
+| F-06 counts | Assigned DB status counts AC01–04; explicit zeros/scope/refetch CI/live PASS | Count-only checkpoint released/deployed cc6b04c |
+| F-06 totals | AC05–06 approved-category/final-stage semantics specified | PLANNED, unimplemented/unexecuted; target4Dec |
+| F-07 | Full two-stage contract/AC/STS design reviewed #39 | PLANNED, unimplemented/unexecuted; target2Dec |
+| F-08 | Full authorized status-filter contract/AC/STS design reviewed #39 | PLANNED, unimplemented/unexecuted; target3Dec |
+
+[Deployment/live evidence](evidence/deliverable-2/postdeploy-2026-11-26/evidence.md), [Lab6 status](labs/lab-06/retest-status-2026-11-26.md), [report packet](reports/deliverable-2/README.md). Scoped dependency override and direct-cloud/shared-baseline limitations remain visible; full Sprint3 is not complete.
+
+## Historical inventory before release cc6b04c
+
+The original snapshot below retains its original tested SHAs and then-Pending wording. It is superseded for current review/release/deployment status by the table above; no historical execution is relabelled.
+
 
 24 Nov 2026 baseline, updated 26 Nov 2026 after reviewed PRs #43/#45 and staging integration. Contracts preceded code in c7539ee. Implementation/test status does not imply peer acceptance, main integration or deployment.
 

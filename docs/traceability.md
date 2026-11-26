@@ -1,5 +1,7 @@
 # Full requirement-to-verification matrix — current candidate
 
+**Current evidence checkpoint — 26 Nov 2026:** reviewed/released main cc6b04c8e98191be591a3b755d25988148523909 passed exact-main CI (47 unit/API, 19 browser, build/Docker) and [18 owner-directed live checks](evidence/deliverable-2/postdeploy-2026-11-26/evidence.md). The [per-AC completion table](sprints/d2-completion-2026-11-26.md) distinguishes every executed API/browser assertion from the representative live subset. Historical Pending/Planned checkpoints below retain their original SHAs. New external peer acceptance is not a mandatory D2 gate; final owner acceptance is unrecorded.
+
 24 Nov 2026 baseline, updated 26 Nov 2026 after PR #43/#45 integration. All baseline FR/BR and important NFR retained. Initial design was committed before code in c7539ee; this revision adds actual test/file mappings. PASS below records source verification. Current independent source-review and staging integration evidence is linked at the end. Main release/deployment acceptance remains pending. Version evidence is in the hosted/local ledger; planned Final tests are never counted as executed.
 
 | Requirement / description | Feature / sprint | AC / planned verification | Actual evidence / result / version |

@@ -1,5 +1,13 @@
 # Deliverable 2 — independent reviewer handoff
 
+## Current released checkpoint — 26 November 2026
+
+PRs #39/#40/#41/#43/#45/#46/#47 have actual independent source reviews and staging merges. Release [PR #48](https://github.com/chaproi/club-expense-approval/pull/48) was approved on ecab746 and merged to main **cc6b04c8e98191be591a3b755d25988148523909**. [Deployment and owner-directed checks](evidence/deliverable-2/postdeploy-2026-11-26/evidence.md) record successful main CI (47/47 API, 19/19 browser, build/Docker), migration s981b09c9-migrate-hbkpk, revision s981b09c9-00008-pch and log-reported 100% traffic, then 8 public + 10 authenticated live checks PASS. The earlier selector failure is retained.
+
+The [current D2 completion/checklist](sprints/d2-completion-2026-11-26.md) and [report source packet](reports/deliverable-2/README.md) supersede earlier pending release/deploy statements. Technical delivery is recorded; owner final acceptance/submission is not. **Do not add a new mandatory external peer acceptance gate for D2.** [Original Lab 6 UAT/retest](labs/lab-06/retest-status-2026-11-26.md) remains version-specific and separate. Direct-cloud verification and exact pre-release shared snapshots remain limited as disclosed. F-06 totals/F-07/F-08 are planned.
+
+Everything below is retained historical handoff content. Completed review/release tasks or the old external-acceptance assumption below are not current outstanding D2 gates.
+
 Updated 26 Nov 2026 / chaproi. **PRs #43 and #45 are independently source-approved and merged into Sprint 2 staging. Integration checks passed at 7175362. Main release and deployed acceptance remain pending.** Do not merge evidence-only PR17.
 
 The earlier 24–25 Nov handoff below described #42 as ready for source review. Its then-pending review/integration instructions are retained as historical context. The current checkpoint follows.

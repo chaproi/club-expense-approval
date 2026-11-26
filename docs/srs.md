@@ -1,5 +1,7 @@
 # Current product SRS — Deliverable 2 working baseline
 
+**Current release status — 26 Nov 2026:** normative v0.4 requirements/IDs below are unchanged. F-04/F-05 and count-only F-06 are reviewed, released and deployed at cc6b04c8e98191be591a3b755d25988148523909. [Main CI and owner-directed live checks](evidence/deliverable-2/postdeploy-2026-11-26/evidence.md) passed. F-06 totals/F-07/F-08 remain planned; the owner's final D2 acceptance/submission is not recorded. Original candidate/pending wording below is historical, not an additional external-acceptance gate.
+
 v0.4-candidate · 24 Nov 2026 · initial design preceded code; implementation/source verification now recorded, independent acceptance pending
 
 

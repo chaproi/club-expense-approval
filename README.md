@@ -2,7 +2,7 @@
 
 CPE 334 project TH-038. The [Sprint 1 baseline](docs/sprint-1-baseline.md) describes the feature contracts and acceptance tests.
 
-The current review candidate adds Sprint 2 Return/Edit/Resubmit and the Sprint 3 DB status-count checkpoint. See the [current SRS](docs/srs.md), [feature status](docs/features.md), [full traceability](docs/traceability.md), and [independent review/release handoff](docs/reviewer-handoff.md). Source verification and independent release acceptance are recorded separately. Two-stage approval, status filters and approved-category totals remain planned Final work.
+The released Deliverable 2 at main cc6b04c8e98191be591a3b755d25988148523909 includes Sprint 2 Return/Edit/Resubmit, draft recovery/BF-01, the campus UI and the Sprint 3 count-only checkpoint. Exact-main CI and owner-directed deployed checks passed; see the [current completion table](docs/sprints/d2-completion-2026-11-26.md) and [report-ready source packet](docs/reports/deliverable-2/README.md). Owner final acceptance/submission is not recorded. See the [current SRS](docs/srs.md), [feature status](docs/features.md), [full traceability](docs/traceability.md), and [independent review/release handoff](docs/reviewer-handoff.md). Source verification and independent release acceptance are recorded separately. Two-stage approval, status filters and approved-category totals remain planned Final work.
 
 ## Run locally
 

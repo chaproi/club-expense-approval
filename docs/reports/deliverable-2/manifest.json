@@ -1,0 +1,194 @@
+{
+  "release": "cc6b04c8e98191be591a3b755d25988148523909",
+  "documentationParent": "802a111ac0c424ce1da470bd0658cca3ffbd1d08",
+  "preparationDate": "2026-11-26 Asia/Bangkok",
+  "qualification": "Documentation assembly only; no application execution or owner acceptance. Input digests identify the current documentation snapshot before publication.",
+  "fullDocuments": [
+    {
+      "path": "docs/sprint-1-baseline.md",
+      "anchor": "appendix-baseline"
+    },
+    {
+      "path": "docs/srs.md",
+      "anchor": "appendix-srs"
+    },
+    {
+      "path": "docs/features.md",
+      "anchor": "appendix-inventory"
+    },
+    {
+      "path": "docs/system-sds.md",
+      "anchor": "appendix-sds"
+    },
+    {
+      "path": "docs/traceability.md",
+      "anchor": "appendix-traceability"
+    },
+    {
+      "path": "docs/contracts/f-04-return.md",
+      "anchor": "appendix-f04"
+    },
+    {
+      "path": "docs/contracts/f-05-edit-resubmit.md",
+      "anchor": "appendix-f05"
+    },
+    {
+      "path": "docs/contracts/f-06-summary.md",
+      "anchor": "appendix-f06"
+    },
+    {
+      "path": "docs/contracts/f-07-two-stage.md",
+      "anchor": "appendix-f07"
+    },
+    {
+      "path": "docs/contracts/f-08-status-filter.md",
+      "anchor": "appendix-f08"
+    },
+    {
+      "path": "docs/labs/lab-06/retest-status-2026-11-26.md",
+      "anchor": "appendix-lab6"
+    },
+    {
+      "path": "docs/evidence/deliverable-2/postdeploy-2026-11-26/evidence.md",
+      "anchor": "appendix-postdeploy"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "docs/sprints/d2-completion-2026-11-26.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 12928,
+      "sha256": "b4b3c01225b9e0a4f1cedac12261c28ff599c6432f01c0ed9d8243c5d4122887"
+    },
+    {
+      "path": "docs/reports/deliverable-2/report-source.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 21085,
+      "sha256": "6f5dbe809161134483ac89b863d3347f538d57e6c87bb28dae1570f0ddeab91d"
+    },
+    {
+      "path": "docs/sprint-1-baseline.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 37270,
+      "sha256": "e0788aa54fc5a70e5c7534978e9881a8d8c64c593b6900d91bc3dcca828beacc"
+    },
+    {
+      "path": "docs/srs.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 10327,
+      "sha256": "29fe224c13ac0087216bf47d5724dd10d9f0d5976a49bdd166cf58ce8e077bc4"
+    },
+    {
+      "path": "docs/features.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 5867,
+      "sha256": "b540ebe8adf2e2ea6ca6794ea9e19d55a97d9c2c0163c1813ee1563596834220"
+    },
+    {
+      "path": "docs/system-sds.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 11782,
+      "sha256": "b361d601463a4d0c40580cfc392a8bc8441213bc7a0c1388db92f49ffc22bc87"
+    },
+    {
+      "path": "docs/traceability.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 19211,
+      "sha256": "b3bd54e0c154cc251940733149360e079755f00fb27d56b9cf2cd93864b44fa5"
+    },
+    {
+      "path": "docs/contracts/f-04-return.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 5323,
+      "sha256": "26034a04cdcf8e4a0f360b3b8c99adb7565c1f586933d0e6d53764e0e2d23719"
+    },
+    {
+      "path": "docs/contracts/f-05-edit-resubmit.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 13347,
+      "sha256": "0261029988251cc95a983f109b0d942fe5c218ed69123c850f51b635d80ed6ef"
+    },
+    {
+      "path": "docs/contracts/f-06-summary.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 5914,
+      "sha256": "632ae5f16a9e10b23b5cc7177058fe8a85b93b1a270c5983e9db80544c0e08a5"
+    },
+    {
+      "path": "docs/contracts/f-07-two-stage.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 5789,
+      "sha256": "50ea38d931ce07bd84a4dde14845a8d91fd820c0423d864ae1382e4d2a604467"
+    },
+    {
+      "path": "docs/contracts/f-08-status-filter.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 4728,
+      "sha256": "4967d80db6c4e3ae2ed687905709246f26dd619c8d90f3407136f0049338e7ee"
+    },
+    {
+      "path": "docs/labs/lab-06/retest-status-2026-11-26.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 4238,
+      "sha256": "c46688a98d28ee832806e12f4a743de1739b1f9acd653941be849a8afd05be12"
+    },
+    {
+      "path": "docs/evidence/deliverable-2/postdeploy-2026-11-26/evidence.md",
+      "normalization": "UTF-8 / LF",
+      "bytes": 18896,
+      "sha256": "f6cb1ef8188aadcc196f1709cef0c2c9e11299ac8e1781491aa6ae6704706729"
+    }
+  ],
+  "testExcerpts": [
+    {
+      "path": "server/test/return-resubmit-summary.test.ts",
+      "release": "cc6b04c8e98191be591a3b755d25988148523909",
+      "fromLine": 175,
+      "toLine": 188,
+      "normalizedLfSha256": "8384f0d699d3eb23b5f8ee76cc639c573eaad21b1a7d90887b2d76512d7e8208"
+    },
+    {
+      "path": "client/test/f05-draft-recovery.spec.ts",
+      "release": "cc6b04c8e98191be591a3b755d25988148523909",
+      "fromLine": 578,
+      "toLine": 642,
+      "normalizedLfSha256": "e14de3688122ab9f6f08e304c91c1267ae6ead83776370f79e414447164ecccf"
+    }
+  ],
+  "assets": [
+    {
+      "source": "docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-login-1440.png",
+      "path": "assets/deployed-login-1440.png",
+      "bytes": 131190,
+      "sha256": "e02b2b62674671e0fd8f428600169ed8b2cf47761580f47b250d84454b8f8ced"
+    },
+    {
+      "source": "docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-owner-complete-history.png",
+      "path": "assets/deployed-owner-complete-history.png",
+      "bytes": 78243,
+      "sha256": "73a9d20051f9144143f9cf49759139652aeffa162bd04f7fa09a4552b77a1395"
+    },
+    {
+      "source": "docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-real-conflict-draft.png",
+      "path": "assets/deployed-real-conflict-draft.png",
+      "bytes": 126555,
+      "sha256": "57159b660f9c071e542b7e949f643fe13a9d5c7f5d0fb541a64d2b9c601d614b"
+    },
+    {
+      "source": "docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-reviewer-768.png",
+      "path": "assets/deployed-reviewer-768.png",
+      "bytes": 80856,
+      "sha256": "d53cd6bc8642a4e07d3aacfffd74e8f5ec9be8289f70c9e433ebc52fdb81e1ee"
+    },
+    {
+      "source": "docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-owner-mobile.png",
+      "path": "assets/deployed-owner-mobile.png",
+      "bytes": 70956,
+      "sha256": "31c5831b93df0a5b6025acbfecbd5dcad63c39b7bc30a27ad8431fd3ba6a5825"
+    }
+  ],
+  "report": {
+    "path": "report.md",
+    "sha256": "b17557364562ceab2bd30c67fcfb283c115fa30429561beafd3d6af38cd4e14a"
+  }
+}
