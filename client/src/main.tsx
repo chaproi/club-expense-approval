@@ -1,6 +1,11 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { createRoot } from "react-dom/client";
 import { ExpenseRequests } from "./expense-requests.js";
+import "./styles.css";
+
+function Brand() {
+  return <div className="brand"><span className="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m4 8 8-4 8 4-8 4-8-4Zm0 5 8 4 8-4M4 17l8 4 8-4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></span><div><h1>Club Expense Approval</h1><div className="brand-subtitle">Made for campus life</div></div></div>;
+}
 
 type User = {
   id: string;
@@ -76,21 +81,45 @@ function App() {
   }
 
   return (
-    <main>
-      <h1>Club Expense Approval</h1>
-      {error && <p role="alert">{error}</p>}
-      {loading ? <p role="status">Checking your session…</p> : user ? (
+    <main className="app">
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      {loading ? (
+        <div className="initial-session" id="main-content" tabIndex={-1}><Brand /><p role="status" className="loading">Checking your session…</p></div>
+      ) : user ? (
         <>
-          <p>Signed in as {user.displayName} ({user.role === "REQUESTER" ? "Requester" : "Reviewer"})</p>
-          <button type="button" disabled={pending} onClick={() => void logOut()}>Log out</button>
-          <ExpenseRequests key={user.id} role={user.role} />
+          <header className="site-header">
+            <Brand />
+            <div className="account">
+              <span className="avatar" aria-hidden="true">{user.displayName.slice(0, 1)}</span>
+              <p className="account-text">Signed in as {user.displayName} ({user.role === "REQUESTER" ? "Requester" : "Reviewer"})</p>
+              <button className="secondary" type="button" disabled={pending} onClick={() => void logOut()}>Log out</button>
+            </div>
+          </header>
+          {error && <p role="alert" className="global-error">{error}</p>}
+          <div id="main-content" tabIndex={-1}>
+            <ExpenseRequests key={user.id} role={user.role} />
+          </div>
         </>
       ) : (
-        <form onSubmit={logIn}>
-          <p><label>Email <input name="email" type="email" autoComplete="username" required /></label></p>
-          <p><label>Password <input name="password" type="password" autoComplete="current-password" required /></label></p>
-          <button type="submit" disabled={pending}>Log in</button>
-        </form>
+        <div className="login-shell">
+          <div className="login-art">
+            <Brand />
+            <p className="login-headline">Good ideas.<br /><em>Room to grow.</em></p>
+            <img className="campus-art" src={new URL("./assets/campus.svg", import.meta.url).href} alt="" />
+          </div>
+          <div className="login-form-wrap entrance" id="main-content" tabIndex={-1}>
+            <p className="eyebrow">Your club workspace</p>
+            <h2>Welcome back.</h2>
+            <p className="intro">Sign in to plan your next activity, submit expenses, and keep every approval together.</p>
+            {error && <p role="alert">{error}</p>}
+            <form className="login-form" aria-busy={pending} onSubmit={logIn}>
+              <p><label>Email <input name="email" type="email" autoComplete="username" placeholder="you@university.edu" required /></label></p>
+              <p><label>Password <input name="password" type="password" autoComplete="current-password" required /></label></p>
+              <button type="submit" disabled={pending}>Log in</button>
+            </form>
+            <p className="login-footer">Use the account provided by your club administrator.</p>
+          </div>
+        </div>
       )}
     </main>
   );

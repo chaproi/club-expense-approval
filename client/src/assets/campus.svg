@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" fill="none">
+<title>Campus projects come together</title>
+<desc>Original illustration of a campus courtyard with students, a workshop table, plants and a shared project board.</desc>
+<defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#e7edce" stroke-opacity=".1"/></pattern><linearGradient id="sky" x2="1" y2="1"><stop stop-color="#284f43"/><stop offset="1" stop-color="#173e33"/></linearGradient></defs>
+<rect width="800" height="620" fill="url(#sky)"/><rect width="800" height="620" fill="url(#grid)"/>
+<circle cx="620" cy="110" r="63" fill="#e7b684"/><path d="M557 110h126" stroke="#163c32" opacity=".2"/>
+<path d="M0 405Q240 300 420 383T800 366V620H0Z" fill="#38604d"/>
+<path d="M0 492Q242 395 465 473T800 455V620H0Z" fill="#56785b"/>
+<path d="M184 411V207l130-72 140 72v204" fill="#d9d8b4"/><path d="m164 212 150-86 161 85" stroke="#edb897" stroke-width="13" stroke-linejoin="round"/>
+<path d="M199 237h230v30H199z" fill="#a9b79b"/>
+<path d="M218 280h32v55h-32zm63 0h32v55h-32zm64 0h32v55h-32z" fill="#315747"/><path d="M217 298h34m30 0h33m31 0h33" stroke="#d9d8b4" stroke-width="3"/>
+<path d="M294 366a24 24 0 0 1 48 0v48h-48z" fill="#315747"/>
+<path d="M209 354h50v57h-50zm161 0h50v57h-50z" fill="#c3c7a4"/>
+<path d="M142 416h350" stroke="#163c32" stroke-width="7" stroke-linecap="round"/>
+<path d="M70 443v-95m0 33c-41-7-51-36-31-59 7-39 49-45 64-14 38 4 50 54 10 70-17 8-27 5-43 3z" fill="#a6ba7d"/><path d="M70 445v-95" stroke="#e2c18e" stroke-width="8"/>
+<path d="M690 445V282m0 58c-47-8-67-50-46-75-7-55 61-81 83-26 54 16 47 94-5 102-11 2-20 1-32-1z" fill="#8da56d"/><path d="M690 447V290m0 61-27-29m27 5 22-23" stroke="#e2c18e" stroke-width="8" stroke-linecap="round"/>
+<ellipse cx="430" cy="535" rx="248" ry="40" fill="#173e33" opacity=".23"/>
+<path d="M478 400V267h134v133z" fill="#f0e5c8" stroke="#d8bd8c" stroke-width="5"/><path d="M489 400l-12 73m124-73 15 73" stroke="#d8bd8c" stroke-width="9" stroke-linecap="round"/>
+<rect x="492" y="284" width="44" height="32" rx="2" fill="#de8c68" transform="rotate(-5 492 284)"/><rect x="551" y="281" width="44" height="37" rx="2" fill="#a4b78d" transform="rotate(4 551 281)"/>
+<path d="M495 337h43m13 0h43m-99 14h28m28 0h36" stroke="#44674e" stroke-width="4" stroke-linecap="round"/><path d="m505 376 9 7 17-18" stroke="#44674e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M265 474h262v18H265z" fill="#d9b38a"/><path d="M285 490v73m220-73v73" stroke="#e4c59c" stroke-width="12" stroke-linecap="round"/>
+<path d="M341 449h52v25h-52z" fill="#f0e5c8"/><path d="M349 457h25m-25 8h31" stroke="#a9b79b" stroke-width="3"/>
+<path d="m414 467 44-17 21 19-43 8z" fill="#e7d69e"/><path d="m426 465 30-8" stroke="#a9b79b" stroke-width="3"/>
+<path d="M467 454v19h14v-19" fill="#d98a67"/><path d="M481 457c14-1 14 12 0 12" stroke="#d98a67" stroke-width="3"/>
+<path d="M229 418c-7-29 11-51 34-45 24 5 25 33 19 49" fill="#192f2a"/><circle cx="259" cy="402" r="22" fill="#c98d64"/><path d="M237 395c0-32 42-29 46-5-19 8-23-7-34 4" fill="#192f2a"/>
+<path d="M229 429q25-23 51-3l19 54-65 13z" fill="#e6b85e"/><path d="m280 439 18 22 40 4" stroke="#c98d64" stroke-width="14" stroke-linecap="round"/>
+<path d="M243 489v41l-15 33m42-70 18 34 6 34" stroke="#213e36" stroke-width="16" stroke-linecap="round"/><path d="M215 568h20m52 0h20" stroke="#e7dfc6" stroke-width="10" stroke-linecap="round"/>
+<circle cx="558" cy="409" r="22" fill="#e0b089"/><path d="M534 408c-4-37 47-40 49-6-18-6-26-14-34-7z" fill="#29392e"/>
+<path d="M534 436q24-17 47 1l-8 62h-54z" fill="#e29275"/><path d="m536 448-23 23-29-3" stroke="#e0b089" stroke-width="14" stroke-linecap="round"/>
+<path d="m529 498 3 33-10 35m41-68 3 34 13 32" stroke="#dfd9bc" stroke-width="16" stroke-linecap="round"/><path d="M511 570h20m42 0h20" stroke="#273f32" stroke-width="10" stroke-linecap="round"/>
+<path d="M126 515h40l-6 39h-29z" fill="#de8c68"/><path d="M146 516v-48m0 34c-34-2-38-26-24-32 22-4 26 20 24 32m0-13c32-1 37-23 23-29-20-5-25 20-23 29" fill="#becb8e"/>
+<path d="m632 540 27-10 25 10-26 10z" fill="#b5bf93"/><path d="M632 540v25l26 10 26-10v-25l-26 10z" fill="#d7c697"/><path d="M658 550v25" stroke="#8ca174" stroke-width="3"/>
+<path d="m94 211 14-5m-4-13 8 12m376-86 6-15m13 6-12 6" stroke="#d6ddbd" stroke-width="3" stroke-linecap="round"/>
+</svg>
