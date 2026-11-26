@@ -1,0 +1,15 @@
+{
+  "before": {
+    "users": 2,
+    "requests": 6,
+    "events": 11
+  },
+  "after": {
+    "users": 2,
+    "requests": 6,
+    "events": 11
+  },
+  "unchanged": true,
+  "idleTransactions": 0,
+  "checkedAt": "2026-11-26T04:35:54.685Z"
+}

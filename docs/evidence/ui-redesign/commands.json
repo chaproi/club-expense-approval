@@ -1,0 +1,38 @@
+[
+  {
+    "label": "build",
+    "command": "npm.cmd run build",
+    "sha": "465ebea693c5cebe6e6ebeb4460f8e2d79162d3b",
+    "dirty": "",
+    "startedAt": "2026-11-26T04:34:42.285Z",
+    "exit": 0,
+    "signal": null,
+    "elapsedMs": 4506,
+    "finishedAt": "2026-11-26T04:34:46.794Z",
+    "log": "build.log"
+  },
+  {
+    "label": "api",
+    "command": "npm.cmd test",
+    "sha": "465ebea693c5cebe6e6ebeb4460f8e2d79162d3b",
+    "dirty": "",
+    "startedAt": "2026-11-26T04:34:46.879Z",
+    "exit": 0,
+    "signal": null,
+    "elapsedMs": 5400,
+    "finishedAt": "2026-11-26T04:34:52.280Z",
+    "log": "api.log"
+  },
+  {
+    "label": "browser",
+    "command": "npm.cmd run test:e2e",
+    "sha": "465ebea693c5cebe6e6ebeb4460f8e2d79162d3b",
+    "dirty": "",
+    "startedAt": "2026-11-26T04:34:52.346Z",
+    "exit": 0,
+    "signal": null,
+    "elapsedMs": 62318,
+    "finishedAt": "2026-11-26T04:35:54.664Z",
+    "log": "browser.log"
+  }
+]
