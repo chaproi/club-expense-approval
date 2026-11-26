@@ -1,0 +1,31 @@
+{
+  "phase": "RED before production implementation",
+  "utc": "2026-11-23T18:06:12.633248+00:00",
+  "local_test_commit": "7537d7aff75e8b015fb21469ded782b2460dcc46",
+  "contract_commit": "558587c",
+  "runtime": "Node v24.22.3 / PostgreSQL 17.12 native binaries in disposable isolated local DB; no shared DB",
+  "commands": [
+    "node --import tsx --test server/test/auth.test.ts server/test/canonical-origin.test.ts server/test/expense-decision.test.ts server/test/expense-input.test.ts server/test/expense-requests.test.ts",
+    "node --import tsx --test server/test/return-resubmit-summary.test.ts"
+  ],
+  "baseline": {
+    "executed": 34,
+    "pass": 34,
+    "fail": 0,
+    "skip": 0
+  },
+  "red": {
+    "executed": 13,
+    "pass": 0,
+    "fail": 13,
+    "skip": 0,
+    "expected_exit": 1
+  },
+  "sha256": {
+    "server/src/expense-requests.ts": "d3130cde0c2dd4cbd9ea5223d97ac10d391098e3fcc6e317b32ca94051b6e731",
+    "server/src/expense-input.ts": "e3107ae7eaee868eee1c22876492507988db6f5b038fd8788fa514c786b620fc",
+    "prisma/schema.prisma": "260435f937ac1b6b4c36a47644fdc53652ff68440796c6aa138d5c48fc5e4687",
+    "client/src/expense-requests.tsx": "9410bf718b7d3a47783cd96b1f3317e208294159c96cddd0ff93cb0538a0938e",
+    "server/test/return-resubmit-summary.test.ts": "a2e2459ecf61343dddf5c8e5597463935d0cabf92f3da1061540a85a4d1c9b2b"
+  }
+}

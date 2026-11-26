@@ -1,0 +1,66 @@
+
+> club-expense-approval@0.1.0 test
+> node --env-file-if-exists=.env --import tsx --test server/test/*.test.ts
+
+.env not found. Continuing without it.
+.env not found. Continuing without it.
+✔ T-01: seeded roles log in and resolve their own identity from a session (452.6904ms)
+✔ T-02: invalid credentials fail and logout revokes a previously issued cookie (156.3994ms)
+✔ T-03: current user endpoint rejects a request without a session (1.9607ms)
+✔ a browser request from another origin cannot create a session (2.4789ms)
+✔ an expired PostgreSQL session cannot identify a user (70.9001ms)
+✔ DEF-TH038-01: login rejects an email containing NUL byte without changing sessions (71.6163ms)
+✔ DEF-TH038-01: login rejects an email containing unpaired high surrogate without changing sessions (71.2281ms)
+✔ DEF-TH038-01: login rejects an email containing unpaired low surrogate without changing sessions (68.5634ms)
+✔ DEF-TH038-01: valid paired Unicode in an unknown email remains invalid credentials (33.1312ms)
+.env not found. Continuing without it.
+✔ DEF-TH038-02: the official Cloud Run alias redirects before serving the login form (58.8573ms)
+✔ DEF-TH038-02: canonical host serves the page without a redirect loop (9.6034ms)
+✔ DEF-TH038-02: alias HEAD navigation redirects to the same canonical URL (1.5944ms)
+✔ DEF-TH038-02: redirect destination cannot be supplied by Host, path or forwarded headers (2.6237ms)
+✔ DEF-TH038-02: alias and untrusted API writes stay blocked instead of redirecting (56.4623ms)
+✔ DEF-TH038-02: anonymous API reads retain their JSON contract on the alias (1.2455ms)
+.env not found. Continuing without it.
+✔ T-07: decision input accepts approval and trimmed rejection reason boundaries (1.9484ms)
+✔ T-07: decision input rejects invalid shapes, reasons and extra fields (2.1475ms)
+✔ T-10: decision policy permits only an assigned reviewer who is not the requester (0.2456ms)
+.env not found. Continuing without it.
+✔ T-05: expense input accepts valid title and whole-baht boundaries (2.6201ms)
+✔ T-05: expense input rejects invalid title, category, amount and extra fields (0.2579ms)
+.env not found. Continuing without it.
+✔ T-04: requester submits a read-only expense and reads its stored history (641.1246ms)
+✔ T-05: API rejects an invalid amount or client-supplied assignment without inserting a record (25.6323ms)
+✔ T-06: only the owner and assigned reviewer can read an expense, and reviewers cannot submit (76.3077ms)
+✔ expense detail rejects a malformed URL segment (/%00) (4.1818ms)
+✔ expense detail rejects a malformed URL segment (/%E0%A4%A) (4.198ms)
+✔ T-05: API rejects a title with an unpaired UTF-16 surrogate without inserting a record (16.6065ms)
+✔ T-03 extension: anonymous requests cannot list, read, submit or decide expenses (5.6031ms)
+✔ T-07: assigned reviewer approves or rejects and the owner reads the recorded decision (149.0082ms)
+✔ T-06 / T-10: requesters, unassigned reviewers and a self-reviewer cannot decide (79.6674ms)
+✔ T-11: sequential decisions return 200 then 409 and keep one decision event (45.9163ms)
+✔ T-11: concurrent decisions produce one success, one conflict and one decision event (46.3968ms)
+✔ T-08: owner reads the decision after restarting the app and database client (61.8933ms)
+✔ an authenticated browser cannot submit an expense from another origin (4.7204ms)
+✔ submission fails without creating an expense when the assigned account is not a reviewer (26.1961ms)
+.env not found. Continuing without it.
+✔ T-F04-01: return persists one trimmed reason, owner identity and atomic history (636.2921ms)
+✔ T-F04-02: return reason/revision/shape boundaries reject without state changes (274.4809ms)
+✔ T-F04-03: wrong principals and origins cannot return or alter protected history (127.3601ms)
+✔ T-F04-04: terminal, repeated and concurrent decisions produce only one transition (256.7832ms)
+✔ T-F05-01/04: edit then resubmit preserves ID, assignment, createdAt and older history (57.6958ms)
+✔ T-F05-02: invalid and forged edits do not mutate returned fields/history (234.9546ms)
+✔ T-F05-03: owner/role/state/Origin restrictions protect both edit and resubmit (329.1835ms)
+✔ T-F05-05: stale edits and repeated concurrent resubmits never duplicate events (147.1271ms)
+✔ T-F05-05: edit-versus-resubmit race uses the same revision predicate (51.0563ms)
+✔ T-F04-05/T-F05-06: return/edit/resubmit detail survives a new app and Prisma client (70.4334ms)
+✔ T-F06-01/02/03: real DB counts include only assigned current records and explicit zeros (39.6336ms)
+✔ T-F06-01: returning, editing and resubmitting change counts without inflating total (78.0233ms)
+✔ T-F06-03: empty summary and readback after restart remain exact (30.8191ms)
+ℹ tests 47
+ℹ suites 0
+ℹ pass 47
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4908.4377

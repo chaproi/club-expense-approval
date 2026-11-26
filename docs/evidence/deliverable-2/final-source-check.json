@@ -1,0 +1,15 @@
+{
+  "date_bangkok": "2026-11-24",
+  "scope": "follow-up explicit self-return/int32-exhaustion verification; production source unchanged from hosted830346b",
+  "local_command": "npm test with native PostgreSQL17.12",
+  "executed": 47,
+  "pass": 47,
+  "fail": 0,
+  "skip": 0,
+  "sha256": {
+    "server/test/return-resubmit-summary.test.ts": "cbd6c674f326d54e8e7acc1eadf49d1944b8ec4766633257baa8ee3bcb30c449",
+    "server/src/expense-requests.ts": "d814d63dafebd7569646e10bc16cb660af331ade0221ce773b17f51f9d339122",
+    "client/src/expense-requests.tsx": "285f521ddf66ffe1a9e745be5bf7d2bdb1c019758860118333252352ace9eebd",
+    "client/test/expense-decisions.spec.ts": "47a9692088d887a8501aea21ca44bc78c894e90a2cf96b564cc6c07b6a9d7b92"
+  }
+}

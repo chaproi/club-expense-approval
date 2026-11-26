@@ -1,0 +1,42 @@
+[
+    {
+        "file":  "after-761.png",
+        "bytes":  115406,
+        "sha256":  "f83dc4638e208e537bd365aefb6e4474d61f531848ccee80f58a23e0702e43df"
+    },
+    {
+        "file":  "after-768.png",
+        "bytes":  115951,
+        "sha256":  "b16f6469c283667d66e03a453c13f4e249a2410b6e359149cde83a524aa38f1c"
+    },
+    {
+        "file":  "after-800.png",
+        "bytes":  113118,
+        "sha256":  "0ac25fadbdaa070bf509c166dd1e3fbed656c2f6d6611a642317320846eb2101"
+    },
+    {
+        "file":  "after-834.png",
+        "bytes":  112247,
+        "sha256":  "40179634cea243a8f216c500b81a0da25bd38060de58bbc4b77dff2ac6e5f27e"
+    },
+    {
+        "file":  "before-761.png",
+        "bytes":  115493,
+        "sha256":  "3773994cfab9e65e903f8d7a397213c17e27284cca4a003aa7afaa4b133df7d0"
+    },
+    {
+        "file":  "before-768.png",
+        "bytes":  116352,
+        "sha256":  "9ecef44f45649c840125fea6f16f9fbcc28abaaef52c7e237392bcb3b572da4c"
+    },
+    {
+        "file":  "before-800.png",
+        "bytes":  115692,
+        "sha256":  "295d05ae10f2ef849bc345ff0e502625b00464222fa88a444624f10e0e2e459e"
+    },
+    {
+        "file":  "before-834.png",
+        "bytes":  117730,
+        "sha256":  "6c1445e445adc683c0e172c63c471102ae81d0881a3959bf9d310dfab1e177cd"
+    }
+]

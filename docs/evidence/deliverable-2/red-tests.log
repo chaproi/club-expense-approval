@@ -1,0 +1,266 @@
+✖ T-F04-01: return persists one trimmed reason, owner identity and atomic history (387.339535ms)
+✖ T-F04-02: return reason/revision/shape boundaries reject without state changes (77.642485ms)
+✖ T-F04-03: wrong principals and origins cannot return or alter protected history (27.695428ms)
+✖ T-F04-04: terminal, repeated and concurrent decisions produce only one transition (9.24112ms)
+✖ T-F05-01/04: edit then resubmit preserves ID, assignment, createdAt and older history (9.21134ms)
+✖ T-F05-02: invalid and forged edits do not mutate returned fields/history (13.693181ms)
+✖ T-F05-03: owner/role/state/Origin restrictions protect both edit and resubmit (10.564921ms)
+✖ T-F05-05: stale edits and repeated concurrent resubmits never duplicate events (9.75184ms)
+✖ T-F05-05: edit-versus-resubmit race uses the same revision predicate (9.806342ms)
+✖ T-F04-05/T-F05-06: return/edit/resubmit detail survives a new app and Prisma client (8.700284ms)
+✖ T-F06-01/02/03: real DB counts include only assigned current records and explicit zeros (15.633032ms)
+✖ T-F06-01: returning, editing and resubmitting change counts without inflating total (14.774517ms)
+✖ T-F06-03: empty summary and readback after restart remain exact (11.91998ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 0
+ℹ fail 13
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1022.499503
+
+✖ failing tests:
+
+test at server/test/return-resubmit-summary.test.ts:1:3197
+✖ T-F04-01: return persists one trimmed reason, owner identity and atomic history (387.339535ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at returned (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:71:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/return-resubmit-summary.test.ts:1:3658
+✖ T-F04-02: return reason/revision/shape boundaries reject without state changes (77.642485ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at returned (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:86:75)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/return-resubmit-summary.test.ts:1:4472
+✖ T-F04-03: wrong principals and origins cannot return or alter protected history (27.695428ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 404
+  
+      at TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:92:78)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 404,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/return-resubmit-summary.test.ts:1:5085
+✖ T-F04-04: terminal, repeated and concurrent decisions produce only one transition (9.24112ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/return-resubmit-summary.test.ts:1:6040
+✖ T-F05-01/04: edit then resubmit preserves ID, assignment, createdAt and older history (9.21134ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at returned (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:113:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/return-resubmit-summary.test.ts:1:7218
+✖ T-F05-02: invalid and forged edits do not mutate returned fields/history (13.693181ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at returned (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:125:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/return-resubmit-summary.test.ts:1:8068
+✖ T-F05-03: owner/role/state/Origin restrictions protect both edit and resubmit (10.564921ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at returned (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:139:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/return-resubmit-summary.test.ts:1:9387
+✖ T-F05-05: stale edits and repeated concurrent resubmits never duplicate events (9.75184ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at returned (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:158:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/return-resubmit-summary.test.ts:1:10515
+✖ T-F05-05: edit-versus-resubmit race uses the same revision predicate (9.806342ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at returned (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:172:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/return-resubmit-summary.test.ts:1:10898
+✖ T-F04-05/T-F05-06: return/edit/resubmit detail survives a new app and Prisma client (8.700284ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at returned (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:177:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/return-resubmit-summary.test.ts:1:11301
+✖ T-F06-01/02/03: real DB counts include only assigned current records and explicit zeros (15.633032ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:189:62)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/return-resubmit-summary.test.ts:1:12610
+✖ T-F06-01: returning, editing and resubmitting change counts without inflating total (14.774517ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at returned (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:198:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at server/test/return-resubmit-summary.test.ts:1:13432
+✖ T-F06-03: empty summary and readback after restart remain exact (11.91998ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(before.counts)
+  
+      at TestContext.<anonymous> (/workspace/scratch/cd468d40b0ab/club-expense-approval/server/test/return-resubmit-summary.test.ts:209:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

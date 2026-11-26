@@ -1,0 +1,149 @@
+{
+  "source": "Extract of the Playwright JSON reporter. Full sanitized report is retained in the local A4 evidence folder.",
+  "testedSha": "1667ec2877ba926ad9ca902de50947c14037bf4a",
+  "startedAt": "2026-11-24T21:16:35.665Z",
+  "finishedAt": "2026-11-24T21:19:16.548Z",
+  "command": {
+    "id": "05-focused",
+    "startedAt": "2026-11-24T21:17:06.078Z",
+    "command": "npm.cmd run test:e2e -- client/test/f05-draft-recovery.spec.ts --reporter=list,json",
+    "exit": 1,
+    "elapsedMs": 129383,
+    "signal": null,
+    "spawnError": null
+  },
+  "runtime": {
+    "node": "v24.14.0",
+    "npm": "11.9.0",
+    "chromium": "151.0.7922.34",
+    "postgresql": "17.12 (Debian 17.12-1.pgdg12+1)"
+  },
+  "result": {
+    "collected": 14,
+    "executed": 14,
+    "passed": 1,
+    "failed": 13,
+    "skipped": 0,
+    "playwrightMs": 128025.326,
+    "globalErrors": [],
+    "cases": [
+      {
+        "title": "T-F05-07 keeps latest values and the conflicted draft separate after real stale Save",
+        "outcome": "failed",
+        "errors": [
+          "Error: latest saved panel after a real 409",
+          "Error: unsaved draft remains visible after a real 409",
+          "Error: attempted title is still readable",
+          "Error: same-field Title conflict is identified"
+        ]
+      },
+      {
+        "title": "T-F05-08a Restore keeps the latest untouched category and waits for manual Save",
+        "outcome": "failed",
+        "errors": [
+          "Error: explicit Restore is offered after observed real 409"
+        ]
+      },
+      {
+        "title": "T-F05-08a Restore keeps the latest untouched amount and waits for manual Save",
+        "outcome": "failed",
+        "errors": [
+          "Error: explicit Restore is offered after observed real 409"
+        ]
+      },
+      {
+        "title": "T-F05-08b Discard keeps latest saved fields and performs no mutation",
+        "outcome": "failed",
+        "errors": [
+          "Error: explicit Discard is offered after observed real 409"
+        ]
+      },
+      {
+        "title": "T-F05-09a shows read-only draft when the latest state is SUBMITTED",
+        "outcome": "failed",
+        "errors": [
+          "Error: read-only draft survives status change",
+          "Error: read-only draft can be explicitly discarded"
+        ]
+      },
+      {
+        "title": "T-F05-09a shows read-only draft when the latest state is APPROVED",
+        "outcome": "failed",
+        "errors": [
+          "Error: read-only draft survives status change",
+          "Error: read-only draft can be explicitly discarded"
+        ]
+      },
+      {
+        "title": "T-F05-09a revoked owner session cannot read or recover the stale draft",
+        "outcome": "passed",
+        "errors": []
+      },
+      {
+        "title": "T-F05-09a real access denial clears an established draft without ending the account session",
+        "outcome": "failed",
+        "errors": [
+          "Error: a real draft exists before access is revoked"
+        ]
+      },
+      {
+        "title": "T-F05-09b keeps a draft only for its request and clears it when the account changes",
+        "outcome": "failed",
+        "errors": [
+          "Error: reselecting the same request retains its draft before logout"
+        ]
+      },
+      {
+        "title": "T-F05-09b warns about reload and clears the draft on page reload",
+        "outcome": "failed",
+        "errors": [
+          "Error: warns that reloading discards the in-memory draft",
+          "Error: a real draft exists before the deliberate page reload"
+        ]
+      },
+      {
+        "title": "T-F05-10a a failed refresh retains the draft and deliberate retry makes only reads",
+        "outcome": "failed",
+        "errors": [
+          "Error: failed GET preserves the local draft",
+          "Error: explicit read-only retry after the controlled abort"
+        ]
+      },
+      {
+        "title": "T-F05-10b a second stale Save retains the new attempt and the newer database revision",
+        "outcome": "failed",
+        "errors": [
+          "Error: first conflict must permit Restore before exercising a second conflict"
+        ]
+      },
+      {
+        "title": "T-F05-11a Save transport error retains state and identifies the failed action",
+        "outcome": "failed",
+        "errors": [
+          "Error: error text identifies the failed Requester action"
+        ]
+      },
+      {
+        "title": "T-F05-11b Resubmit transport error retains state and identifies the failed action",
+        "outcome": "failed",
+        "errors": [
+          "Error: error text identifies the failed Requester action"
+        ]
+      }
+    ]
+  },
+  "cleanup": {
+    "rows": {
+      "users": 0,
+      "sessions": 0,
+      "requests": 0,
+      "events": 0
+    },
+    "temporarySecretAndRawReportRemoved": true,
+    "disposableContainerAndVolumeRemoved": true,
+    "originalContainersUnchanged": true,
+    "originalEnvFilesUnchanged": true,
+    "originalAndIsolatedGitTreesClean": true,
+    "listener4173Closed": true
+  }
+}

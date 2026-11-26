@@ -1,0 +1,43 @@
+{
+  "phase": "after",
+  "source": "465ebea693c5cebe6e6ebeb4460f8e2d79162d3b",
+  "dirty": "?? docs/evidence/deliverable-2/resubmitted-final-history.png\n?? docs/evidence/deliverable-2/return-summary.png",
+  "checks": [
+    "Login keyboard traversal Email, Password, Log in, Shift+Tab",
+    "Mobile 390x844 has no page-wide overflow; editable control reachable with visible focus",
+    "prefers-reduced-motion suppresses nonessential CSS animations",
+    "Reviewer summary and decision forms use real authorized records; desktop no page overflow",
+    "Real approval: pending aria-busy/disabled controls and loading feedback, then authoritative success at mobile size",
+    "Controlled one-shot list transport abort: honest error, real GET-only retry and authoritative recovery",
+    "20 genuine workflow history events remain reachable and wrapped on 390px mobile",
+    "Keyboard Enter selects exact request; skip link receives focus and moves focus to main content",
+    "834x1112 tablet has no page-wide horizontal overflow"
+  ],
+  "screenshots": [
+    "after-login-desktop.png",
+    "after-login-mobile.png",
+    "after-workspace-desktop.png",
+    "after-workspace-mobile.png",
+    "after-conflict-desktop.png",
+    "after-conflict-mobile.png",
+    "after-reviewer-desktop.png"
+  ],
+  "startedAt": "2026-11-26T04:37:16.591Z",
+  "chromium": "151.0.7922.34",
+  "contrast": [
+    {
+      "element": "intro",
+      "color": "rgb(100, 114, 105)",
+      "background": "rgb(245, 244, 238)",
+      "ratio": 4.59
+    },
+    {
+      "element": "BUTTON",
+      "color": "rgb(255, 254, 250)",
+      "background": "rgb(33, 79, 64)",
+      "ratio": 9.22
+    }
+  ],
+  "pageErrors": [],
+  "finishedAt": "2026-11-26T04:37:21.033Z"
+}

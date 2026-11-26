@@ -1,0 +1,35 @@
+
+> club-expense-approval@0.1.0 test:e2e
+> node --env-file-if-exists=.env node_modules/@playwright/test/cli.js test
+
+.env not found. Continuing without it.
+[WebServer] (node:13004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] .env not found. Continuing without it.
+
+Running 19 tests using 1 worker
+
+.env not found. Continuing without it.
+(node:15268) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 client\test\expense-decisions.spec.ts:50:1 › T-09: requester submits, reviewer approves or rejects, and requester reads both outcomes (5.0s)
+  ok  2 client\test\expense-decisions.spec.ts:79:1 › reviewer reloads the latest status after a stale decision returns 409 (2.6s)
+  ok  3 client\test\expense-decisions.spec.ts:102:1 › T-F04-05/T-F05-06/T-F06-04: return, saved correction, resubmit and final readback update the DB summary (6.8s)
+  ok  4 client\test\f05-draft-recovery.spec.ts:196:1 › T-F05-07 keeps latest values and the conflicted draft separate after real stale Save (1.5s)
+  ok  5 client\test\f05-draft-recovery.spec.ts:218:3 › T-F05-08a Restore keeps the latest untouched category and waits for manual Save (1.7s)
+  ok  6 client\test\f05-draft-recovery.spec.ts:218:3 › T-F05-08a Restore keeps the latest untouched amount and waits for manual Save (1.6s)
+  ok  7 client\test\f05-draft-recovery.spec.ts:252:1 › T-F05-08b Discard keeps latest saved fields and performs no mutation (1.7s)
+  ok  8 client\test\f05-draft-recovery.spec.ts:272:3 › T-F05-09a shows read-only draft when the latest state is SUBMITTED (1.6s)
+  ok  9 client\test\f05-draft-recovery.spec.ts:272:3 › T-F05-09a shows read-only draft when the latest state is APPROVED (1.6s)
+  ok 10 client\test\f05-draft-recovery.spec.ts:305:1 › T-F05-09a revoked owner session cannot read or recover the stale draft (2.7s)
+  ok 11 client\test\f05-draft-recovery.spec.ts:343:1 › T-F05-09a real access denial clears an established draft without ending the account session (2.4s)
+  ok 12 client\test\f05-draft-recovery.spec.ts:401:1 › T-F05-09b keeps a draft only for its request and clears it when the account changes (3.3s)
+  ok 13 client\test\f05-draft-recovery.spec.ts:435:1 › T-F05-09b warns about reload and clears the draft on page reload (2.0s)
+  ok 14 client\test\f05-draft-recovery.spec.ts:450:1 › T-F05-10a a failed refresh retains the draft and deliberate retry makes only reads (1.5s)
+  ok 15 client\test\f05-draft-recovery.spec.ts:491:1 › T-F05-10b a second stale Save retains the new attempt and the newer database revision (1.7s)
+  ok 16 client\test\f05-draft-recovery.spec.ts:519:3 › T-F05-11a Save transport error retains state and identifies the failed action (1.5s)
+  ok 17 client\test\f05-draft-recovery.spec.ts:519:3 › T-F05-11b Resubmit transport error retains state and identifies the failed action (1.4s)
+  ok 18 client\test\f05-draft-recovery.spec.ts:629:1 › BF-01 AC-F05-08/09 same-value Restore clears the clean draft before explicit Resubmit (1.7s)
+  ok 19 client\test\f05-draft-recovery.spec.ts:644:1 › BF-01 AC-F05-08/09 reverting a dirty restored draft clears it before explicit Resubmit (1.6s)
+
+  19 passed (1.0m)

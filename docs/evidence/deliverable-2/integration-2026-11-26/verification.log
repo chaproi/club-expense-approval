@@ -1,0 +1,304 @@
+cmd.exe /d /c npm.cmd ci
+
+> club-expense-approval@0.1.0 postinstall
+> prisma generate
+
+Prisma schema loaded from prisma\schema.prisma
+
+✔ Generated Prisma Client (v6.19.3) to .\node_modules\@prisma\client in 59ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+
+added 152 packages, and audited 153 packages in 20s
+
+41 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+
+{"id":"02-ci","command":"cmd.exe /d /c npm.cmd ci","startedAt":"2026-11-25T17:28:41.091Z","exit":0,"signal":null,"spawnError":null,"elapsedMs":20539}
+
+
+cmd.exe /d /c npm.cmd exec -- tsc --noEmit
+
+
+{"id":"02-tsc","command":"cmd.exe /d /c npm.cmd exec -- tsc --noEmit","startedAt":"2026-11-25T17:29:01.631Z","exit":0,"signal":null,"spawnError":null,"elapsedMs":3768}
+
+
+cmd.exe /d /c npm.cmd run db:migrate
+
+> club-expense-approval@0.1.0 db:migrate
+> prisma migrate deploy
+
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": PostgreSQL database "test_d2_integration_2530998cb964", schema "public" at "127.0.0.1:61162"
+
+3 migrations found in prisma/migrations
+
+Applying migration `20261106000000_auth_foundation`
+Applying migration `20261107000000_expense_requests`
+Applying migration `20261124000000_return_resubmit`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261106000000_auth_foundation/
+    └─ migration.sql
+  └─ 20261107000000_expense_requests/
+    └─ migration.sql
+  └─ 20261124000000_return_resubmit/
+    └─ migration.sql
+
+All migrations have been successfully applied.
+
+┌─────────────────────────────────────────────────────────┐
+│  Update available 6.19.3 -> 8.0.0-rc.35                 │
+│                                                         │
+│  This is a major update - please follow the guide at    │
+│  https://pris.ly/d/major-version-upgrade                │
+│                                                         │
+│  Run the following to update                            │
+│    npm i --save-dev prisma@latest                       │
+│    npm i @prisma/client@latest                          │
+└─────────────────────────────────────────────────────────┘
+
+{"id":"04-migrate","command":"cmd.exe /d /c npm.cmd run db:migrate","startedAt":"2026-11-25T17:29:19.709Z","exit":0,"signal":null,"spawnError":null,"elapsedMs":2189}
+
+
+cmd.exe /d /c npm.cmd test
+
+> club-expense-approval@0.1.0 test
+> node --env-file-if-exists=.env --import tsx --test server/test/*.test.ts
+
+.env not found. Continuing without it.
+✔ T-01: seeded roles log in and resolve their own identity from a session (382.4438ms)
+✔ T-02: invalid credentials fail and logout revokes a previously issued cookie (170.1717ms)
+✔ T-03: current user endpoint rejects a request without a session (2.3167ms)
+✔ a browser request from another origin cannot create a session (4.2772ms)
+✔ an expired PostgreSQL session cannot identify a user (76.0143ms)
+✔ DEF-TH038-01: login rejects an email containing NUL byte without changing sessions (72.6476ms)
+✔ DEF-TH038-01: login rejects an email containing unpaired high surrogate without changing sessions (69.8065ms)
+✔ DEF-TH038-01: login rejects an email containing unpaired low surrogate without changing sessions (69.2695ms)
+✔ DEF-TH038-01: valid paired Unicode in an unknown email remains invalid credentials (25.8984ms)
+.env not found. Continuing without it.
+✔ DEF-TH038-02: the official Cloud Run alias redirects before serving the login form (72.9194ms)
+✔ DEF-TH038-02: canonical host serves the page without a redirect loop (14.295ms)
+✔ DEF-TH038-02: alias HEAD navigation redirects to the same canonical URL (2.7478ms)
+✔ DEF-TH038-02: redirect destination cannot be supplied by Host, path or forwarded headers (5.6001ms)
+✔ DEF-TH038-02: alias and untrusted API writes stay blocked instead of redirecting (32.4037ms)
+✔ DEF-TH038-02: anonymous API reads retain their JSON contract on the alias (1.4492ms)
+.env not found. Continuing without it.
+✔ T-07: decision input accepts approval and trimmed rejection reason boundaries (1.2782ms)
+✔ T-07: decision input rejects invalid shapes, reasons and extra fields (0.3146ms)
+✔ T-10: decision policy permits only an assigned reviewer who is not the requester (0.2057ms)
+.env not found. Continuing without it.
+✔ T-05: expense input accepts valid title and whole-baht boundaries (2.1246ms)
+✔ T-05: expense input rejects invalid title, category, amount and extra fields (0.4336ms)
+.env not found. Continuing without it.
+✔ T-04: requester submits a read-only expense and reads its stored history (590.726ms)
+✔ T-05: API rejects an invalid amount or client-supplied assignment without inserting a record (28.7134ms)
+✔ T-06: only the owner and assigned reviewer can read an expense, and reviewers cannot submit (82.72ms)
+✔ expense detail rejects a malformed URL segment (/%00) (6.0288ms)
+✔ expense detail rejects a malformed URL segment (/%E0%A4%A) (5.3683ms)
+✔ T-05: API rejects a title with an unpaired UTF-16 surrogate without inserting a record (16.388ms)
+✔ T-03 extension: anonymous requests cannot list, read, submit or decide expenses (4.3669ms)
+✔ T-07: assigned reviewer approves or rejects and the owner reads the recorded decision (149.7836ms)
+✔ T-06 / T-10: requesters, unassigned reviewers and a self-reviewer cannot decide (67.5658ms)
+✔ T-11: sequential decisions return 200 then 409 and keep one decision event (46.4976ms)
+✔ T-11: concurrent decisions produce one success, one conflict and one decision event (53.6364ms)
+✔ T-08: owner reads the decision after restarting the app and database client (89.8231ms)
+✔ an authenticated browser cannot submit an expense from another origin (6.6642ms)
+✔ submission fails without creating an expense when the assigned account is not a reviewer (43.8393ms)
+.env not found. Continuing without it.
+✔ T-F04-01: return persists one trimmed reason, owner identity and atomic history (609.5166ms)
+✔ T-F04-02: return reason/revision/shape boundaries reject without state changes (286.0334ms)
+✔ T-F04-03: wrong principals and origins cannot return or alter protected history (104.4094ms)
+✔ T-F04-04: terminal, repeated and concurrent decisions produce only one transition (317.2715ms)
+✔ T-F05-01/04: edit then resubmit preserves ID, assignment, createdAt and older history (62.7888ms)
+✔ T-F05-02: invalid and forged edits do not mutate returned fields/history (254.1ms)
+✔ T-F05-03: owner/role/state/Origin restrictions protect both edit and resubmit (355.7827ms)
+✔ T-F05-05: stale edits and repeated concurrent resubmits never duplicate events (132.3069ms)
+✔ T-F05-05: edit-versus-resubmit race uses the same revision predicate (46.7655ms)
+✔ T-F04-05/T-F05-06: return/edit/resubmit detail survives a new app and Prisma client (82.8125ms)
+✔ T-F06-01/02/03: real DB counts include only assigned current records and explicit zeros (58.4698ms)
+✔ T-F06-01: returning, editing and resubmitting change counts without inflating total (96.3905ms)
+✔ T-F06-03: empty summary and readback after restart remain exact (33.6574ms)
+ℹ tests 47
+ℹ suites 0
+ℹ pass 47
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3096.8462
+
+.env not found. Continuing without it.
+
+{"id":"05-unit-api","command":"cmd.exe /d /c npm.cmd test","startedAt":"2026-11-25T17:29:21.898Z","exit":0,"signal":null,"spawnError":null,"elapsedMs":3631}
+
+
+cmd.exe /d /c npm.cmd run build
+
+> club-expense-approval@0.1.0 build
+> tsc --noEmit && tsc -p tsconfig.server.json && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 28 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/client/index.html                  0.34 kB │ gzip:  0.25 kB
+../dist/client/assets/index-Sp6X-OyQ.js  236.08 kB │ gzip: 73.44 kB
+✓ built in 704ms
+
+
+{"id":"05-build","command":"cmd.exe /d /c npm.cmd run build","startedAt":"2026-11-25T17:29:25.530Z","exit":0,"signal":null,"spawnError":null,"elapsedMs":5029}
+
+
+cmd.exe /d /c npm.cmd run test:e2e -- --reporter=list,json
+
+> club-expense-approval@0.1.0 test:e2e
+> node --env-file-if-exists=.env node_modules/@playwright/test/cli.js test --reporter=list,json
+
+
+Running 19 tests using 1 worker
+
+  ok  1 client\test\expense-decisions.spec.ts:50:1 › T-09: requester submits, reviewer approves or rejects, and requester reads both outcomes (1.6s)
+  ok  2 client\test\expense-decisions.spec.ts:79:1 › reviewer reloads the latest status after a stale decision returns 409 (780ms)
+  ok  3 client\test\expense-decisions.spec.ts:102:1 › T-F04-05/T-F05-06/T-F06-04: return, saved correction, resubmit and final readback update the DB summary (2.2s)
+  ok  4 client\test\f05-draft-recovery.spec.ts:196:1 › T-F05-07 keeps latest values and the conflicted draft separate after real stale Save (771ms)
+  ok  5 client\test\f05-draft-recovery.spec.ts:218:3 › T-F05-08a Restore keeps the latest untouched category and waits for manual Save (826ms)
+  ok  6 client\test\f05-draft-recovery.spec.ts:218:3 › T-F05-08a Restore keeps the latest untouched amount and waits for manual Save (770ms)
+  ok  7 client\test\f05-draft-recovery.spec.ts:252:1 › T-F05-08b Discard keeps latest saved fields and performs no mutation (671ms)
+  ok  8 client\test\f05-draft-recovery.spec.ts:272:3 › T-F05-09a shows read-only draft when the latest state is SUBMITTED (746ms)
+  ok  9 client\test\f05-draft-recovery.spec.ts:272:3 › T-F05-09a shows read-only draft when the latest state is APPROVED (803ms)
+  ok 10 client\test\f05-draft-recovery.spec.ts:305:1 › T-F05-09a revoked owner session cannot read or recover the stale draft (971ms)
+  ok 11 client\test\f05-draft-recovery.spec.ts:343:1 › T-F05-09a real access denial clears an established draft without ending the account session (1.1s)
+  ok 12 client\test\f05-draft-recovery.spec.ts:401:1 › T-F05-09b keeps a draft only for its request and clears it when the account changes (1.4s)
+  ok 13 client\test\f05-draft-recovery.spec.ts:435:1 › T-F05-09b warns about reload and clears the draft on page reload (741ms)
+  ok 14 client\test\f05-draft-recovery.spec.ts:450:1 › T-F05-10a a failed refresh retains the draft and deliberate retry makes only reads (729ms)
+  ok 15 client\test\f05-draft-recovery.spec.ts:491:1 › T-F05-10b a second stale Save retains the new attempt and the newer database revision (730ms)
+  ok 16 client\test\f05-draft-recovery.spec.ts:519:3 › T-F05-11a Save transport error retains state and identifies the failed action (619ms)
+  ok 17 client\test\f05-draft-recovery.spec.ts:519:3 › T-F05-11b Resubmit transport error retains state and identifies the failed action (627ms)
+  ok 18 client\test\f05-draft-recovery.spec.ts:629:1 › BF-01 AC-F05-08/09 same-value Restore clears the clean draft before explicit Resubmit (801ms)
+  ok 19 client\test\f05-draft-recovery.spec.ts:644:1 › BF-01 AC-F05-08/09 reverting a dirty restored draft clears it before explicit Resubmit (847ms)
+
+  19 passed (27.4s)
+
+.env not found. Continuing without it.
+[WebServer] (node:16776) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] .env not found. Continuing without it.
+.env not found. Continuing without it.
+(node:45980) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+{"id":"05-browser","command":"cmd.exe /d /c npm.cmd run test:e2e -- --reporter=list,json","startedAt":"2026-11-25T17:29:30.560Z","exit":0,"signal":null,"spawnError":null,"elapsedMs":28676}
+
+
+docker.exe --context desktop-linux build -t club-expense-approval:d2-integration-2530998cb964 .
+
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.12kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:24-bookworm-slim
+#2 ...
+
+#3 [auth] library/node:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:24-bookworm-slim
+#2 DONE 2.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 335B 0.0s done
+#4 DONE 0.0s
+
+#5 [base 1/3] FROM docker.io/library/node:24-bookworm-slim@sha256:873f586f3794f52281bd039bf02c048a0be08fde619338f9941bad1eb6b34530
+#5 resolve docker.io/library/node:24-bookworm-slim@sha256:873f586f3794f52281bd039bf02c048a0be08fde619338f9941bad1eb6b34530 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 878.57kB 1.0s done
+#6 DONE 1.1s
+
+#7 [dependencies 3/4] RUN npm ci
+#7 CACHED
+
+#8 [base 2/3] RUN apt-get update     && apt-get install -y --no-install-recommends openssl     && rm -rf /var/lib/apt/lists/*
+#8 CACHED
+
+#9 [base 3/3] WORKDIR /app
+#9 CACHED
+
+#10 [dependencies 1/4] COPY package.json package-lock.json ./
+#10 CACHED
+
+#11 [dependencies 2/4] COPY prisma ./prisma
+#11 CACHED
+
+#12 [dependencies 4/4] RUN npm exec -- prisma generate
+#12 CACHED
+
+#13 [build 1/2] COPY . .
+#13 DONE 0.0s
+
+#14 [build 2/2] RUN npm run build
+#14 0.396
+#14 0.396 > club-expense-approval@0.1.0 build
+#14 0.396 > tsc --noEmit && tsc -p tsconfig.server.json && vite build
+#14 0.396
+#14 3.980 vite v7.3.7 building client environment for production...
+#14 4.029 transforming...
+#14 4.661 ✓ 28 modules transformed.
+#14 4.763 rendering chunks...
+#14 4.769 computing gzip size...
+#14 4.777 ../dist/client/index.html                  0.34 kB │ gzip:  0.25 kB
+#14 4.777 ../dist/client/assets/index-Sp6X-OyQ.js  236.08 kB │ gzip: 73.44 kB
+#14 4.777 ✓ built in 776ms
+#14 DONE 4.8s
+
+#15 [runtime 2/6] COPY --from=build --chown=node:node /app/node_modules ./node_modules
+#15 CACHED
+
+#16 [runtime 3/6] COPY --from=build --chown=node:node /app/dist ./dist
+#16 CACHED
+
+#17 [runtime 4/6] COPY --from=build --chown=node:node /app/prisma ./prisma
+#17 CACHED
+
+#18 [runtime 5/6] COPY --from=build --chown=node:node /app/server/src ./server/src
+#18 CACHED
+
+#19 [runtime 1/6] COPY --from=build --chown=node:node /app/package.json /app/package-lock.json ./
+#19 CACHED
+
+#20 [runtime 6/6] COPY --from=build --chown=node:node /app/tsconfig.json ./tsconfig.json
+#20 CACHED
+
+#21 exporting to image
+#21 exporting layers 0.0s done
+#21 exporting manifest sha256:b87cbadc55806f718d46cf8e70009129ca1bb9b0d4c3034b07a05419eee767eb done
+#21 exporting config sha256:2d33d7475f6b33fbf1734c3837086cd2e9f3c6cd48c20cebc5f0fba78cc7d434 done
+#21 exporting attestation manifest sha256:67b80347cd1f763f85022a6f977a4c3d7e8ef52407c53f43263ef2e20c9349f2 done
+#21 exporting manifest list sha256:fde7fd042137100a20bbb17c3abb99e444ae20afa72efc6e39b2c0848f971f59 done
+#21 naming to docker.io/library/club-expense-approval:d2-integration-2530998cb964 done
+#21 unpacking to docker.io/library/club-expense-approval:d2-integration-2530998cb964
+#21 unpacking to docker.io/library/club-expense-approval:d2-integration-2530998cb964 3.5s done
+#21 DONE 3.5s
+
+{"id":"06-docker-build","command":"docker.exe --context desktop-linux build -t club-expense-approval:d2-integration-2530998cb964 .","startedAt":"2026-11-25T17:29:59.616Z","exit":0,"signal":null,"spawnError":null,"elapsedMs":14100}
+
+
+docker.exe --context desktop-linux exec 8790ceb4f0221d2bb148c11a2a2cd94387c91420a0d27716d7a2e4c3712ba5c0 psql -U test_d2_integration_2530998cb964 -d test_d2_integration_2530998cb964 -At -c select count(*) from pg_stat_activity where datname=current_database() and pid<>pg_backend_pid() and backend_type='client backend';
+0
+
+
+{"id":"07-connections","command":"docker.exe --context desktop-linux exec 8790ceb4f0221d2bb148c11a2a2cd94387c91420a0d27716d7a2e4c3712ba5c0 psql -U test_d2_integration_2530998cb964 -d test_d2_integration_2530998cb964 -At -c select count(*) from pg_stat_activity where datname=current_database() and pid<>pg_backend_pid() and backend_type='client backend';","startedAt":"2026-11-25T17:30:14.179Z","exit":0,"signal":null,"spawnError":null,"elapsedMs":146}

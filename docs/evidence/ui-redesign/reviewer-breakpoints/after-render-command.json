@@ -1,0 +1,11 @@
+{
+  "label": "after-render",
+  "command": "node ../reviewer-breakpoints.mjs after",
+  "source": "34269152acdf4ebb06667516622b6fabd1e4a140",
+  "startedAt": "2026-11-26T04:58:01.667Z",
+  "finishedAt": "2026-11-26T04:58:09.049Z",
+  "elapsedMs": 7381,
+  "exit": 0,
+  "signal": null,
+  "spawnError": null
+}
