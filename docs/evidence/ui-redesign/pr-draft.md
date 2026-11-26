@@ -1,11 +1,11 @@
 # Prepared UI pull request
 
-Title: Redesign Club Expense Approval with a campus studio interface
+Title: Redesign club expense UI with campus artwork and responsive layouts
 
 Base: `staging/sprint-2`
 Head: `feat/sprint2-campus-ui`
 
-Publication prerequisite: PR #46 must merge and its latest staging documentation must be integrated first. This file is a prepared body, not evidence that a PR exists.
+Publication prerequisite satisfied: PR #46 was independently approved and merged at c898889, then integrated normally at 056f9bc. See [integration provenance](integration-2026-11-26.md). This prepared body is not itself evidence that a PR exists.
 
 ---
 
@@ -32,6 +32,8 @@ See [verification](verification.md), [before/after screenshots](verification.md#
 The evidence preserves the initial capture/recorder infrastructure failures and their narrow corrections. Application source passed; none of those attempts is claimed as tests-first RED. Local Chromium evidence is not cross-browser, screen-reader or certified WCAG coverage. No deployment or hosted CI is claimed by these local results.
 
 The presentation-only [Reviewer breakpoint correction](reviewer-breakpoints/verification.md) at `34269152acdf4ebb06667516622b6fabd1e4a140` adds a passing build and four focused real rendered checks at 761, 768, 800 and 834px, including actual decisions and keyboard/reduced-motion checks. The 47/19 comprehensive results above retain source 465ebea provenance; they were not rerun for that CSS correction.
+
+The normal integration merge at `056f9bc7cc72002f0e2ac262343edbae0beca9b1` changes only reviewed documentation. The publication follow-up is documentation only; no local application executions are attributed to either new HEAD. Hosted CI results on the latest PR head must be reported separately.
 
 ## Review
 

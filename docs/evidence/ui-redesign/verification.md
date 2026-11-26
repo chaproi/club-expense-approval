@@ -2,6 +2,8 @@
 
 26 November 2026 (Asia/Bangkok). Local verification, not hosted CI or independent design approval.
 
+**Current integration:** [PR #46 approval and normal staging merge](integration-2026-11-26.md) satisfy the earlier publication gate. Integrated HEAD is `056f9bc7cc72002f0e2ac262343edbae0beca9b1`; its incoming changes are documentation only. Earlier statements that #46 was open are historical checkpoints, and the executions below keep their original tested revisions.
+
 **Responsive follow-up:** [Reviewer breakpoint correction](reviewer-breakpoints/verification.md) records source 34269152acdf4ebb06667516622b6fabd1e4a140, its passing build and four focused width checks. All earlier results and screenshots below retain their original source provenance.
 
 ## Source and scope
