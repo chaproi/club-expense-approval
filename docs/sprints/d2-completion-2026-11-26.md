@@ -78,7 +78,7 @@ Exact-main [run45786768391](https://github.com/chaproi/club-expense-approval/act
 - [x] Lab6 original incoming UAT/retest/accepted Low limitations reconciled separately.
 - [x] Per-feature/per-AC completion and full source packet prepared with actual demonstrations and test excerpts.
 - [x] Student confirmed cover name นายสิริกร ฝันนิมิตร / ID67070507215 / TH-038 Solo instructor-approved and the concise contribution/AI-use declaration on26Nov. A long personal reflection is optional.
-- [x] Report PDF includes confirmed student text, embedded Thai fonts, computed A–E pages and page numbers; inspection/results are recorded in the packet PDF QA record. Owner checks course-required naming before submission.
+- [x] Corrected report PDF includes the consolidated finding register, executable local setup,29Nov Lab7 deadline and named AI tools; updated pagination/navigation and every-page inspection are recorded in the current PDF QA. The prior7b0194d result remains historical. Owner checks course-required naming before submission.
 - [ ] Owner records final D2 acceptance decision and performs submission.
 
 There is **no new external deployed-acceptance checkbox** for D2. Technical checks do not assign marks or substitute for the owner. Direct-cloud current imageDigest/traffic/task queries and exact pre-release shared-data snapshots remain explicitly unavailable, not silently converted to PASS.
@@ -88,7 +88,7 @@ There is **no new external deployed-acceptance checkbox** for D2. Technical chec
 | Date (Asia/Bangkok) | Planned work / evidence | Decision/dependency |
 |---|---|---|
 | 27–29 Nov | Confirmed student text and report PDF; owner packet review and D2 submission by29Nov23:59, target20:00 | Owner action; do not claim submission now |
-| By30Nov | Confirm any separate Lab6 report/reciprocal material and instructor/TA-approved Lab7 maintenance scope | Preserve existing UAT; never invent approval or defect |
+| By29Nov | Track the separate Lab7 maintenance deliverable and obtain instructor/TA scope approval; reconcile any separate Lab6 report/reciprocal material | Actual Lab7 deadline29Nov; no extension or approval claimed. Preserve existing UAT. Lab7 completion is separate from the owner's D2 decision, not a new prerequisite for D2 acceptance. |
 | By2Dec | Implement/test-first F-07 two-stage with validated distinct assignments, per-round concurrency and legacy migration | Reviewed contract; exams1–11Dec constrain capacity |
 | By3Dec | Implement/test-first F-08 authorized status filters and intermediate state | Depends compatible F-07 scope/status |
 | By4Dec | Complete F-06 approved-category totals and no double count/intermediate approval | Depends F-07 |

@@ -1,6 +1,6 @@
 // Documentation-only assembler. Run from any working directory with Node.js 24.
 const fs=require("node:fs"),path=require("node:path"),crypto=require("node:crypto"),cp=require("node:child_process");
-const here=__dirname,root=path.resolve(here,"../../.."),release="cc6b04c8e98191be591a3b755d25988148523909",archive="7b62e8f95fd808acb1e59c9105c6e80bab70d358";
+const here=__dirname,root=path.resolve(here,"../../.."),release="cc6b04c8e98191be591a3b755d25988148523909",archive="7b0194d24a3a7fcac6e52589bd0a176d8ff7aa5f";
 const hash=x=>crypto.createHash("sha256").update(x).digest("hex"),read=p=>fs.readFileSync(path.join(root,p),"utf8").replace(/\r\n/g,"\n");
 const included=[
  ["docs/sprint-1-baseline.md","baseline","Original Sprint 1 engineering baseline, full text"],

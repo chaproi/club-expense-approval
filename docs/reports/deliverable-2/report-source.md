@@ -34,6 +34,23 @@ The original external Lab6 team TH-033_P3 (cottonlnwza and thananun-7203) report
 
 Continuity on released cc6b04c: exact-main CI47/47 unit/API and19/19 browser; live PD-A01/A03/A04/A06/A10 passed auth, approval/rejection, denials and owner readback. Fifteen existing accessible records remained exact during the postdeploy session. No suitable complete pre-release shared-data snapshot was available, so exact preservation across release is not claimed. The legacy Lab5 record remained readable and unmodified.
 
+## Consolidated change and defect register — D2 section3.1
+
+Current documentation reconciliation:26November2026. Owner for the dispositions/follow-ups below is **chaproi**; external findings and retests retain their actual authors/version. Resolved means the specified fix/retest is evidenced, not that the newer D2 release received Lab6 peer acceptance. Existing historical IDs are retained. The Lab7 row has **no historical defect ID**; it is a separate course obligation, not a fabricated defect or D2 acceptance gate.
+
+| ID / source | Affected requirement / feature | Accepted decision; resolved or remaining | Fix/change release and actual retest | Owner / next action, target or deferral |
+|---|---|---|---|---|
+| DEF-TH038-01 / Issue30; incoming TH-033_P3 Lab6 exploratory UAT | F-01 input safety, NFR-01; malformed login email reached500 | Accepted Medium defect; reject NUL/unpaired surrogates before Prisma. RESOLVED at its reviewed release. | PR32→PR33; main43aa8d7472aa8852654d0d634d7239c3765c5869, revision00007-9wq. thananun-7203 independently retested22Nov21:18:04–21:19:15 Bangkok: exact400 INVALID_INPUT; wrong-password control401. Later cc6b04c CI/live auth coverage is separate. | chaproi; retain original failed rows and version-specific retest. No remaining fix/retest for this finding established. |
+| DEF-TH038-02 / Issue31; same incoming team | F-01 canonical-host login, exact-Origin policy | Accepted Medium defect; redirect frontend GET/HEAD alias navigation to configured origin, preserving path/query and API guard. RESOLVED. | Same43aa8d7/revision00007-9wq. Original independent22Nov retest:308 preserving query and real canonical browser login PASS. Historical peer acceptance applies to43aa8d7 only. | chaproi; retain original evidence/Low limitations; no new external D2 retest requested. |
+| Issue42, linked Issue36; owner-directed staging acceptance | F-05 v1.1 AC-F05-07–11; attempted draft loss after real stale Save409 | Accepted contract ambiguity/defect; preserve draft/base/changed fields, separate latest, explicit Restore/Discard/manual Save and lifecycle clearing. RESOLVED technical implementation. | Contractcda5069→RED1667ec2(1pass/13fail)→GREENffefb2d(47API/17browser); PR43 staging7ab41689df7961ec8bab279cdd98d1afddf7a912→maincc6b04c. Exact-main47/19 CI PASS; owner-directed livePD-A07 real409→Restore0writes→manual Save PASS. | chaproi; preserve RED and failed setup attempts; final owner D2 decision separate. |
+| BF-01; thananun-7203 REQUEST_CHANGES onPR43,25Nov | AC-F05-08/09; phantom clean draft and recovery UI after Resubmit | Binding finding accepted; clear zero-difference drafts and selected draft on successful Resubmit. RESOLVED by same-PR re-review. | Tests95d7d2b:2semantic failures→sourcecb05d62:47API/19browser PASS; approvedf487956 on25Nov14:33:10Z. Staging7ab4168→maincc6b04c; released CI includes both BF-01 tests. Not repeated as a live BF-01 case. | chaproi; retain requested-changes review and exact re-review. No unresolved binding BF-01 finding. |
+| Issue44; dependency assessment/audit, separate fromIssue42 | Dependency/runtime/migration safety; Prisma6.19.3→@prisma/config→deepmerge-ts/effect | Accepted scoped overrides deepmerge-ts8.0.0/effect3.22.1; Prisma/Client unchanged. Advisory remediation RESOLVED in verified tree; major-override compatibility caveat REMAINS. | Plan45f7046→candidatea6c93ab; audits4High→0(full/omit-dev),47API/19browser, image migration/smoke and populated43aa8d7→a6c93ab upgrade PASS. ReviewedPR45 staging717536287117118d508e08d6cc68764a5df537c7→maincc6b04c. No fresh audit claimed at this documentation date. | chaproi; documented deferral: retain scoped override until reviewed compatible upstream fix, then remove and rerun audit/tree/API/browser/Docker/populated-upgrade checks. No invented removal date. |
+| OBS-TH038-01; original Lab6 Low observation | F-01 session UI across tabs; backend unauthorized responses remain enforced | Accepted unresolved Low limitation: another tab's logout can leave old UI visible until reload. REMAINS; no fix claimed. | Accepted with minor limitations by original team22Nov on43aa8d7. Carried into D2 disclosure; no corrective release/retest for the UI observation. | chaproi; explicitly deferred to a separately scoped UI reset follow-up and regression, not silently counted fixed. Review disposition during5–7Dec hardening; no promised implementation date. |
+| OBS-TH038-02; original Lab6 Low observation | BR-01/F-02 title length;61emoji count as122 UTF-16 units | Accepted unresolved Low discrepancy; retain current consistent UTF-16 counting pending reviewed Unicode counting decision. REMAINS. | Original team accepted limitation22Nov on43aa8d7. No corrective release/retest; D2 retains the disclosed rule and boundary evidence. | chaproi; deferred contract/client/server boundary change; review disposition during5–7Dec hardening, not an unapproved behavior change. |
+| Lab7 maintenance status — no historical defect ID; master course specification§10 / original baseline | Separately approved change to existing behavior; RED/GREEN, regression, deployment and5metrics | PENDING / UNAPPROVED: no instructor/TA approval or completed maintenance evidence is established in this packet. Ordinary F-04/F-05 backlog work is not substituted. | No approved maintenance release/retest claimed. Actual course deadline29November2026; no extension invented. | chaproi; obtain scope approval and track the separate Lab7 deliverable by29Nov. Any inability to meet it must be disclosed to instructor/TA. This is not a new requirement to finish Lab7 before accepting D2. |
+
+Sources: original Lab6 triage/retest appendices and Issues30/31; Issue42/BF-01 and Issue44 verified chains below; retained dependency/upgrade records. Initial failures, local/CI distinctions and the original acceptance scope are preserved. Optional PR47 UX suggestions have no historical defect ID and remain non-blocking follow-ups, not invented accepted defects.
+
 # B. Sprint 2 contracts and working increment (25)
 
 F-04 returns an assigned SUBMITTED request with reason/current revision; its owner reads the persisted reason and atomic history. F-05 saves valid owner changes only from RETURNED, then explicitly resubmits the same ID. All successful writes increment revision and append the proper event atomically; rejected/stale writes preserve state.
@@ -181,7 +198,9 @@ PD-A10:390px scrollWidth390, complete five-event history and reload/readback. Th
 
 ### Clean local setup
 
-Use Node24, npm, PostgreSQL and Docker Desktop/Compose for the optional isolated stack. Clone main, record the actual SHA, and check out the reviewed release for reproducibility. Keep secret values private.
+Required: Git; Node.js24.x and its npm; PostgreSQL17 for native development/tests, or Docker Desktop with Docker Compose2.24.4+ for the isolated stack below. Internet access is needed for lockfile packages, container images and the optional Chromium installation. No GCP credentials are required for local setup. These are reproducible instructions read from the **assessed release's** README, compose.yaml, .env.example, package scripts and Lab5 deployment guide; they were not executed again in this documentation batch.
+
+Start in a new clone, preserving any existing worktree and environment files:
 
 ~~~powershell
 git clone --branch main https://github.com/chaproi/club-expense-approval.git
@@ -189,32 +208,125 @@ cd club-expense-approval
 git checkout --detach cc6b04c8e98191be591a3b755d25988148523909
 npm.cmd ci
 Copy-Item .env.example .env
-# Privately set local DATABASE_URL, a separate TEST_DATABASE_URL,
-# APP_ORIGIN, PORT, DEFAULT_REVIEWER_EMAIL and local SEED_DEMO_PASSWORD.
-npm.cmd run db:migrate
-npm.cmd run db:seed
-npm.cmd run build
-npm.cmd start
 ~~~
 
-Seed only a new owned local/demo database, never shared CloudSQL. Match APP_ORIGIN exactly to the local URL/PORT. For development use the existing dev:api/dev:web commands in two terminals; for the production bundle use Express's npm start. Migration and seed commands remain available from the Docker image.
+Create new **owned local** databases club_expenses and club_expenses_test with your local PostgreSQL administrator; grant club_local access to the development database and club_test access to the test database, then edit the new .env privately. The following values are placeholders, not real secrets; replace angle-bracket values. Use a URL-encoded password for native database URLs. Do not copy shared/cloud connection strings.
+
+~~~dotenv
+DATABASE_URL=postgresql://club_local:<LOCAL_DB_PASSWORD>@127.0.0.1:5432/club_expenses?schema=public
+TEST_DATABASE_URL=postgresql://club_test:<TEST_DB_PASSWORD>@127.0.0.1:5432/club_expenses_test?schema=public
+APP_ORIGIN=http://localhost:5173
+PORT=3000
+DEFAULT_REVIEWER_EMAIL=reviewer1@example.test
+SEED_DEMO_PASSWORD=<LOCAL_DEMO_PASSWORD_AT_LEAST_12_CHARACTERS>
+~~~
+
+The development origin is the Vite browser origin5173 while the API listens on PORT3000. For the **bundled** app, set APP_ORIGIN=http://localhost:3000 and retain PORT=3000; any different bundled port must have its matching origin. This distinction preserves the real same-origin write guard.
+
+~~~powershell
+# Only against the fresh owned development database in .env:
+npm.cmd run db:migrate
+npm.cmd run db:seed
+# Development: two terminals in this clone:
+npm.cmd run dev:api
+# Second terminal:
+npm.cmd run dev:web
+# Open http://localhost:5173
+~~~
+
+Log in with requester1@example.test or reviewer1@example.test and the private password you supplied to seed. Seed creates two Requesters/two Reviewers, preserving existing demo accounts when rerun; it is never permission to seed shared or assessed CloudSQL. Stop each development process with Ctrl+C.
+
+~~~powershell
+# Bundled alternative: stop dev processes; edit this clone's .env to
+# APP_ORIGIN=http://localhost:3000 and PORT=3000, then:
+npm.cmd run build
+npm.cmd start
+# Open http://localhost:3000; stop with Ctrl+C.
+~~~
+
+### Executable isolated Docker/Compose startup
+
+The assessed compose.yaml uses postgres:17-bookworm, no host database port, a project-scoped db-data volume, a one-shot migrate service and a seed service. App startup requires successful migration after the DB health check. This example uses a **unique project, image and localhost port3015** beside existing work. Confirm the chosen project/image do not belong to another run; change their names if occupied. Never remove another project's resources.
+
+~~~powershell
+docker version
+docker compose version
+if (Get-NetTCPConnection -LocalPort 3015 -State Listen -ErrorAction SilentlyContinue) {
+    throw 'Port3015 is occupied; choose a free port and matching APP_ORIGIN.'
+}
+# Inspect names only; do not print a rendered config containing secrets.
+docker compose ls
+docker image ls club-expense-approval:d2-local
+if (Test-Path -LiteralPath .env.compose) { throw 'Preserve existing .env.compose; use a fresh clone.' }
+$privateLines = foreach ($key in 'LAB5_DB_PASSWORD', 'LAB5_DEMO_PASSWORD') {
+    $bytes = New-Object byte[] 24
+    $rng = [System.Security.Cryptography.RandomNumberGenerator]::Create()
+    try { $rng.GetBytes($bytes) } finally { $rng.Dispose() }
+    "$key=$([System.BitConverter]::ToString($bytes).Replace('-', '').ToLowerInvariant())"
+}
+[System.IO.File]::WriteAllLines((Join-Path (Get-Location).Path '.env.compose'), $privateLines)
+Remove-Variable privateLines
+git check-ignore -- .env.compose
+git ls-files -- .env.compose
+# Expected: ignored path from first check; no tracked path from second.
+$overridePath = Join-Path ([System.IO.Path]::GetTempPath()) "club-d2-$([Guid]::NewGuid().ToString('N')).yaml"
+$override = @'
+services:
+  app:
+    image: club-expense-approval:d2-local
+    environment:
+      APP_ORIGIN: http://localhost:3015
+      PORT: "3000"
+    ports: !override
+      - "127.0.0.1:3015:3000"
+  migrate:
+    image: club-expense-approval:d2-local
+  seed:
+    image: club-expense-approval:d2-local
+'@
+[System.IO.File]::WriteAllText($overridePath, $override)
+$composeArgs = @('--project-name', 'club-expense-d2-local', '--env-file', '.env.compose', '-f', 'compose.yaml', '-f', $overridePath)
+docker compose @composeArgs config --quiet
+docker compose @composeArgs build --no-cache app
+docker compose @composeArgs up -d --no-build
+docker compose @composeArgs ps -a
+docker compose @composeArgs logs migrate
+# Require healthy DB, migrate Exited(0), app running before continuing.
+docker compose @composeArgs run --rm --no-deps seed
+(Invoke-WebRequest -Uri 'http://localhost:3015' -UseBasicParsing).StatusCode
+# Open http://localhost:3015, use the local seeded account/private password.
+# Stop only this project while preserving its volume:
+docker compose @composeArgs down
+Remove-Item -LiteralPath $overridePath
+~~~
+
+The generated ignored file contains only LAB5_DB_PASSWORD and LAB5_DEMO_PASSWORD; do not print either. Compose supplies DATABASE_URL using db:5432/club_expense, APP_ORIGIN=http://localhost:3015 and container PORT3000 through the override. `migrate` executes the existing npm run db:migrate; `seed` executes npm run db:seed against that same **new local volume**. Keep the database password with the volume for subsequent starts. `down` does not delete it. Only if disposing of this verified owned project, use the same compose arguments with `down --volumes` **before** removing the temporary override. Do not apply volume deletion to shared stacks. A direct image build remains supported: `docker build -t club-expense-approval:d2-local .`; Compose above supplies its database/runtime wiring.
 
 ### Existing regression workflow (documented, not rerun here)
 
-Verify the dedicated disposable test target before migration. Set DATABASE_URL/TEST_DATABASE_URL to that same isolated target, then run:
+Use the separate club_expenses_test target, never the dev/Compose/shared database. In a fresh PowerShell terminal, set TEST_DATABASE_URL privately to the test URL shown above; use the same value only temporarily for migration and restore the previous process value afterward. The normal suites use TEST_DATABASE_URL and own uniquely marked fixtures. Browser setup also applies migrations and starts its bundled app on4173; verify that port is free and stop only a known owned listener.
 
 ~~~powershell
-npm.cmd run db:migrate
+$env:TEST_DATABASE_URL = '<PRIVATE_LOCAL_TEST_DATABASE_URL>'
+$previousDatabaseUrl = $env:DATABASE_URL
+try {
+    $env:DATABASE_URL = $env:TEST_DATABASE_URL
+    npm.cmd run db:migrate
+    if ($LASTEXITCODE -ne 0) { throw 'Test migration failed.' }
+} finally {
+    if ($null -eq $previousDatabaseUrl) { Remove-Item Env:DATABASE_URL -ErrorAction SilentlyContinue }
+    else { $env:DATABASE_URL = $previousDatabaseUrl }
+}
 npm.cmd test
 npm.cmd run build
-npm.cmd exec -- playwright install chromium
+npx.cmd playwright install chromium
 npm.cmd run test:e2e
 docker build -t club-expense-approval:local-check .
 ~~~
 
 These commands describe repeatability. The actual results in the evidence table came from their recorded revisions/runs, not from this documentation batch.
 
-For parallel Compose verification use a unique project name/image tag/free localhost port and ignored .env.compose; the full deployment guide remains available in the repository. PostgreSQL uses a separate named volume; migrate must complete before app startup. Never print compose config with secrets; config --quiet is the safe syntax check.
+These commands preserve normal test settings/assertions and are documented, not rerun. Review each exit before proceeding. The assessed deployment guide also records the original C-03 clean-clone proof; these instructions do not relabel that execution as a new D2 run.
 
 ### Reviewed release/deployment operations
 
@@ -244,6 +356,8 @@ Known resource names: project cpe-se-course-2026, region asia-southeast1, servic
 **Contribution and AI-use statement — confirmed by the student on26November2026:** “I directed the requirements and implementation work, reviewed AI-assisted code and documentation, and checked the recorded results. AI tools assisted with analysis, implementation, tests and report preparation; independent reviewers’ decisions and historical UAT retain their original attribution.”
 
 AI did not approve its own work or hear a screen reader. This concise factual declaration is used with the student's express confirmation; it is not a fabricated personal reflection.
+
+**Tool identification for Group Work Specifications§8.4:** ChatGPT assisted requirements/contract discussion, triage and report planning; Codex assisted repository analysis, implementation, automated tests, evidence collection and documentation/PDF preparation. This factual tool-name clarification supplements the previously confirmed statement; it is not a claim of a new student confirmation, new peer approval or AI-performed independent UAT.
 
 **Owner final decision/date and submission receipt:** NOT RECORDED. Complete only after your review; do not sign or submit through this packet automatically.
 

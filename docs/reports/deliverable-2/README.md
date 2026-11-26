@@ -2,13 +2,15 @@
 
 Released application: **cc6b04c8e98191be591a3b755d25988148523909**, 26 November 2026. This folder is a documentation source packet, **not a submitted/final-accepted PDF**.
 
-Open the [72-page report PDF](output/pdf/club-expense-approval-d2.pdf), or edit [report.md](report.md) through its source below. It includes the actual rubric A(5), B(25), C(15), D(10), E(15), full required documents, per-AC completion, the required domain/concurrency and backend-access excerpts plus additional BF-01 coverage, verified engineering chains, verbatim logs, deployed demonstrations, setup and dated Final plan. Five original images remain local in assets/. External links are audit drill-through, not substitutes for embedded required text.
+**Audit corrections completed after7b0194d:** the regenerated77-page PDF contains all four corrections and has been visually inspected page by page. See [correction status and preserved interruption history](audit-corrections-status-2026-11-26.md) and [current PDF QA](pdf-audit-corrections-qa-2026-11-26.md). The manifest binds the corrected source to the inspected PDF; the previously published72-page version remains in Git history.
+
+Open the [77-page report PDF](output/pdf/club-expense-approval-d2.pdf), or edit [report.md](report.md) through its source below. It includes the actual rubric A(5), B(25), C(15), D(10), E(15), full required documents, per-AC completion, the required domain/concurrency and backend-access excerpts plus additional BF-01 coverage, verified engineering chains, verbatim logs, deployed demonstrations, executable local setup and dated Final plan. The consolidated change/defect register is on pages3–5; setup is on25–27; the29November Lab7 deadline and named AI tools are on29. Five original images remain local in assets/. External links are audit drill-through, not substitutes for embedded required text.
 
 - [report-source.md](report-source.md): editable narrative with student-confirmed Thai name, ID/team and concise contribution/AI-use declaration. A long reflection is optional.
 - [assemble.cjs](assemble.cjs): documentation-only Node24 assembler; no package installation, app server, database or tests.
 - [manifest.json](manifest.json): canonical UTF-8/LF input digests, twelve complete embedded documents, released test excerpt line ranges/hashes and five image digests.
 - [validation.md](validation.md): original source-only checks at7b62e8f, preserved as a historical checkpoint.
-- [pdf-qa-2026-11-26.md](pdf-qa-2026-11-26.md) and [pdf-validation.json](pdf-validation.json): current checks, page inspection, actual navigation pages, hashes and embedded fonts.
+- [pdf-audit-corrections-qa-2026-11-26.md](pdf-audit-corrections-qa-2026-11-26.md) and [pdf-validation.json](pdf-validation.json): current77-page checks, page inspection, actual navigation pages, hashes and embedded fonts. [Original72-page QA](pdf-qa-2026-11-26.md) retains its historical version-specific results.
 - [review-chains-2026-11-26.json](review-chains-2026-11-26.json): read-only GitHub metadata/reviews for both selected fixes and main release.
 - [validate.cjs](validate.cjs): repeatable structural/source validation without application execution.
 - [Current per-AC checklist](../../sprints/d2-completion-2026-11-26.md).
@@ -26,7 +28,7 @@ node docs/reports/deliverable-2/validate.cjs
 
 The assembler checks all three excerpt sources against released main, embeds two verbatim log excerpts and verified review metadata, inserts twelve full documents and copies existing images. It does not run application checks. Edit source documents, not generated report.md. If the report hash changes, regenerate the PDF and repeat visual inspection before publication; a prior PDF hash cannot certify new source.
 
-The manifest uses canonical UTF-8/LF source digests. Relative appendix links map to complete in-report sections or evidence pinned at documentation parent7b62e8f. Historical wording is not relabelled as a present gate; current summaries identify superseded checkpoints.
+The manifest uses canonical UTF-8/LF source digests. Relative appendix links map to complete in-report sections or evidence pinned at documentation parent7b0194d. Historical wording is not relabelled as a present gate; current summaries identify superseded checkpoints.
 
 ## Reproduce the PDF without changing application dependencies
 

@@ -1,17 +1,17 @@
 {
   "date": "2026-11-26 Asia/Bangkok",
   "release": "cc6b04c8e98191be591a3b755d25988148523909",
-  "documentParent": "7b62e8f95fd808acb1e59c9105c6e80bab70d358",
+  "documentParent": "7b0194d24a3a7fcac6e52589bd0a176d8ff7aa5f",
   "pdf": "output/pdf/club-expense-approval-d2.pdf",
-  "pdfSha256": "1754ac60b6af1bbc73c4ce6db8239875ff5bfee66e3781cd23674255b8145d33",
-  "reportSha256": "2ba49460eba9748935c50c7809b440ed3b4304ab6da4343b897900b169ff00f9",
-  "pages": 72,
+  "pdfSha256": "ddfb35c5772e1cd217f1188b36d7512ff880cfc8553c4068b1e798a104e9b226",
+  "reportSha256": "2a61d0726fb77f866e7e092cfa74437002feb0eb24c3ffc05ec3a55558dfc64f",
+  "pages": 77,
   "navigationPages": {
     "A": 3,
-    "B": 4,
-    "C": 12,
-    "D": 13,
-    "E": 14
+    "B": 6,
+    "C": 14,
+    "D": 15,
+    "E": 16
   },
   "runtime": {
     "browser": "151.0.7922.34",
@@ -27,13 +27,13 @@
       "name": "AAAAAA+Tahoma-Bold",
       "format": "ttf",
       "type": "Type0",
-      "embeddedBytes": 171724
+      "embeddedBytes": 172444
     },
     {
       "name": "BAAAAA+Tahoma",
       "format": "ttf",
       "type": "Type0",
-      "embeddedBytes": 219520
+      "embeddedBytes": 219908
     },
     {
       "name": "CAAAAA+ArialMT",
@@ -45,7 +45,7 @@
       "name": "DAAAAA+Consolas",
       "format": "ttf",
       "type": "Type0",
-      "embeddedBytes": 33812
+      "embeddedBytes": 34184
     },
     {
       "name": "EAAAAA+SegoeUISymbol",
@@ -62,7 +62,7 @@
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-001.png",
-      "rasterSha256": "eb1826a7450115957d90ad7f9d942c2133c800daf8c9a45c007c7fa8b93bf480"
+      "rasterSha256": "ce3acbeb488ab580af3741c8c43e418005a3af9006f6d255cb7b49409bdc0fc0"
     },
     {
       "page": 2,
@@ -70,573 +70,629 @@
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-002.png",
-      "rasterSha256": "32d7dd7e1133b124ee7a7ea47913fc44291d11f5592d9b08e7ce2405c5e3c09b"
+      "rasterSha256": "58b51a67797b81dd9608f052f29f65217a305c2b73aa2ba8ff707c5dca0a6414"
     },
     {
       "page": 3,
-      "textCharacters": 1836,
+      "textCharacters": 3106,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-003.png",
-      "rasterSha256": "790eb09ba2eb87865bd81f63b3523d7ad7ad3a302d1b536e038b04fc3570d86a"
+      "rasterSha256": "011bcb00b472d026bcf29aff52d345bb889cea9a6efdcf4b71e7ac77c2bda85a"
     },
     {
       "page": 4,
-      "textCharacters": 2441,
+      "textCharacters": 2760,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-004.png",
-      "rasterSha256": "6f110fd5fc2ca05a11614347a2c8e2cd802393dfe053b68df5a0aadeeebe68da"
+      "rasterSha256": "ac088307ab06aa6893b7cacf23b3266a3a45602c45f9ce5914b19d582d728dd3"
     },
     {
       "page": 5,
-      "textCharacters": 2407,
+      "textCharacters": 2412,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-005.png",
-      "rasterSha256": "133e7bf80b5f938c6e7dd303170cc4a2ab5cb50a8c758e8cf8ca1f65dee8c9ad"
+      "rasterSha256": "405aac5121a76835f4197c4d8920f571e663c2d095123dc495e0d73b65776b62"
     },
     {
       "page": 6,
-      "textCharacters": 2250,
+      "textCharacters": 2441,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-006.png",
-      "rasterSha256": "56c1c7a3a2443f61b014425e5a9a2f95c5d3e9b35fa8fe8041319720ae821c6f"
+      "rasterSha256": "5256f68d7a16d922053dbaffa9d99506117a0674490f19ecbfae99f3975bfbe0"
     },
     {
       "page": 7,
-      "textCharacters": 2207,
+      "textCharacters": 2407,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-007.png",
-      "rasterSha256": "1abe1bfdcb59d6cd231e2345690ecc633eaae832b3a203e795fe985b717d3b6e"
+      "rasterSha256": "4b18cecfd36bd42fa7f57bc139185e248a3e0cbc927353f8b48636cd1b3c28c5"
     },
     {
       "page": 8,
-      "textCharacters": 2717,
+      "textCharacters": 2250,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-008.png",
-      "rasterSha256": "9716ff5274238d8e99bb38dd1d61413e9e938f45de22acc1fe6136bb8f66c292"
+      "rasterSha256": "8245bb1a6cce042e8c9e1c528238dbff465c538505e4d1095a686b63dc5b5339"
     },
     {
       "page": 9,
-      "textCharacters": 3654,
+      "textCharacters": 2207,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-009.png",
-      "rasterSha256": "7ce51a8572e5f75ca5b9f04de7d761f70f65c1239491ef5e567c88f2046fe4b6"
+      "rasterSha256": "7ef49d45ad9229c730856c48a016fcde6f686dd43b3dcbe4c7a462a868bb18e9"
     },
     {
       "page": 10,
-      "textCharacters": 3806,
+      "textCharacters": 2718,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-010.png",
-      "rasterSha256": "4877a348c41631be6a2c9b75ab24ef75c74306652dbb4f7c953a691e232f226e"
+      "rasterSha256": "23209f8e8fe17d8ca65587b33ee8ea4ac81ac3e2e7b712f8bac543dd6c9cf2db"
     },
     {
       "page": 11,
-      "textCharacters": 3313,
+      "textCharacters": 3655,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-011.png",
-      "rasterSha256": "9181e1815b775649e903264e1fde522d59b4ae9a84f2d70338b6d27ac9fc4683"
+      "rasterSha256": "8e25c854df5d30779a3a49eaaf247fd5ca6aff41a98cd10c789b3105afe68956"
     },
     {
       "page": 12,
-      "textCharacters": 1356,
+      "textCharacters": 3806,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-012.png",
-      "rasterSha256": "e84e814942e7bddc07334705dd916be28e2a4f29926b17523cf0fe06f831a461"
+      "rasterSha256": "6427b2f146fefa75dc7b5701b9ce47863ce51183ac85a6183f4bea2ea84a2b09"
     },
     {
       "page": 13,
-      "textCharacters": 1262,
+      "textCharacters": 3313,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-013.png",
-      "rasterSha256": "4560e385d2ab15a42be8a2272eb68d773caebdc0b0d95a6eb2ce7809eee0d5cc"
+      "rasterSha256": "2d8dda9a35abba66924cc591470d80bfcac41926353867d68c21ffea7717ecec"
     },
     {
       "page": 14,
-      "textCharacters": 3442,
+      "textCharacters": 1356,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-014.png",
-      "rasterSha256": "f9a1ea736ddf77c6cbb784af76000a80a9cdf86522dade25141fb6b7b2678972"
+      "rasterSha256": "c2b8c64a60d0f7ed481dc51a85151d6394d791e2b6052333b8aaa1203560dc42"
     },
     {
       "page": 15,
-      "textCharacters": 2152,
+      "textCharacters": 1262,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-015.png",
-      "rasterSha256": "da4b4f36efdd1ed99ac4a1c889042cb25c5ca2bb8d4b7b1a15016f3b4fd9c178"
+      "rasterSha256": "7501a88076c289677afbf65b75f39e6d483514b516eb18206cf8f3e7eaec7ccb"
     },
     {
       "page": 16,
-      "textCharacters": 507,
+      "textCharacters": 3442,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-016.png",
-      "rasterSha256": "84b35ba15a8d35e494c4362535433717a138b1eea6c2a38fa3536e6c49e47eaa"
+      "rasterSha256": "2932eb7ffaefd0c71b810a1ccda11c8097b33e384fe128f7733b83292ee5c65e"
     },
     {
       "page": 17,
-      "textCharacters": 505,
+      "textCharacters": 2152,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-017.png",
-      "rasterSha256": "f83ff3c75be2661c87319589476a7cbc5eca9e36e2b4cfd4b17d4092641f7ae8"
+      "rasterSha256": "3a9dadf368276701a268e4e2bb84186ec220b0f18b0cd0f1c8784fdf6f4db84c"
     },
     {
       "page": 18,
-      "textCharacters": 629,
+      "textCharacters": 507,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-018.png",
-      "rasterSha256": "587b905ecc4e13dba6851426dddc102d07a82d76180d1376180d8f54f961fdbb"
+      "rasterSha256": "081d6e443b2c3bce13de11baf7760b5cbde08bf0072cc425b81933f5d2c0d74e"
     },
     {
       "page": 19,
-      "textCharacters": 384,
+      "textCharacters": 505,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-019.png",
-      "rasterSha256": "5ee8e6cd988fedccce9b00bcb662b5bf19633b4c70ce46394cbdeb207b1ea1bd"
+      "rasterSha256": "c8b3226190d2b4530c379e9a1bc1245a1f5d8f905e453fed9e58d021d05ffc08"
     },
     {
       "page": 20,
-      "textCharacters": 530,
+      "textCharacters": 629,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-020.png",
-      "rasterSha256": "8d793901c5a7b37d5f11e0a498312b26d22ec215b00b7a19035f6e0536fa8697"
+      "rasterSha256": "735ece84488bab85d10390a65ff36f8c433c0f957224d4aba08a5539f6c3be69"
     },
     {
       "page": 21,
-      "textCharacters": 341,
+      "textCharacters": 384,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-021.png",
-      "rasterSha256": "eafaae1b4e97218cea613f90041327a1515d102ebc6bbb0f82e3827c333c96d7"
+      "rasterSha256": "b58561102389fbdbe57421da14fbcb13f4e4e376d09052cb17017f4b0914f821"
     },
     {
       "page": 22,
-      "textCharacters": 520,
+      "textCharacters": 530,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-022.png",
-      "rasterSha256": "2b74bc4510acae3b4cc74675e0a1bdeb3315e8026ea260648ee865439e5a8126"
+      "rasterSha256": "ce8115eb3afc68973e422faa8ef0613d9af35e179cc8adfbc3c43591e98fd516"
     },
     {
       "page": 23,
-      "textCharacters": 2789,
+      "textCharacters": 341,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-023.png",
-      "rasterSha256": "373f68005ca563f56970e3f4687c268dc49ac392ad4c7043de763e1b5eda83a3"
+      "rasterSha256": "a27a705a667c50f90e02d1b5079268e6519d4311a827cc2835d15302726b8fdd"
     },
     {
       "page": 24,
-      "textCharacters": 2832,
+      "textCharacters": 520,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-024.png",
-      "rasterSha256": "c3b20b27118ae41db1163469d15dc4440bd4249bf42f7c84fa272e0eb3b16b86"
+      "rasterSha256": "b3c60c10edcdb0fb3fc0a6c6b7ffe4c55841d6db63c96dcf4f87ed1f5cbf7fd1"
     },
     {
       "page": 25,
-      "textCharacters": 2566,
+      "textCharacters": 2797,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-025.png",
-      "rasterSha256": "70d1189c202281c32f3e2cf37964e985775ebf81363a4b7873ccd6a2f01f6b65"
+      "rasterSha256": "d15c1f31f9e89c682af83edecff8a279c089b4b9be1c3df298cfd08aa9a02d27"
     },
     {
       "page": 26,
-      "textCharacters": 490,
+      "textCharacters": 3196,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-026.png",
-      "rasterSha256": "6c3dc5f9c5abb19e25eb25dcf92ea7e5b953a7aeed6a670f1816c4e099c7d736"
+      "rasterSha256": "53f26d6f6e98dff608a646760dc53643878d2a0b641520674c8efc6c4492b842"
     },
     {
       "page": 27,
-      "textCharacters": 2541,
+      "textCharacters": 3188,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-027.png",
-      "rasterSha256": "edbf1a236a8d2becf3d4c9adaea48fcea98a698d82b0756ff02765aa6f3a2dc1"
+      "rasterSha256": "3840fd920ff813bafc3953117b15924d342a4c192aacc9cdc21766bd38349088"
     },
     {
       "page": 28,
-      "textCharacters": 1281,
+      "textCharacters": 2945,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-028.png",
-      "rasterSha256": "2e749524c127e5aa949a0d92205bd0605f4bd34a1cfeba289ae15058cbaaf130"
+      "rasterSha256": "7ba24cc4726ae1326f100c2fb256a2bfb05d95d3b9da0cf7db3700ad682f3f10"
     },
     {
       "page": 29,
-      "textCharacters": 1803,
+      "textCharacters": 2815,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-029.png",
-      "rasterSha256": "065c0e302386ea7dc4c07c6ce6053c8d3a1eaad7961bf7035235f8e7493e1334"
+      "rasterSha256": "052f7b59357c3deb9e8740815182afea6f7cc4b9e8ec100409009a052832ad95"
     },
     {
       "page": 30,
-      "textCharacters": 2151,
+      "textCharacters": 279,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-030.png",
-      "rasterSha256": "cfb2b861ce4f953a2fddbb817338a50567d0bcfec9657f47f171f2bcc94da9bb"
+      "rasterSha256": "6ff04a1b15ca702075801143885aa427b2b8f4d8f28aa71b4fd20fa05b45d832"
     },
     {
       "page": 31,
-      "textCharacters": 3122,
+      "textCharacters": 490,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-031.png",
-      "rasterSha256": "6cef9f94d8bd14c760ebfe6cefbd26bd7328800212800f15fb711b373f66aeea"
+      "rasterSha256": "a6f946d041616840b1d838bf242fd94a256ff5a554a458c2e70645c8c186a9fd"
     },
     {
       "page": 32,
-      "textCharacters": 2560,
+      "textCharacters": 2541,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-032.png",
-      "rasterSha256": "d090c327cf0a55f1b10ae5eab1cfd38d4f260ddc2ca9211dfb43b4c700c4d2f7"
+      "rasterSha256": "006ce3879185f8111c911f15c494fba21c05b364967f46142f2c6d0127991bf3"
     },
     {
       "page": 33,
-      "textCharacters": 2133,
+      "textCharacters": 1281,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-033.png",
-      "rasterSha256": "cdbffc1fc829b6a8dcd6888f7d9c8c43c0ff80ec674748ba556a63529078a7b5"
+      "rasterSha256": "2d310ac0b3b207ff71d83b99251b8ec504012890782a3b1c4ca9cb02d454b475"
     },
     {
       "page": 34,
-      "textCharacters": 2330,
+      "textCharacters": 1803,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-034.png",
-      "rasterSha256": "291b72241acc5ce31a0c010f38460f35f5ce9fbd12fda68880a53e6c59f7d750"
+      "rasterSha256": "194a4c6e0f1704d29b38fd81b5409b50a2528b655c2b9c9ec32b01894e899e3d"
     },
     {
       "page": 35,
-      "textCharacters": 260,
+      "textCharacters": 2151,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-035.png",
-      "rasterSha256": "f563408d61b9b8b3cb80ca5fbe3c4baaf985024ef799296f6f73204ae042b71d"
+      "rasterSha256": "d4ce55b9d7041f18a675ef7f3a164c646ebde02d2c675cc4213fe11a6b83638b"
     },
     {
       "page": 36,
-      "textCharacters": 2185,
+      "textCharacters": 3122,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-036.png",
-      "rasterSha256": "a562cc31a535f747bb8159b39b2aedca4975f1da76f48cc0332661d27fc9c414"
+      "rasterSha256": "c40fb1631d6534fe0005674773546ddc315ccc126905ff152830d53dcd397aa6"
     },
     {
       "page": 37,
-      "textCharacters": 1432,
+      "textCharacters": 2560,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-037.png",
-      "rasterSha256": "f2755844e156b6f04dd0df8e97f92950ac5fb61bbac621bfca097eed83b74937"
+      "rasterSha256": "db6b51466241c7f58ab4109acf79f8a8679f5443fa748d97c70efa4578d62892"
     },
     {
       "page": 38,
-      "textCharacters": 2126,
+      "textCharacters": 2133,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-038.png",
-      "rasterSha256": "cb0ee81e627ce10a83fe05e3c8f7532113d86390f9ee5f176ca68636ddf431f8"
+      "rasterSha256": "2f6ca71ab5cbe6dc4a0e554abbf59c75d26ef5bbefa24d609c22f400c49f3151"
     },
     {
       "page": 39,
-      "textCharacters": 2636,
+      "textCharacters": 2330,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-039.png",
-      "rasterSha256": "74e585d7fbad70d5c930bf68fd77a3de6f67a990247c7418c057b3246d39adb7"
+      "rasterSha256": "b191093476fd6a816dab50227b973878c8ceae885146e12325ae2e35521248fc"
     },
     {
       "page": 40,
-      "textCharacters": 1999,
+      "textCharacters": 260,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-040.png",
-      "rasterSha256": "d7ee0f5004f9f0915ad00893677f032c825ff00d3f7bda6eb15484a1a3e3723a"
+      "rasterSha256": "d95fdfbbf5c58d7e334d9ca241f5fba48abed9a0f78b233fb76448a2908da566"
     },
     {
       "page": 41,
-      "textCharacters": 708,
+      "textCharacters": 2185,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-041.png",
-      "rasterSha256": "af07135e18da05860f2cab2ab972595ea85ed6ec1e496abb89d0ce87fc313fc9"
+      "rasterSha256": "2df67ac9600a4f2bc340fa771dfb86e30a7d6b4cbe229d6007a93d7609e11756"
     },
     {
       "page": 42,
-      "textCharacters": 2759,
+      "textCharacters": 1432,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-042.png",
-      "rasterSha256": "7ac485bd9743a9ff9371cff0f222c9a9dd7608a0c4ed3579ca585258f2e620e7"
+      "rasterSha256": "a938561d13a798e727b37268807698cabb413997db1a5605e6902f811781f679"
     },
     {
       "page": 43,
-      "textCharacters": 3475,
+      "textCharacters": 2126,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-043.png",
-      "rasterSha256": "77db876670a06c9dbaa10524a867268166dd2f645f8145a374506c9d1b1cf1e1"
+      "rasterSha256": "b54f3df1162d1ee022edabcf70e7b8124f4620ba25a8e023eecf65e8a88826c3"
     },
     {
       "page": 44,
-      "textCharacters": 531,
+      "textCharacters": 2636,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-044.png",
-      "rasterSha256": "2d68ceb1017969766bba49e0fe42e3b2b2147b1915367764f3c1457609d2e358"
+      "rasterSha256": "30e0c0659af674ef09128adb9ca1a35a785e897b71121b38642b37c880c57ddd"
     },
     {
       "page": 45,
-      "textCharacters": 2788,
+      "textCharacters": 1999,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-045.png",
-      "rasterSha256": "7fb56a1e81634f0356225ca861db9b06f85df6e9367a6219e7001089142e4022"
+      "rasterSha256": "38818e133c96b42ce271768c7fa9c5923ffdbd3a440a48e170f0815c316d8310"
     },
     {
       "page": 46,
-      "textCharacters": 2629,
+      "textCharacters": 708,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-046.png",
-      "rasterSha256": "024fa06dc7c1b547d459abab6957224c5a0e5ecb725254fa9b083bc8a4c666e0"
+      "rasterSha256": "4b6124f5a76b16e2e7a0da76a0690d0b97066ebe38b3f11012936f37a6a5c186"
     },
     {
       "page": 47,
-      "textCharacters": 2706,
+      "textCharacters": 2759,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-047.png",
-      "rasterSha256": "7b2b51d7a00d782a2a5322a95abfd3fbbe4c8a5a8f5bf8628e44d87d3506fdfd"
+      "rasterSha256": "a3cfe542720108baa6924afaa763a3db17bfcacff1d3bf5dba1c7d66660f0000"
     },
     {
       "page": 48,
-      "textCharacters": 2056,
+      "textCharacters": 3475,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-048.png",
-      "rasterSha256": "924dd37b8ff39e1bf5ead082bd858a4b72dadc02520589951d5e82561e815563"
+      "rasterSha256": "3028eaf0702774ab1afc6cc938a750607bfbf61992541b901846c861a1f04966"
     },
     {
       "page": 49,
-      "textCharacters": 3094,
+      "textCharacters": 531,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-049.png",
-      "rasterSha256": "d145fbd77508ba6b12f4f4a0bb7a0dcc9e8d1315852fa5536c59c5951ce2d0d3"
+      "rasterSha256": "837a65c3a60d8f953362e3b69116bd1ae5c170b1a55c7e40cd1cef9aa80ce394"
     },
     {
       "page": 50,
-      "textCharacters": 587,
+      "textCharacters": 2788,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-050.png",
-      "rasterSha256": "fbb07237b701a2b16793ab8de5c6a5ece5bcdce781a3b7f3b7ed4d0f67cd97ab"
+      "rasterSha256": "5855cd36afa94d5b1a7ad881c5cce0ae0ff0a7c5a0be89d0c3b5e552f5811515"
     },
     {
       "page": 51,
-      "textCharacters": 3068,
+      "textCharacters": 2629,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-051.png",
-      "rasterSha256": "7ec619e7c15faf96cac888bd1cea40446fcf39206a1635fc16321dd9ea5bff92"
+      "rasterSha256": "3f3d89d845170eb64d777e1844d3eb87361a483604f9de8cfb397fc74eddbc5f"
     },
     {
       "page": 52,
-      "textCharacters": 2517,
+      "textCharacters": 2706,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-052.png",
-      "rasterSha256": "7123d8d3eafcf9467c2a02701801bf14143e613a0a4f2c4d9d4291454fa1c252"
+      "rasterSha256": "fe90d8d714deff1d72e0ac4c0f4d56262e483a1d22753a14d9e79622fbd13b69"
     },
     {
       "page": 53,
-      "textCharacters": 3918,
+      "textCharacters": 2056,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-053.png",
-      "rasterSha256": "422127c5c041a207814fd8107acd72e5fb4739d5cf9cdda984e7de017d7c00bb"
+      "rasterSha256": "a1f39364b9f4c95328c69d01710d08fd5d976b3ad44a85c2fcb886f41d537c02"
     },
     {
       "page": 54,
-      "textCharacters": 3782,
+      "textCharacters": 3094,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-054.png",
-      "rasterSha256": "bb63aaa46d314352416e39a6ba4bdeffae4aa749d4dfc2cec1237d0a1b6fa095"
+      "rasterSha256": "276ecddd069915e51894c69ebb3ef02a145e4523d86128d962ce5ba562af9ef2"
     },
     {
       "page": 55,
-      "textCharacters": 2098,
+      "textCharacters": 587,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-055.png",
-      "rasterSha256": "d467708920d8ecde9d7a5cec1b56c82889a72034708cf79d54ab411e09c9d9e2"
+      "rasterSha256": "be68126320073b8fff3e8a2c2063f78763e73015ed16b0a2d40e6f89266f4b34"
     },
     {
       "page": 56,
-      "textCharacters": 2458,
+      "textCharacters": 3068,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-056.png",
-      "rasterSha256": "11145fe7eac0984fe0dbd14b8a61621d83b7c552e98e24909a20ad5f0e7a6d60"
+      "rasterSha256": "c00fc6d063c0d83c8626188d52553e5c4738a6f51e15b9ce08e6eada95afd073"
     },
     {
       "page": 57,
-      "textCharacters": 1118,
+      "textCharacters": 2517,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-057.png",
-      "rasterSha256": "ecd97e5245178d806a29853b3f5122de1f7605871a25c45238dcfd072f674af0"
+      "rasterSha256": "1a58c95d521d44a8c3992050b41822d7733b818638d59b63c84afc16defc7c37"
     },
     {
       "page": 58,
-      "textCharacters": 3036,
+      "textCharacters": 3918,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-058.png",
-      "rasterSha256": "046c6cfa976d119ce0a5b179bb6787a8e7add7dd305ccda0c067a79a5b27bbe0"
+      "rasterSha256": "9cba8d4be317b4beedc5e161d0083aecd20ad449e4bb9a3d0339c3b8c70d7b23"
     },
     {
       "page": 59,
-      "textCharacters": 3078,
+      "textCharacters": 3782,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-059.png",
-      "rasterSha256": "5e876ce8d709230aadfa4f67a5f3fc4a778e997725329118e04813644efc7ca0"
+      "rasterSha256": "0e9443b6731e22ed61caf934596af81bec2e5fdce91d092addaecd1f1cfd51de"
     },
     {
       "page": 60,
-      "textCharacters": 3352,
+      "textCharacters": 2098,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-060.png",
-      "rasterSha256": "dca15852971ad0be836dbd302b0c66e5807e7c7a2f02298f761f024bbde3230d"
+      "rasterSha256": "f185465e416459bdafa2576c181415173ba8c08f8ad6a32b5bb961a033e88e1b"
     },
     {
       "page": 61,
-      "textCharacters": 2675,
+      "textCharacters": 2458,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-061.png",
-      "rasterSha256": "d1f3e3a060aab2135838b26cda7c29b645ced7201f668db3c014caf58d371267"
+      "rasterSha256": "75bcdddc69f983d7f989296e6464efd23db59682cd60d3db3840d3cc37a967db"
     },
     {
       "page": 62,
-      "textCharacters": 3159,
+      "textCharacters": 1118,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-062.png",
-      "rasterSha256": "324bae57a8c854c48a09bc48d757e23b6fc26bc7c3621b78c617122c3edb4c73"
+      "rasterSha256": "da6e02c50ce131213ed644ef01a310a57b41ce813b84344a5344869f2e4cf991"
     },
     {
       "page": 63,
-      "textCharacters": 1804,
+      "textCharacters": 3036,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-063.png",
-      "rasterSha256": "c160618c50a59698d8ecae23e359315cde0653c6c4924907438fa80371337831"
+      "rasterSha256": "eccbf88f300601f819020316bc85ab0667511106be63e047b1c149f332ac2146"
     },
     {
       "page": 64,
-      "textCharacters": 3063,
+      "textCharacters": 3078,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-064.png",
-      "rasterSha256": "c299c06ce84acfdfff2fe24f3fd3bc0596c98abb9047baf52b3ff74cbbaa762e"
+      "rasterSha256": "a84a7584243420f0dbc836e691fe44c9c005aecd440892a6c423fc8be2d7cc93"
     },
     {
       "page": 65,
-      "textCharacters": 1100,
+      "textCharacters": 3352,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-065.png",
-      "rasterSha256": "d58d896ded718498980d5e67729acb2caab2f42f0fb2433bbc338bedb2a48f1a"
+      "rasterSha256": "371e8c9f7401b0e80270ce5947bc1844e468c1133095511823a042c989d72b78"
     },
     {
       "page": 66,
-      "textCharacters": 2235,
+      "textCharacters": 2675,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-066.png",
-      "rasterSha256": "8c4d0016ec4c4b6ae21d05bab701995fb8b7ef1e1791ab8fa96d8d8a55a124a1"
+      "rasterSha256": "463d24f705c15995126ea9d6410ce381fffaa82f7fcfa77dac000e09a027fc5d"
     },
     {
       "page": 67,
-      "textCharacters": 3432,
+      "textCharacters": 3159,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-067.png",
-      "rasterSha256": "fd84dbf712072ba9b06090d2e847f638e0efa1526804134b98277d373eadebd5"
+      "rasterSha256": "35bca189ca7fa6770fb41ae8e72dd4c9e75a8d81e1d4bb9cf0da2a59a8d787b0"
     },
     {
       "page": 68,
-      "textCharacters": 3477,
+      "textCharacters": 1804,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-068.png",
-      "rasterSha256": "10ad5cc4e8feb8888ba69113fb093b83e50da3c08d78df8b07d822c71e6385e8"
+      "rasterSha256": "9fe258a920fc5037f0a9ebfdf0b841733267539b989a9202f76248403cf38c76"
     },
     {
       "page": 69,
-      "textCharacters": 1423,
+      "textCharacters": 3063,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-069.png",
-      "rasterSha256": "44605b6832911cd760623c498d4d681e1603ef37dacd2d8d6e209953e3350346"
+      "rasterSha256": "0c95bda9fe241aff846610baebcd6bda2e76efa779e9d27525881b7336dcc3d6"
     },
     {
       "page": 70,
-      "textCharacters": 2079,
+      "textCharacters": 1100,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-070.png",
-      "rasterSha256": "949050dab8b9f388ddfafe83749cb3e733d2232d816d6fe78f0696b1b47eb1de"
+      "rasterSha256": "e2699575df56e898100590a75f3adc0a91623a94687991a886d1c26ccf3d0969"
     },
     {
       "page": 71,
-      "textCharacters": 2334,
+      "textCharacters": 2235,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-071.png",
-      "rasterSha256": "a671e69884a6e310ade5644daf7e3e4c323ac59d2a732585d004b41ca79d4680"
+      "rasterSha256": "3df3803faeb54719100e8647694b45ae40ae5b35d622ef67c72a8e9fc41c0a6a"
     },
     {
       "page": 72,
-      "textCharacters": 3084,
+      "textCharacters": 3432,
       "widthPt": 594.9599609375,
       "heightPt": 841.9199829101562,
       "raster": "page-072.png",
-      "rasterSha256": "d5ea0aa7536af196a18a98190e3f07acc8bb76e4f13e4d46188f00f2f72d0521"
+      "rasterSha256": "5f479e5d34cef144711460cefd9d53bc4dc5377a75ab35de91570c914de814ac"
+    },
+    {
+      "page": 73,
+      "textCharacters": 3477,
+      "widthPt": 594.9599609375,
+      "heightPt": 841.9199829101562,
+      "raster": "page-073.png",
+      "rasterSha256": "d385f250015e7e4c6e9df6c501e3ffd7c33783b5338e3d3b77564dc730249002"
+    },
+    {
+      "page": 74,
+      "textCharacters": 1423,
+      "widthPt": 594.9599609375,
+      "heightPt": 841.9199829101562,
+      "raster": "page-074.png",
+      "rasterSha256": "fecb980a093fc0c30ee8d7786058fb0129917ee31a2b345cf0318f7af97d5289"
+    },
+    {
+      "page": 75,
+      "textCharacters": 2079,
+      "widthPt": 594.9599609375,
+      "heightPt": 841.9199829101562,
+      "raster": "page-075.png",
+      "rasterSha256": "b3b8ff6b49d2bd6a4d9635d80e8fc62a10dc8a36fd4333ef5688cf866e17f5be"
+    },
+    {
+      "page": 76,
+      "textCharacters": 2334,
+      "widthPt": 594.9599609375,
+      "heightPt": 841.9199829101562,
+      "raster": "page-076.png",
+      "rasterSha256": "61705f85ee2245199558b4e99b4273685a7514220bee80704bf12f225b24bba5"
+    },
+    {
+      "page": 77,
+      "textCharacters": 3084,
+      "widthPt": 594.9599609375,
+      "heightPt": 841.9199829101562,
+      "raster": "page-077.png",
+      "rasterSha256": "eeee6b9c0f462a77eaa1964e9b3ced4e7228aca14d8db9b48a923b31aeaa3bdc"
     }
   ],
   "structuralIssues": [],
   "qualification": "Structural checks and per-page PNG rendering; visual inspection is recorded separately. No application execution or owner acceptance.",
+  "linkValidation": {
+    "internalLinks": 33,
+    "uriLinks": 97,
+    "namedDestinations": 11,
+    "outlineEntries": 115,
+    "invalidInternalDestinations": 0,
+    "coverTargets": [
+      3,
+      6,
+      14,
+      15,
+      16
+    ],
+    "method": "PyMuPDF validated GoTo and named destinations against this 77-page PDF; historical remote HTTP links not re-probed."
+  },
   "visualInspection": {
     "date": "2026-11-26 Asia/Bangkok",
+    "method": "AI-assisted visual inspection of all 77 final 1.5x page rasters in 39 numbered two-page sheets; pages 58 and 67 additionally inspected individually. This is document QA, not human peer or owner acceptance.",
     "inspectedPages": [
       1,
       2,
@@ -709,24 +765,42 @@
       69,
       70,
       71,
-      72
+      72,
+      73,
+      74,
+      75,
+      76,
+      77
     ],
-    "method": "AI-assisted inspection of every final page at 1.5x rasterization in numbered two-page sheets; individual Thai cover also inspected.",
     "remainingObservedLayoutDefects": 0,
-    "qualification": "Document QA only, not student acceptance or independent peer approval."
+    "checks": [
+      "Thai cover and appendix glyphs",
+      "table cells, repeated headers and intact rows",
+      "readable code wrapping",
+      "screenshot captions and deliberate privacy masks",
+      "page numbers and A-E navigation",
+      "no observed clipping or overlap"
+    ],
+    "externalRasterDirectory": "d2-pdf-qa-correction",
+    "rasterSha256Records": "pageChecks"
   },
-  "linkValidation": {
-    "internalLinks": 33,
-    "uriLinks": 97,
-    "outlineEntries": 113,
-    "invalidInternalDestinations": 0,
-    "coverPages": [
+  "auditCorrectionPages": {
+    "consolidatedRegister": [
       3,
       4,
-      12,
-      13,
-      14
+      5
     ],
-    "representation": "Named destinations and GoTo"
+    "reproducibleSetup": [
+      25,
+      26,
+      27
+    ],
+    "lab7Deadline": [
+      5,
+      29
+    ],
+    "aiToolNames": [
+      29
+    ]
   }
 }
