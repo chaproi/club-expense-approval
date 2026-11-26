@@ -1,0 +1,1299 @@
+{
+  "release": "cc6b04c8e98191be591a3b755d25988148523909",
+  "url": "https://s981b09c9-4d7hbszvwq-as.a.run.app",
+  "marker": "UAT-D2-20261126T090137Z",
+  "startedAt": "2026-11-26T09:01:37.882Z",
+  "cases": [
+    {
+      "id": "PD-A01",
+      "roles": [
+        "R1",
+        "R2",
+        "V1",
+        "V2"
+      ],
+      "startingConditions": "User privately confirmed all four existing synthetic accounts and roles",
+      "expected": "Real login/current-session, logout204 and old-session401; account roles correct",
+      "status": "PASS",
+      "startedAt": "2026-11-26T09:01:38.006Z",
+      "actual": {
+        "accounts": 4,
+        "rolesVerified": true,
+        "logout": 204,
+        "revokedSessionDenials": 2,
+        "relogin": 200
+      },
+      "finishedAt": "2026-11-26T09:01:43.687Z"
+    },
+    {
+      "id": "PD-A02",
+      "roles": [
+        "R1",
+        "R2",
+        "V1",
+        "V2"
+      ],
+      "startingConditions": "Before any new acceptance expense is created",
+      "expected": "Capture current existing accessible domain snapshots without publishing contents",
+      "status": "PASS",
+      "startedAt": "2026-11-26T09:01:43.688Z",
+      "actual": {
+        "scopes": {
+          "R1": {
+            "records": 13,
+            "sha256": "5cbc002300b5c252d8cd24e1bab149f6363d6269273e3398609570d9661508d5"
+          },
+          "R2": {
+            "records": 2,
+            "sha256": "5eda6d6e77a0fe39105a47f27d82c7e652cb1d27c6c6fa639268c08e0ecd56c2"
+          },
+          "V1": {
+            "records": 15,
+            "sha256": "fde3e885d8c87e0d2e1820a9c48189a52d0f7052d50491feb6576db7691db36e"
+          },
+          "V2": {
+            "records": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        },
+        "qualification": "Baseline is immediately before our checks, after deployment; it is not a pre-release preservation baseline."
+      },
+      "finishedAt": "2026-11-26T09:01:44.941Z"
+    },
+    {
+      "id": "PD-A03",
+      "roles": [
+        "R1",
+        "V1"
+      ],
+      "startingConditions": "Fresh synthetic SUBMITTED request; assigned Reviewer",
+      "expected": "Sprint1 submit/approve; owner reads same ID and exact SUBMITTED/APPROVED history",
+      "status": "PASS",
+      "startedAt": "2026-11-26T09:01:44.942Z",
+      "actual": {
+        "id": "afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+        "status": "APPROVED",
+        "revision": 1,
+        "history": [
+          "SUBMITTED",
+          "APPROVED"
+        ]
+      },
+      "finishedAt": "2026-11-26T09:01:47.864Z"
+    },
+    {
+      "id": "PD-A04",
+      "roles": [
+        "R1",
+        "V1"
+      ],
+      "startingConditions": "A second independent synthetic request",
+      "expected": "Sprint1 reject with reason; owner reads reason and exact retained history",
+      "status": "PASS",
+      "startedAt": "2026-11-26T09:01:47.865Z",
+      "actual": {
+        "id": "db27aff9-f9b0-44d1-8f3e-834431833a46",
+        "status": "REJECTED",
+        "revision": 1,
+        "history": [
+          "SUBMITTED",
+          "REJECTED"
+        ],
+        "reasonRetained": true
+      },
+      "finishedAt": "2026-11-26T09:01:50.708Z"
+    },
+    {
+      "id": "PD-A05",
+      "roles": [
+        "R1",
+        "V1"
+      ],
+      "startingConditions": "Fresh synthetic request, retained original ID/createdAt",
+      "expected": "Return -> owner reason -> Edit/Save -> Resubmit -> Review -> owner complete history; explicit saves only",
+      "status": "PASS",
+      "startedAt": "2026-11-26T09:01:50.709Z",
+      "actual": {
+        "id": "8c02cdde-64f2-4647-abbc-758d7d2f7542",
+        "status": "APPROVED",
+        "revision": 4,
+        "history": [
+          "SUBMITTED",
+          "RETURNED",
+          "EDITED",
+          "RESUBMITTED",
+          "APPROVED"
+        ],
+        "sameIdAndCreatedAt": true,
+        "fields": {
+          "category": "ACTIVITY",
+          "amountBaht": 425
+        }
+      },
+      "finishedAt": "2026-11-26T09:01:55.889Z"
+    },
+    {
+      "id": "PD-A06",
+      "roles": [
+        "R1",
+        "R2",
+        "V1",
+        "V2"
+      ],
+      "startingConditions": "Independent owned synthetic APPROVED record",
+      "expected": "Wrong role, cross owner/reviewer, authenticated Origin and stale/terminal denial preserve domain",
+      "status": "PASS",
+      "startedAt": "2026-11-26T09:01:55.891Z",
+      "actual": {
+        "id": "afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+        "denials": {
+          "wrongRole": 403,
+          "crossOwner": 404,
+          "unassignedReviewer": 404,
+          "staleDecision": 409,
+          "terminalEdit": 409,
+          "wrongOrigin": 403
+        },
+        "exactOwnedDetailHistoryUnchanged": true
+      },
+      "finishedAt": "2026-11-26T09:01:56.597Z"
+    },
+    {
+      "id": "PD-A07",
+      "roles": [
+        "R1",
+        "V1"
+      ],
+      "startingConditions": "Fresh own RETURNED request; separate real session for the same owner",
+      "expected": "Real stale Save409; latest/draft separation; Restore changed fields only, no automatic write; explicit manual Save",
+      "status": "PASS",
+      "startedAt": "2026-11-26T09:01:56.598Z",
+      "actual": {
+        "id": "604b579d-93a7-4da2-91cc-6c53fe74f2ea",
+        "status": "RETURNED",
+        "revision": 3,
+        "realStaleSave": 409,
+        "restoreWrites": 0,
+        "browserWrites": "one rejected stale Save, one explicit current-revision Save",
+        "history": [
+          "SUBMITTED",
+          "RETURNED",
+          "EDITED",
+          "EDITED"
+        ],
+        "untouchedLatestCategoryAmountRetained": true
+      },
+      "finishedAt": "2026-11-26T09:02:00.625Z"
+    },
+    {
+      "id": "PD-A08",
+      "roles": [
+        "V1",
+        "V2"
+      ],
+      "startingConditions": "Real assigned lists after each accepted mutation",
+      "expected": "All four status bins/count total equal independent current scoped lists, V2 excludes our V1 assignments",
+      "status": "PASS",
+      "startedAt": "2026-11-26T09:02:00.625Z",
+      "actual": {
+        "V1": {
+          "counts": {
+            "SUBMITTED": 9,
+            "RETURNED": 1,
+            "APPROVED": 5,
+            "REJECTED": 4
+          },
+          "total": 19,
+          "ownedAssignments": 4
+        },
+        "V2": {
+          "counts": {
+            "SUBMITTED": 0,
+            "RETURNED": 0,
+            "APPROVED": 0,
+            "REJECTED": 0
+          },
+          "total": 0,
+          "ownedAssignments": 0
+        }
+      },
+      "finishedAt": "2026-11-26T09:02:01.518Z"
+    },
+    {
+      "id": "PD-A09",
+      "roles": [
+        "V1"
+      ],
+      "startingConditions": "Existing owned RETURNED conflict record; terminal decision record; exact 768px Reviewer viewport",
+      "expected": "Long detail/decision controls, keyboard selection/focus and reduced motion fit without horizontal overflow",
+      "status": "PASS",
+      "startedAt": "2026-11-26T09:02:01.519Z",
+      "actual": {
+        "id": "fd5d8a3e-ace9-4915-acd3-b4e7599412b6",
+        "width": 768,
+        "scrollWidth": 768,
+        "columns": "706.562px",
+        "keyboard": true,
+        "reducedMotion": true,
+        "controls": "Approve/Reject/Return with both labelled reason fields; no decision made in this case"
+      },
+      "finishedAt": "2026-11-26T09:02:03.711Z"
+    },
+    {
+      "id": "PD-A10",
+      "roles": [
+        "R1"
+      ],
+      "startingConditions": "Owned records created by our checks remain; historical records not edited",
+      "expected": "Owner mobile readback, reload consistency; pre-existing scoped detail/history checksums unchanged during our session",
+      "status": "PASS",
+      "startedAt": "2026-11-26T09:02:03.711Z",
+      "actual": {
+        "mobileWidth": 390,
+        "mobileScrollWidth": 390,
+        "existingScopedRecords": {
+          "R1": {
+            "records": 13,
+            "before": "5cbc002300b5c252d8cd24e1bab149f6363d6269273e3398609570d9661508d5",
+            "after": "5cbc002300b5c252d8cd24e1bab149f6363d6269273e3398609570d9661508d5",
+            "unchanged": true
+          },
+          "R2": {
+            "records": 2,
+            "before": "5eda6d6e77a0fe39105a47f27d82c7e652cb1d27c6c6fa639268c08e0ecd56c2",
+            "after": "5eda6d6e77a0fe39105a47f27d82c7e652cb1d27c6c6fa639268c08e0ecd56c2",
+            "unchanged": true
+          },
+          "V1": {
+            "records": 15,
+            "before": "fde3e885d8c87e0d2e1820a9c48189a52d0f7052d50491feb6576db7691db36e",
+            "after": "fde3e885d8c87e0d2e1820a9c48189a52d0f7052d50491feb6576db7691db36e",
+            "unchanged": true
+          },
+          "V2": {
+            "records": 0,
+            "before": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "after": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "unchanged": true
+          }
+        },
+        "qualification": "Exact comparison covers our post-deployment session only, not preservation across release: no suitable pre-release domain snapshot was available."
+      },
+      "finishedAt": "2026-11-26T09:02:06.970Z"
+    }
+  ],
+  "http": [
+    {
+      "at": "2026-11-26T09:01:42.783Z",
+      "caseId": "PD-A01",
+      "actor": "R1 revoked session",
+      "method": "GET",
+      "path": "/api/auth/me",
+      "status": 401,
+      "error": {
+        "code": "UNAUTHENTICATED"
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:42.835Z",
+      "caseId": "PD-A01",
+      "actor": "R1 revoked session",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 401,
+      "error": {
+        "code": "UNAUTHENTICATED"
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:43.750Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:43.819Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:43.883Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:43.950Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.016Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.080Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.148Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.215Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.285Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.355Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.420Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.485Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.550Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.617Z",
+      "caseId": "PD-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.688Z",
+      "caseId": "PD-A02",
+      "actor": "R2",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.755Z",
+      "caseId": "PD-A02",
+      "actor": "R2",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.819Z",
+      "caseId": "PD-A02",
+      "actor": "R2",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.879Z",
+      "caseId": "PD-A02",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:44.939Z",
+      "caseId": "PD-A02",
+      "actor": "V2",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:47.864Z",
+      "caseId": "PD-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+        "status": "APPROVED",
+        "revision": 1,
+        "historyTypes": [
+          "SUBMITTED",
+          "APPROVED"
+        ]
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:50.707Z",
+      "caseId": "PD-A04",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/db27aff9-f9b0-44d1-8f3e-834431833a46",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "db27aff9-f9b0-44d1-8f3e-834431833a46",
+        "status": "REJECTED",
+        "revision": 1,
+        "historyTypes": [
+          "SUBMITTED",
+          "REJECTED"
+        ]
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:55.707Z",
+      "caseId": "PD-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/8c02cdde-64f2-4647-abbc-758d7d2f7542",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "8c02cdde-64f2-4647-abbc-758d7d2f7542",
+        "status": "APPROVED",
+        "revision": 4,
+        "historyTypes": [
+          "SUBMITTED",
+          "RETURNED",
+          "EDITED",
+          "RESUBMITTED",
+          "APPROVED"
+        ]
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:55.963Z",
+      "caseId": "PD-A06",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+        "status": "APPROVED",
+        "revision": 1,
+        "historyTypes": [
+          "SUBMITTED",
+          "APPROVED"
+        ]
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:56.022Z",
+      "caseId": "PD-A06",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/summary",
+      "status": 403,
+      "cacheControl": "no-store",
+      "error": {
+        "code": "FORBIDDEN",
+        "message": "Only reviewers can read summaries."
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:56.080Z",
+      "caseId": "PD-A06",
+      "actor": "V1",
+      "method": "POST",
+      "path": "/api/expense-requests",
+      "status": 403,
+      "cacheControl": "no-store",
+      "error": {
+        "code": "FORBIDDEN",
+        "message": "Only requesters can submit expenses."
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:56.141Z",
+      "caseId": "PD-A06",
+      "actor": "R2",
+      "method": "GET",
+      "path": "/api/expense-requests/afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+      "status": 404,
+      "cacheControl": "no-store",
+      "error": {
+        "code": "NOT_FOUND",
+        "message": "Expense request not found."
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:56.207Z",
+      "caseId": "PD-A06",
+      "actor": "V2",
+      "method": "GET",
+      "path": "/api/expense-requests/afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+      "status": 404,
+      "cacheControl": "no-store",
+      "error": {
+        "code": "NOT_FOUND",
+        "message": "Expense request not found."
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:56.265Z",
+      "caseId": "PD-A06",
+      "actor": "R1",
+      "method": "POST",
+      "path": "/api/expense-requests/afd75ea9-0d17-469f-b69c-8b4ddaf843dd/decision",
+      "status": 403,
+      "cacheControl": "no-store",
+      "error": {
+        "code": "FORBIDDEN",
+        "message": "Only assigned reviewers can decide requests."
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:56.340Z",
+      "caseId": "PD-A06",
+      "actor": "V1",
+      "method": "POST",
+      "path": "/api/expense-requests/afd75ea9-0d17-469f-b69c-8b4ddaf843dd/decision",
+      "status": 409,
+      "cacheControl": "no-store",
+      "error": {
+        "code": "INVALID_STATE",
+        "message": "This request has already been decided. Review its latest status."
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:56.414Z",
+      "caseId": "PD-A06",
+      "actor": "R1",
+      "method": "PATCH",
+      "path": "/api/expense-requests/afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+      "status": 409,
+      "cacheControl": "no-store",
+      "error": {
+        "code": "INVALID_STATE",
+        "message": "This request changed or is not returned. Reload its latest details."
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:56.473Z",
+      "caseId": "PD-A06",
+      "actor": "R1",
+      "method": "PATCH",
+      "path": "/api/expense-requests/afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+      "status": 403,
+      "cacheControl": "no-store",
+      "error": {
+        "code": "FORBIDDEN_ORIGIN",
+        "message": "Request origin is not allowed."
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:56.537Z",
+      "caseId": "PD-A06",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+        "status": "APPROVED",
+        "revision": 1,
+        "historyTypes": [
+          "SUBMITTED",
+          "APPROVED"
+        ]
+      }
+    },
+    {
+      "at": "2026-11-26T09:01:56.597Z",
+      "caseId": "PD-A06",
+      "actor": "R2",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:01:59.953Z",
+      "caseId": "PD-A07",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/604b579d-93a7-4da2-91cc-6c53fe74f2ea",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "604b579d-93a7-4da2-91cc-6c53fe74f2ea",
+        "status": "RETURNED",
+        "revision": 2,
+        "historyTypes": [
+          "SUBMITTED",
+          "RETURNED",
+          "EDITED"
+        ]
+      }
+    },
+    {
+      "at": "2026-11-26T09:02:00.243Z",
+      "caseId": "PD-A07",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/604b579d-93a7-4da2-91cc-6c53fe74f2ea",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "604b579d-93a7-4da2-91cc-6c53fe74f2ea",
+        "status": "RETURNED",
+        "revision": 2,
+        "historyTypes": [
+          "SUBMITTED",
+          "RETURNED",
+          "EDITED"
+        ]
+      }
+    },
+    {
+      "at": "2026-11-26T09:02:00.500Z",
+      "caseId": "PD-A07",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/604b579d-93a7-4da2-91cc-6c53fe74f2ea",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "604b579d-93a7-4da2-91cc-6c53fe74f2ea",
+        "status": "RETURNED",
+        "revision": 3,
+        "historyTypes": [
+          "SUBMITTED",
+          "RETURNED",
+          "EDITED",
+          "EDITED"
+        ]
+      }
+    },
+    {
+      "at": "2026-11-26T09:02:00.692Z",
+      "caseId": "PD-A08",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:00.760Z",
+      "caseId": "PD-A08",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/summary",
+      "status": 200,
+      "cacheControl": "private, no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:01.170Z",
+      "caseId": "PD-A08",
+      "actor": "V2",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:01.233Z",
+      "caseId": "PD-A08",
+      "actor": "V2",
+      "method": "GET",
+      "path": "/api/expense-requests/summary",
+      "status": 200,
+      "cacheControl": "private, no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:04.723Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:04.788Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:04.855Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:04.922Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:04.986Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.055Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.123Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.188Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.256Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.321Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.388Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.456Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.528Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.593Z",
+      "caseId": "PD-A10",
+      "actor": "R2",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.661Z",
+      "caseId": "PD-A10",
+      "actor": "R2",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.726Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.789Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.854Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.915Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:05.981Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:06.046Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:06.111Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:06.177Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:06.243Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:06.308Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:06.372Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:06.436Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:06.501Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:06.564Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:06.627Z",
+      "caseId": "PD-A10",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-record]",
+      "status": 200,
+      "cacheControl": "no-store"
+    },
+    {
+      "at": "2026-11-26T09:02:06.701Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+        "status": "APPROVED",
+        "revision": 1,
+        "historyTypes": [
+          "SUBMITTED",
+          "APPROVED"
+        ]
+      }
+    },
+    {
+      "at": "2026-11-26T09:02:06.767Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/db27aff9-f9b0-44d1-8f3e-834431833a46",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "db27aff9-f9b0-44d1-8f3e-834431833a46",
+        "status": "REJECTED",
+        "revision": 1,
+        "historyTypes": [
+          "SUBMITTED",
+          "REJECTED"
+        ]
+      }
+    },
+    {
+      "at": "2026-11-26T09:02:06.833Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/8c02cdde-64f2-4647-abbc-758d7d2f7542",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "8c02cdde-64f2-4647-abbc-758d7d2f7542",
+        "status": "APPROVED",
+        "revision": 4,
+        "historyTypes": [
+          "SUBMITTED",
+          "RETURNED",
+          "EDITED",
+          "RESUBMITTED",
+          "APPROVED"
+        ]
+      }
+    },
+    {
+      "at": "2026-11-26T09:02:06.900Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/604b579d-93a7-4da2-91cc-6c53fe74f2ea",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "604b579d-93a7-4da2-91cc-6c53fe74f2ea",
+        "status": "RETURNED",
+        "revision": 3,
+        "historyTypes": [
+          "SUBMITTED",
+          "RETURNED",
+          "EDITED",
+          "EDITED"
+        ]
+      }
+    },
+    {
+      "at": "2026-11-26T09:02:06.967Z",
+      "caseId": "PD-A10",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/fd5d8a3e-ace9-4915-acd3-b4e7599412b6",
+      "status": 200,
+      "cacheControl": "no-store",
+      "ownedProjection": {
+        "id": "fd5d8a3e-ace9-4915-acd3-b4e7599412b6",
+        "status": "SUBMITTED",
+        "revision": 0,
+        "historyTypes": [
+          "SUBMITTED"
+        ]
+      }
+    }
+  ],
+  "ownedRecords": [
+    {
+      "id": "afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+      "title": "UAT-D2-20261126T090137Z-A03-approve",
+      "owner": "R1",
+      "status": "APPROVED",
+      "revision": 1,
+      "createdAt": "2026-11-26T09:01:45.567Z",
+      "historyTypes": [
+        "SUBMITTED",
+        "APPROVED"
+      ]
+    },
+    {
+      "id": "db27aff9-f9b0-44d1-8f3e-834431833a46",
+      "title": "UAT-D2-20261126T090137Z-A04-reject",
+      "owner": "R1",
+      "status": "REJECTED",
+      "revision": 1,
+      "createdAt": "2026-11-26T09:01:48.493Z",
+      "historyTypes": [
+        "SUBMITTED",
+        "REJECTED"
+      ]
+    },
+    {
+      "id": "8c02cdde-64f2-4647-abbc-758d7d2f7542",
+      "title": "UAT-D2-20261126T090137Z-A05-return-edit",
+      "owner": "R1",
+      "status": "APPROVED",
+      "revision": 4,
+      "createdAt": "2026-11-26T09:01:51.336Z",
+      "historyTypes": [
+        "SUBMITTED",
+        "RETURNED",
+        "EDITED",
+        "RESUBMITTED",
+        "APPROVED"
+      ]
+    },
+    {
+      "id": "604b579d-93a7-4da2-91cc-6c53fe74f2ea",
+      "title": "UAT-D2-20261126T090137Z-A07-conflict",
+      "owner": "R1",
+      "status": "RETURNED",
+      "revision": 3,
+      "createdAt": "2026-11-26T09:01:57.264Z",
+      "historyTypes": [
+        "SUBMITTED",
+        "RETURNED",
+        "EDITED",
+        "EDITED"
+      ]
+    },
+    {
+      "id": "fd5d8a3e-ace9-4915-acd3-b4e7599412b6",
+      "title": "UAT-D2-20261126T090137Z-A09-responsive-long-shared-equipment-for-student-club-planning-and-campus-community-workshops",
+      "owner": "R1",
+      "status": "SUBMITTED",
+      "revision": 0,
+      "createdAt": "2026-11-26T09:02:02.191Z",
+      "historyTypes": [
+        "SUBMITTED"
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "deployed-owner-complete-history.png",
+      "actor": "R1",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "at": "2026-11-26T09:01:55.888Z",
+      "redaction": "Only unrelated historical request cards are masked; selected owned synthetic detail is unmasked."
+    },
+    {
+      "file": "deployed-real-conflict-draft.png",
+      "actor": "R1",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "at": "2026-11-26T09:02:00.101Z",
+      "redaction": "Only unrelated historical request cards are masked; selected owned synthetic detail is unmasked."
+    },
+    {
+      "file": "deployed-reviewer-768.png",
+      "actor": "V1",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "at": "2026-11-26T09:02:03.590Z",
+      "redaction": "Only unrelated historical request cards are masked; selected owned synthetic detail is unmasked."
+    },
+    {
+      "file": "deployed-reviewer-desktop.png",
+      "actor": "V1",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "at": "2026-11-26T09:02:03.711Z",
+      "redaction": "Only unrelated historical request cards are masked; selected owned synthetic detail is unmasked."
+    },
+    {
+      "file": "deployed-owner-mobile.png",
+      "actor": "R1",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "at": "2026-11-26T09:02:04.657Z",
+      "redaction": "Only unrelated historical request cards are masked; selected owned synthetic detail is unmasked."
+    }
+  ],
+  "pageErrors": [],
+  "qualification": "Our post-deployment checks, not external independent acceptance.",
+  "chromium": "151.0.7922.34",
+  "cleanup": {
+    "logout": [
+      {
+        "actor": "R1",
+        "status": 204
+      },
+      {
+        "actor": "R2",
+        "status": 204
+      },
+      {
+        "actor": "V1",
+        "status": 204
+      },
+      {
+        "actor": "V2",
+        "status": 204
+      }
+    ],
+    "contextsClosed": true,
+    "browserClosed": true,
+    "sharedDataDeleted": false,
+    "syntheticRequestsRetained": [
+      "afd75ea9-0d17-469f-b69c-8b4ddaf843dd",
+      "db27aff9-f9b0-44d1-8f3e-834431833a46",
+      "8c02cdde-64f2-4647-abbc-758d7d2f7542",
+      "604b579d-93a7-4da2-91cc-6c53fe74f2ea",
+      "fd5d8a3e-ace9-4915-acd3-b4e7599412b6"
+    ],
+    "privateCredentialFileRemoved": false
+  },
+  "finishedAt": "2026-11-26T09:02:07.496Z",
+  "passed": 10,
+  "failed": 0
+}

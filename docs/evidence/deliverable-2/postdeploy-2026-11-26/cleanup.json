@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-11-26T09:05:33.765Z",
+  "ownedBrowserProcessesAbsent": true,
+  "ownContextsClosed": true,
+  "primarySessionsLoggedOut": true,
+  "captureSessionsRevokedAndDisposed": true,
+  "secondaryConflictSessionLogoutRequestedAndDisposed": true,
+  "directDatabaseSessionInventory": "unavailable",
+  "domainRecordsIntentionallyRetained": 5,
+  "retainedHistoryEvents": 14,
+  "historicalRecordsNotDeleted": true,
+  "credentialFileRemoved": true,
+  "secretValuesDetectedInEvidence": 0
+}

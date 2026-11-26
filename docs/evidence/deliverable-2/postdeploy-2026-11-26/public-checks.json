@@ -1,0 +1,257 @@
+{
+  "release": "cc6b04c8e98191be591a3b755d25988148523909",
+  "run": "https://github.com/chaproi/club-expense-approval/actions/runs/45786768391",
+  "startedAt": "2026-11-26T08:57:28.267Z",
+  "cases": [
+    {
+      "id": "PD-P01",
+      "role": "Anonymous",
+      "expected": "Documented public root resolves to HTTPS login with HTTP 200",
+      "status": "PASS",
+      "startedAt": "2026-11-26T08:57:30.247Z",
+      "actual": {
+        "documented": "https://s981b09c9-4d7hbszvwq-as.a.run.app",
+        "status": 200,
+        "finalUrl": "https://s981b09c9-4d7hbszvwq-as.a.run.app/",
+        "redirectChain": [
+          {
+            "url": "https://s981b09c9-4d7hbszvwq-as.a.run.app/",
+            "status": 200
+          }
+        ]
+      },
+      "finishedAt": "2026-11-26T08:57:38.117Z"
+    },
+    {
+      "id": "PD-P02",
+      "role": "Anonymous",
+      "expected": "Deployment-reported public root reaches the same login origin",
+      "status": "PASS",
+      "startedAt": "2026-11-26T08:57:38.117Z",
+      "actual": {
+        "reported": "https://s981b09c9-670075229477.asia-southeast1.run.app",
+        "status": 200,
+        "finalUrl": "https://s981b09c9-4d7hbszvwq-as.a.run.app/"
+      },
+      "finishedAt": "2026-11-26T08:57:38.444Z"
+    },
+    {
+      "id": "PD-P03",
+      "role": "Anonymous",
+      "expected": "Anonymous current-session/list/summary reads return safe 401",
+      "status": "PASS",
+      "startedAt": "2026-11-26T08:57:38.444Z",
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me",
+          "status": 401,
+          "body": {
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "Log in to continue."
+            }
+          },
+          "cacheControl": "no-store"
+        },
+        {
+          "method": "GET",
+          "path": "/api/expense-requests",
+          "status": 401,
+          "body": {
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "Log in to continue."
+            }
+          },
+          "cacheControl": "no-store"
+        },
+        {
+          "method": "GET",
+          "path": "/api/expense-requests/summary",
+          "status": 401,
+          "body": {
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "Log in to continue."
+            }
+          },
+          "cacheControl": "no-store"
+        }
+      ],
+      "finishedAt": "2026-11-26T08:57:38.701Z"
+    },
+    {
+      "id": "PD-P04",
+      "role": "Anonymous",
+      "expected": "Wrong Origin login is denied before credential processing; no session established",
+      "status": "PASS",
+      "startedAt": "2026-11-26T08:57:38.701Z",
+      "actual": {
+        "method": "POST",
+        "path": "/api/auth/login",
+        "status": 403,
+        "body": {
+          "error": {
+            "code": "FORBIDDEN_ORIGIN",
+            "message": "Request origin is not allowed."
+          }
+        },
+        "cacheControl": "no-store"
+      },
+      "finishedAt": "2026-11-26T08:57:38.775Z"
+    },
+    {
+      "id": "PD-P05",
+      "role": "Anonymous",
+      "expected": "Real public login layout is readable with no page-wide overflow",
+      "status": "PASS",
+      "startedAt": "2026-11-26T08:57:38.775Z",
+      "actual": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "height": 1000,
+        "keyboard": "Email > Password > Log in; Shift+Tab; visible focus",
+        "screenshot": "deployed-login-1440.png"
+      },
+      "finishedAt": "2026-11-26T08:57:39.580Z"
+    },
+    {
+      "id": "PD-P06",
+      "role": "Anonymous",
+      "expected": "Real public login layout is readable with no page-wide overflow",
+      "status": "PASS",
+      "startedAt": "2026-11-26T08:57:39.580Z",
+      "actual": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "height": 844,
+        "keyboard": "Email > Password > Log in; Shift+Tab; visible focus",
+        "screenshot": "deployed-login-390.png"
+      },
+      "finishedAt": "2026-11-26T08:57:40.433Z"
+    },
+    {
+      "id": "PD-P07",
+      "role": "Anonymous",
+      "expected": "Deployed login respects prefers-reduced-motion",
+      "status": "PASS",
+      "startedAt": "2026-11-26T08:57:40.433Z",
+      "actual": {
+        "animation": "none",
+        "transition": "0s"
+      },
+      "finishedAt": "2026-11-26T08:57:40.454Z"
+    },
+    {
+      "id": "PD-P08",
+      "role": "Anonymous",
+      "expected": "Served HTML asset names and downloaded immutable asset hashes match the release build",
+      "status": "PASS",
+      "startedAt": "2026-11-26T08:57:40.454Z",
+      "actual": {
+        "assets": [
+          {
+            "path": "/assets/index-DaynFBrP.js",
+            "bytes": 240770,
+            "sha256": "6650c6edf43cf4a312032ae110fd2f1d983f56246872ff646783e57e9833d989"
+          },
+          {
+            "path": "/assets/index-EIp7H1qh.css",
+            "bytes": 14931,
+            "sha256": "282127dd0cdb974c4e863484911d0beb09d9946f7c7ba2f3140fd8ed357e8975"
+          }
+        ],
+        "qualification": "Static UI bytes match the release-equivalent local build; server image identity/traffic comes from deployment logs, not an application version endpoint."
+      },
+      "finishedAt": "2026-11-26T08:57:40.807Z"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "deployed-login-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "at": "2026-11-26T08:57:39.580Z"
+    },
+    {
+      "file": "deployed-login-390.png",
+      "width": 390,
+      "height": 844,
+      "at": "2026-11-26T08:57:40.433Z"
+    }
+  ],
+  "http": [
+    {
+      "method": "GET",
+      "path": "/api/auth/me",
+      "status": 401,
+      "body": {
+        "error": {
+          "code": "UNAUTHENTICATED",
+          "message": "Log in to continue."
+        }
+      },
+      "cacheControl": "no-store",
+      "at": "2026-11-26T08:57:38.600Z"
+    },
+    {
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 401,
+      "body": {
+        "error": {
+          "code": "UNAUTHENTICATED",
+          "message": "Log in to continue."
+        }
+      },
+      "cacheControl": "no-store",
+      "at": "2026-11-26T08:57:38.650Z"
+    },
+    {
+      "method": "GET",
+      "path": "/api/expense-requests/summary",
+      "status": 401,
+      "body": {
+        "error": {
+          "code": "UNAUTHENTICATED",
+          "message": "Log in to continue."
+        }
+      },
+      "cacheControl": "no-store",
+      "at": "2026-11-26T08:57:38.701Z"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "status": 403,
+      "body": {
+        "error": {
+          "code": "FORBIDDEN_ORIGIN",
+          "message": "Request origin is not allowed."
+        }
+      },
+      "cacheControl": "no-store",
+      "at": "2026-11-26T08:57:38.775Z"
+    }
+  ],
+  "pageErrors": [],
+  "chromium": "151.0.7922.34",
+  "url": "https://s981b09c9-4d7hbszvwq-as.a.run.app",
+  "documentedRoot": [
+    {
+      "url": "https://s981b09c9-4d7hbszvwq-as.a.run.app/",
+      "status": 200
+    }
+  ],
+  "finishedAt": "2026-11-26T08:57:40.892Z",
+  "passed": 8,
+  "failed": 0,
+  "cleanup": {
+    "ownedBrowserContextClosed": true,
+    "ownedBrowserClosed": true,
+    "domainWrites": 0,
+    "syntheticRequestsCreated": 0,
+    "retainedCredentials": false
+  }
+}

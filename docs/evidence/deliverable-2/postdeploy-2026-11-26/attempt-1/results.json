@@ -1,0 +1,321 @@
+{
+    "release":  "cc6b04c8e98191be591a3b755d25988148523909",
+    "url":  "https://s981b09c9-4d7hbszvwq-as.a.run.app",
+    "marker":  "UAT-D2-20261126T090019Z",
+    "startedAt":  "2026-11-26T09:00:19.264Z",
+    "cases":  [
+                  {
+                      "id":  "PD-A01",
+                      "roles":  [
+                                    "R1",
+                                    "R2",
+                                    "V1",
+                                    "V2"
+                                ],
+                      "startingConditions":  "User privately confirmed all four existing synthetic accounts and roles",
+                      "expected":  "Real login/current-session, logout204 and old-session401; account roles correct",
+                      "status":  "PASS",
+                      "startedAt":  "2026-11-26T09:00:19.367Z",
+                      "actual":  {
+                                     "accounts":  4,
+                                     "rolesVerified":  true,
+                                     "logout":  204,
+                                     "revokedSessionDenials":  2,
+                                     "relogin":  200
+                                 },
+                      "finishedAt":  "2026-11-26T09:00:25.445Z"
+                  },
+                  {
+                      "id":  "PD-A02",
+                      "roles":  [
+                                    "R1",
+                                    "R2",
+                                    "V1",
+                                    "V2"
+                                ],
+                      "startingConditions":  "Before any new acceptance expense is created",
+                      "expected":  "Capture current existing accessible domain snapshots without publishing contents",
+                      "status":  "PASS",
+                      "startedAt":  "2026-11-26T09:00:25.448Z",
+                      "actual":  {
+                                     "scopes":  {
+                                                    "R1":  {
+                                                               "records":  13,
+                                                               "sha256":  "5cbc002300b5c252d8cd24e1bab149f6363d6269273e3398609570d9661508d5"
+                                                           },
+                                                    "R2":  {
+                                                               "records":  2,
+                                                               "sha256":  "5eda6d6e77a0fe39105a47f27d82c7e652cb1d27c6c6fa639268c08e0ecd56c2"
+                                                           },
+                                                    "V1":  {
+                                                               "records":  15,
+                                                               "sha256":  "fde3e885d8c87e0d2e1820a9c48189a52d0f7052d50491feb6576db7691db36e"
+                                                           },
+                                                    "V2":  {
+                                                               "records":  0,
+                                                               "sha256":  "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+                                                           }
+                                                },
+                                     "qualification":  "Baseline is immediately before our checks, after deployment; it is not a pre-release preservation baseline."
+                                 },
+                      "finishedAt":  "2026-11-26T09:00:26.826Z"
+                  },
+                  {
+                      "id":  "PD-A03",
+                      "roles":  [
+                                    "R1",
+                                    "V1"
+                                ],
+                      "startingConditions":  "Fresh synthetic SUBMITTED request; assigned Reviewer",
+                      "expected":  "Sprint1 submit/approve; owner reads same ID and exact SUBMITTED/APPROVED history",
+                      "status":  "FAIL",
+                      "startedAt":  "2026-11-26T09:00:26.827Z",
+                      "error":  {
+                                    "name":  "TimeoutError",
+                                    "message":  "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel(\u0027Category\u0027, { exact: true })\u001b[22m\n"
+                                },
+                      "finishedAt":  "2026-11-26T09:00:57.168Z"
+                  }
+              ],
+    "http":  [
+                 {
+                     "at":  "2026-11-26T09:00:24.511Z",
+                     "caseId":  "PD-A01",
+                     "actor":  "R1 revoked session",
+                     "method":  "GET",
+                     "path":  "/api/auth/me",
+                     "status":  401,
+                     "error":  {
+                                   "code":  "UNAUTHENTICATED"
+                               }
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:24.567Z",
+                     "caseId":  "PD-A01",
+                     "actor":  "R1 revoked session",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests",
+                     "status":  401,
+                     "error":  {
+                                   "code":  "UNAUTHENTICATED"
+                               }
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:25.519Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:25.622Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:25.707Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:25.775Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:25.843Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:25.919Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:25.993Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:26.065Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:26.140Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:26.209Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:26.282Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:26.348Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:26.418Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:26.485Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:26.561Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R2",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:26.631Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R2",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:26.701Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "R2",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests/[existing-record]",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:26.767Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "V1",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 },
+                 {
+                     "at":  "2026-11-26T09:00:26.826Z",
+                     "caseId":  "PD-A02",
+                     "actor":  "V2",
+                     "method":  "GET",
+                     "path":  "/api/expense-requests",
+                     "status":  200,
+                     "cacheControl":  "no-store"
+                 }
+             ],
+    "ownedRecords":  [
+
+                     ],
+    "screenshots":  [
+
+                    ],
+    "pageErrors":  [
+
+                   ],
+    "qualification":  "Our post-deployment checks, not external independent acceptance.",
+    "chromium":  "151.0.7922.34",
+    "stopped":  {
+                    "name":  "TimeoutError",
+                    "message":  "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel(\u0027Category\u0027, { exact: true })\u001b[22m\n",
+                    "at":  "2026-11-26T09:00:57.168Z"
+                },
+    "cleanup":  {
+                    "logout":  [
+                                   {
+                                       "actor":  "R1",
+                                       "status":  204
+                                   },
+                                   {
+                                       "actor":  "R2",
+                                       "status":  204
+                                   },
+                                   {
+                                       "actor":  "V1",
+                                       "status":  204
+                                   },
+                                   {
+                                       "actor":  "V2",
+                                       "status":  204
+                                   }
+                               ],
+                    "contextsClosed":  true,
+                    "browserClosed":  true,
+                    "sharedDataDeleted":  false,
+                    "syntheticRequestsRetained":  [
+
+                                                  ],
+                    "privateCredentialFileRemoved":  false
+                },
+    "finishedAt":  "2026-11-26T09:00:57.751Z",
+    "passed":  2,
+    "failed":  1
+}

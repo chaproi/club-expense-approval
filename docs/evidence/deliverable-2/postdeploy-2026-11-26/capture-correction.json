@@ -1,0 +1,69 @@
+{
+  "release": "cc6b04c8e98191be591a3b755d25988148523909",
+  "startedAt": "2026-11-26T09:03:11.547Z",
+  "reason": "Initial per-card screenshot masks extended outside the scroll-clipped list and obscured mobile detail. Capture-only correction masks the bounded entire request list; no workflow rerun.",
+  "captures": [
+    {
+      "file": "deployed-owner-complete-history.png",
+      "actor": "R1",
+      "width": 1440,
+      "height": 1000,
+      "id": "8c02cdde-64f2-4647-abbc-758d7d2f7542",
+      "revision": 4,
+      "status": "APPROVED",
+      "at": "2026-11-26T09:03:13.647Z",
+      "redaction": "Entire bounded request-list contents masked grey for historical privacy; layout, summary and selected synthetic detail are original."
+    },
+    {
+      "file": "deployed-owner-mobile.png",
+      "actor": "R1",
+      "width": 390,
+      "height": 844,
+      "id": "8c02cdde-64f2-4647-abbc-758d7d2f7542",
+      "revision": 4,
+      "status": "APPROVED",
+      "at": "2026-11-26T09:03:13.703Z",
+      "redaction": "Entire bounded request-list contents masked grey for historical privacy; layout, summary and selected synthetic detail are original."
+    },
+    {
+      "file": "deployed-reviewer-desktop.png",
+      "actor": "V1",
+      "width": 1440,
+      "height": 1000,
+      "id": "fd5d8a3e-ace9-4915-acd3-b4e7599412b6",
+      "revision": 0,
+      "status": "SUBMITTED",
+      "at": "2026-11-26T09:03:15.779Z",
+      "redaction": "Entire bounded request-list contents masked grey for historical privacy; layout, summary and selected synthetic detail are original."
+    },
+    {
+      "file": "deployed-reviewer-768.png",
+      "actor": "V1",
+      "width": 768,
+      "height": 1000,
+      "id": "fd5d8a3e-ace9-4915-acd3-b4e7599412b6",
+      "revision": 0,
+      "status": "SUBMITTED",
+      "at": "2026-11-26T09:03:15.867Z",
+      "redaction": "Entire bounded request-list contents masked grey for historical privacy; layout, summary and selected synthetic detail are original."
+    }
+  ],
+  "domainWrites": 0,
+  "logout": [
+    {
+      "actor": "R1",
+      "status": 204,
+      "subsequentMe": 401
+    },
+    {
+      "actor": "V1",
+      "status": 204,
+      "subsequentMe": 401
+    }
+  ],
+  "finishedAt": "2026-11-26T09:03:16.147Z",
+  "cleanup": {
+    "contextsClosed": true,
+    "browserClosed": true
+  }
+}

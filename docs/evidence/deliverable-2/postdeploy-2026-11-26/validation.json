@@ -1,0 +1,13 @@
+{
+  "strictUtf8TextFiles": 15,
+  "localLinks": 22,
+  "markdownTables": 6,
+  "screenshotDigests": 7,
+  "actualSecretMatches": 0,
+  "caseTotals": {
+    "publicPassed": 8,
+    "authenticatedPassed": 10
+  },
+  "retainedRequests": 5,
+  "retainedEvents": 14
+}

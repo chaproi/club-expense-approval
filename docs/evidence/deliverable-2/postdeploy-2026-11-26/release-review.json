@@ -1,0 +1,18 @@
+{
+    "pr":  "https://github.com/chaproi/club-expense-approval/pull/48",
+    "merged":  true,
+    "mergeSha":  "cc6b04c8e98191be591a3b755d25988148523909",
+    "mergedAt":  "2026-11-26T08:51:46Z",
+    "reviewedHead":  "ecab746d02b33a140775f53a5079bb7f57f5cd42",
+    "approvals":  [
+                      {
+                          "reviewer":  "thananun-7203",
+                          "reviewedSha":  "ecab746d02b33a140775f53a5079bb7f57f5cd42",
+                          "submittedAt":  "2026-11-26T08:33:42Z",
+                          "url":  "https://github.com/chaproi/club-expense-approval/pull/48#pullrequestreview-6070771204"
+                      }
+                  ],
+    "priorReleaseHead":  "1bce9c80b40c24564aaebaec6d6d9fbad6dda32a",
+    "mainSynchronizedHead":  "ecab746d02b33a140775f53a5079bb7f57f5cd42",
+    "mainRelease":  "cc6b04c8e98191be591a3b755d25988148523909"
+}

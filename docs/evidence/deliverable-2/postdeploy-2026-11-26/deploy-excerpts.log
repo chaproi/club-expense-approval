@@ -1,0 +1,9 @@
+2026-11-26T08:55:35.2203210Z cc6b04c8e98191be591a3b755d25988148523909: digest: sha256:2afb158a393ded77dbacb0b29b1bc7559449ed2fa903537ff54165932b934995 size: 856
+2026-11-26T08:55:35.2318790Z   IMAGE: asia-southeast1-docker.pkg.dev/cpe-se-course-2026/s981b09c9/s981b09c9:cc6b04c8e98191be591a3b755d25988148523909
+2026-11-26T08:56:19.2844039Z Execution [s981b09c9-migrate-hbkpk] has successfully completed.
+2026-11-26T08:56:19.4536743Z   IMAGE: asia-southeast1-docker.pkg.dev/cpe-se-course-2026/s981b09c9/s981b09c9:cc6b04c8e98191be591a3b755d25988148523909
+2026-11-26T08:56:21.9809860Z Deploying container to Cloud Run service [s981b09c9] in project [cpe-se-course-2026] region [asia-southeast1]
+2026-11-26T08:56:33.1351549Z Routing traffic..........................................................................................done
+2026-11-26T08:56:35.5459114Z Service [s981b09c9] revision [s981b09c9-00008-pch] has been deployed and is serving 100 percent of traffic.
+2026-11-26T08:56:35.5460123Z Service URL: https://s981b09c9-670075229477.asia-southeast1.run.app
+2026-11-26T08:56:35.7474391Z   IMAGE: asia-southeast1-docker.pkg.dev/cpe-se-course-2026/s981b09c9/s981b09c9:cc6b04c8e98191be591a3b755d25988148523909

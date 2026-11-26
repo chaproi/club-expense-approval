@@ -1,0 +1,238 @@
+{
+    "run":  "https://github.com/chaproi/club-expense-approval/actions/runs/45786768391",
+    "id":  45786768391,
+    "event":  "push",
+    "head":  "cc6b04c8e98191be591a3b755d25988148523909",
+    "branch":  "main",
+    "status":  "completed",
+    "conclusion":  "success",
+    "started":  "2026-11-26T08:51:49Z",
+    "updated":  "2026-11-26T08:56:41Z",
+    "jobs":  [
+                 {
+                     "id":  139795385630,
+                     "name":  "ci / verify",
+                     "url":  "https://github.com/chaproi/club-expense-approval/actions/runs/45786768391/job/139795385630",
+                     "status":  "completed",
+                     "conclusion":  "success",
+                     "started":  "2026-11-26T08:51:52Z",
+                     "completed":  "2026-11-26T08:54:22Z",
+                     "steps":  [
+                                   {
+                                       "name":  "Set up job",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:51:53Z",
+                                       "completed":  "2026-11-26T08:51:54Z"
+                                   },
+                                   {
+                                       "name":  "Initialize containers",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:51:54Z",
+                                       "completed":  "2026-11-26T08:52:09Z"
+                                   },
+                                   {
+                                       "name":  "Check out repository",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:52:09Z",
+                                       "completed":  "2026-11-26T08:52:11Z"
+                                   },
+                                   {
+                                       "name":  "Set up Node.js 24",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:52:11Z",
+                                       "completed":  "2026-11-26T08:52:11Z"
+                                   },
+                                   {
+                                       "name":  "Install dependencies and generate Prisma Client",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:52:11Z",
+                                       "completed":  "2026-11-26T08:52:18Z"
+                                   },
+                                   {
+                                       "name":  "Apply database migrations",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:52:18Z",
+                                       "completed":  "2026-11-26T08:52:19Z"
+                                   },
+                                   {
+                                       "name":  "Run unit and API tests",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:52:19Z",
+                                       "completed":  "2026-11-26T08:52:22Z"
+                                   },
+                                   {
+                                       "name":  "Build application",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:52:22Z",
+                                       "completed":  "2026-11-26T08:52:27Z"
+                                   },
+                                   {
+                                       "name":  "Install Chromium and browser dependencies",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:52:27Z",
+                                       "completed":  "2026-11-26T08:52:45Z"
+                                   },
+                                   {
+                                       "name":  "Run Playwright tests",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:52:45Z",
+                                       "completed":  "2026-11-26T08:53:33Z"
+                                   },
+                                   {
+                                       "name":  "Retain selected browser evidence",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:53:33Z",
+                                       "completed":  "2026-11-26T08:53:35Z"
+                                   },
+                                   {
+                                       "name":  "Build Docker image",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:53:35Z",
+                                       "completed":  "2026-11-26T08:54:14Z"
+                                   },
+                                   {
+                                       "name":  "Post Set up Node.js 24",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:54:14Z",
+                                       "completed":  "2026-11-26T08:54:18Z"
+                                   },
+                                   {
+                                       "name":  "Post Check out repository",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:54:18Z",
+                                       "completed":  "2026-11-26T08:54:18Z"
+                                   },
+                                   {
+                                       "name":  "Stop containers",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:54:18Z",
+                                       "completed":  "2026-11-26T08:54:20Z"
+                                   },
+                                   {
+                                       "name":  "Complete job",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:54:20Z",
+                                       "completed":  "2026-11-26T08:54:20Z"
+                                   }
+                               ]
+                 },
+                 {
+                     "id":  139796626455,
+                     "name":  "deploy",
+                     "url":  "https://github.com/chaproi/club-expense-approval/actions/runs/45786768391/job/139796626455",
+                     "status":  "completed",
+                     "conclusion":  "success",
+                     "started":  "2026-11-26T08:54:25Z",
+                     "completed":  "2026-11-26T08:56:40Z",
+                     "steps":  [
+                                   {
+                                       "name":  "Set up job",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:54:26Z",
+                                       "completed":  "2026-11-26T08:54:27Z"
+                                   },
+                                   {
+                                       "name":  "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:54:27Z",
+                                       "completed":  "2026-11-26T08:54:28Z"
+                                   },
+                                   {
+                                       "name":  "Check settings and Dockerfile",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:54:28Z",
+                                       "completed":  "2026-11-26T08:54:28Z"
+                                   },
+                                   {
+                                       "name":  "Sign in to Google Cloud (no key file)",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:54:28Z",
+                                       "completed":  "2026-11-26T08:54:29Z"
+                                   },
+                                   {
+                                       "name":  "Run google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:54:29Z",
+                                       "completed":  "2026-11-26T08:54:34Z"
+                                   },
+                                   {
+                                       "name":  "Read the existing Cloud Run HTTPS origin",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:54:34Z",
+                                       "completed":  "2026-11-26T08:54:37Z"
+                                   },
+                                   {
+                                       "name":  "Build and push the image",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:54:37Z",
+                                       "completed":  "2026-11-26T08:55:35Z"
+                                   },
+                                   {
+                                       "name":  "Run the required database migration",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:55:35Z",
+                                       "completed":  "2026-11-26T08:56:19Z"
+                                   },
+                                   {
+                                       "name":  "Deploy to Cloud Run",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:56:19Z",
+                                       "completed":  "2026-11-26T08:56:35Z"
+                                   },
+                                   {
+                                       "name":  "Summary",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:56:35Z",
+                                       "completed":  "2026-11-26T08:56:37Z"
+                                   },
+                                   {
+                                       "name":  "Post Sign in to Google Cloud (no key file)",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:56:37Z",
+                                       "completed":  "2026-11-26T08:56:38Z"
+                                   },
+                                   {
+                                       "name":  "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:56:38Z",
+                                       "completed":  "2026-11-26T08:56:38Z"
+                                   },
+                                   {
+                                       "name":  "Complete job",
+                                       "status":  "completed",
+                                       "conclusion":  "success",
+                                       "started":  "2026-11-26T08:56:38Z",
+                                       "completed":  "2026-11-26T08:56:38Z"
+                                   }
+                               ]
+                 }
+             ]
+}

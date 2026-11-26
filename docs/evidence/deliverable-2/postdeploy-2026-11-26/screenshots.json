@@ -1,0 +1,37 @@
+[
+    {
+        "file":  "deployed-login-1440.png",
+        "bytes":  131190,
+        "sha256":  "e02b2b62674671e0fd8f428600169ed8b2cf47761580f47b250d84454b8f8ced"
+    },
+    {
+        "file":  "deployed-login-390.png",
+        "bytes":  58944,
+        "sha256":  "b75d7f4c35b605ee98ea569d82f459b026e053fca21c31febe2588872e5a4c27"
+    },
+    {
+        "file":  "deployed-owner-complete-history.png",
+        "bytes":  78243,
+        "sha256":  "73a9d20051f9144143f9cf49759139652aeffa162bd04f7fa09a4552b77a1395"
+    },
+    {
+        "file":  "deployed-owner-mobile.png",
+        "bytes":  70956,
+        "sha256":  "31c5831b93df0a5b6025acbfecbd5dcad63c39b7bc30a27ad8431fd3ba6a5825"
+    },
+    {
+        "file":  "deployed-real-conflict-draft.png",
+        "bytes":  126555,
+        "sha256":  "57159b660f9c071e542b7e949f643fe13a9d5c7f5d0fb541a64d2b9c601d614b"
+    },
+    {
+        "file":  "deployed-reviewer-768.png",
+        "bytes":  80856,
+        "sha256":  "d53cd6bc8642a4e07d3aacfffd74e8f5ec9be8289f70c9e433ebc52fdb81e1ee"
+    },
+    {
+        "file":  "deployed-reviewer-desktop.png",
+        "bytes":  79285,
+        "sha256":  "497262b164f8c52a898d875d87420129d1f74a40c7a93265cde466758f56c6da"
+    }
+]
