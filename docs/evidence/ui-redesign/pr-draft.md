@@ -31,6 +31,8 @@ See [verification](verification.md), [before/after screenshots](verification.md#
 
 The evidence preserves the initial capture/recorder infrastructure failures and their narrow corrections. Application source passed; none of those attempts is claimed as tests-first RED. Local Chromium evidence is not cross-browser, screen-reader or certified WCAG coverage. No deployment or hosted CI is claimed by these local results.
 
+The presentation-only [Reviewer breakpoint correction](reviewer-breakpoints/verification.md) at `34269152acdf4ebb06667516622b6fabd1e4a140` adds a passing build and four focused real rendered checks at 761, 768, 800 and 834px, including actual decisions and keyboard/reduced-motion checks. The 47/19 comprehensive results above retain source 465ebea provenance; they were not rerun for that CSS correction.
+
 ## Review
 
 Review the visual hierarchy, responsive scrolling, focus/motion behavior and latest-vs-draft clarity while retaining all current workflow contracts. Independent peer approval and any integration checks remain pending. No merge or deployment is authorized by this PR.

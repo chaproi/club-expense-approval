@@ -1,0 +1,11 @@
+{
+  "label": "migrate",
+  "command": "npm.cmd run db:migrate",
+  "source": "ad7c7bf798b6dcc987b58e11c8bfe6a303c8375d",
+  "startedAt": "2026-11-26T04:57:03.915Z",
+  "finishedAt": "2026-11-26T04:57:14.645Z",
+  "elapsedMs": 10730,
+  "exit": 0,
+  "signal": null,
+  "spawnError": null
+}

@@ -2,6 +2,8 @@
 
 26 November 2026 (Asia/Bangkok). Local verification, not hosted CI or independent design approval.
 
+**Responsive follow-up:** [Reviewer breakpoint correction](reviewer-breakpoints/verification.md) records source 34269152acdf4ebb06667516622b6fabd1e4a140, its passing build and four focused width checks. All earlier results and screenshots below retain their original source provenance.
+
 ## Source and scope
 
 - Starting staging: [717536287117118d508e08d6cc68764a5df537c7](https://github.com/chaproi/club-expense-approval/commit/717536287117118d508e08d6cc68764a5df537c7).
