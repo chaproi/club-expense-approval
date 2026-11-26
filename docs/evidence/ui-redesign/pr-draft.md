@@ -2,7 +2,7 @@
 
 Title: Redesign Club Expense Approval with a campus studio interface
 
-Base: `staging/sprint-2`  
+Base: `staging/sprint-2`
 Head: `feat/sprint2-campus-ui`
 
 Publication prerequisite: PR #46 must merge and its latest staging documentation must be integrated first. This file is a prepared body, not evidence that a PR exists.
@@ -34,4 +34,3 @@ The evidence preserves the initial capture/recorder infrastructure failures and 
 ## Review
 
 Review the visual hierarchy, responsive scrolling, focus/motion behavior and latest-vs-draft clarity while retaining all current workflow contracts. Independent peer approval and any integration checks remain pending. No merge or deployment is authorized by this PR.
-

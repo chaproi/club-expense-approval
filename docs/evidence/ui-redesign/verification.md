@@ -88,3 +88,4 @@ The latest successful fetch/recheck on 26 Nov 2026 still found staging at 717536
 
 The prepared review scope is presentation/accessibility polish plus these evidence files. Peer review should assess composition, mobile scrolling, contrast/readability, motion, conflict/draft distinction and preserved workflow names. No author/AI approval is substituted for independent review. The source is locally verified; the eventual integrated branch and hosted CI keep their own provenance.
 
+Documentation checks: 17 UTF-8 text files decoded strictly; 27 local links resolved; Markdown table columns validated; nine screenshot byte lengths/digests matched. Retained harness JavaScript syntax and unchanged protected-path diff checks passed. Final full diff whitespace check passed after removing documentation-only trailing spaces/blank lines.
