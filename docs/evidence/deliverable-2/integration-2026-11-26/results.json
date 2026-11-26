@@ -1,0 +1,659 @@
+{
+  "sha": "717536287117118d508e08d6cc68764a5df537c7",
+  "startedAt": "2026-11-25T17:28:37.970Z",
+  "node": "v24.14.0",
+  "commands": [
+    {
+      "id": "00-head",
+      "command": "git.exe rev-parse HEAD",
+      "startedAt": "2026-11-25T17:28:37.975Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 52
+    },
+    {
+      "id": "00-tree",
+      "command": "git.exe status --porcelain=v1",
+      "startedAt": "2026-11-25T17:28:38.028Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 51
+    },
+    {
+      "id": "00-npm",
+      "command": "cmd.exe /d /c npm.cmd --version",
+      "startedAt": "2026-11-25T17:28:38.080Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 1589
+    },
+    {
+      "id": "00-docker",
+      "command": "docker.exe --context desktop-linux version --format {{.Client.Version}} {{.Server.Version}}",
+      "startedAt": "2026-11-25T17:28:39.670Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 99
+    },
+    {
+      "id": "00-containers",
+      "command": "docker.exe --context desktop-linux ps -a --format {{.ID}}|{{.Names}}|{{.State}}",
+      "startedAt": "2026-11-25T17:28:39.769Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 107
+    },
+    {
+      "id": "00-equivalence-5",
+      "command": "git.exe diff --exit-code a6c93abd350b9926cb51ff287339cd4d02ff2013 717536287117118d508e08d6cc68764a5df537c7 -- client server prisma package.json package-lock.json Dockerfile .dockerignore .github playwright.config.ts",
+      "startedAt": "2026-11-25T17:28:39.878Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 102
+    },
+    {
+      "id": "00-equivalence-6",
+      "command": "git.exe merge-base --is-ancestor f487956511a79951656a2392bec002cde555ec67 717536287117118d508e08d6cc68764a5df537c7",
+      "startedAt": "2026-11-25T17:28:39.982Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 59
+    },
+    {
+      "id": "00-equivalence-7",
+      "command": "git.exe merge-base --is-ancestor d385c231c315154cc496a2b781f18d822e682058 717536287117118d508e08d6cc68764a5df537c7",
+      "startedAt": "2026-11-25T17:28:40.042Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 62
+    },
+    {
+      "id": "01-clone",
+      "command": "git.exe clone --no-local -- [temporary-checkout]",
+      "startedAt": "2026-11-25T17:28:40.105Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 573
+    },
+    {
+      "id": "01-fetch",
+      "command": "git.exe fetch [original-checkout] 717536287117118d508e08d6cc68764a5df537c7",
+      "startedAt": "2026-11-25T17:28:40.680Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 270
+    },
+    {
+      "id": "01-checkout",
+      "command": "git.exe checkout --detach 717536287117118d508e08d6cc68764a5df537c7",
+      "startedAt": "2026-11-25T17:28:40.951Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 87
+    },
+    {
+      "id": "01-sha",
+      "command": "git.exe rev-parse HEAD",
+      "startedAt": "2026-11-25T17:28:41.039Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 51
+    },
+    {
+      "id": "02-ci",
+      "command": "cmd.exe /d /c npm.cmd ci",
+      "startedAt": "2026-11-25T17:28:41.091Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 20539
+    },
+    {
+      "id": "02-tsc",
+      "command": "cmd.exe /d /c npm.cmd exec -- tsc --noEmit",
+      "startedAt": "2026-11-25T17:29:01.631Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 3768
+    },
+    {
+      "id": "02-chromium",
+      "command": "cmd.exe /d /c npm.cmd exec -- playwright install chromium",
+      "startedAt": "2026-11-25T17:29:05.401Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 1767
+    },
+    {
+      "id": "02-browser-version",
+      "command": "node.exe --input-type=module -e import{chromium}from\"playwright\";const b=await chromium.launch();try{console.log(b.version());}finally{await b.close();}",
+      "startedAt": "2026-11-25T17:29:07.168Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 2616
+    },
+    {
+      "id": "02-audit",
+      "command": "cmd.exe /d /c npm.cmd audit --json",
+      "startedAt": "2026-11-25T17:29:09.785Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 1572
+    },
+    {
+      "id": "02-audit-production",
+      "command": "cmd.exe /d /c npm.cmd audit --omit=dev --json",
+      "startedAt": "2026-11-25T17:29:11.359Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 1478
+    },
+    {
+      "id": "03-db",
+      "command": "docker.exe --context desktop-linux run -d --name d2-integration-2530998cb964 --label integration.owner=d2-integration-2530998cb964 --env-file C:\\Users\\ACER\\AppData\\Local\\Temp\\d2-integration-SZNjhV\\pg.env -p 127.0.0.1::5432 postgres:17-bookworm",
+      "startedAt": "2026-11-25T17:29:12.838Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 5130
+    },
+    {
+      "id": "03-volumes",
+      "command": "docker.exe --context desktop-linux inspect --format {{range .Mounts}}{{if eq .Type \"volume\"}}{{println .Name}}{{end}}{{end}} 8790ceb4f0221d2bb148c11a2a2cd94387c91420a0d27716d7a2e4c3712ba5c0",
+      "startedAt": "2026-11-25T17:29:17.969Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 92
+    },
+    {
+      "id": "03-binding",
+      "command": "docker.exe --context desktop-linux port 8790ceb4f0221d2bb148c11a2a2cd94387c91420a0d27716d7a2e4c3712ba5c0 5432/tcp",
+      "startedAt": "2026-11-25T17:29:18.062Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 124
+    },
+    {
+      "id": "03-ready-0",
+      "command": "docker.exe --context desktop-linux exec 8790ceb4f0221d2bb148c11a2a2cd94387c91420a0d27716d7a2e4c3712ba5c0 pg_isready -U test_d2_integration_2530998cb964 -d test_d2_integration_2530998cb964",
+      "startedAt": "2026-11-25T17:29:18.188Z",
+      "exit": 2,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 169
+    },
+    {
+      "id": "03-ready-1",
+      "command": "docker.exe --context desktop-linux exec 8790ceb4f0221d2bb148c11a2a2cd94387c91420a0d27716d7a2e4c3712ba5c0 pg_isready -U test_d2_integration_2530998cb964 -d test_d2_integration_2530998cb964",
+      "startedAt": "2026-11-25T17:29:19.362Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 173
+    },
+    {
+      "id": "03-live-target",
+      "command": "docker.exe --context desktop-linux exec 8790ceb4f0221d2bb148c11a2a2cd94387c91420a0d27716d7a2e4c3712ba5c0 psql -U test_d2_integration_2530998cb964 -d test_d2_integration_2530998cb964 -At -c select current_database(),current_user,current_schema(),(select count(*) from information_schema.tables where table_schema='public'),current_setting('server_version');",
+      "startedAt": "2026-11-25T17:29:19.536Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 172
+    },
+    {
+      "id": "04-migrate",
+      "command": "cmd.exe /d /c npm.cmd run db:migrate",
+      "startedAt": "2026-11-25T17:29:19.709Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 2189
+    },
+    {
+      "id": "05-unit-api",
+      "command": "cmd.exe /d /c npm.cmd test",
+      "startedAt": "2026-11-25T17:29:21.898Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 3631
+    },
+    {
+      "id": "05-build",
+      "command": "cmd.exe /d /c npm.cmd run build",
+      "startedAt": "2026-11-25T17:29:25.530Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 5029
+    },
+    {
+      "id": "05-browser",
+      "command": "cmd.exe /d /c npm.cmd run test:e2e -- --reporter=list,json",
+      "startedAt": "2026-11-25T17:29:30.560Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 28676
+    },
+    {
+      "id": "06-fixture-count",
+      "command": "docker.exe --context desktop-linux exec 8790ceb4f0221d2bb148c11a2a2cd94387c91420a0d27716d7a2e4c3712ba5c0 psql -U test_d2_integration_2530998cb964 -d test_d2_integration_2530998cb964 -At -c select (select count(*) from \"User\"),(select count(*) from \"Session\"),(select count(*) from \"ExpenseRequest\"),(select count(*) from \"RequestEvent\");",
+      "startedAt": "2026-11-25T17:29:59.241Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 157
+    },
+    {
+      "id": "06-image-path-29",
+      "command": "git.exe ls-files -- docs/evidence/deliverable-2/return-summary.png",
+      "startedAt": "2026-11-25T17:29:59.398Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 55
+    },
+    {
+      "id": "06-image-path-30",
+      "command": "git.exe ls-files -- docs/evidence/deliverable-2/resubmitted-final-history.png",
+      "startedAt": "2026-11-25T17:29:59.455Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 67
+    },
+    {
+      "id": "06-image-preflight",
+      "command": "docker.exe --context desktop-linux image ls club-expense-approval:d2-integration-2530998cb964 --format {{.ID}}",
+      "startedAt": "2026-11-25T17:29:59.523Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 92
+    },
+    {
+      "id": "06-docker-build",
+      "command": "docker.exe --context desktop-linux build -t club-expense-approval:d2-integration-2530998cb964 .",
+      "startedAt": "2026-11-25T17:29:59.616Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 14100
+    },
+    {
+      "id": "06-source-clean",
+      "command": "git.exe status --porcelain=v1",
+      "startedAt": "2026-11-25T17:30:13.716Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 55
+    },
+    {
+      "id": "07-image-id",
+      "command": "docker.exe --context desktop-linux image ls club-expense-approval:d2-integration-2530998cb964 --format {{.ID}}",
+      "startedAt": "2026-11-25T17:30:13.772Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 116
+    },
+    {
+      "id": "07-remove-image",
+      "command": "docker.exe --context desktop-linux image rm club-expense-approval:d2-integration-2530998cb964",
+      "startedAt": "2026-11-25T17:30:13.889Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 218
+    },
+    {
+      "id": "07-image-absent",
+      "command": "docker.exe --context desktop-linux image ls club-expense-approval:d2-integration-2530998cb964 --format {{.ID}}",
+      "startedAt": "2026-11-25T17:30:14.108Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 71
+    },
+    {
+      "id": "07-connections",
+      "command": "docker.exe --context desktop-linux exec 8790ceb4f0221d2bb148c11a2a2cd94387c91420a0d27716d7a2e4c3712ba5c0 psql -U test_d2_integration_2530998cb964 -d test_d2_integration_2530998cb964 -At -c select count(*) from pg_stat_activity where datname=current_database() and pid<>pg_backend_pid() and backend_type='client backend';",
+      "startedAt": "2026-11-25T17:30:14.179Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 146
+    },
+    {
+      "id": "07-ownership",
+      "command": "docker.exe --context desktop-linux inspect --format {{index .Config.Labels \"integration.owner\"}} 8790ceb4f0221d2bb148c11a2a2cd94387c91420a0d27716d7a2e4c3712ba5c0",
+      "startedAt": "2026-11-25T17:30:14.327Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 84
+    },
+    {
+      "id": "07-db-remove",
+      "command": "docker.exe --context desktop-linux rm -fv 8790ceb4f0221d2bb148c11a2a2cd94387c91420a0d27716d7a2e4c3712ba5c0",
+      "startedAt": "2026-11-25T17:30:14.411Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 370
+    },
+    {
+      "id": "07-db-absent",
+      "command": "docker.exe --context desktop-linux ps -aq --filter label=integration.owner=d2-integration-2530998cb964",
+      "startedAt": "2026-11-25T17:30:14.782Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 82
+    },
+    {
+      "id": "07-volume-absent",
+      "command": "docker.exe --context desktop-linux volume ls -q",
+      "startedAt": "2026-11-25T17:30:14.865Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 69
+    },
+    {
+      "id": "07-head",
+      "command": "git.exe rev-parse HEAD",
+      "startedAt": "2026-11-25T17:30:14.935Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 44
+    },
+    {
+      "id": "07-tree",
+      "command": "git.exe status --porcelain=v1",
+      "startedAt": "2026-11-25T17:30:14.979Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 41
+    },
+    {
+      "id": "07-containers",
+      "command": "docker.exe --context desktop-linux ps -a --format {{.ID}}|{{.Names}}|{{.State}}",
+      "startedAt": "2026-11-25T17:30:15.022Z",
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "elapsedMs": 102
+    }
+  ],
+  "cleanup": {
+    "zeroFixtureRows": true,
+    "imageRemoved": true,
+    "zeroDatabaseClients": true,
+    "containerVolumeRemoved": true,
+    "originalStatePreserved": true,
+    "temporaryCheckoutRemoved": true
+  },
+  "originalHead": "f487956511a79951656a2392bec002cde555ec67",
+  "originalStatus": "",
+  "npm": "11.9.0",
+  "docker": "29.9.3 29.9.3",
+  "containersBefore": "d92b438be64d|club-expense-approval-lab5-app-1|exited\nd819b2dcf7b8|club-expense-approval-lab5-migrate-1|exited\n407f732fc17d|club-expense-approval-lab5-db-1|exited",
+  "sourceDependencyConfigEquivalentToCandidate": true,
+  "chromium": "151.0.7922.34",
+  "02-audit": 0,
+  "02-audit-production": 0,
+  "target": {
+    "owned": true,
+    "distinctFromOperational": true,
+    "loopback": true,
+    "schema": "public",
+    "initialTables": 0,
+    "postgres": "17.12 (Debian 17.12-1.pgdg12+1)"
+  },
+  "unitExit": 0,
+  "buildExit": 0,
+  "browserExit": 0,
+  "browser": {
+    "stats": {
+      "startTime": "2026-11-25T17:29:31.733Z",
+      "duration": 27440.231,
+      "expected": 19,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "globalErrors": [],
+    "cases": [
+      {
+        "file": "expense-decisions.spec.ts",
+        "line": 50,
+        "title": "T-09: requester submits, reviewer approves or rejects, and requester reads both outcomes",
+        "status": "passed",
+        "durationMs": 1564,
+        "errors": []
+      },
+      {
+        "file": "expense-decisions.spec.ts",
+        "line": 79,
+        "title": "reviewer reloads the latest status after a stale decision returns 409",
+        "status": "passed",
+        "durationMs": 780,
+        "errors": []
+      },
+      {
+        "file": "expense-decisions.spec.ts",
+        "line": 102,
+        "title": "T-F04-05/T-F05-06/T-F06-04: return, saved correction, resubmit and final readback update the DB summary",
+        "status": "passed",
+        "durationMs": 2152,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 196,
+        "title": "T-F05-07 keeps latest values and the conflicted draft separate after real stale Save",
+        "status": "passed",
+        "durationMs": 771,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 218,
+        "title": "T-F05-08a Restore keeps the latest untouched category and waits for manual Save",
+        "status": "passed",
+        "durationMs": 826,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 218,
+        "title": "T-F05-08a Restore keeps the latest untouched amount and waits for manual Save",
+        "status": "passed",
+        "durationMs": 770,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 252,
+        "title": "T-F05-08b Discard keeps latest saved fields and performs no mutation",
+        "status": "passed",
+        "durationMs": 671,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 272,
+        "title": "T-F05-09a shows read-only draft when the latest state is SUBMITTED",
+        "status": "passed",
+        "durationMs": 746,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 272,
+        "title": "T-F05-09a shows read-only draft when the latest state is APPROVED",
+        "status": "passed",
+        "durationMs": 803,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 305,
+        "title": "T-F05-09a revoked owner session cannot read or recover the stale draft",
+        "status": "passed",
+        "durationMs": 971,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 343,
+        "title": "T-F05-09a real access denial clears an established draft without ending the account session",
+        "status": "passed",
+        "durationMs": 1096,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 401,
+        "title": "T-F05-09b keeps a draft only for its request and clears it when the account changes",
+        "status": "passed",
+        "durationMs": 1424,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 435,
+        "title": "T-F05-09b warns about reload and clears the draft on page reload",
+        "status": "passed",
+        "durationMs": 741,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 450,
+        "title": "T-F05-10a a failed refresh retains the draft and deliberate retry makes only reads",
+        "status": "passed",
+        "durationMs": 729,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 491,
+        "title": "T-F05-10b a second stale Save retains the new attempt and the newer database revision",
+        "status": "passed",
+        "durationMs": 730,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 519,
+        "title": "T-F05-11a Save transport error retains state and identifies the failed action",
+        "status": "passed",
+        "durationMs": 619,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 519,
+        "title": "T-F05-11b Resubmit transport error retains state and identifies the failed action",
+        "status": "passed",
+        "durationMs": 627,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 629,
+        "title": "BF-01 AC-F05-08/09 same-value Restore clears the clean draft before explicit Resubmit",
+        "status": "passed",
+        "durationMs": 801,
+        "errors": []
+      },
+      {
+        "file": "f05-draft-recovery.spec.ts",
+        "line": 644,
+        "title": "BF-01 AC-F05-08/09 reverting a dirty restored draft clears it before explicit Resubmit",
+        "status": "passed",
+        "durationMs": 847,
+        "errors": []
+      }
+    ]
+  },
+  "dockerExit": 0,
+  "finishedAt": "2026-11-25T17:30:15.945Z",
+  "verdict": "PASS",
+  "unitApi": {
+    "tests": 47,
+    "pass": 47,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "duration_ms": 3096.8462
+  },
+  "reviews": [
+    {
+      "number": 43,
+      "url": "https://github.com/chaproi/club-expense-approval/pull/43",
+      "head": "f487956511a79951656a2392bec002cde555ec67",
+      "merge": "7ab41689df7961ec8bab279cdd98d1afddf7a912",
+      "merged": true,
+      "mergedAt": "2026-11-25T14:34:34Z",
+      "reviews": [
+        {
+          "reviewer": "thananun-7203",
+          "state": "CHANGES_REQUESTED",
+          "sha": "67050d629d45efa4677ca72eba0a362b1f698d35",
+          "url": "https://github.com/chaproi/club-expense-approval/pull/43#pullrequestreview-6052693657",
+          "body": "### Independent Six-Axis Review — PR #43 (`67050d629d45efa4677ca72eba0a362b1f698d35`)\n\n- **Repository:** `chaproi/club-expense-approval`\n- **PR / Branch:** `#43` (`fix/issue-42-f05-draft-recovery` → `staging/sprint-2`)\n- **Reviewed Base / HEAD SHA:** `ed06b112e8a61890b10daaf76ddbd9632f77c88c` → `67050d629d45efa4677ca72eba0a362b1f698d35`\n- **Reviewer Account:** `thananun-7203` (independent from Author `chaproi`)\n- **Review Date:** `2026-11-25` (`Asia/Bangkok`)\n- **Decision:** **REQUEST_CHANGES** *(1 concrete UI state-machine defect found in `client/src/expense-requests.tsx`; address inside this same PR and request re-review on the updated HEAD)*\n\n| Axis | Verdict | Verified Evidence |\n| --- | --- | --- |\n| **1. Identity, provenance & governance** | **PASS** | Independent reviewer `thananun-7203` != author `chaproi`. Links `Refs #42 and #36`, declares AI assistance, follows contract (`cda5069`) → RED (`1667ec2` / `0a006d3`) → GREEN (`ffefb2d` / `529a489`) → status (`67050d6`). Verified `git diff 1667ec2..67050d6 -- client/test/f05-draft-recovery.spec.ts` is empty (RED suite unchanged in GREEN) and `git diff ffefb2d..67050d6` contains only docs/evidence. `git diff --check` is clean across all 13 files. |\n| **2. Scope, requirements & traceability** | **PASS** | Production code change is strictly bounded to `client/src/expense-requests.tsx` (`+218 / -44`); zero API, Prisma schema, migration, or lockfile edits. Adds `F-05 v1.1` contract (`AC-F05-07`–`AC-F05-11`), 14 Playwright browser cases (`client/test/f05-draft-recovery.spec.ts`), and action-specific Save/Resubmit error wording. Dependency audit and populated Sprint 1 DB upgrade remain explicitly tracked as separate release gates. |\n| **3. Implementation, security & correctness** | **FAIL** *(1 binding finding below)* | Security and core conflict paths are strong: `401` clears all account drafts, `403`/`404` clears only the denied request's draft, drafts live strictly in tab memory (cleared on unmount/logout/account switch/reload, zero browser storage), no automatic writes on refresh/Restore/Discard/Retry, and `400`/transport errors preserve editable input with action-specific messages. However, **BF-01** below leaves a phantom draft in `drafts` when restored/edited values match the latest saved values, which breaks the `F-05 v1.1` rule (*\"The resulting form is unsaved if it differs from the latest values\"*) and causes a subsequent successful `Resubmit request` to re-enter the read-only conflict recovery UI on a newly `SUBMITTED` request. |\n| **4. Build, testing & evidence** | **PASS** *(add regression for BF-01)* | Hosted CI [`45553875619`](https://github.com/chaproi/club-expense-approval/actions/runs/45553875619/job/139001178059) passed `SUCCESS` on exact HEAD `67050d6`: `npm test` **47/47 PASS** (`0 fail`, `0 skipped`), `npm run build` **PASS**, Playwright E2E **17/17 PASS** (`19.9s` — 14 new + 3 inherited), Docker build **PASS**. Independently checked out `67050d6` locally (Node `v24.14.0`): `npm run build` **PASS** (`1.85s`), pure unit/canonical-origin suites **11/11 PASS** *(DB-backed API and Playwright E2E covered by hosted PG 17 / Chromium CI)*. |\n| **5. Documentation & status consistency** | **PASS** *(see minor note)* | `docs/contracts/f-05-edit-resubmit.md`, `docs/features.md`, `docs/traceability.md`, `docs/reviewer-handoff.md`, and `docs/evidence/deliverable-2/f05-draft-recovery-*.md` truthfully separate local/source verification from pending peer review, integration, release, and deployment gates. |\n| **6. Closure, prior findings & completeness** | **FAIL** | Blocked by **BF-01** below; address in this same PR (no new PR) and keep `#42` / `#36` open until reviewed integration and release gates complete. |\n\n---\n\n### Binding Finding\n\n#### BF-01 — Clean restored draft is not cleared, causing false reload warning and stale recovery UI after successful Resubmit\n- **Location:** `client/src/expense-requests.tsx` lines `139–160` (`restoreDraft`, `changeEdit`) and lines `191–197` (`mutate` success branch).\n- **Contract reference:** `docs/contracts/f-05-edit-resubmit.md` (v1.1), items 2 & 3:\n  - *\"A field where the latest value agrees with the draft needs no conflict marker.\"*\n  - *\"Restore stages only the captured changed fields on top of the latest saved values. Unchanged fields keep the latest values. The resulting form is unsaved if it differs from the latest values.\"*\n- **Observed behavior & reproduction:**\n  1. **Scenario A (identical concurrent edit):** Two sessions for the same Requester open a `RETURNED` request (rev 1, `title: \"Training expense\"`, `category: \"ACTIVITY\"`, `amountBaht: 500`). Session A edits only `title` to `\"Updated title\"`. Session B saves `title: \"Updated title\"`, `category: \"TRAVEL\"`, `amountBaht: 500` (rev 2).\n  2. Session A clicks **Save changes** → `409 INVALID_STATE` → refreshes rev 2 and shows the draft (`changedFields: [\"title\"]`).\n  3. Session A clicks **Restore draft**. `next` becomes `{ title: \"Updated title\", category: \"TRAVEL\", amountBaht: \"500\" }`, which equals `current`.\n  4. `restoreDraft()` unconditionally executes `updateDraft(captureDraft(detail, next, true))` (storing a draft with `changedFields: []`, `restored: true`, `base.revision: 2`).\n     - Immediately, `dirty` is `false` so **Save changes** is disabled and **Resubmit request** is enabled — yet `drafts.size > 0` still renders `\"Reloading this page will discard your unsaved draft.\"` and **Discard draft** even though there are zero unsaved differences.\n  5. Session A clicks the enabled **Resubmit request** button → `POST /:id/resubmit` succeeds (`200 OK`, `status: \"SUBMITTED\"`, `revision: 3`).\n  6. In `mutate()` (lines `193–196`), `updateDraft()` is only called when `action === \"save\"`, **not** when `action === \"resubmit\"`. The empty draft remains in `drafts`, flipping `recovering` to `true` (`!!draft && detail.status !== \"RETURNED\"`).\n  7. Right after a clean, successful Resubmit, the UI unexpectedly renders **Latest saved values**, **Unsaved draft**, `\"This request is read-only.\"`, **Discard draft**, and `\"Reloading this page will discard your unsaved draft.\"`.\n  - *(The same failure also occurs in **Scenario B**: after restoring a dirty draft, the owner edits the field back to match the latest saved value via `changeEdit()`, enabling **Resubmit request**, and clicks **Resubmit request**.)*\n- **Required same-PR remedy:**\n  1. In `restoreDraft()` (line `146`) and `changeEdit()` (line `159`), inspect `staged.changedFields.length`: when `0`, clear the draft (`updateDraft()` and in `restoreDraft()` reset `setEditValues(null)`) instead of retaining an empty draft.\n  2. In `mutate()` success handling (lines `193–196`), also call `updateDraft()` on `action === \"resubmit\"` so a successful Resubmit can never leave a stale draft attached to a newly `SUBMITTED` request.\n  3. Add a focused Playwright regression case in `client/test/f05-draft-recovery.spec.ts` covering a same-value Restore (or restored-then-reverted edit) followed by **Resubmit request**, verifying no false reload warning/draft panel appears and the `SUBMITTED` transition succeeds cleanly, then rerun full CI.\n\n---\n\n### Non-blocking Note\n- When pushing the fix commit, consider also referencing the latest passing hosted PR `#43` CI run in `docs/traceability.md` / `docs/reviewer-handoff.md` alongside the local verification evidence.\n"
+        },
+        {
+          "reviewer": "thananun-7203",
+          "state": "APPROVED",
+          "sha": "f487956511a79951656a2392bec002cde555ec67",
+          "url": "https://github.com/chaproi/club-expense-approval/pull/43#pullrequestreview-6059594795",
+          "body": "### Independent Six-Axis Re-Review — PR #43 (`f487956511a79951656a2392bec002cde555ec67`)\n\n- **Repository:** `chaproi/club-expense-approval`\n- **PR / Branch:** `#43` (`fix/issue-42-f05-draft-recovery` → `staging/sprint-2`)\n- **Reviewed Base / HEAD SHA:** `ed06b112e8a61890b10daaf76ddbd9632f77c88c` → `f487956511a79951656a2392bec002cde555ec67`\n- **Prior Reviewed HEAD:** `67050d629d45efa4677ca72eba0a362b1f698d35` (`CHANGES_REQUESTED` — `BF-01`)\n- **Reviewer Account:** `thananun-7203` (independent from Author `chaproi`)\n- **Review Date:** `2026-11-25` (`Asia/Bangkok`)\n- **Decision:** **APPROVE** *(source PR approval only — not a merge, not `main` release approval, and not deployment acceptance; `#42` and `#36` remain open pending staging integration, separate release gates, reviewed `main` release, and post-deploy verification)*\n\n| Axis | Verdict | Verified Evidence |\n| --- | --- | --- |\n| **1. Identity, provenance & governance** | **PASS** | Independent reviewer `thananun-7203` != author `chaproi`. Three clean same-PR follow-up commits address `BF-01` in TDD order: `95d7d2b` (RED tests) → `cb05d62` (minimal UI fix) → `f487956` (BF-01 evidence/docs). Verified `git diff 95d7d2b..f487956 -- client/test/f05-draft-recovery.spec.ts` is empty (BF-01 RED assertions unchanged in GREEN) and `git diff --check origin/staging/sprint-2..f487956` is completely clean. |\n| **2. Scope, requirements & traceability** | **PASS** | Production edits remain strictly within `client/src/expense-requests.tsx`; zero API, Prisma schema, migration, or lockfile changes. `docs/traceability.md` and `docs/reviewer-handoff.md` accurately map both new `BF-01` cases under `AC-F05-08/09` and preserve separate release gates (dependency audit + populated Sprint 1 DB upgrade). |\n| **3. Implementation, security & correctness** | **PASS** | **`BF-01` resolved cleanly:** `stageRestoredDraft()` (`client/src/expense-requests.tsx`, lines `139–144`) checks `staged.changedFields.length > 0` across both `restoreDraft()` and `changeEdit()`, clearing `editValues` and calling `updateDraft()` whenever restored/reverted values match `current`. `mutate()` (line `199`) clears the selected request's draft on both `action === \"save\"` and `action === \"resubmit\"` while preserving `\"Changes saved.\"` for Save only. All prior security/privacy/concurrency invariants (`401`/`403`/`404` clearing, tab-memory-only scoping, no auto-writes, action-specific errors) remain intact. |\n| **4. Build, testing & evidence** | **PASS** | Hosted CI [`45601140709`](https://github.com/chaproi/club-expense-approval/actions/runs/45601140709/job/139160055409) passed `SUCCESS` on exact HEAD `f487956511a79951656a2392bec002cde555ec67`: `npm run db:migrate` **PASS**, `npm test` **47/47 PASS** (`0 fail`, `0 skipped`), `npm run build` **PASS**, Playwright E2E **19/19 PASS** (`22.3s` — 16 F-05 draft-recovery cases including both `BF-01` regressions + 3 inherited cases), Docker build (`club-expense-approval:ci`) **PASS**. `docs/evidence/deliverable-2/f05-draft-recovery-bf01.md` and `.json` document the 2/2 behavioral RED failures on `95d7d2b` and 19/19 GREEN confirmation on `cb05d62`. Independently checked out `f487956` locally (Node `v24.14.0`): `npm run build` **PASS** (`1.87s`), pure unit/canonical-origin suites **11/11 PASS** *(DB-backed API and Playwright E2E covered by hosted PG 17 / Chromium CI run `45601140709`)*. |\n| **5. Documentation & status consistency** | **PASS** | `f05-draft-recovery-bf01.md`, `docs/traceability.md`, and `docs/reviewer-handoff.md` preserve prior records (`67050d6` / run `45553875619`) without rewriting history and clearly separate source verification from pending staging integration, release gates, and deployment acceptance. |\n| **6. Closure, prior findings & completeness** | **PASS** | Prior binding finding **`BF-01`** is completely resolved and regression-tested inside this same PR (`MERGEABLE`, `CLEAN`), with zero remaining binding findings and no premature closure of `#42` or `#36`. |\n\n**Binding findings:** None (`BF-01` verified fixed and covered by two Playwright regressions on `f487956`).\n"
+        }
+      ]
+    },
+    {
+      "number": 45,
+      "url": "https://github.com/chaproi/club-expense-approval/pull/45",
+      "head": "d385c231c315154cc496a2b781f18d822e682058",
+      "merge": "717536287117118d508e08d6cc68764a5df537c7",
+      "merged": true,
+      "mergedAt": "2026-11-25T17:19:50Z",
+      "reviews": [
+        {
+          "reviewer": "thananun-7203",
+          "state": "APPROVED",
+          "sha": "d385c231c315154cc496a2b781f18d822e682058",
+          "url": "https://github.com/chaproi/club-expense-approval/pull/45#pullrequestreview-6061894648",
+          "body": "### Independent Six-Axis Review — PR #45 (`d385c231c315154cc496a2b781f18d822e682058`)\n\n- **Repository:** `chaproi/club-expense-approval`\n- **PR / Branch:** `#45` (`fix/prisma-config-security-overrides` → `staging/sprint-2`)\n- **Reviewed Base / HEAD SHA:** `7ab41689df7961ec8bab279cdd98d1afddf7a912` → `d385c231c315154cc496a2b781f18d822e682058`\n- **Reviewer Account:** `thananun-7203` (independent from Author `chaproi`)\n- **Review Date:** `2026-11-26` (`Asia/Bangkok`)\n- **Decision:** **APPROVE** *(dependency remediation PR approval only — not a merge, not `main` release approval, and not deployment acceptance; override removal criteria in `plan.md` remain tracked for future upstream Prisma upgrades)*\n\n| Axis | Verdict | Verified Evidence |\n| --- | --- | --- |\n| **1. Identity, provenance & governance** | **PASS** | Independent reviewer `thananun-7203` != author `chaproi`. Links `Refs #44`, cleanly follows `7ab4168` on `staging/sprint-2`, and preserves strict commit order: `45f7046` (plan) → `a6c93ab` (dependency change) → `d385c23` (evidence/harness). Verified `git diff a6c93ab..d385c23` touches zero code, dependency, Dockerfile, or workflow files. `git diff --check` is completely clean across all 14 files. |\n| **2. Scope, requirements & traceability** | **PASS** | Strictly addresses `GHSA-ggr8-5vv4-36mx` (`deepmerge-ts <8.0.0`) and `GHSA-7589-6fvf-x4pw` (`effect <=3.22.0`) via version-scoped overrides under `@prisma/config@6.19.3`, retaining `prisma@6.19.3` and `@prisma/client@6.19.3`. Zero application code, API, schema, migration, test, Dockerfile, or CI workflow changes. Explicitly documents `deepmerge-ts@8.0.0` major-override compatibility caveats and concrete removal criteria in `plan.md` and `verification.md`. |\n| **3. Implementation, security & correctness** | **PASS** | Inspected full `package.json` (`+6 / -0`) and `package-lock.json` (`+16 / -6`) diffs: only `node_modules/deepmerge-ts` (`7.1.5 → 8.0.0`) and `node_modules/effect` (`3.21.0 → 3.22.1`) changed, with official `registry.npmjs.org` tarballs and sha512 integrity hashes. Scoping overrides to `@prisma/config@6.19.3` avoids unintended bleed into future Prisma releases or unrelated packages. Secret scan across all 12 new files under `docs/evidence/deliverable-2/dependency-remediation/` confirmed zero leaked credentials, tokens, hashes, or private URLs. |\n| **4. Build, testing & evidence** | **PASS** | Hosted CI [`45660173132`](https://github.com/chaproi/club-expense-approval/actions/runs/45660173132/job/139367565816) passed `SUCCESS` on exact HEAD `d385c23`: `npm ci` + `prisma generate` (`found 0 vulnerabilities`), `npm run db:migrate` **PASS**, `npm test` **47/47 PASS** (`0 fail`, `0 skipped`), `npm run build` **PASS**, Playwright E2E **19/19 PASS** (`22.5s`), Docker build (`found 0 vulnerabilities`, `club-expense-approval:ci`) **PASS**. Author's local evidence on `a6c93ab` also documents full & `--omit=dev` audits (`4 High → 0`), Docker image migration/seed/HTTP smoke, and populated Sprint 1 (`43aa8d7`) → candidate (`a6c93ab`) upgrade preservation. Independently verified exact HEAD `d385c23` locally (Node `v24.14.0`): `npm ci` + `prisma generate` **PASS**, `npm audit` **0 vulnerabilities**, `npm audit --omit=dev` **0 vulnerabilities**, `npm ls` confirmed `prisma@6.19.3` / `@prisma/client@6.19.3` / `deepmerge-ts@8.0.0` / `effect@3.22.1`, `npm run build` **PASS** (`2.47s`), and pure unit/canonical-origin suites **11/11 PASS** *(DB-backed API, E2E, and Docker verified via hosted CI)*. |\n| **5. Documentation & status consistency** | **PASS** *(see minor note)* | `plan.md`, `verification.md`, and `results.json` honestly distinguish local-only checks (audits, image HTTP smoke, populated upgrade) from GitHub Actions `verify`, disclose `deepmerge-ts@8` major-override caveats, and leave review/integration/release acceptance pending. |\n| **6. Closure, prior findings & completeness** | **PASS** | Single cohesive remediation PR (`MERGEABLE`, `CLEAN`) for `#44`, zero unresolved threads, and no premature acceptance or closure claims. |\n\n**Binding findings:** None.\n\n**Non-blocking notes:**\n1. Minor typo in `docs/evidence/deliverable-2/dependency-remediation/plan.md` line 7 (`prisma 6.19.3 ? @prisma/config 6.19.3` — `?` where an arrow was intended).\n2. In the upcoming `staging/sprint-2` → `main` release PR, update `docs/reviewer-handoff.md` and `docs/traceability.md` to record that the dependency-audit and populated-upgrade release gates have been verified on the integrated candidate.\n"
+        }
+      ]
+    }
+  ]
+}

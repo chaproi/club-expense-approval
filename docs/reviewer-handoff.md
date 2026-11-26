@@ -1,8 +1,18 @@
 # Deliverable 2 — independent reviewer handoff
 
-24 Nov 2026 / chaproi, updated 25 Nov 2026 for [Issue #42](https://github.com/chaproi/club-expense-approval/issues/42). **Sprint 2 staging contains PRs #39–#41. Issue #42 is ready for independent source review. Sprint 2 release and deployment acceptance remain pending.** Do not merge evidence-only PR17.
+Updated 26 Nov 2026 / chaproi. **PRs #43 and #45 are independently source-approved and merged into Sprint 2 staging. Integration checks passed at 7175362. Main release and deployed acceptance remain pending.** Do not merge evidence-only PR17.
 
-## Review and integration order
+The earlier 24–25 Nov handoff below described #42 as ready for source review. Its then-pending review/integration instructions are retained as historical context. The current checkpoint follows.
+
+## Current integration checkpoint, 26 November 2026
+
+PR #43 was approved on f487956 by thananun-7203 and merged at 7ab4168. PR #45 was approved on d385c23 by the same independent reviewer and merged at 7175362. The [integration record](evidence/deliverable-2/integration-2026-11-26/evidence.md) links both actual approvals and reports fresh 47/47 unit/API, 19/19 browser, TypeScript/build, Docker and both audits PASS at `717536287117118d508e08d6cc68764a5df537c7`. Git byte comparison verified that client, server, Prisma schema/migrations, package manifest/lockfile, Dockerfile/.dockerignore, workflows and Playwright configuration at `717536287117118d508e08d6cc68764a5df537c7` match verified dependency candidate `a6c93abd350b9926cb51ff287339cd4d02ff2013`. Both reviewed heads are ancestors of integrated staging. No commits followed the expected #45 merge at the time of fetching.
+
+[BF-01 RED and GREEN](https://github.com/chaproi/club-expense-approval/blob/f487956511a79951656a2392bec002cde555ec67/docs/evidence/deliverable-2/f05-draft-recovery-bf01.md), [dependency verification](https://github.com/chaproi/club-expense-approval/blob/d385c231c315154cc496a2b781f18d822e682058/docs/evidence/deliverable-2/dependency-remediation/verification.md) and [populated upgrade at a6c93ab](https://github.com/chaproi/club-expense-approval/blob/d385c231c315154cc496a2b781f18d822e682058/docs/evidence/deliverable-2/dependency-remediation/verification.md#populated-baseline-upgrade-on-the-new-candidate) provide correction and candidate-level evidence. Review this documentation and completion checklist before preparing the staging-to-main release. Main approval, deployment, post-deploy verification and Deliverable 2 acceptance remain pending.
+
+The sections below retain the earlier handoff and its then-pending gates. This current checkpoint supersedes their review/integration status for #43/#45.
+
+## Review and integration order (historical checkpoint)
 
 | Order | PR / issue | Scope | Current evidence / gate |
 |---|---|---|---|
