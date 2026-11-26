@@ -1,8 +1,12 @@
 # Club Expense Approval — Project Deliverable 2
 
-**Report source packet — 26 November 2026 (Asia/Bangkok)**
+**Technical report — 26 November 2026 (Asia/Bangkok)**
 
-CPE334 · TH-038 · Theme5 · author chaproi · student ID67070507215. Solo instructor-approved status is recorded in the original baseline. **Full student name and student-authored reflection/contribution text must be supplied by the student.** No AI-written personal reflection or final acceptance statement is substituted.
+**นายสิริกร ฝันนิมิตร** · Student ID **67070507215**
+
+CPE334 · **TH-038 — Solo, instructor-approved** · Theme5 · repository author chaproi.
+
+Cover identity and the concise contribution/AI-use declaration below were confirmed by the student on 26 November 2026. A long personal reflection is optional and is not required for this packet. Final acceptance and submission remain the owner's separate decisions.
 
 Repository: https://github.com/chaproi/club-expense-approval
 
@@ -27,10 +31,10 @@ These are the supplied rubric areas/weights, not marks awarded. The historical b
 | Rubric area | Evidence now available | Remaining before final PDF/submission |
 |---|---|---|
 | A Sprint 1 continuity and change status (5) | Corrected baseline43aa8d7; incoming Lab 6 defects and independent retest/acceptance at that version preserved; inherited cases pass in exact-main CI; deployed PD-A01/A03/A04/A06/A10 cover current auth/decisions/denials/readback. | Include the original evidence distinctions and known Low limitations; private Lab 6 archives remain separate, not new D2 UAT. |
-| B Sprint 2 contracts and working increment (25) | Full F-04/F-05 SDS/API/data/AC/STS, meaningful original RED→GREEN and BF-01 correction, independent reviews #40/#41/#43, all16 per-AC mappings below, released R and live PD-A05/A07 demonstration. | Student-authored reflection/contribution and final owner decision; do not manufacture RED for later verification. |
+| B Sprint 2 contracts and working increment (25) | Full F-04/F-05 SDS/API/data/AC/STS, meaningful original RED→GREEN and BF-01 correction, independent reviews #40/#41/#43, all16 per-AC mappings below, released R and live PD-A05/A07 demonstration. | Cover/declaration confirmed26Nov; final owner decision remains separate. Long reflection optional; do not manufacture RED. |
 | C Sprint 3 contracts and working progress (15) | Full F-06/F-07/F-08 contracts included. F-06 count checkpoint AC01–04 working/released/CI-verified/live-scoped; approved totals, two-stage approval and filtering explicitly planned. | Present the dated Final plan; no claim that all Sprint3 is implemented. |
-| D Updated requirements and test traceability (10) | Full SRS, inventory, System SDS, requirement matrix, per-AC implementation/test/result/version mapping, two real test excerpts and source hashes included in the report packet. | Final human read-through of the exported PDF and its links/tables. |
-| E Integrated release candidate (15) | Reviewed chain #39→#40→#41→#43→#45→#46→#47, release #48 approved on ecab746 and merged R; exact-main CI 47/19, build/Docker; migration/deploy and owner-directed live18 checks. | Owner's final acceptance; retain direct-cloud and pre-release snapshot limitations; finish/export the report and submit only by owner action. |
+| D Updated requirements and test traceability (10) | Full SRS, inventory, System SDS, requirement matrix, per-AC implementation/test/result/version mapping, two real test excerpts and source hashes included in the report packet. | Exported PDF and inspection are documented in the packet; owner read-through/decision remains separate. |
+| E Integrated release candidate (15) | Reviewed chain #39→#40→#41→#43→#45→#46→#47, release #48 approved on ecab746 and merged R; exact-main CI 47/19, build/Docker; migration/deploy and owner-directed live18 checks. | Owner's final acceptance; retain direct-cloud and pre-release snapshot limitations; review the report and submit only by owner action. |
 
 Evidence: [deployment/live record](#appendix-postdeploy), [original independent Lab 6 status](#appendix-lab6), [report source packet](#packet-guide).
 
@@ -108,6 +112,17 @@ Exact-main [run45786768391](https://github.com/chaproi/club-expense-approval/act
 
 ### Chain 1 — F-05 / Issue36 → defect42 / PR43
 
+Issue36 was opened by chaproi on2026-11-23T17:55:18Z; defect42 by chaproi on2026-11-24T20:42:45Z. The metadata below was verified read-only against GitHub on26Nov2026; exact metadata/review bodies are in review-chains-2026-11-26.json.
+
+| Event | Verified metadata (timestamps UTC) |
+|---|---|
+| Author / branch | chaproi; fix/issue-42-f05-draft-recovery → staging/sprint-2 |
+| Opened | 2026-11-25T05:28:53Z |
+| CHANGES_REQUESTED by thananun-7203 | 2026-11-25T06:13:22Z; reviewed 67050d629d45efa4677ca72eba0a362b1f698d35; [submitted review](https://github.com/chaproi/club-expense-approval/pull/43#pullrequestreview-6052693657) |
+| APPROVED by thananun-7203 | 2026-11-25T14:33:10Z; reviewed f487956511a79951656a2392bec002cde555ec67; [submitted review](https://github.com/chaproi/club-expense-approval/pull/43#pullrequestreview-6059594795) |
+| Staging merge | 2026-11-25T14:34:34Z; 7ab41689df7961ec8bab279cdd98d1afddf7a912 |
+| Main release | PR48 staging/sprint-2 → main; author chaproi; approved by thananun-7203; merged 2026-11-26T08:51:46Z as cc6b04c8e98191be591a3b755d25988148523909 |
+
 - Initial F-04/F-05/count contracts preceded code at c7539ee (reviewed PR39); API RED18795b7 preceded GREENfeea765 and reviewed PR40/41.
 - Staging acceptance exposed draft loss on409 and a contract ambiguity. Issue42 isolated the defect from Issue36; contract v1.1 was committed **cda506993dbab0b15af1bd70c96265b69117ef6a** before recovery implementation.
 - Lifecycle RED **1667ec2877ba926ad9ca902de50947c14037bf4a**:14 executed,1 passed,13 failed,0 skipped; setup/selection were valid and failed cases reached semantic assertions. Earlier A1–A3 and later unsuccessful G1/G2/G3 attempts remain recorded.
@@ -118,17 +133,27 @@ Exact-main [run45786768391](https://github.com/chaproi/club-expense-approval/act
 
 ### Chain 2 — dependency Issue44 / PR45
 
+Issue44 was opened by chaproi on2026-11-25T16:47:25Z. Its review was26Nov in Bangkok (25Nov UTC). Metadata was verified against GitHub on26Nov2026.
+
+| Event | Verified metadata (timestamps UTC) |
+|---|---|
+| Author / branch | chaproi; fix/prisma-config-security-overrides → staging/sprint-2 |
+| Opened | 2026-11-25T17:01:00Z |
+| APPROVED by thananun-7203 | 2026-11-25T17:16:17Z; reviewed d385c231c315154cc496a2b781f18d822e682058; [submitted review](https://github.com/chaproi/club-expense-approval/pull/45#pullrequestreview-6061894648) |
+| Staging merge | 2026-11-25T17:19:50Z; 717536287117118d508e08d6cc68764a5df537c7 |
+| Main release | PR48 staging/sprint-2 → main; author chaproi; approved by thananun-7203; merged 2026-11-26T08:51:46Z as cc6b04c8e98191be591a3b755d25988148523909 |
+
 - Assessment identified deepmerge-ts/effect advisories in Prisma6.19.3→@prisma/config6.19.3. Before audits had four High entries from two advisories and ancestors. The plan **45f7046f754cf3eda8adb7c1ab0b1f3d3174a396** preceded the package change.
 - Candidate **a6c93abd350b9926cb51ff287339cd4d02ff2013** keeps Prisma/Client6.19.3 with scoped deepmerge-ts8.0.0/effect3.22.1 overrides. Only those resolved lock entries/metadata changed. Prisma7 was not silently adopted, and audit-fix-force was not used.
 - Fresh install/generate/validate, full and omit=dev audits reported zero findings;47 API/19 browser, TypeScript/build/Docker passed. Actual image versions, migration/seed and authenticated HTTP smoke ran; --help was not substituted.
 - Populated upgrade **43aa8d7→a6c93ab** created3 old requests/5 events under Sprint1, compared exact immediate migration snapshots except revision0 backfill, then performed intentional Return/Edit/Resubmit/Approve, checking original IDs/assignment/createdAt and old events. Final3 requests/9 events and terminal guards/restart reconstruction passed. This is an isolated rehearsal, not direct CloudSQL proof.
-- Evidence head d385c23 was independently approved in PR45 and merged7175362. Reviewed integration #46, UI #47 and release #48 retained the same server/schema/dependency/migration inputs.
+- Reviewer disposition: no binding findings; two non-blocking notes identified the plan arrow typo and asked the release handoff to record verified dependency/populated-upgrade gates. The reviewed override compatibility/removal caveat remains. Evidence head d385c23 was independently approved in PR45 and merged7175362. Reviewed integration #46, UI #47 and release #48 retained the same server/schema/dependency/migration inputs.
 - [Issue44](https://github.com/chaproi/club-expense-approval/issues/44), [PR45 approval](https://github.com/chaproi/club-expense-approval/pull/45#pullrequestreview-6061894648), [candidate verification](https://github.com/chaproi/club-expense-approval/blob/cc6b04c8e98191be591a3b755d25988148523909/docs/evidence/deliverable-2/dependency-remediation/verification.md).
 - The audit before/after is dependency-remediation evidence, **not browser RED**. deepmerge-ts8 exceeds the upstream exact pin; compatible config/Map behavior is not universally certified. Remove only after a reviewed upstream fix with dependency/audit/domain/browser/Docker/populated-upgrade checks.
 
-## Two actual automated test excerpts
+## Required automated test excerpts and additional browser regression
 
-These are exact excerpts from the unchanged released test files, not invented pseudocode or tests written for this report. They were executed as part of exact-main47/19 CI; no suite was rerun in this documentation batch. Excerpts depend on the existing guarded fixture/auth helpers and are not standalone runnable files.
+The required pair consists of one domain/cross-feature rule and one backend access restriction. BF-01 is an additional browser excerpt. These are exact excerpts from unchanged released tests, executed in exact-main47/19 CI; no suite was rerun for this packet. They depend on the existing guarded fixture/auth helpers and are not standalone runnable files.
 
 ### Excerpt 1 — real API optimistic-concurrency and old-round rejection
 
@@ -153,7 +178,42 @@ test("T-F05-05: stale edits and repeated concurrent resubmits never duplicate ev
 });
 ~~~
 
-### Excerpt 2 — BF-01 clean draft, no automatic writes and exact final event
+### Excerpt 2 — backend access restrictions and unchanged-state proof
+
+Released source: server/test/return-resubmit-summary.test.ts. The suite provisions four unique actors under a random run marker in an isolated migrated PostgreSQL target, logs each in through the real endpoint and runs an Express listener. `owner` and `other` are separate Requesters; `reviewer` is the assigned Reviewer and `outsider` is another Reviewer. `undefined` omits the session. `returned()` creates an owner's request and returns it through the assigned Reviewer's endpoint, producing RETURNED revision1. `detail()` reads as the authorized owner; `valid` contains a valid title/category/amount.
+
+T-F05-03 checks both PATCH Save and POST Resubmit: anonymous401, foreign Requester404, Reviewer/outsider403, wrong Origin403, SUBMITTED/APPROVED/REJECTED409 and revision overflow409. Every denial is followed by a deep comparison of complete authoritative detail, including fields/revision/history, against the pre-request snapshot. The overflow fixture changes revision deliberately before taking its new snapshot; that setup write is not a denied-command effect. Fixture cleanup removes only its generated actor-owned records and disconnects the client.
+
+Released source lines 151–174.
+
+~~~typescript
+test("T-F05-03: owner/role/state/Origin restrictions protect both edit and resubmit", async () => {
+  const item = await returned(); const before = await detail(item.id);
+  for (const [actor, status] of [[undefined, 401], ["other", 404], ["reviewer", 403], ["outsider", 403]] as const) {
+    assert.equal((await req(actor, `/${item.id}`, "PATCH", { ...valid, expectedRevision: 1 })).status, status);
+    assert.equal((await req(actor, `/${item.id}/resubmit`, "POST", { expectedRevision: 1 })).status, status);
+    assert.deepEqual(await detail(item.id), before);
+  }
+  for (const [path, method, body] of [[`/${item.id}`, "PATCH", { ...valid, expectedRevision: 1 }], [`/${item.id}/resubmit`, "POST", { expectedRevision: 1 }]] as const) {
+    assert.equal((await req("owner", path, method, body, "https://untrusted.example")).status, 403); assert.deepEqual(await detail(item.id), before);
+  }
+  for (const decision of [undefined, "APPROVED", "REJECTED"] as const) {
+    const fresh = await create();
+    if (decision) assert.equal((await req("reviewer", `/${fresh.id}/decision`, "POST", { decision, ...(decision === "REJECTED" ? { reason: "Final" } : {}) })).status, 200);
+    const snapshot = await detail(fresh.id);
+    assert.equal((await req("owner", `/${fresh.id}`, "PATCH", { ...valid, expectedRevision: snapshot.revision })).status, 409);
+    assert.equal((await req("owner", `/${fresh.id}/resubmit`, "POST", { expectedRevision: snapshot.revision })).status, 409);
+    assert.deepEqual(await detail(fresh.id), snapshot);
+  }
+  await db.expenseRequest.update({ where: { id: item.id }, data: { revision: 2147483647 } });
+  const exhausted = await detail(item.id);
+  assert.equal((await req("owner", `/${item.id}`, "PATCH", { ...valid, expectedRevision: 2147483647 })).status, 409);
+  assert.equal((await req("owner", `/${item.id}/resubmit`, "POST", { expectedRevision: 2147483647 })).status, 409);
+  assert.deepEqual(await detail(item.id), exhausted);
+});
+~~~
+
+### Additional excerpt — BF-01 clean draft, no automatic writes and exact final event
 
 Source: client/test/f05-draft-recovery.spec.ts, released main cc6b04c. Includes the real helper assertions used by the same-value Restore test: no draft/Discard/warning, no extra write, explicit current-revision Resubmit, original event prefix exact and one new RESUBMITTED event. Its source history includes the meaningful2-case RED and separate GREEN above.
 
@@ -246,6 +306,46 @@ Source review is evidenced by PRs39/40/41/43/45/46/47 and release48, not an AI a
 # E. Integrated release candidate (15)
 
 ## Reviewed release, actual CI and deployment
+
+### Actual command/output excerpts
+
+These lines were retained from existing GitHub Actions run45786768391, not reconstructed or executed again. UTC timestamps and output wording are unchanged; only ANSI color escapes are omitted for print display. The browser summary reports19 passed; it does not itself print failed/skipped counts. Zero failed/skipped is corroborated by the retained successful job result and its complete19-case result, rather than invented extra output lines.
+
+CI source: ci/verify job139795385630. The retained excerpt was read against the existing job log on26Nov2026; it includes checkout identity, actual npm command headers, counts, build and Docker output.
+
+~~~text
+2026-11-26T08:52:10.8520997Z cc6b04c8e98191be591a3b755d25988148523909
+2026-11-26T08:52:10.8897587Z [command]/usr/bin/git log -1 --format=%H
+2026-11-26T08:52:10.8923358Z cc6b04c8e98191be591a3b755d25988148523909
+2026-11-26T08:52:19.5998918Z ##[group]Run npm test
+2026-11-26T08:52:22.5752804Z ℹ tests 47
+2026-11-26T08:52:22.5753207Z ℹ pass 47
+2026-11-26T08:52:22.5753385Z ℹ fail 0
+2026-11-26T08:52:22.5753578Z ℹ cancelled 0
+2026-11-26T08:52:22.5753772Z ℹ skipped 0
+2026-11-26T08:52:22.5754201Z ℹ duration_ms 2848.722256
+2026-11-26T08:52:22.5903552Z ##[group]Run npm run build
+2026-11-26T08:52:27.0310286Z ✓ built in 869ms
+2026-11-26T08:52:45.3377441Z > club-expense-approval@0.1.0 test:e2e
+2026-11-26T08:52:51.8830284Z Running 19 tests using 1 worker
+2026-11-26T08:53:33.7514656Z   19 passed (47.9s)
+2026-11-26T08:53:53.2522779Z #14 [build 2/2] RUN npm run build
+2026-11-26T08:54:12.7920887Z #21 naming to docker.io/library/club-expense-approval:ci done
+~~~
+
+Deployment source: deploy job139796626455, existing deploy-excerpts.log. The image SHA, migration completion, service revision and traffic statement are verbatim. The traffic claim is at the logged deployment time, not a new direct-cloud query.
+
+~~~text
+2026-11-26T08:55:35.2203210Z cc6b04c8e98191be591a3b755d25988148523909: digest: sha256:2afb158a393ded77dbacb0b29b1bc7559449ed2fa903537ff54165932b934995 size: 856
+2026-11-26T08:55:35.2318790Z   IMAGE: asia-southeast1-docker.pkg.dev/cpe-se-course-2026/s981b09c9/s981b09c9:cc6b04c8e98191be591a3b755d25988148523909
+2026-11-26T08:56:19.2844039Z Execution [s981b09c9-migrate-hbkpk] has successfully completed.
+2026-11-26T08:56:19.4536743Z   IMAGE: asia-southeast1-docker.pkg.dev/cpe-se-course-2026/s981b09c9/s981b09c9:cc6b04c8e98191be591a3b755d25988148523909
+2026-11-26T08:56:21.9809860Z Deploying container to Cloud Run service [s981b09c9] in project [cpe-se-course-2026] region [asia-southeast1]
+2026-11-26T08:56:33.1351549Z Routing traffic..........................................................................................done
+2026-11-26T08:56:35.5459114Z Service [s981b09c9] revision [s981b09c9-00008-pch] has been deployed and is serving 100 percent of traffic.
+2026-11-26T08:56:35.5460123Z Service URL: https://s981b09c9-670075229477.asia-southeast1.run.app
+2026-11-26T08:56:35.7474391Z   IMAGE: asia-southeast1-docker.pkg.dev/cpe-se-course-2026/s981b09c9/s981b09c9:cc6b04c8e98191be591a3b755d25988148523909
+~~~
 
 | Evidence | Exact revision / observed result |
 |---|---|
@@ -350,7 +450,7 @@ Known resource names: project cpe-se-course-2026, region asia-southeast1, servic
 - Optional PR47 notes remain unimplemented/non-blocking: recovery controls could precede very long history; neutral pending wording would suit both roles.
 - Original RED, setup/type/query failures and screenshot-mask correction retain their verdicts; documentation did not manufacture GREEN. First live harness attempt2pass/1selectionfailure/7unreached preceded the corrected10pass attempt, with no domain writes during that failed attempt.
 - Original Lab6 independent evidence is preserved separately. No new external UAT is required for D2; separate Lab6 PDF/reciprocal archive availability is not certified by this packet.
-- Owner final D2 acceptance and submission remain **not recorded**. Student text and final PDF QA are still required.
+- Owner final D2 acceptance and submission remain **not recorded**. Student identity and the concise contribution/AI-use declaration are confirmed; PDF preparation/inspection is documentation work, not acceptance.
 
 ## Current release and report checklist
 
@@ -361,8 +461,8 @@ Known resource names: project cpe-se-course-2026, region asia-southeast1, servic
 - [x] Owner-directed live auth/workflow/denial/draft/count/layout checks18 PASS; earlier harness failure preserved.
 - [x] Lab6 original incoming UAT/retest/accepted Low limitations reconciled separately.
 - [x] Per-feature/per-AC completion and full source packet prepared with actual demonstrations and test excerpts.
-- [ ] Student supplies their own reflection/contribution statement and final cover identity text.
-- [ ] Export and visually inspect the final PDF after inserting student text; confirm links/tables/Thai text, pagination and course-required naming.
+- [x] Student confirmed cover name นายสิริกร ฝันนิมิตร / ID67070507215 / TH-038 Solo instructor-approved and the concise contribution/AI-use declaration on26Nov. A long personal reflection is optional.
+- [x] Report PDF includes confirmed student text, embedded Thai fonts, computed A–E pages and page numbers; inspection/results are recorded in the packet PDF QA record. Owner checks course-required naming before submission.
 - [ ] Owner records final D2 acceptance decision and performs submission.
 
 There is **no new external deployed-acceptance checkbox** for D2. Technical checks do not assign marks or substitute for the owner. Direct-cloud current imageDigest/traffic/task queries and exact pre-release shared-data snapshots remain explicitly unavailable, not silently converted to PASS.
@@ -371,7 +471,7 @@ There is **no new external deployed-acceptance checkbox** for D2. Technical chec
 
 | Date (Asia/Bangkok) | Planned work / evidence | Decision/dependency |
 |---|---|---|
-| 27–29 Nov | Student text; owner packet review; final PDF QA and D2 submission by29Nov23:59, target20:00 | Owner action; do not claim submission now |
+| 27–29 Nov | Confirmed student text and report PDF; owner packet review and D2 submission by29Nov23:59, target20:00 | Owner action; do not claim submission now |
 | By30Nov | Confirm any separate Lab6 report/reciprocal material and instructor/TA-approved Lab7 maintenance scope | Preserve existing UAT; never invent approval or defect |
 | By2Dec | Implement/test-first F-07 two-stage with validated distinct assignments, per-round concurrency and legacy migration | Reviewed contract; exams1–11Dec constrain capacity |
 | By3Dec | Implement/test-first F-08 authorized status filters and intermediate state | Depends compatible F-07 scope/status |
@@ -383,13 +483,15 @@ There is **no new external deployed-acceptance checkbox** for D2. Technical chec
 
 Owner: chaproi. Peer availability and future results are not assumed. No full Sprint3 completion, Lab7 approval or future execution is claimed.
 
-## Student-authored material — deliberately not fabricated
+## Student-confirmed identity and contribution
 
-**Full student name / cover confirmation:** TO BE SUPPLIED BY STUDENT.
+**Cover confirmation, 26 November 2026:** นายสิริกร ฝันนิมิตร; student ID67070507215; TH-038 — Solo, instructor-approved.
 
-**Personal reflection:** TO BE WRITTEN BY STUDENT. Explain one actual contract ambiguity, a concrete RED/GREEN lesson, tradeoffs/limitations and what you would change next. This prompt is a writing aid, not assessed prose.
+**Personal reflection:** OPTIONAL. The student may add their own account of lessons/tradeoffs; a long reflection is not required for this packet.
 
-**Contribution and AI-use statement:** TO BE CONFIRMED/WRITTEN BY STUDENT. Existing evidence shows chaproi directed/inspected AI-assisted requirements/code/tests/docs/deployment. Identify your own decisions, checks, effort and limitations in your own words. External source reviewers and historical UAT participants must receive accurate scope/version attribution; AI did not approve its own work or hear a screen reader.
+**Contribution and AI-use statement — confirmed by the student on26November2026:** “I directed the requirements and implementation work, reviewed AI-assisted code and documentation, and checked the recorded results. AI tools assisted with analysis, implementation, tests and report preparation; independent reviewers’ decisions and historical UAT retain their original attribution.”
+
+AI did not approve its own work or hear a screen reader. This concise factual declaration is used with the student's express confirmation; it is not a fabricated personal reflection.
 
 **Owner final decision/date and submission receipt:** NOT RECORDED. Complete only after your review; do not sign or submit through this packet automatically.
 
@@ -673,7 +775,7 @@ The original snapshot below retains its original tested SHAs and then-Pending wo
 | F-02 | 1 | baseline §E + F-05 revision | Submit/read/history/access regression PASS; valid SUBMITTED PATCH remains denied409 | Historical endpoint-absence404 superseded before code. Current staging source reviewed/integration-tested, main release acceptance pending |
 | F-03 | 1 | baseline §E + F-04/F-05 revision | Approve/reject/readback + stale409 browser journeys PASS | Main release/retest pending |
 | F-04 | 2 / F-03 | contracts/f-04-return.md | API, migration, UI, reason/history, access, race/revision and browser return loop implemented/tested | #35 / PR40+41 integrated into Sprint 2 staging. Release pending. |
-| F-05 | 2 / F-04 | [F-05 v1.1](#appendix-f05) | Original #36 RETURNED-only edit/Save/Resubmit and revision/history protections are integrated into Sprint 2 staging. [Issue #42](https://github.com/chaproi/club-expense-approval/issues/42) draft recovery is implemented and tested PASS for AC-F05-07–11 at [`ffefb2d`](https://github.com/chaproi/club-expense-approval/commit/ffefb2da0c812f5dee17309cefcfd3e01b30313e). [GREEN evidence](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/f05-draft-recovery-green.md). | #42 source approved in PR #43 and merged at 7ab4168. Integration checks PASS at 7175362. Main release/deployment acceptance pending |
+| F-05 | 2 / F-04 | [F-05 v1.1](#appendix-f05) | Original #36 RETURNED-only edit/Save/Resubmit and revision/history protections are integrated into Sprint 2 staging. [Issue #42](https://github.com/chaproi/club-expense-approval/issues/42) draft recovery is implemented and tested PASS for AC-F05-07–11 at [`ffefb2d`](https://github.com/chaproi/club-expense-approval/commit/ffefb2da0c812f5dee17309cefcfd3e01b30313e). [GREEN evidence](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/f05-draft-recovery-green.md). | #42 source approved in PR #43 and merged at 7ab4168. Integration checks PASS at 7175362. Main release/deployment acceptance pending |
 | F-06 counts | 3 / F-05 | contracts/f-06-summary.md AC01–04 | Assigned-Reviewer DB counts + zero/empty/scope/restart + actual UI refresh PASS | #37 / PR40+41 count-only checkpoint integrated into Sprint 2 staging. Release pending. |
 | F-06 totals | 3 / F-07 | contracts/f-06-summary.md AC05–06 | Specified, not implemented/tested | Final target4Dec |
 | F-07 | 3 / F-03/F-05 | contracts/f-07-two-stage.md | Complete planned contract/AC/STS; not implemented/tested | Required Final, #38, target2Dec |
@@ -681,7 +783,7 @@ The original snapshot below retains its original tested SHAs and then-Pending wo
 
 Actual logs, source hashes, migration check, hosted screenshots and provenance: docs/evidence/deliverable-2. Review/release sequence: docs/reviewer-handoff.md. Full F-06 and full Sprint3 are not complete.
 
-Current integration at `717536287117118d508e08d6cc68764a5df537c7` passed 47 unit/API and 19 browser cases, TypeScript/build, Docker build and both audits. Dependency source review passed in PR #45 and merged at this SHA. See [integrated evidence](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/integration-2026-11-26/evidence.md). [BF-01 RED and GREEN](https://github.com/chaproi/club-expense-approval/blob/f487956511a79951656a2392bec002cde555ec67/docs/evidence/deliverable-2/f05-draft-recovery-bf01.md) and [dependency verification](https://github.com/chaproi/club-expense-approval/blob/d385c231c315154cc496a2b781f18d822e682058/docs/evidence/deliverable-2/dependency-remediation/verification.md) retain their original executions. Full F-06/F-07/F-08 remain planned as listed above.
+Current integration at `717536287117118d508e08d6cc68764a5df537c7` passed 47 unit/API and 19 browser cases, TypeScript/build, Docker build and both audits. Dependency source review passed in PR #45 and merged at this SHA. See [integrated evidence](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/integration-2026-11-26/evidence.md). [BF-01 RED and GREEN](https://github.com/chaproi/club-expense-approval/blob/f487956511a79951656a2392bec002cde555ec67/docs/evidence/deliverable-2/f05-draft-recovery-bf01.md) and [dependency verification](https://github.com/chaproi/club-expense-approval/blob/d385c231c315154cc496a2b781f18d822e682058/docs/evidence/deliverable-2/dependency-remediation/verification.md) retain their original executions. Full F-06/F-07/F-08 remain planned as listed above.
 
 
 ---
@@ -815,11 +917,11 @@ All API identifiers below name tests in `server/test/return-resubmit-summary.tes
 
 ## F-05 v1.1 planned verification
 
-The initial [`cda5069`](https://github.com/chaproi/club-expense-approval/commit/cda506993dbab0b15af1bd70c96265b69117ef6a) design checkpoint marked AC-F05-07 through AC-F05-11 Planned / unexecuted. The [F-05 v1.1 contract](#appendix-f05) and [staging triage](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/f05-draft-recovery-triage.md) preserve that history. [Issue #42](https://github.com/chaproi/club-expense-approval/issues/42) follows [Issue #36](https://github.com/chaproi/club-expense-approval/issues/36).
+The initial [`cda5069`](https://github.com/chaproi/club-expense-approval/commit/cda506993dbab0b15af1bd70c96265b69117ef6a) design checkpoint marked AC-F05-07 through AC-F05-11 Planned / unexecuted. The [F-05 v1.1 contract](#appendix-f05) and [staging triage](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/f05-draft-recovery-triage.md) preserve that history. [Issue #42](https://github.com/chaproi/club-expense-approval/issues/42) follows [Issue #36](https://github.com/chaproi/club-expense-approval/issues/36).
 
 ## F-05 v1.1 executed verification
 
-Each row maps to cases in `client/test/f05-draft-recovery.spec.ts` on clean source [`ffefb2d`](https://github.com/chaproi/club-expense-approval/commit/ffefb2da0c812f5dee17309cefcfd3e01b30313e). G5 passed 47/47 unit/API tests and 17/17 Chromium cases, including all 14 draft-recovery cases. TypeScript, production build and Docker build passed. The [GREEN evidence](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/f05-draft-recovery-green.md) and [sanitized command and case results](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/f05-draft-recovery-green.json) retain focused failures and individual results. This paragraph preserves the original source-verification checkpoint. Current review and integration status appears below. Main release/deployment acceptance remains pending.
+Each row maps to cases in `client/test/f05-draft-recovery.spec.ts` on clean source [`ffefb2d`](https://github.com/chaproi/club-expense-approval/commit/ffefb2da0c812f5dee17309cefcfd3e01b30313e). G5 passed 47/47 unit/API tests and 17/17 Chromium cases, including all 14 draft-recovery cases. TypeScript, production build and Docker build passed. The [GREEN evidence](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/f05-draft-recovery-green.md) and [sanitized command and case results](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/f05-draft-recovery-green.json) retain focused failures and individual results. This paragraph preserves the original source-verification checkpoint. Current review and integration status appears below. Main release/deployment acceptance remains pending.
 
 | Contract AC | Actual tests and observed behavior | Local source result |
 |---|---|---|
@@ -831,7 +933,7 @@ Each row maps to cases in `client/test/f05-draft-recovery.spec.ts` on clean sour
 
 ### BF-01 re-review coverage
 
-AC-F05-08/09 add two executed BF-01 browser cases for same-value Restore and reverting a dirty restored draft. Both are implemented / tested PASS at [`cb05d62`](https://github.com/chaproi/club-expense-approval/commit/cb05d627c0bb1cdaf76f636c17f3f2458c81b71f). In each case the clean form enabled an explicit Resubmit on the latest revision, Restore and reverting issued no write, and the final history appended one RESUBMITTED event. The clean source passed 47/47 unit/API and 19/19 browser cases. [BF-01 RED and GREEN evidence](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/f05-draft-recovery-bf01.md).
+AC-F05-08/09 add two executed BF-01 browser cases for same-value Restore and reverting a dirty restored draft. Both are implemented / tested PASS at [`cb05d62`](https://github.com/chaproi/club-expense-approval/commit/cb05d627c0bb1cdaf76f636c17f3f2458c81b71f). In each case the clean form enabled an explicit Resubmit on the latest revision, Restore and reverting issued no write, and the final history appended one RESUBMITTED event. The clean source passed 47/47 unit/API and 19/19 browser cases. [BF-01 RED and GREEN evidence](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/f05-draft-recovery-bf01.md).
 
 The prior [PR #43 verify run 45553875619](https://github.com/chaproi/club-expense-approval/actions/runs/45553875619/job/139001178059) passed at [`67050d6`](https://github.com/chaproi/club-expense-approval/commit/67050d629d45efa4677ca72eba0a362b1f698d35) before these regressions were added. BF-01 re-review was subsequently approved on f487956 in PR #43, then merged into staging. See the current integration record below.
 
@@ -841,7 +943,7 @@ Version/result provenance: baseline34/34; meaningful new RED0/13; GREEN47/47; ho
 
 ## Current integrated verification, 26 November 2026
 
-[Evidence and exact executed cases](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/integration-2026-11-26/evidence.md) records 47/47 unit/API and 19/19 browser PASS at `717536287117118d508e08d6cc68764a5df537c7`, zero failed/skipped, plus build/Docker and zero findings in both audits. This reconfirms the existing AC-F04-01 through AC-F04-05, AC-F05-01 through AC-F05-11/BF-01 and count-only AC-F06-01 through AC-F06-04 through their mapped assertions. It does not execute planned Final AC. [BF-01 RED and GREEN](https://github.com/chaproi/club-expense-approval/blob/f487956511a79951656a2392bec002cde555ec67/docs/evidence/deliverable-2/f05-draft-recovery-bf01.md), [dependency verification](https://github.com/chaproi/club-expense-approval/blob/d385c231c315154cc496a2b781f18d822e682058/docs/evidence/deliverable-2/dependency-remediation/verification.md) and [populated upgrade at a6c93ab](https://github.com/chaproi/club-expense-approval/blob/d385c231c315154cc496a2b781f18d822e682058/docs/evidence/deliverable-2/dependency-remediation/verification.md#populated-baseline-upgrade-on-the-new-candidate) retain distinct source/candidate provenance. Independent approvals of PR #43 and #45 are linked in that record. Release approval and deployed acceptance remain pending.
+[Evidence and exact executed cases](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/integration-2026-11-26/evidence.md) records 47/47 unit/API and 19/19 browser PASS at `717536287117118d508e08d6cc68764a5df537c7`, zero failed/skipped, plus build/Docker and zero findings in both audits. This reconfirms the existing AC-F04-01 through AC-F04-05, AC-F05-01 through AC-F05-11/BF-01 and count-only AC-F06-01 through AC-F06-04 through their mapped assertions. It does not execute planned Final AC. [BF-01 RED and GREEN](https://github.com/chaproi/club-expense-approval/blob/f487956511a79951656a2392bec002cde555ec67/docs/evidence/deliverable-2/f05-draft-recovery-bf01.md), [dependency verification](https://github.com/chaproi/club-expense-approval/blob/d385c231c315154cc496a2b781f18d822e682058/docs/evidence/deliverable-2/dependency-remediation/verification.md) and [populated upgrade at a6c93ab](https://github.com/chaproi/club-expense-approval/blob/d385c231c315154cc496a2b781f18d822e682058/docs/evidence/deliverable-2/dependency-remediation/verification.md#populated-baseline-upgrade-on-the-new-candidate) retain distinct source/candidate provenance. Independent approvals of PR #43 and #45 are linked in that record. Release approval and deployed acceptance remain pending.
 
 
 ---
@@ -946,7 +1048,7 @@ Original Sprint 1 AC-04/T-04 PATCH404 meant no edit endpoint existed. From this 
 
 The table preserves the **Planned / unexecuted** design checkpoint from [`cda5069`](https://github.com/chaproi/club-expense-approval/commit/cda506993dbab0b15af1bd70c96265b69117ef6a). The staging observation retains its original provenance.
 
-Draft recovery for [Issue #42](https://github.com/chaproi/club-expense-approval/issues/42) is implemented and tested PASS at [`ffefb2d`](https://github.com/chaproi/club-expense-approval/commit/ffefb2da0c812f5dee17309cefcfd3e01b30313e). See [executed AC and test mapping](#appendix-traceability) and [GREEN evidence](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/f05-draft-recovery-green.md). Independent peer review, integration and deployment acceptance remain pending.
+Draft recovery for [Issue #42](https://github.com/chaproi/club-expense-approval/issues/42) is implemented and tested PASS at [`ffefb2d`](https://github.com/chaproi/club-expense-approval/commit/ffefb2da0c812f5dee17309cefcfd3e01b30313e). See [executed AC and test mapping](#appendix-traceability) and [GREEN evidence](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/f05-draft-recovery-green.md). Independent peer review, integration and deployment acceptance remain pending.
 
 | AC | Observable outcome | STS (planned) | Status |
 |---|---|---|---|
@@ -1136,7 +1238,7 @@ Live [Issue #30](https://github.com/chaproi/club-expense-approval/issues/30) and
 - Final team decision at 21:19 Bangkok on 22 Nov: **Accepted with explicitly documented minor limitations**, scoped to Sprint 1 F-01–F-03 / AC-01–AC-10 on that exact release. Zero unresolved Critical/Major/Medium defects or BLOCKED cases were reported.
 - Accepted Low limitations remain: cross-tab session UI can remain signed in after backend401 until reload; title length uses JavaScript UTF-16 units. Neither is falsely marked fixed.
 
-The [original triage/correction](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/labs/lab-06/defect-correction.md), [handoff](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/labs/lab-06/handoff.md), [records template](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/labs/lab-06/records-template.md), all original local RED/GREEN logs and private archive identities are preserved. Their original Pending/Conditional wording describes the preparation/correction checkpoint and is superseded only by the later retest facts above.
+The [original triage/correction](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/labs/lab-06/defect-correction.md), [handoff](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/labs/lab-06/handoff.md), [records template](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/labs/lab-06/records-template.md), all original local RED/GREEN logs and private archive identities are preserved. Their original Pending/Conditional wording describes the preparation/correction checkpoint and is superseded only by the later retest facts above.
 
 ## What remains separate or unavailable
 
@@ -1179,7 +1281,7 @@ Source: docs/evidence/deliverable-2/postdeploy-2026-11-26/evidence.md. Complete 
 | Deployment-reported URL | https://s981b09c9-670075229477.asia-southeast1.run.app |
 | Documented/canonical browser URL actually tested | https://s981b09c9-4d7hbszvwq-as.a.run.app |
 
-[Release review](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/release-review.json), [job/step timing and outcomes](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/deployment-run.json), [allowlisted CI log](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/ci-excerpts.log), and [allowlisted deploy log](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/deploy-excerpts.log) retain the observations.
+[Release review](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/release-review.json), [job/step timing and outcomes](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/deployment-run.json), [allowlisted CI log](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/ci-excerpts.log), and [allowlisted deploy log](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/deploy-excerpts.log) retain the observations.
 
 The migration step completed before the service deployment step began. The deploy workflow uses one IMAGE variable tagged with the exact main SHA for push, migration-job update and service update; the job log associates that tag with the digest and the successful revision/traffic output. This provides a traceable workflow-level release mapping.
 
@@ -1217,11 +1319,11 @@ Runtime: Windows NT 10.0.26200, Node 24.14.0, Playwright 1.62.1, Chromium 151.0.
 
 All times above are UTC; add seven hours for Asia/Bangkok. The browser tools were loaded from the existing dependency checkout (c59b625), whose tracked tree equals the release; the application itself was the public deployed release, not a local server. Evidence is committed on a separate documentation branch rooted at cc6b04c.
 
-[Public harness](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/public-check.mjs), [authenticated harness](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/authenticated-check.mjs), [capture-only harness](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/capture-readback.mjs), [public results](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/public-checks.json), [authenticated results](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/authenticated-checks.json), and [capture correction](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/capture-correction.json) are retained. To reproduce, provide a private external PD_OUT directory with accounts.private.json mapping R1/R2/V1/V2 to email/password, install the existing lockfile dependencies, and invoke the selected harness from the project tooling checkout. Do not run these live writing checks as CI; use a new labelled run and explicit authorization. No secret example values are included.
+[Public harness](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/public-check.mjs), [authenticated harness](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/authenticated-check.mjs), [capture-only harness](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/capture-readback.mjs), [public results](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/public-checks.json), [authenticated results](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/authenticated-checks.json), and [capture correction](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/capture-correction.json) are retained. To reproduce, provide a private external PD_OUT directory with accounts.private.json mapping R1/R2/V1/V2 to email/password, install the existing lockfile dependencies, and invoke the selected harness from the project tooling checkout. Do not run these live writing checks as CI; use a new labelled run and explicit authorization. No secret example values are included.
 
 ### Preserved failed attempt and observation correction
 
-Attempt 1 authenticated all four roles and verified logout/revoked-session behavior, then timed out selecting `getByLabel("Category", {exact:true})` while preparing the first request. No expense POST occurred. The form's wrapping label includes select content; the inherited tests use a non-exact Category lookup. The harness was corrected to a unique combobox with accessible name beginning Category, retaining the intended actual control and all workflow assertions. No timeout, application code or assertion expectation changed. [Attempt 1 results](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/attempt-1/results.json) preserve the failure and its cleanup, separately from successful attempt 2.
+Attempt 1 authenticated all four roles and verified logout/revoked-session behavior, then timed out selecting `getByLabel("Category", {exact:true})` while preparing the first request. No expense POST occurred. The form's wrapping label includes select content; the inherited tests use a non-exact Category lookup. The harness was corrected to a unique combobox with accessible name beginning Category, retaining the intended actual control and all workflow assertions. No timeout, application code or assertion expectation changed. [Attempt 1 results](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/attempt-1/results.json) preserve the failure and its cleanup, separately from successful attempt 2.
 
 Initial per-card screenshot masks extended outside the scroll-clipped list and obscured mobile detail. Those initial artifacts are retained privately outside Git. Four read-only captures were repeated using the bounded entire request list as a grey privacy mask; the authenticated workflow itself was not repeated. Both selected records were read before/after and remained exact. The real-conflict desktop capture remains from the actual 409 state, before Restore/manual Save, and uses the initial magenta historical-card masks. Masks are explicit redaction, not blank/empty application data or layout evidence for those concealed card contents.
 
@@ -1274,28 +1376,28 @@ Total newly retained domain state: five requests / fourteen history events. Init
 
 Before any domain writes in attempt 2, R1 exposed 13 existing requests and R2 two; V1 exposed their combined 15 and V2 zero. The final exact authorized-detail comparisons, including history and timestamps, matched all four scope checksums. This also confirms the protected legacy Lab 5 ID **96da5843-9984-4a30-a6f2-883e19243420** remains readable; it was never modified.
 
-This is **15 unique existing records unchanged during our post-deployment checks**, not an exact pre-release snapshot comparison. No suitable complete pre-release shared-data baseline was available. The earlier [populated isolated upgrade evidence](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/dependency-remediation/verification.md#populated-baseline-upgrade-on-the-new-candidate) tested baseline43aa8d7→candidate a6c93ab; it is not relabelled as a live Cloud SQL migration-preservation test. No application instance restart or second redeployment was performed in this batch.
+This is **15 unique existing records unchanged during our post-deployment checks**, not an exact pre-release snapshot comparison. No suitable complete pre-release shared-data baseline was available. The earlier [populated isolated upgrade evidence](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/dependency-remediation/verification.md#populated-baseline-upgrade-on-the-new-candidate) tested baseline43aa8d7→candidate a6c93ab; it is not relabelled as a live Cloud SQL migration-preservation test. No application instance restart or second redeployment was performed in this batch.
 
 Wrong-role/cross-owner/stale/Origin HTTP evidence is redacted to safe status/code/message and owned projections. Existing-record path IDs are redacted in the saved HTTP trace; pre-existing titles, reasons and contents are not published.
 
 ## Inspected deployed screenshots
 
-All seven final screenshots were inspected at useful resolution. [screenshots.json](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots.json) records byte lengths and SHA-256; metadata timestamps, roles, viewport and selected record/revision are in the corresponding results/capture JSON.
+All seven final screenshots were inspected at useful resolution. [screenshots.json](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots.json) records byte lengths and SHA-256; metadata timestamps, roles, viewport and selected record/revision are in the corresponding results/capture JSON.
 
 | State | Screenshot |
 |---|---|
-| Deployed login desktop | [1440×1000](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-login-1440.png) |
-| Deployed login mobile | [390×844](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-login-390.png) |
-| Complete owner history | [Desktop](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-owner-complete-history.png) |
-| Real 409 saved/draft separation | [Desktop actual conflict](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-real-conflict-draft.png) |
-| Reviewer decision controls / long title | [768px](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-reviewer-768.png), [desktop](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-reviewer-desktop.png) |
-| Owner complete history mobile | [390px](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-owner-mobile.png) |
+| Deployed login desktop | [1440×1000](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-login-1440.png) |
+| Deployed login mobile | [390×844](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-login-390.png) |
+| Complete owner history | [Desktop](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-owner-complete-history.png) |
+| Real 409 saved/draft separation | [Desktop actual conflict](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-real-conflict-draft.png) |
+| Reviewer decision controls / long title | [768px](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-reviewer-768.png), [desktop](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-reviewer-desktop.png) |
+| Owner complete history mobile | [390px](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-owner-mobile.png) |
 
 Grey request-list blocks (and magenta historical cards in the original conflict capture) are deliberate screenshot privacy redactions. The selected synthetic detail/history, controls, header and summary are actual rendered deployed UI. Chromium viewport emulation, keyboard and reduced-motion observations do not certify cross-browser, physical-device, screen-reader or comprehensive WCAG behavior.
 
 ## Cleanup, remaining decisions and handoff
 
-All owned browser contexts and processes were closed. R1/R2/V1/V2 primary logouts returned204, and their subsequent me requests returned401. The second R1 conflict session was sent logout and disposed; the capture-only R1/V1 sessions also returned204 then401. Exact database session inventory cannot be independently queried without cloud access; no such claim is made. No cookies/storage state were saved. The temporary credential file was removed after scanning the evidence for secrets; see the independent [cleanup record](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/cleanup.json) and [validation record](https://github.com/chaproi/club-expense-approval/blob/802a111ac0c424ce1da470bd0658cca3ffbd1d08/docs/evidence/deliverable-2/postdeploy-2026-11-26/validation.json). The authenticated command result retains its contemporaneous false flag because the private file still existed when that command ended; the separate cleanup confirms subsequent removal. Original checkout/local work/environment and any manual preview were not changed.
+All owned browser contexts and processes were closed. R1/R2/V1/V2 primary logouts returned204, and their subsequent me requests returned401. The second R1 conflict session was sent logout and disposed; the capture-only R1/V1 sessions also returned204 then401. Exact database session inventory cannot be independently queried without cloud access; no such claim is made. No cookies/storage state were saved. The temporary credential file was removed after scanning the evidence for secrets; see the independent [cleanup record](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/cleanup.json) and [validation record](https://github.com/chaproi/club-expense-approval/blob/7b62e8f95fd808acb1e59c9105c6e80bab70d358/docs/evidence/deliverable-2/postdeploy-2026-11-26/validation.json). The authenticated command result retains its contemporaneous false flag because the private file still existed when that command ended; the separate cleanup confirms subsequent removal. Original checkout/local work/environment and any manual preview were not changed.
 
 The existing deployment completed; this batch neither retriggered it nor changed cloud settings, production code, thresholds, dependencies or main. The documentation/evidence branch is separate and is not a main release. Source and earlier review/evidence records remain intact.
 

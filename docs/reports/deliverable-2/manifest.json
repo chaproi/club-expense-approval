@@ -1,6 +1,6 @@
 {
   "release": "cc6b04c8e98191be591a3b755d25988148523909",
-  "documentationParent": "802a111ac0c424ce1da470bd0658cca3ffbd1d08",
+  "documentationParent": "7b62e8f95fd808acb1e59c9105c6e80bab70d358",
   "preparationDate": "2026-11-26 Asia/Bangkok",
   "qualification": "Documentation assembly only; no application execution or owner acceptance. Input digests identify the current documentation snapshot before publication.",
   "fullDocuments": [
@@ -57,14 +57,32 @@
     {
       "path": "docs/sprints/d2-completion-2026-11-26.md",
       "normalization": "UTF-8 / LF",
-      "bytes": 12928,
-      "sha256": "b4b3c01225b9e0a4f1cedac12261c28ff599c6432f01c0ed9d8243c5d4122887"
+      "bytes": 13195,
+      "sha256": "9fce29adce917b90aa3480a6a8706f880c66c4e99f5726f81497c00ce404c930"
     },
     {
       "path": "docs/reports/deliverable-2/report-source.md",
       "normalization": "UTF-8 / LF",
-      "bytes": 21085,
-      "sha256": "6f5dbe809161134483ac89b863d3347f538d57e6c87bb28dae1570f0ddeab91d"
+      "bytes": 24419,
+      "sha256": "3674c188f4ea3f1775c8f9557e6c3117b32e53b4fcae17efc553e8628d8fd568"
+    },
+    {
+      "path": "docs/reports/deliverable-2/ci-command-excerpts.log",
+      "normalization": "UTF-8 / LF",
+      "bytes": 975,
+      "sha256": "b36bc56069face09a759ecc42d6b2da9f994ffddeb417b450b94ea0d02a91dcc"
+    },
+    {
+      "path": "docs/evidence/deliverable-2/postdeploy-2026-11-26/deploy-excerpts.log",
+      "normalization": "UTF-8 / LF",
+      "bytes": 1213,
+      "sha256": "9d4ec6d2d271c80b0f22828b0c4df0a2f12c243e50fb3d17959e9529183f6caa"
+    },
+    {
+      "path": "docs/reports/deliverable-2/review-chains-2026-11-26.json",
+      "normalization": "UTF-8 / LF",
+      "bytes": 27793,
+      "sha256": "425b39e9d97d535ecf6ebf4735b42399cb04195380b29e7e3cdc55b1ff3e1082"
     },
     {
       "path": "docs/sprint-1-baseline.md",
@@ -148,6 +166,13 @@
       "normalizedLfSha256": "8384f0d699d3eb23b5f8ee76cc639c573eaad21b1a7d90887b2d76512d7e8208"
     },
     {
+      "path": "server/test/return-resubmit-summary.test.ts",
+      "release": "cc6b04c8e98191be591a3b755d25988148523909",
+      "fromLine": 151,
+      "toLine": 174,
+      "normalizedLfSha256": "d5e40488964551c8e8c45e40917431d9a6b5756a51ed0fd5207f13a9fdc3a29e"
+    },
+    {
       "path": "client/test/f05-draft-recovery.spec.ts",
       "release": "cc6b04c8e98191be591a3b755d25988148523909",
       "fromLine": 578,
@@ -155,6 +180,22 @@
       "normalizedLfSha256": "e14de3688122ab9f6f08e304c91c1267ae6ead83776370f79e414447164ecccf"
     }
   ],
+  "verbatimLogs": [
+    {
+      "path": "docs/reports/deliverable-2/ci-command-excerpts.log",
+      "normalizedLfSha256": "b36bc56069face09a759ecc42d6b2da9f994ffddeb417b450b94ea0d02a91dcc",
+      "qualification": "Verbatim retained lines; terminal ANSI color escapes omitted for PDF display only."
+    },
+    {
+      "path": "docs/evidence/deliverable-2/postdeploy-2026-11-26/deploy-excerpts.log",
+      "normalizedLfSha256": "9d4ec6d2d271c80b0f22828b0c4df0a2f12c243e50fb3d17959e9529183f6caa",
+      "qualification": "Verbatim retained lines; terminal ANSI color escapes omitted for PDF display only."
+    }
+  ],
+  "reviewMetadata": {
+    "path": "docs/reports/deliverable-2/review-chains-2026-11-26.json",
+    "readDate": "2026-11-26 Asia/Bangkok"
+  },
   "assets": [
     {
       "source": "docs/evidence/deliverable-2/postdeploy-2026-11-26/screenshots/deployed-login-1440.png",
@@ -189,6 +230,19 @@
   ],
   "report": {
     "path": "report.md",
-    "sha256": "b17557364562ceab2bd30c67fcfb283c115fa30429561beafd3d6af38cd4e14a"
+    "sha256": "2ba49460eba9748935c50c7809b440ed3b4304ab6da4343b897900b169ff00f9"
+  },
+  "pdf": {
+    "path": "output/pdf/club-expense-approval-d2.pdf",
+    "sha256": "1754ac60b6af1bbc73c4ce6db8239875ff5bfee66e3781cd23674255b8145d33",
+    "pages": 72,
+    "navigationPages": {
+      "A": 3,
+      "B": 4,
+      "C": 12,
+      "D": 13,
+      "E": 14
+    },
+    "validation": "pdf-validation.json"
   }
 }

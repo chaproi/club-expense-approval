@@ -1,5 +1,7 @@
 # Documentation packet validation — 26 November 2026
 
+**Historical source-only checkpoint at7b62e8f.** The later [PDF completion and inspection](pdf-qa-2026-11-26.md) supersedes the then-missing personal/PDF material below. Original results/counts remain unchanged; they are not relabelled as PDF inspection.
+
 Branch: docs/d2-postdeploy-2026-11-26. Documentation parent: 802a111ac0c424ce1da470bd0658cca3ffbd1d08. Released/deployed application remains cc6b04c8e98191be591a3b755d25988148523909. Publication changes documentation and its assembly/validation utilities only; no new application verification is claimed.
 
 ## Commands actually executed

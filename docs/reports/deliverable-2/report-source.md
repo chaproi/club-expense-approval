@@ -1,8 +1,12 @@
 # Club Expense Approval — Project Deliverable 2
 
-**Report source packet — 26 November 2026 (Asia/Bangkok)**
+**Technical report — 26 November 2026 (Asia/Bangkok)**
 
-CPE334 · TH-038 · Theme5 · author chaproi · student ID67070507215. Solo instructor-approved status is recorded in the original baseline. **Full student name and student-authored reflection/contribution text must be supplied by the student.** No AI-written personal reflection or final acceptance statement is substituted.
+**นายสิริกร ฝันนิมิตร** · Student ID **67070507215**
+
+CPE334 · **TH-038 — Solo, instructor-approved** · Theme5 · repository author chaproi.
+
+Cover identity and the concise contribution/AI-use declaration below were confirmed by the student on 26 November 2026. A long personal reflection is optional and is not required for this packet. Final acceptance and submission remain the owner's separate decisions.
 
 Repository: https://github.com/chaproi/club-expense-approval
 
@@ -42,6 +46,10 @@ F-05 v1.1 preserves attempted draft/base revision/changed fields on real stale S
 
 ### Chain 1 — F-05 / Issue36 → defect42 / PR43
 
+Issue36 was opened by chaproi on2026-11-23T17:55:18Z; defect42 by chaproi on2026-11-24T20:42:45Z. The metadata below was verified read-only against GitHub on26Nov2026; exact metadata/review bodies are in review-chains-2026-11-26.json.
+
+{{CHAIN43_METADATA}}
+
 - Initial F-04/F-05/count contracts preceded code at c7539ee (reviewed PR39); API RED18795b7 preceded GREENfeea765 and reviewed PR40/41.
 - Staging acceptance exposed draft loss on409 and a contract ambiguity. Issue42 isolated the defect from Issue36; contract v1.1 was committed **cda506993dbab0b15af1bd70c96265b69117ef6a** before recovery implementation.
 - Lifecycle RED **1667ec2877ba926ad9ca902de50947c14037bf4a**:14 executed,1 passed,13 failed,0 skipped; setup/selection were valid and failed cases reached semantic assertions. Earlier A1–A3 and later unsuccessful G1/G2/G3 attempts remain recorded.
@@ -52,17 +60,21 @@ F-05 v1.1 preserves attempted draft/base revision/changed fields on real stale S
 
 ### Chain 2 — dependency Issue44 / PR45
 
+Issue44 was opened by chaproi on2026-11-25T16:47:25Z. Its review was26Nov in Bangkok (25Nov UTC). Metadata was verified against GitHub on26Nov2026.
+
+{{CHAIN45_METADATA}}
+
 - Assessment identified deepmerge-ts/effect advisories in Prisma6.19.3→@prisma/config6.19.3. Before audits had four High entries from two advisories and ancestors. The plan **45f7046f754cf3eda8adb7c1ab0b1f3d3174a396** preceded the package change.
 - Candidate **a6c93abd350b9926cb51ff287339cd4d02ff2013** keeps Prisma/Client6.19.3 with scoped deepmerge-ts8.0.0/effect3.22.1 overrides. Only those resolved lock entries/metadata changed. Prisma7 was not silently adopted, and audit-fix-force was not used.
 - Fresh install/generate/validate, full and omit=dev audits reported zero findings;47 API/19 browser, TypeScript/build/Docker passed. Actual image versions, migration/seed and authenticated HTTP smoke ran; --help was not substituted.
 - Populated upgrade **43aa8d7→a6c93ab** created3 old requests/5 events under Sprint1, compared exact immediate migration snapshots except revision0 backfill, then performed intentional Return/Edit/Resubmit/Approve, checking original IDs/assignment/createdAt and old events. Final3 requests/9 events and terminal guards/restart reconstruction passed. This is an isolated rehearsal, not direct CloudSQL proof.
-- Evidence head d385c23 was independently approved in PR45 and merged7175362. Reviewed integration #46, UI #47 and release #48 retained the same server/schema/dependency/migration inputs.
+- Reviewer disposition: no binding findings; two non-blocking notes identified the plan arrow typo and asked the release handoff to record verified dependency/populated-upgrade gates. The reviewed override compatibility/removal caveat remains. Evidence head d385c23 was independently approved in PR45 and merged7175362. Reviewed integration #46, UI #47 and release #48 retained the same server/schema/dependency/migration inputs.
 - [Issue44](https://github.com/chaproi/club-expense-approval/issues/44), [PR45 approval](https://github.com/chaproi/club-expense-approval/pull/45#pullrequestreview-6061894648), [candidate verification](https://github.com/chaproi/club-expense-approval/blob/cc6b04c8e98191be591a3b755d25988148523909/docs/evidence/deliverable-2/dependency-remediation/verification.md).
 - The audit before/after is dependency-remediation evidence, **not browser RED**. deepmerge-ts8 exceeds the upstream exact pin; compatible config/Map behavior is not universally certified. Remove only after a reviewed upstream fix with dependency/audit/domain/browser/Docker/populated-upgrade checks.
 
-## Two actual automated test excerpts
+## Required automated test excerpts and additional browser regression
 
-These are exact excerpts from the unchanged released test files, not invented pseudocode or tests written for this report. They were executed as part of exact-main47/19 CI; no suite was rerun in this documentation batch. Excerpts depend on the existing guarded fixture/auth helpers and are not standalone runnable files.
+The required pair consists of one domain/cross-feature rule and one backend access restriction. BF-01 is an additional browser excerpt. These are exact excerpts from unchanged released tests, executed in exact-main47/19 CI; no suite was rerun for this packet. They depend on the existing guarded fixture/auth helpers and are not standalone runnable files.
 
 ### Excerpt 1 — real API optimistic-concurrency and old-round rejection
 
@@ -70,7 +82,15 @@ Source: server/test/return-resubmit-summary.test.ts, released main cc6b04c. Real
 
 {{API_EXCERPT}}
 
-### Excerpt 2 — BF-01 clean draft, no automatic writes and exact final event
+### Excerpt 2 — backend access restrictions and unchanged-state proof
+
+Released source: server/test/return-resubmit-summary.test.ts. The suite provisions four unique actors under a random run marker in an isolated migrated PostgreSQL target, logs each in through the real endpoint and runs an Express listener. `owner` and `other` are separate Requesters; `reviewer` is the assigned Reviewer and `outsider` is another Reviewer. `undefined` omits the session. `returned()` creates an owner's request and returns it through the assigned Reviewer's endpoint, producing RETURNED revision1. `detail()` reads as the authorized owner; `valid` contains a valid title/category/amount.
+
+T-F05-03 checks both PATCH Save and POST Resubmit: anonymous401, foreign Requester404, Reviewer/outsider403, wrong Origin403, SUBMITTED/APPROVED/REJECTED409 and revision overflow409. Every denial is followed by a deep comparison of complete authoritative detail, including fields/revision/history, against the pre-request snapshot. The overflow fixture changes revision deliberately before taking its new snapshot; that setup write is not a denied-command effect. Fixture cleanup removes only its generated actor-owned records and disconnects the client.
+
+{{ACCESS_EXCERPT}}
+
+### Additional excerpt — BF-01 clean draft, no automatic writes and exact final event
 
 Source: client/test/f05-draft-recovery.spec.ts, released main cc6b04c. Includes the real helper assertions used by the same-value Restore test: no draft/Discard/warning, no extra write, explicit current-revision Resubmit, original event prefix exact and one new RESUBMITTED event. Its source history includes the meaningful2-case RED and separate GREEN above.
 
@@ -95,6 +115,18 @@ Source review is evidenced by PRs39/40/41/43/45/46/47 and release48, not an AI a
 # E. Integrated release candidate (15)
 
 ## Reviewed release, actual CI and deployment
+
+### Actual command/output excerpts
+
+These lines were retained from existing GitHub Actions run45786768391, not reconstructed or executed again. UTC timestamps and output wording are unchanged; only ANSI color escapes are omitted for print display. The browser summary reports19 passed; it does not itself print failed/skipped counts. Zero failed/skipped is corroborated by the retained successful job result and its complete19-case result, rather than invented extra output lines.
+
+CI source: ci/verify job139795385630. The retained excerpt was read against the existing job log on26Nov2026; it includes checkout identity, actual npm command headers, counts, build and Docker output.
+
+{{CI_OUTPUT}}
+
+Deployment source: deploy job139796626455, existing deploy-excerpts.log. The image SHA, migration completion, service revision and traffic statement are verbatim. The traffic claim is at the logged deployment time, not a new direct-cloud query.
+
+{{DEPLOY_OUTPUT}}
 
 | Evidence | Exact revision / observed result |
 |---|---|
@@ -199,17 +231,19 @@ Known resource names: project cpe-se-course-2026, region asia-southeast1, servic
 - Optional PR47 notes remain unimplemented/non-blocking: recovery controls could precede very long history; neutral pending wording would suit both roles.
 - Original RED, setup/type/query failures and screenshot-mask correction retain their verdicts; documentation did not manufacture GREEN. First live harness attempt2pass/1selectionfailure/7unreached preceded the corrected10pass attempt, with no domain writes during that failed attempt.
 - Original Lab6 independent evidence is preserved separately. No new external UAT is required for D2; separate Lab6 PDF/reciprocal archive availability is not certified by this packet.
-- Owner final D2 acceptance and submission remain **not recorded**. Student text and final PDF QA are still required.
+- Owner final D2 acceptance and submission remain **not recorded**. Student identity and the concise contribution/AI-use declaration are confirmed; PDF preparation/inspection is documentation work, not acceptance.
 
 {{PLAN}}
 
-## Student-authored material — deliberately not fabricated
+## Student-confirmed identity and contribution
 
-**Full student name / cover confirmation:** TO BE SUPPLIED BY STUDENT.
+**Cover confirmation, 26 November 2026:** นายสิริกร ฝันนิมิตร; student ID67070507215; TH-038 — Solo, instructor-approved.
 
-**Personal reflection:** TO BE WRITTEN BY STUDENT. Explain one actual contract ambiguity, a concrete RED/GREEN lesson, tradeoffs/limitations and what you would change next. This prompt is a writing aid, not assessed prose.
+**Personal reflection:** OPTIONAL. The student may add their own account of lessons/tradeoffs; a long reflection is not required for this packet.
 
-**Contribution and AI-use statement:** TO BE CONFIRMED/WRITTEN BY STUDENT. Existing evidence shows chaproi directed/inspected AI-assisted requirements/code/tests/docs/deployment. Identify your own decisions, checks, effort and limitations in your own words. External source reviewers and historical UAT participants must receive accurate scope/version attribution; AI did not approve its own work or hear a screen reader.
+**Contribution and AI-use statement — confirmed by the student on26November2026:** “I directed the requirements and implementation work, reviewed AI-assisted code and documentation, and checked the recorded results. AI tools assisted with analysis, implementation, tests and report preparation; independent reviewers’ decisions and historical UAT retain their original attribution.”
+
+AI did not approve its own work or hear a screen reader. This concise factual declaration is used with the student's express confirmation; it is not a fabricated personal reflection.
 
 **Owner final decision/date and submission receipt:** NOT RECORDED. Complete only after your review; do not sign or submit through this packet automatically.
 

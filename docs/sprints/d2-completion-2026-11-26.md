@@ -9,10 +9,10 @@ These are the supplied rubric areas/weights, not marks awarded. The historical b
 | Rubric area | Evidence now available | Remaining before final PDF/submission |
 |---|---|---|
 | A Sprint 1 continuity and change status (5) | Corrected baseline43aa8d7; incoming Lab 6 defects and independent retest/acceptance at that version preserved; inherited cases pass in exact-main CI; deployed PD-A01/A03/A04/A06/A10 cover current auth/decisions/denials/readback. | Include the original evidence distinctions and known Low limitations; private Lab 6 archives remain separate, not new D2 UAT. |
-| B Sprint 2 contracts and working increment (25) | Full F-04/F-05 SDS/API/data/AC/STS, meaningful original RED→GREEN and BF-01 correction, independent reviews #40/#41/#43, all16 per-AC mappings below, released R and live PD-A05/A07 demonstration. | Student-authored reflection/contribution and final owner decision; do not manufacture RED for later verification. |
+| B Sprint 2 contracts and working increment (25) | Full F-04/F-05 SDS/API/data/AC/STS, meaningful original RED→GREEN and BF-01 correction, independent reviews #40/#41/#43, all16 per-AC mappings below, released R and live PD-A05/A07 demonstration. | Cover/declaration confirmed26Nov; final owner decision remains separate. Long reflection optional; do not manufacture RED. |
 | C Sprint 3 contracts and working progress (15) | Full F-06/F-07/F-08 contracts included. F-06 count checkpoint AC01–04 working/released/CI-verified/live-scoped; approved totals, two-stage approval and filtering explicitly planned. | Present the dated Final plan; no claim that all Sprint3 is implemented. |
-| D Updated requirements and test traceability (10) | Full SRS, inventory, System SDS, requirement matrix, per-AC implementation/test/result/version mapping, two real test excerpts and source hashes included in the report packet. | Final human read-through of the exported PDF and its links/tables. |
-| E Integrated release candidate (15) | Reviewed chain #39→#40→#41→#43→#45→#46→#47, release #48 approved on ecab746 and merged R; exact-main CI 47/19, build/Docker; migration/deploy and owner-directed live18 checks. | Owner's final acceptance; retain direct-cloud and pre-release snapshot limitations; finish/export the report and submit only by owner action. |
+| D Updated requirements and test traceability (10) | Full SRS, inventory, System SDS, requirement matrix, per-AC implementation/test/result/version mapping, two real test excerpts and source hashes included in the report packet. | Exported PDF and inspection are documented in the packet; owner read-through/decision remains separate. |
+| E Integrated release candidate (15) | Reviewed chain #39→#40→#41→#43→#45→#46→#47, release #48 approved on ecab746 and merged R; exact-main CI 47/19, build/Docker; migration/deploy and owner-directed live18 checks. | Owner's final acceptance; retain direct-cloud and pre-release snapshot limitations; review the report and submit only by owner action. |
 
 Evidence: [deployment/live record](../evidence/deliverable-2/postdeploy-2026-11-26/evidence.md), [original independent Lab 6 status](../labs/lab-06/retest-status-2026-11-26.md), [report source packet](../reports/deliverable-2/README.md).
 
@@ -77,8 +77,8 @@ Exact-main [run45786768391](https://github.com/chaproi/club-expense-approval/act
 - [x] Owner-directed live auth/workflow/denial/draft/count/layout checks18 PASS; earlier harness failure preserved.
 - [x] Lab6 original incoming UAT/retest/accepted Low limitations reconciled separately.
 - [x] Per-feature/per-AC completion and full source packet prepared with actual demonstrations and test excerpts.
-- [ ] Student supplies their own reflection/contribution statement and final cover identity text.
-- [ ] Export and visually inspect the final PDF after inserting student text; confirm links/tables/Thai text, pagination and course-required naming.
+- [x] Student confirmed cover name นายสิริกร ฝันนิมิตร / ID67070507215 / TH-038 Solo instructor-approved and the concise contribution/AI-use declaration on26Nov. A long personal reflection is optional.
+- [x] Report PDF includes confirmed student text, embedded Thai fonts, computed A–E pages and page numbers; inspection/results are recorded in the packet PDF QA record. Owner checks course-required naming before submission.
 - [ ] Owner records final D2 acceptance decision and performs submission.
 
 There is **no new external deployed-acceptance checkbox** for D2. Technical checks do not assign marks or substitute for the owner. Direct-cloud current imageDigest/traffic/task queries and exact pre-release shared-data snapshots remain explicitly unavailable, not silently converted to PASS.
@@ -87,7 +87,7 @@ There is **no new external deployed-acceptance checkbox** for D2. Technical chec
 
 | Date (Asia/Bangkok) | Planned work / evidence | Decision/dependency |
 |---|---|---|
-| 27–29 Nov | Student text; owner packet review; final PDF QA and D2 submission by29Nov23:59, target20:00 | Owner action; do not claim submission now |
+| 27–29 Nov | Confirmed student text and report PDF; owner packet review and D2 submission by29Nov23:59, target20:00 | Owner action; do not claim submission now |
 | By30Nov | Confirm any separate Lab6 report/reciprocal material and instructor/TA-approved Lab7 maintenance scope | Preserve existing UAT; never invent approval or defect |
 | By2Dec | Implement/test-first F-07 two-stage with validated distinct assignments, per-round concurrency and legacy migration | Reviewed contract; exams1–11Dec constrain capacity |
 | By3Dec | Implement/test-first F-08 authorized status filters and intermediate state | Depends compatible F-07 scope/status |

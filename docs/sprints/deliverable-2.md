@@ -2,7 +2,7 @@
 
 ## Current release/checklist correction — 26 November 2026
 
-Use the [current five-area rubric, per-AC completion and release checklist](d2-completion-2026-11-26.md). Main cc6b04c8e98191be591a3b755d25988148523909 is source-reviewed, released and deployed; exact-main CI and our owner-directed live checks passed. Earlier pre-release tables/unchecked items below are retained as historical checkpoints. Their former demand for new independent deployed acceptance is superseded: it is **not a mandatory D2 gate**. [Lab 6 independent evidence](../labs/lab-06/retest-status-2026-11-26.md) is preserved separately. Owner final acceptance, student-authored report material and PDF/submission remain unrecorded.
+Use the [current five-area rubric, per-AC completion and release checklist](d2-completion-2026-11-26.md). Main cc6b04c8e98191be591a3b755d25988148523909 is source-reviewed, released and deployed; exact-main CI and our owner-directed live checks passed. Earlier pre-release tables/unchecked items below are retained as historical checkpoints. Their former demand for new independent deployed acceptance is superseded: it is **not a mandatory D2 gate**. [Lab 6 independent evidence](../labs/lab-06/retest-status-2026-11-26.md) is preserved separately. Student cover identity and concise contribution/AI-use declaration are confirmed; the [report PDF and inspection](../reports/deliverable-2/pdf-qa-2026-11-26.md) are complete. Owner final acceptance/submission remain unrecorded; a long personal reflection is optional.
 
 Updated 26 Nov 2026. The completion table and release checklist below record reviewed #43/#45 integration at 7175362. Main release and deployment acceptance remain pending.
 

@@ -2,12 +2,14 @@
 
 Released application: **cc6b04c8e98191be591a3b755d25988148523909**, 26 November 2026. This folder is a documentation source packet, **not a submitted/final-accepted PDF**.
 
-Start with [report.md](report.md). It is a single assembled report with the actual rubric A(5), B(25), C(15), D(10), E(15), full required source documents, per-AC completion, two exact automated test excerpts, two substantive engineering chains, deployment/live evidence, setup and dated Final plan. Its five selected deployed images are local in assets/; the core report can be exported without downloading remote content. External links are optional audit drill-through, not substitutes for the embedded required text.
+Open the [72-page report PDF](output/pdf/club-expense-approval-d2.pdf), or edit [report.md](report.md) through its source below. It includes the actual rubric A(5), B(25), C(15), D(10), E(15), full required documents, per-AC completion, the required domain/concurrency and backend-access excerpts plus additional BF-01 coverage, verified engineering chains, verbatim logs, deployed demonstrations, setup and dated Final plan. Five original images remain local in assets/. External links are audit drill-through, not substitutes for embedded required text.
 
-- [report-source.md](report-source.md): editable narrative and explicit student-text placeholders.
+- [report-source.md](report-source.md): editable narrative with student-confirmed Thai name, ID/team and concise contribution/AI-use declaration. A long reflection is optional.
 - [assemble.cjs](assemble.cjs): documentation-only Node24 assembler; no package installation, app server, database or tests.
 - [manifest.json](manifest.json): canonical UTF-8/LF input digests, twelve complete embedded documents, released test excerpt line ranges/hashes and five image digests.
-- [validation.md](validation.md): actual documentation checks, scope and remaining PDF work.
+- [validation.md](validation.md): original source-only checks at7b62e8f, preserved as a historical checkpoint.
+- [pdf-qa-2026-11-26.md](pdf-qa-2026-11-26.md) and [pdf-validation.json](pdf-validation.json): current checks, page inspection, actual navigation pages, hashes and embedded fonts.
+- [review-chains-2026-11-26.json](review-chains-2026-11-26.json): read-only GitHub metadata/reviews for both selected fixes and main release.
 - [validate.cjs](validate.cjs): repeatable structural/source validation without application execution.
 - [Current per-AC checklist](../../sprints/d2-completion-2026-11-26.md).
 - [Owner-directed deployed verification](../../evidence/deliverable-2/postdeploy-2026-11-26/evidence.md).
@@ -22,16 +24,24 @@ node docs/reports/deliverable-2/assemble.cjs
 node docs/reports/deliverable-2/validate.cjs
 ~~~
 
-The assembler checks that the two excerpt sources still match released main, inserts the completion/status documents, includes twelve full documents, copies the already-inspected images and updates the manifest. It does not run or claim new application verification. Do not edit generated report.md directly; edit its narrative/source documents and reassemble.
+The assembler checks all three excerpt sources against released main, embeds two verbatim log excerpts and verified review metadata, inserts twelve full documents and copies existing images. It does not run application checks. Edit source documents, not generated report.md. If the report hash changes, regenerate the PDF and repeat visual inspection before publication; a prior PDF hash cannot certify new source.
 
-The appendix input manifests preserve canonical UTF-8/LF source-file digests. Relative appendix links are mapped to complete in-report sections or pinned evidence at documentation parent802a111. Historical wording is not relabelled as a present Pending gate; current summaries identify superseded checkpoints.
+The manifest uses canonical UTF-8/LF source digests. Relative appendix links map to complete in-report sections or evidence pinned at documentation parent7b62e8f. Historical wording is not relabelled as a present gate; current summaries identify superseded checkpoints.
 
-## Concrete material still needed for the final PDF
+## Reproduce the PDF without changing application dependencies
 
-1. Student's full name/cover confirmation; baseline identifies chaproi / ID67070507215 and solo instructor-approved status, but the full-name field is deliberately not guessed.
-2. Student-authored personal reflection and contribution/AI-use statement, based on actual work. The report contains prompts/placeholders, not fabricated personal prose.
-3. Owner's final D2 acceptance/date and submission action/receipt. These cannot be inferred from passing technical checks.
-4. Export the completed report with a Markdown-to-PDF tool that supports UTF-8 Thai text, GFM tables, code blocks and local PNGs. Then visually inspect every PDF page for wrapping/table splits, font fallback, code readability, captions, links and page numbering; confirm the course's required filename/identity details. **No final PDF was produced or visually certified in this documentation batch.**
+Use a separate documentation-tools directory containing markdown-it-py4.3.0, PyMuPDF2.2, fonttools4.69.1 and Pillow, plus an existing Playwright1.62.1/Chromium installation. No root package or lockfile change is needed. Windows Tahoma regular/bold and Consolas are read locally and embedded as PDF subsets; raw font files are not redistributed. The exact prepared PDF is included, so regeneration is optional.
+
+~~~powershell
+python docs/reports/deliverable-2/export-pdf.py --python-tools <owned-python-tools-directory> --playwright <existing-playwright-module-directory> --qa-dir <owned-external-render-directory>
+node docs/reports/deliverable-2/validate.cjs
+~~~
+
+The export prints local HTML twice to calculate and confirm actual A–E page references. It embeds fonts/images, records PDF/source hashes and renders every page to PNG in the owned QA directory. Inspect every final page; automated text/glyph/bounds checks alone do not establish visual quality. Labelled print crops omit the long privacy-masked middle of tall screenshots; original PNG bytes remain intact.
+
+## Owner's remaining decisions
+
+The student confirmed นายสิริกร ฝันนิมิตร, ID67070507215, TH-038 Solo instructor-approved and the concise declaration on26Nov2026. No personal fields are unresolved. Owner final acceptance/date and submission action/receipt remain unrecorded; confirm any course-required final filename before submission. These decisions cannot be inferred from passing technical checks or this PDF export.
 
 No additional external peer acceptance is required for D2. Existing Lab6 archive/course-PDF/reciprocal handoff material belongs to that separate obligation; its original independent acceptance is not reopened. Direct-cloud revision/task reads and an exact pre-release shared snapshot are disclosed limitations, not invented PASS results or silently added mandatory gates.
 
