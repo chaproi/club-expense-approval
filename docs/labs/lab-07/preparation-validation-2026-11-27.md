@@ -1,5 +1,7 @@
 # Lab 7 proposal preparation and documentation validation
 
+**Historical checkpoint at12d40ec, preserved below.** Its instructor/TA-PENDING requirement and uniform150000 policy are superseded for the CURRENT proposal by the [student-supplied announcement](instructor-announcement-2026-11-27.md) and [category-policy revision](category-policy-revision-2026-11-27.md). Current instructor/TA approval: **Not required under updated instructor announcement**, not Approved. Revised independent peer contract review remains PENDING before implementation. The old unsent approval message and old validation counts below describe the original attempt only.
+
 27 November 2026 (Asia/Bangkok). [Proposal Issue49](https://github.com/chaproi/club-expense-approval/issues/49), [request/impact](proposal.md), [proposed contract/STS](contract-proposed-v1.md), [A–D evidence plan](evidence-plan.md). **Proposal only; instructor/TA and peer contract review PENDING.** No changed-behavior test or implementation has been written/executed.
 
 ## Repository and preservation

@@ -1,104 +1,139 @@
-# Lab 7 amount-limit contract and STS — proposed v1.0
+# Lab 7 category-dependent amount contract and STS — proposed v1.1
 
-27 November 2026, Asia/Bangkok. **NOT EFFECTIVE / PENDING INSTRUCTOR–TA APPROVAL AND INDEPENDENT PEER CONTRACT REVIEW.** This is a versioned amendment proposal, not a replacement of the accepted100000 rule. [Change request, identities and impact](proposal.md) / [future evidence plan](evidence-plan.md). Every AC/STS/result here is **PLANNED / UNEXECUTED**. Do not write/run RED or implement before the approval/review handoff.
+27 November 2026 (Asia/Bangkok). **PROPOSED / NOT EFFECTIVE. Independent peer contract review PENDING before implementation.** Instructor/TA approval: **Not required under updated instructor announcement** ([student-supplied evidence](instructor-announcement-2026-11-27.md)). No personal Approved status. Implementation and all RED/GREEN remain **UNEXECUTED**.
 
-## 1. OLD assessed excerpts and proposed revisions
+[Current proposal/impact](proposal.md) / [evidence plan](evidence-plan.md). This same file path now carries v1.1; [v1.0 at12d40ec](https://github.com/chaproi/club-expense-approval/blob/12d40ecf571d50a012045b324d48ae50459c21eb/docs/labs/lab-07/contract-proposed-v1.md) preserves the original uniform150000 proposal and earlier pending gate. No AC IDs are retired; AC-L7-01–08 and STS-L7-01–10 are prospectively revised below, not historical executions.
 
-Reference requirement IDs remain BR-01, FR-02, FR-05, BR-02–07/09 and NFR-01/02; the AC-L7/STS-L7 identifiers below are new prospective maintenance mappings, not invented historical IDs.
+## 1. OLD assessed excerpts and PROPOSED NEW policy
 
-### SRS BR-01 and feature scope
+### SRS BR-01
 
-**OLD, accepted Sprint1 baseline§A BR-01 (43aa8d7):**
+**OLD, accepted43aa8d7 baseline§A BR-01:**
 
 > รายการหลัง trim มี 1–120 ตัวอักษร หมวดต้องอยู่ในรายการที่กำหนด ยอดเป็นจำนวนเต็ม 1–100,000 บาท
 
-**PROPOSED NEW BR-01 excerpt, only if approved:**
+**PROPOSED NEW, student-selected policy pending peer review:**
 
-> รายการหลัง trim มี 1–120 ตัวอักษร หมวดต้องอยู่ในรายการที่กำหนด ยอดเป็นจำนวนเต็ม 1–150,000 บาท
+> รายการหลัง trim มี 1–120 ตัวอักษร หมวดต้องอยู่ในรายการที่กำหนด ยอดเป็นจำนวนเต็มตั้งแต่ 1 บาท โดย ACTIVITY ไม่เกิน 150,000 บาท, EQUIPMENT ไม่เกิน 120,000 บาท และ TRAVEL ไม่เกิน 100,000 บาท ต้องตรวจหมวดและยอดร่วมกัน
 
-The accompanying current SRS scope sentence would change its amount range from1–100,000 to1–150,000, leaving all other wording/IDs unchanged. Historical Sprint1 documents remain original, with a separately dated amendment reference rather than rewriting what was accepted. F-02 uses the revised rule on creation; implemented F-05 inherits the same range on authorized RETURNED edits. This proposal does not imply that RETURNED editing was present in Sprint1.
+Current SRS scope and BR-01 would adopt the pair-dependent rule after substantive review. FR-02/F-05 inherit it; original requirement IDs and historical Sprint1 baseline remain intact. This is an intentional change to previously correct behavior, not a correction of the accepted100000 rule. The instructor announcement does not select or approve these amounts. It removes only the prior instructor/TA approval prerequisite.
 
-### Feature SDS/API — F-02 create
+| Selected category | Valid whole-baht range, inclusive | Maximum+1 invalid |
+|---|---|---|
+| ACTIVITY |1–150000 |150001 |
+| EQUIPMENT |1–120000 |120001 |
+| TRAVEL |1–100000 |100001 |
 
-**OLD:** baseline§E F-02 POST `/api/expense-requests` accepts exactly `{title,category,amountBaht}` for a Requester; `parseExpenseInput` requires a JSON number, integer,1–100000. Current POST invalid-input message includes “a whole amount of 1–100,000 baht.”
+Validate category and amount as one pair, with no fallback maximum for unknown/empty category. For example125000 succeeds only with ACTIVITY;110000 succeeds with ACTIVITY/EQUIPMENT but fails with TRAVEL. Numeric JSON integer only: no string coercion at API boundary, fractional baht or non-finite values. Lower bound remains1. Category enum, trimmed title1–120 UTF-16 units and invalid-text rules remain unchanged.
 
-**PROPOSED NEW:** the same endpoint/body/authorization accepts a JSON numeric integer1–150000 inclusive, preserves title trim/length/Unicode and category validation, and returns201 with the same authorized detail shape. Invalid input returns400 `INVALID_INPUT` without creating a request/event. The amount-range portion of the existing creation error becomes “a whole amount of 1–150,000 baht.” Assignment remains server-owned; creation atomically saves one SUBMITTED request and one SUBMITTED event, revision0. No client owner/reviewer/status field is accepted.
+### Feature SDS/API — F-02 creation
 
-### Feature SDS/API — F-05 Save and draft recovery
+**OLD:** POST `/api/expense-requests` takes exactly `{title,category,amountBaht}` for an authenticated Requester. Shared validator accepts integer1–100000 independently of category. The current creation validation message includes “a whole amount of 1–100,000 baht.”
 
-**OLD, F-05 v1.1 API excerpt:** “Validation matches existing BR-01 (trimmed title1–120 UTF-16 code units, existing categories, integer baht1–100000)”. PATCH accepts exactly `{title,category,amountBaht,expectedRevision}`; Resubmit accepts only `{expectedRevision}`.
+**PROPOSED NEW:** same body/response shape and guards, but validate the known category and its whole-baht range together. Valid pair→201, revision0, exact category/amount persisted, server-derived owner/reviewer and exactly one atomic SUBMITTED event. Invalid pair→400 `INVALID_INPUT` without creating a request/event. Use truthful category-specific limit feedback; the existing uniform100000 wording must be updated. For a known category, explain its maximum and whole-baht lower bound; for unknown/missing category request a supported category, never claim an invented default limit. Preserve safe envelope and no private field leakage.
 
-**PROPOSED NEW:** replace only `integer baht1–100000` with `integer baht1–150000`. Owning Requester and current RETURNED/revision predicates remain mandatory; Save returns200, keeps RETURNED, increments revision once and appends exactly one EDITED event in the same transaction. Same ID, requester/assignment, createdAt and old events remain. Resubmit stays an explicit revision-only operation, adds one RESUBMITTED event and never implicitly changes amount. SUBMITTED and terminal requests remain read-only.
+### Feature SDS/API — F-05 Save/Resubmit and recovery
 
-Draft capture/base snapshot/changed-field Restore, latest saved values, same-field conflicts, Discard, GET-only retry, manual Save, BF-01 clean-draft behavior, per-account/request tab memory and all lifecycle clearing rules remain unchanged. No automatic mutation is introduced. Returned Save's existing generic validation/error message is still truthful; preserve action-specific Save/Resubmit feedback.
+**OLD F-05 v1.1 API excerpt:** “Validation matches existing BR-01 (trimmed title1–120 UTF-16 code units, existing categories, integer baht1–100000)”. PATCH accepts exactly `{title,category,amountBaht,expectedRevision}`; Resubmit accepts exactly `{expectedRevision}`.
 
-### UI and System SDS/data
+**PROPOSED NEW:** amount must be an integer from1 through the submitted category's maximum (ACTIVITY150000/EQUIPMENT120000/TRAVEL100000). Evaluate the pair even when only category changed. Same owning Requester/current RETURNED/current revision predicates;200 Save keeps RETURNED, increments once, adds exactly one EDITED event atomically. Same ID, owner/assignment, createdAt and prior events remain. Invalid pair→400 `INVALID_INPUT` with no change to fields, updatedAt, revision or history. Current Save generic validation message can remain if truthful; UI must also explain the category-specific violation. Do not impose one exact implementation message beyond the preserved envelope/action and accurate limit requirement.
 
-**OLD:** creation `Amount (baht)` and RETURNED `Corrected amount (baht)` number inputs have `min=1,max=100000,step=1`; System SDS§architecture/data uses integer amount and the database constraint from the original migration:
+Resubmit remains manual and revision-only, cannot silently save form values, increments once and adds one RESUBMITTED. SUBMITTED/APPROVED/REJECTED edits remain denied. Existing guard order/denial semantics and stale conflict recovery remain; a valid pair must be used to isolate state/authorization tests.
+
+Draft/base/changed-field capture, latest saved values, same-field markers, changed-fields-only Restore, Discard, GET-only retry, account/request tab-memory clearing, BF-01 clean-draft and explicit manual Save remain unchanged. Restoring an amount over a newer untouched category can produce an invalid pair: retain both visible values without clamping; show the current category limit and prevent invalid Save/Resubmit. The user chooses valid correction/category before manual Save. A Restore that already equals latest still clears its phantom draft under BF-01. No auto-write or extra EDITED event arises from selection/Restore/validation.
+
+### UI in both creation and RETURNED edit forms
+
+**OLD:** `Amount (baht)` and `Corrected amount (baht)` use number/min1/max100000/step1.
+
+**PROPOSED NEW:** retain accessible names/roles, number/min1/step1/required and existing pending/focus behavior. Derive max from the current category; expose readable category-limit feedback linked to the invalid controls. Without a valid selected category the form cannot submit and no permissive default is implied. Category change updates the applicable limit immediately, **retains the amount unchanged**, and shows an error if the pair is invalid. Do not change/clamp/clear amount, reset selected category, mutate/retry/Save/Resubmit or write browser/server storage automatically. Switching back or explicitly correcting the amount clears that category-limit error once valid. Ordinary dirty/pending/explicit-Resubmit rules still apply.
+
+### System SDS / PostgreSQL invariant
+
+**OLD applied migration constraint:**
 
 ```sql
 CHECK ("amountBaht" BETWEEN 1 AND 100000)
 ```
 
-**PROPOSED NEW:** both controls retain accessible names, type/min/step/required/pending behavior and use `max=150000`. No new financial feature or business calculation. Existing numeric display/DTO types remain unchanged. A new additive migration replaces only that named range CHECK with:
+**PROPOSED NEW assessed CHECK expression:**
 
 ```sql
-CHECK ("amountBaht" BETWEEN 1 AND 150000)
+CHECK (
+  ("category" = 'ACTIVITY' AND "amountBaht" BETWEEN 1 AND 150000)
+  OR ("category" = 'EQUIPMENT' AND "amountBaht" BETWEEN 1 AND 120000)
+  OR ("category" = 'TRAVEL' AND "amountBaht" BETWEEN 1 AND 100000)
+)
 ```
 
-These SQL blocks are assessed OLD/PROPOSED excerpts, **not an executable migration committed in this stage**. Prisma Int and PostgreSQL INTEGER need no type change. Apply/validate the wider constraint before new application writes; preserve all existing rows/events without a backfill. See the proposal's populated-target and rollback design.
+This is a proposal excerpt, not an executable migration added now. Existing category enum and amount INTEGER columns are NOT NULL; unsupported categories remain rejected by enum/API, and no CHECK branch grants them a maximum. No type/precision/schema-model/enum/index change required. A **new additive migration** replaces only `ExpenseRequest_amountBaht_check` transactionally; never edit the applied original migration. Verify the actual old definition, validate the new constraint and preserve all old rows/events/timestamps/revisions. Every new maximum is at least the old100000, so valid existing rows in all categories remain valid unchanged. No backfill or amount normalization.
 
-## 2. Proposed acceptance criteria
+[Rollout/rollback design](proposal.md): migrate before app update, verify serving revision, preserve larger saved pairs on any rollback. Restoring an old/narrower constraint is unsafe while conflicting rows exist. No clamp/delete/reset to make rollback pass; reviewed forward correction or separately reviewed narrowing/data policy only.
 
-All rows: PLANNED / UNEXECUTED; approval/review not recorded.
+## 2. Proposed AC — all PLANNED / UNEXECUTED
 
 | AC | Required observable outcome | Planned STS |
 |---|---|---|
-| AC-L7-01 | Otherwise valid creation and owning Requester RETURNED Save accept whole-baht1,100000,100001,150000; exact amount persists and is read back. | STS-L7-01/03/04 |
-| AC-L7-02 |150001,0,negative,fractional and non-number amounts are rejected with400 INVALID_INPUT for real authorized requests, with exact unchanged domain state; non-finite unit inputs also invalid. Title/category/body-shape rules unchanged. | STS-L7-01/02 |
-| AC-L7-03 | Both UI controls expose max150000/min1/step1, can submit valid new-range values, and block out-of-range native submission; backend independently enforces range when UI is bypassed. Existing names/roles/loading/error/pending behavior preserved. | STS-L7-03/04/05 |
-| AC-L7-04 | Save/Resubmit retain ID/assignment/createdAt/old events, exact expectedRevision, one increment/event per successful operation; stale/concurrent writes and frozen states never append duplicate events. Draft recovery including BF-01 remains intact for larger valid values. | STS-L7-04/06/07 |
-| AC-L7-05 | Anonymous/revoked sessions, wrong role, foreign owner, unassigned/self reviewer and wrong Origin cannot gain access through new-range values. SUBMITTED/APPROVED/REJECTED edits remain denied; safe envelopes/projections unchanged. | STS-L7-05/06/09 |
-| AC-L7-06 | Fresh and populated migration paths enforce1–150000 in PostgreSQL, preserving exact pre-existing rows/events/IDs/timestamps/revisions immediately after migration. Authorized readback survives app/client restart. | STS-L7-08/09 |
-| AC-L7-07 | Original Sprint1 submit→approve/reject→owner history, assigned counts and current Return/Edit/Resubmit work without permission/state/history changes. Larger amounts do not change counts or add totals features. | STS-L7-04/07/09 |
-| AC-L7-08 | Reviewed release uses the existing CI/migration-before-deploy pipeline, records exact source/main/revision identity, and changed plus preserved synthetic live checks pass with actual outcomes; no claim before execution. | STS-L7-10 |
+| AC-L7-01 | Both operations validate the pair:1,100000 and each category maximum accepted; maximum+1 rejected.110000/125000 produce category-dependent outcomes, not one uniform cap. Exact saved pair read back. | STS-L7-01/02/03/04 |
+| AC-L7-02 | Invalid pair,0,negative,fractional,missing/non-number amount or unsupported category returns400 INVALID_INPUT with exact unchanged fields/timestamps/revision/history and no new rows/events. Existing title/body validation remains. | STS-L7-01/02 |
+| AC-L7-03 | Both UI forms update max/feedback with category; lower-cap switch retains amount, exposes accessible error and sends no mutation; correction/switch-back restores validity. Native controls and backend independently enforce pair. | STS-L7-03/04 |
+| AC-L7-04 | Explicit valid Save/Resubmit retain ID/assignment/old history, exact revision increments/atomic events. Invalid category switches/restored pairs never save automatically; conflict/recovery/BF-01 and stale/concurrent guards remain. | STS-L7-04/06/07 |
+| AC-L7-05 | Session/role/ownership/Origin/status/revision restrictions and safe projections stay intact for valid proposed pairs; submitted/terminal requests remain read-only. | STS-L7-05/06/09 |
+| AC-L7-06 | New CHECK validates pair on insert and amount-only/category-only update; fresh/populated migration preserves all old valid categories/rows/events, old migration checksums and restart readback. Rollback never rewrites larger values. | STS-L7-08/09 |
+| AC-L7-07 | Original submit→approve/reject→owner history and current Return/Edit/Resubmit/draft/assigned-count paths remain; amount policy adds no totals/two-stage/filter behavior. | STS-L7-04/07/09 |
+| AC-L7-08 | Revised contract peer-reviewed before implementation; later reviewed code/CI/staging/main/migration/deployment and changed/preserved synthetic checks record actual identities/results. Instructor/TA approval is Not required under updated instructor announcement. | STS-L7-10 |
 
-## 3. Planned Software Test Specification
+## 3. Planned STS
 
-All fixtures use unique synthetic actors/requests, real authenticated HTTP/PostgreSQL for domain cases and real Chromium for browser cases. Before any future write, inspect the effective dedicated test URL privately and perform a live database/schema identity probe. Current suite setup's “TEST_DATABASE_URL present” check alone is not proof of target isolation. Never run migrations/seed against operational/shared data. Track owned IDs, snapshot domain data without credential fields, clean only owned rows in FK-safe order, close listeners/contexts and disconnect clients in `finally`. Legitimate login/session bookkeeping is separated from domain-preservation comparisons.
+Every result below is UNEXECUTED. Reuse existing unique actor/request fixtures, real authenticated HTTP/PostgreSQL and Chromium. Privately verify the effective dedicated test target and live DB/schema before future writes; TEST_DATABASE_URL presence alone is not isolation proof. Track owned IDs immediately, snapshot domain state without secrets, distinguish legitimate authentication bookkeeping, clean owned rows in FK order and close/disconnect in finally. No operational/shared migration/seed/reset.
 
-| STS | Preconditions / inputs / level | Independently expected outcome and evidence |
+| STS | Preconditions / input / level | Independent expected result / evidence |
 |---|---|---|
-| STS-L7-01 | Unit parser and returned-parser inputs:1,100000,100001,150000;150001,0,-1,1.5,`"100001"`,null,boolean,object,array; NaN/Infinity at unit boundary only | First four valid numbers return the normalized exact amount; invalids return null. Do not encode NaN/Infinity as JSON “numbers”. Preserve all unrelated title/category/unknown-field assertions. Expected meaningful pre-change RED is100001/150000 rejection, not setup/type errors. |
-| STS-L7-02 | Separate valid owner POST and PATCH RETURNED fixtures, correct Origin/current revision; invalid amounts above; include missing amount/extra assignment/status |400 INVALID_INPUT; compare complete request/event snapshots and counts before/after. No row/event, timestamp or revision change. Use fresh valid controls so validation failure is attributable to the intended field. |
-| STS-L7-03 | Real F-02 browser + HTTP creation with fresh configured Reviewer; exercise four valid boundaries and native150001 case | max/min/step verified; valid201, revision0, exact amount and server assignment, exactly one SUBMITTED event; owner and assigned reviewer read exact values, foreign owner cannot. Native-invalid click sends no POST; direct API invalid sends400. On old code, assert real HTTP201 for100001/150000 before UI-dependent deeper checks; report deeper assertions unreached if it returns400. |
-| STS-L7-04 | API-created owned request→real Reviewer Return; browser Save at100001/150000 then manual Resubmit; amount draft from a genuine two-session stale Save | Save200 keeps same RETURNED record and amount, revision r+1/one EDITED; Resubmit200 uses current revision, same amount, r+2/one RESUBMITTED. Assert previous event IDs/order and createdAt/assignment preserved via private DB snapshot. Restore stages only changed fields and sends no write until explicit Save; no clean phantom draft. |
-| STS-L7-05 | Valid150000 body with anonymous/revoked session, Reviewer creating, foreign owner PATCH, Reviewer PATCH and bad Origin; valid ordinary-range controls for exact inherited guard precedence | Preserve401 UNAUTHENTICATED; Reviewer role403 FORBIDDEN; foreign owner404 NOT_FOUND; Origin403 FORBIDDEN_ORIGIN; no domain mutation or private response fields. Missing assignment remains503 REVIEWER_UNAVAILABLE with no create. Keep exact existing endpoint ordering; do not let invalid new-range bodies obscure a state/security assertion in the pre-change control. |
-| STS-L7-06 | Fully valid PATCH on SUBMITTED/APPROVED/REJECTED, stale RETURNED revision, revision overflow, same-revision concurrent edits/resubmits | State/stale409 INVALID_STATE; unchanged snapshots for rejected writes. Concurrent inherited tests retain one200/one409 and one event. New-range and ordinary controls both required after GREEN. No timeout/retry/assertion relaxation. |
-| STS-L7-07 | Existing API races, revision/old-round tests, draft-recovery/BF-01 suite and original approval/rejection browser journey | Preserve original substantive assertions, exact event sequences and no-write recovery controls. Record current run/file/case/pass/fail/skip, not an assumed47/19 total. New150000 approved/rejected fixtures preserve amount/history; no two-stage feature is implied. |
-| STS-L7-08 | Owned new DB and separate owned populatedcc6b04c DB with authenticated-created SUBMITTED/APPROVED/REJECTED/RETURNED records; new migration only | Immediate exact pre/post domain checksum equality; original migration checksums unchanged; PostgreSQL constraint expression widened. On isolated inserts/updates150000 permitted,150001/0/-1 violate CHECK; use real fixture foreign keys and rollback negative probes. Fresh ORM/API success must not substitute for DB constraint proof. A new proposed `server/test/amount-limit-migration.test.ts` may own these tests after approval. |
-| STS-L7-09 | Snapshot old records before intentional new workflow writes; restart only the owned app/Prisma client; run unchanged auth, decision, return/resubmit/summary cases | Exact old ID/assignment/fields/timestamps/history readback after migration/restart; separate expected intentional events from preservation snapshot. Status counts follow current records, not amount; unchanged owner/reviewer visibility and Sprint1 approve/reject paths. |
-| STS-L7-10 | Future reviewed main/image and successful migration job; private authorized synthetic live actors | Record actual main/run/image/revision and approved change; create100001/150000, reject150001, exercise owning RETURNED Save and one preserved Sprint1 decision/access path. No shared reset/seed or secret publication. Record failure/not-run honestly; live execution and final readiness remain UNEXECUTED now. |
+| STS-L7-01 | Unit parseExpenseInput/parseReturnedInput for each category:1,100000,max,max+1; cross-pair110000 and125000; invalid0,-1,1.5,string,null,boolean,object,array,missing amount/category,unknown category; NaN/Infinity unit only | Independently literal ACTIVITY150000/EQUIPMENT120000/TRAVEL100000 expectations, not deriving expected values from production map. Per-category max accepted;max+1 rejected; cross-pair matrix below. Preserve all title/category/body checks. New valid ACTIVITY/EQUIPMENT upper values fail on old production, while TRAVEL controls may already pass; report honestly. |
+| STS-L7-02 | Authorized POST and current-revision PATCH RETURNED per-category max+1 and cross-pair invalid values; separate fresh fixtures and complete snapshots |400 INVALID_INPUT, safe truthful feedback and exact unchanged fields/updatedAt/revision/history; no new request/event. Numeric-only validation independent of browser. No expected state/auth denial inferred from an invalid pair. |
+| STS-L7-03 | Real create form and real HTTP for all category boundaries. Start ACTIVITY125000→EQUIPMENT→TRAVEL→ACTIVITY; EQUIPMENT110000→TRAVEL→correct100000 | Max follows category; invalid pair retains amount/selected category, linked feedback, no POST on switch/invalid submission. Switching back/correcting restores valid form. Explicit create returns201 exact pair/revision0/one SUBMITTED; owner/assigned reads exact. Isolate HTTP positive assertions from deeper UI assertions on old code; no fabricated success. |
+| STS-L7-04 | Owned real returned records: apply same category-switch sequences in edit form; explicit Save/Resubmit. Two real sessions: draft changes amount to125000 while newer saved category becomesTRAVEL with valid old amount | Category-only invalid Save sends no browser PATCH; direct PATCH invalid→400/no state change. Stale valid draft PATCH→real409; latest/draft separate; Restore keeps latest untouchedTRAVEL and draft125000 visibly invalid, no write/clamp, Save blocked until user selects valid pair. Manual Save uses latest revision; one EDITED, then one RESUBMITTED. Keep BF-01 clean/no-difference behavior. |
+| STS-L7-05 | Valid ACTIVITY150000/EQUIPMENT120000/TRAVEL100000 pairs with anonymous/revoked/wrong-role/foreign-owner/invalid-Origin actors; valid old-range controls | Inherited401 UNAUTHENTICATED,403 FORBIDDEN/FORBIDDEN_ORIGIN,404 hidden owner; no domain mutation/private response. Missing valid Reviewer assignment remains503/no insert. Preserve actual guard precedence; category policy must not obscure access checks. |
+| STS-L7-06 | Valid pairs on SUBMITTED/APPROVED/REJECTED PATCH, stale RETURNED revision, overflow and same-revision concurrent edit/resubmit | State/stale409; exact unchanged rejected snapshots. Existing races retain exactly one200/one409 and one event. No timing/retry/concurrency/assertion relaxation; fresh and larger-value controls after GREEN. |
+| STS-L7-07 | Existing decision/old-round/revision/race, draft-recovery/BF-01 and browser journeys; high valid ACTIVITY/EQUIPMENT records plus unchangedTRAVEL | Original assertions/events retained; explicit decisions preserve exact category/amount; no Restore/category-selection write, no duplicate history. Report actual counts/failed/skipped at exact SHA, never assume old47/19. |
+| STS-L7-08 | Fresh owned target plus separate populatedcc6b04c target containing all categories and old1/100000 boundaries across valid statuses/events; new migration only | Immediate pre/post domain snapshots exact; old migrations unchanged; actual CHECK validated. Direct insert and amount-only/category-only updates at per-category max/max+1 and cross-pair125000/110000 enforce same matrix; rollback invalid probes, preserve source snapshots. No API-only substitute. Inspect rollback incompatibility on owned data, never destructive narrowing. |
+| STS-L7-09 | Before intentional writes, save old row/event snapshot; restart owned app/client after migration; unchanged auth/workflow/summary suites | Exact IDs/assignment/fields/timestamps/revisions/old events survive migration/restart. Separate intentional later workflow deltas. Scoped status counts unaffected by amount policy; original approve/reject and owner restrictions preserved. |
+| STS-L7-10 | Future peer-reviewed revision/code/main/image, successful migration job, authorized synthetic live actors | Trace actual reviewed SHA/run/image/revision; selected category max/max+1/cross-pair/category-switch, returned Save and preserved decision/access checks. No shared reset/seed, no old CI relabelled, no instructor gate reintroduced. Current stage UNEXECUTED. |
 
-## 4. Legitimately revised expectations versus preserved regressions
+### Literal boundary and cross-category expectations (both POST and RETURNED PATCH)
 
-1. `server/test/expense-input.test.ts`, T-05: move100001 out of invalid amounts and add100001/150000 valid; add150001 invalid. Keep0/fraction/string/title/category/extra-field checks. Add missing negative/non-finite coverage without changing their business meaning.
-2. `server/test/return-resubmit-summary.test.ts`, T-F05-02: the100001→400 expectation is intentionally superseded only after approval; replace its upper invalid boundary with150001 and add positive100001/150000 cases. Keep every forged field, Unicode, revision, denial, race, snapshot and history assertion.
-3. `server/test/expense-requests.test.ts`, T-05, currently checks0 and client assignment; it does **not** already prove the entire range or direct database CHECK. Extend meaningful positive/negative coverage; do not claim filename coverage.
-4. `client/test/expense-decisions.spec.ts` and `client/test/f05-draft-recovery.spec.ts` remain regression evidence; existing examples use small amounts. Add new-range browser cases only where necessary. No snapshot rewrite, skip, reduced concurrency, altered timeout, dependency change or weakening of inherited outcomes.
-5. Existing baseline AC-04/05 and F-05 AC-F05-02 keep IDs. Their prospective range/test revision is explicitly recorded here; historical100001 failure expectations/runs remain unchanged in Git and the D2 packet.
+| Amount | ACTIVITY | EQUIPMENT | TRAVEL |
+|---|---|---|---|
+|1 | Accept | Accept | Accept |
+|100000 | Accept | Accept | Accept |
+|100001 | Accept | Accept | Reject |
+|110000 | Accept | Accept | Reject |
+|120000 | Accept | Accept | Reject |
+|120001 | Accept | Reject | Reject |
+|125000 | Accept | Reject | Reject |
+|150000 | Accept | Reject | Reject |
+|150001 | Reject | Reject | Reject |
 
-## 5. Future execution sequence — commands not run in this stage
+Accept means201 create or200 authorized current RETURNED Save, with exact persisted pair; Reject means400 INVALID_INPUT/no domain change, assuming all other guards/input are valid. TRAVEL100001 is the required maximum+1 case. No observation has been executed by publishing this table.
 
-After real instructor/TA approval **and** peer contract review, confirm and integrate the approved current source through the normal project workflow; record any new pre-change SHA and content drift before committing tests. Commit tests first. The future focused RED invocation from repository root is:
+## 4. Legitimate future expectation revisions
+
+- Existing `server/test/expense-input.test.ts` T-05 uses EQUIPMENT: its100001-invalid expectation would legitimately become valid only for that category, with120001 invalid instead. Keep TRAVEL100001 invalid. Add ACTIVITY150000/150001, equipment120000/120001, all cross-pair and invalid type/title/category/body checks.
+- `server/test/return-resubmit-summary.test.ts` T-F05-02 uses ACTIVITY: its100001-invalid expectation changes to valid;150001 is its upper invalid boundary. Add equipment/travel pairs and category-only invalid writes without dropping exact unchanged-state assertions.
+- `server/test/expense-requests.test.ts` currently checks0/client assignment; extend actual boundaries instead of claiming existing full-range/direct-CHECK coverage. New proposed migration and browser case files can be added after substantive peer review; none is added now.
+- Preserve existing auth, access, Origin, state, old-round, concurrent revision, draft lifecycle/BF-01 and browser assertions. No skips/threshold/timeout/retry/concurrency or snapshot changes to hide regressions. Historical expectations/runs at12d40ec and earlier remain unchanged in Git.
+
+## 5. Future execution — not run now
+
+After substantive independent peer review of this revised contract, integrate approved current source through normal workflow, record actual pre-change SHA/drift, commit tests first and run focused semantic RED on unchanged production/original migrated isolated DB:
 
 ```powershell
 node --env-file-if-exists=.env --import tsx --test server/test/expense-input.test.ts server/test/expense-requests.test.ts server/test/return-resubmit-summary.test.ts
 ```
 
-Execute against actual old production and its original migrated isolated DB, retaining each semantic failure/status/assertion and reached/unreached distinction. Native client constraints and the database CHECK are independent reasons a ceiling-only patch is incomplete. Commit the RED record before any source/migration correction. The planned migration test filename above does not exist yet and is not included in this command.
+Expect ACTIVITY/EQUIPMENT new valid pair assertions to fail under old100000 rule; already-correct TRAVEL/invalid/security controls may pass. Collection/setup errors are not semantic RED. Commit actual RED evidence before source/UI/new additive migration. Deeper assertions may be unreached; record that explicitly. No instructor/TA approval prerequisite remains.
 
-After the approved bounded source/UI/additive-migration correction, execute the same focused tests plus the separately added migration case on correctly upgraded owned targets. Then sequentially, from root:
+After bounded GREEN and the new migration, repeat same changed-behavior checks plus the planned direct constraint/populated cases and category-switch browser coverage. Then sequentially use existing project commands:
 
 ```powershell
 npm.cmd test
@@ -108,4 +143,4 @@ npm.cmd run build
 docker build -t club-expense-approval:lab7-candidate .
 ```
 
-Use existing lockfiles/runtime/CI; no predetermined counts or passes. Reuse existing migration/image/populated-upgrade patterns but parameterize and verify the **new actual candidate SHA**, not pinned historical7ab4168/a6c93ab. Test native image migration and app smoke against only an owned target before a reviewed release. Record every failure and correction; do not turn infrastructure/collection errors into RED. Publication of this plan triggers none of these commands.
+All are future commands, not executed here. Keep lockfiles/settings, exact candidate provenance and honest every-attempt results. Verify fresh/populated image migration/smoke on owned targets using the actual candidate SHA, not historical pinned D2 candidates. Review, CI, staging, reviewed main, deploy and selected changed/preserved live checks precede acceptance; historical47/19 and proposal CI do not prove this unimplemented policy.
