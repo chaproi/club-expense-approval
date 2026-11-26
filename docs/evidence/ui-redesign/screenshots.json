@@ -1,0 +1,47 @@
+[
+    {
+        "file":  "after-conflict-desktop.png",
+        "bytes":  140747,
+        "sha256":  "df4b6cfd599767113cdc82855c4b7d68ab4f7a4f23e2652c20d9bd1c9f56b97f"
+    },
+    {
+        "file":  "after-conflict-mobile.png",
+        "bytes":  121261,
+        "sha256":  "49e0e791f909a61314a15a47cb8c846db1cd610cc6737c39511ae3451785e145"
+    },
+    {
+        "file":  "after-login-desktop.png",
+        "bytes":  131186,
+        "sha256":  "dff99d00770ba249ae7fa3be315c78f4dcfefdaa5411c337c2adc595fdc9d5ab"
+    },
+    {
+        "file":  "after-login-mobile.png",
+        "bytes":  58944,
+        "sha256":  "b75d7f4c35b605ee98ea569d82f459b026e053fca21c31febe2588872e5a4c27"
+    },
+    {
+        "file":  "after-reviewer-desktop.png",
+        "bytes":  86638,
+        "sha256":  "ad4086e2e3424602b8f535dc9947129b565d1e784e0195b6f0a43b9dd56664d6"
+    },
+    {
+        "file":  "after-workspace-desktop.png",
+        "bytes":  125306,
+        "sha256":  "1b60e11812fe0ac6de497ea5b5ffbac8a0ab1f7f7112a4b559174120fc55a4ed"
+    },
+    {
+        "file":  "after-workspace-mobile.png",
+        "bytes":  103325,
+        "sha256":  "e351815a0f8c819fe643787b65733b5fa067d47b5da926f457881147a541b1a4"
+    },
+    {
+        "file":  "before-login-desktop.png",
+        "bytes":  12855,
+        "sha256":  "94bc3f6da7fa454a395d13f10a00ea3ddc5270cc00bf44761604d9d1f1c4c861"
+    },
+    {
+        "file":  "before-workspace-desktop.png",
+        "bytes":  58361,
+        "sha256":  "a67ba22db68fe2f04bfea63e52c3527c9d7d810c7c007b02904853b2b1ef528d"
+    }
+]

@@ -50,7 +50,7 @@ function displayValue(values: EditValues, field: EditField) {
 }
 
 function FieldValues({ values }: { values: EditValues }) {
-  return <dl>{editFields.map(field => (
+  return <dl className="field-values">{editFields.map(field => (
     <div key={field}><dt>{editLabels[field]}</dt><dd>{displayValue(values, field)}</dd></div>
   ))}</dl>;
 }
@@ -232,8 +232,9 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
     !sameValue(field, draft.base.values, current) && !sameValue(field, draft.values, current)) : [];
 
   return (
-    <section aria-labelledby="expense-details">
+    <section className="panel detail-panel" aria-labelledby="expense-details" aria-busy={pending}>
       <h3 id="expense-details">Request details</h3>
+      {pending && <p className="loading" role="status">Updating your request…</p>}
       {loadError?.kind !== "denied" && mutationError && <p role="alert">{mutationError}</p>}
       {saveNotice && <p role="status">{saveNotice}</p>}
       {loadError ? (
@@ -241,28 +242,32 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
       ) : detail ? (
         <>
           {recovering && current && (
-            <section aria-labelledby="latest-saved-values">
+            <section className="saved-panel" aria-labelledby="latest-saved-values">
               <h4 id="latest-saved-values">Latest saved values</h4>
               <FieldValues values={current} />
               <p>Status: {detail.status} · Revision: {detail.revision}</p>
             </section>
           )}
-          <p>{detail.title} · {categoryLabels[detail.category]} · {detail.amountBaht} baht · {detail.status}</p>
+          <div className="detail-overview">
+            <div className="detail-metadata"><span className={"status-tag status-" + detail.status.toLowerCase()}>{detail.status}</span><span className="category">{categoryLabels[detail.category]}</span></div>
+            <p className="detail-title">{detail.title}</p>
+            <p className="detail-amount">{detail.amountBaht.toLocaleString()}<small>baht</small></p>
+          </div>
           {role === "REVIEWER" && detail.status === "SUBMITTED" && (
-            <div>
+            <div className="decision-panel">
               <button type="button" disabled={pending} onClick={() => void decide({ decision: "APPROVED" })}>Approve</button>
               <form onSubmit={reject}>
                 <p><label>Rejection reason <textarea name="reason" required disabled={pending} /></label></p>
-                <button type="submit" disabled={pending}>Reject</button>
+                <button className="danger" type="submit" disabled={pending}>Reject</button>
               </form>
               <form onSubmit={returnForCorrection}>
                 <p><label>Return reason <textarea name="returnReason" required maxLength={300} disabled={pending} /></label></p>
-                <button type="submit" disabled={pending}>Return for correction</button>
+                <button className="secondary" type="submit" disabled={pending}>Return for correction</button>
               </form>
             </div>
           )}
           {editable && values && (
-            <div>
+            <div className="edit-panel">
               <form onSubmit={saveEdit}>
                 <h4>Correct returned request</h4>
                 <p><label>Corrected title <input name="editTitle" value={values.title} onChange={event => changeEdit({ ...values, title: event.currentTarget.value })} required maxLength={120} disabled={pending} /></label></p>
@@ -277,19 +282,19 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
               {draft?.restored && <button type="button" disabled={pending} onClick={discardDraft}>Discard draft</button>}
             </div>
           )}
-          <h4>History</h4>
-          <ol>
+          <h4 className="history-title">History</h4>
+          <ol className="history">
             {detail.history.map((event, index) => (
               <li key={index}>
-                {event.type} by {event.actorDisplayName} · {new Date(event.createdAt).toLocaleString()}
+                <div className="history-line">{event.type} by {event.actorDisplayName}<time dateTime={event.createdAt}>{new Date(event.createdAt).toLocaleString()}</time></div>
                 {event.reason && <p>{event.reason}</p>}
               </li>
             ))}
           </ol>
         </>
-      ) : <p role="status">Loading request details…</p>}
+      ) : <p role="status" className="loading">Loading request details…</p>}
       {draft && recovering && (detail || loadError?.kind === "failed") && (
-        <section aria-labelledby="unsaved-draft">
+        <section className="draft-panel" aria-labelledby="unsaved-draft">
           <h4 id="unsaved-draft">Unsaved draft</h4>
           <FieldValues values={draft.values} />
           {detail?.status === "RETURNED" && (
@@ -303,7 +308,7 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
         </section>
       )}
       {draft && recovering && current && conflicts.length > 0 && (
-        <ul>{conflicts.map(field => (
+        <ul className="conflict-list">{conflicts.map(field => (
           <li key={field}>
             <strong>{editLabels[field]} conflict</strong>
             <div>Latest saved: {displayValue(current, field)}</div>
@@ -383,12 +388,18 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
   }
 
   return (
-    <section aria-labelledby="expense-requests">
-      <h2 id="expense-requests">{role === "REQUESTER" ? "My Requests" : "Assigned Requests"}</h2>
+    <section className="workspace entrance" aria-labelledby="expense-requests">
+      <div className="workspace-heading">
+        <div><p className="eyebrow">Club expenses</p><h2 id="expense-requests">{role === "REQUESTER" ? "My Requests" : "Assigned Requests"}</h2></div>
+        <p>{role === "REQUESTER" ? "From the first idea to the final approval. Keep your club expenses moving." : "Review the details, make a decision, and help the next club project happen."}</p>
+      </div>
       {role === "REVIEWER" && <StatusSummary refresh={refresh} />}
+      {drafts.size > 0 && <p className="draft-warning" role="status">Reloading this page will discard your unsaved draft.</p>}
+      <div className={"workspace-grid" + (role === "REVIEWER" ? " reviewer-grid" : "")}>
       {role === "REQUESTER" && (
-        <form onSubmit={submitExpense}>
+        <form className="panel creation-panel" aria-busy={pending} onSubmit={submitExpense}>
           <h3>New expense request</h3>
+          <p className="panel-caption">A little detail now keeps the approval simple.</p>
           <p><label>Title <input name="title" required /></label></p>
           <p>
             <label>Category{" "}
@@ -403,25 +414,32 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
           {submission && <p role={submission.ok ? "status" : "alert"}>{submission.message}</p>}
         </form>
       )}
+      <div className="panel list-panel"><div className="panel-heading"><h3>Requests</h3>{items && <span className="record-count">{items.length} {items.length === 1 ? "request" : "requests"}</span>}</div>
       {listError ? (
-        <div>
+        <div className="empty-list">
           <p role="alert">Could not load expense requests.</p>
           {role === "REQUESTER" && <button type="button" onClick={() => setRefresh(count => count + 1)}>Retry loading requests</button>}
         </div>
       ) : !items ? (
-        <p role="status">Loading expense requests…</p>
-      ) : items.length === 0 ? <p>No expense requests yet.</p> : (
-        <ul>
+        <p role="status" className="loading">Loading expense requests…</p>
+      ) : items.length === 0 ? <p className="empty-list">No expense requests yet.</p> : (
+        <ul className="request-list">
           {items.map((item) => (
             <li key={item.id}>
-              <button type="button" onClick={() => setSelectedId(item.id)}>{item.title}</button>
-              {" · "}{categoryLabels[item.category]} · {item.amountBaht} baht · {item.status}
+              <button className="request-card" type="button" aria-label={item.title} aria-current={selectedId === item.id ? "true" : undefined} onClick={() => setSelectedId(item.id)}>
+                <span className="request-topline"><span className="category">{categoryLabels[item.category]}</span><time dateTime={item.createdAt}>{new Date(item.createdAt).toLocaleDateString(undefined, { month: "short", day: "numeric" })}</time></span>
+                <span className="request-title">{item.title}</span>
+                <span className="request-bottomline"><span className="request-amount">{item.amountBaht.toLocaleString()} <small>baht</small></span><span className={"status-tag status-" + item.status.toLowerCase()}>{item.status}</span></span>
+              </button>
             </li>
           ))}
         </ul>
       )}
-      {drafts.size > 0 && <p role="status">Reloading this page will discard your unsaved draft.</p>}
-      {selectedId && <ExpenseDetail key={selectedId} id={selectedId} role={role} draft={drafts.get(selectedId)} setDrafts={setDrafts} onRefresh={() => setRefresh(count => count + 1)} />}
+      </div>
+      {selectedId ? <ExpenseDetail key={selectedId} id={selectedId} role={role} draft={drafts.get(selectedId)} setDrafts={setDrafts} onRefresh={() => setRefresh(count => count + 1)} /> : (
+        <div className="panel empty-detail"><svg aria-hidden="true" viewBox="0 0 48 48" fill="none"><path d="M13 7h16l8 8v26H13V7Zm16 0v9h8M20 24h10m-10 7h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg><h3>A closer look</h3><p>Select a request to see its details, decisions, and history.</p></div>
+      )}
+      </div>
     </section>
   );
 }
@@ -439,10 +457,10 @@ function StatusSummary({ refresh }: { refresh: number }) {
     }).catch(() => { if (!controller.signal.aborted) setError(true); });
     return () => controller.abort();
   }, [refresh]);
-  return <section aria-labelledby="status-summary"><h3 id="status-summary">Status summary</h3>
+  return <section className="panel summary-panel" aria-labelledby="status-summary"><h3 id="status-summary">Status summary</h3>
     {error ? <p role="alert">Could not load status summary.</p> : summary ? <>
       <dl>{Object.entries(summary.counts).map(([status, count]) => <div key={status}><dt>{status}</dt><dd data-testid={`summary-${status}`}>{count}</dd></div>)}</dl>
       <p>Total requests: <span data-testid="summary-total">{summary.total}</span></p>
-    </> : <p role="status">Loading status summary…</p>}
+    </> : <p role="status" className="loading">Loading status summary…</p>}
   </section>;
 }

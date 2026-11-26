@@ -1,0 +1,21 @@
+{
+  "ownershipVerified": true,
+  "before": {
+    "users": 0,
+    "sessions": 0,
+    "requests": 0,
+    "events": 0
+  },
+  "after": {
+    "users": 0,
+    "sessions": 0,
+    "requests": 0,
+    "events": 0
+  },
+  "otherConnectionsBeforeCleanup": 0,
+  "idleTransactions": 0,
+  "ownedContainerRemoved": true,
+  "ownedAnonymousVolumesRemoved": true,
+  "privateRuntimeFileRemoved": true,
+  "checkedAt": "2026-11-26T04:39:16.613Z"
+}

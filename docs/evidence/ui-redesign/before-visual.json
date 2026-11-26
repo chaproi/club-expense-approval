@@ -1,0 +1,16 @@
+{
+  "phase": "before",
+  "source": "7716080f83ea86a54e06469ee8bf939c6dd6a4d4",
+  "dirty": "",
+  "checks": [],
+  "screenshots": [
+    "before-login-desktop.png",
+    "before-login-mobile.png",
+    "before-workspace-desktop.png",
+    "before-workspace-mobile.png"
+  ],
+  "startedAt": "2026-11-25T18:54:23.484Z",
+  "chromium": "151.0.7922.34",
+  "pageErrors": [],
+  "finishedAt": "2026-11-25T18:54:24.536Z"
+}

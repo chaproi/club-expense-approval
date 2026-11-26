@@ -1,0 +1,24 @@
+{
+  "phase": "after",
+  "source": "7716080f83ea86a54e06469ee8bf939c6dd6a4d4",
+  "dirty": "M client/src/expense-requests.tsx\n M client/src/main.tsx\n?? client/src/assets/\n?? client/src/styles.css",
+  "checks": [
+    "Login keyboard traversal Email, Password, Log in, Shift+Tab",
+    "Mobile 390x844 has no page-wide overflow; editable control reachable with visible focus",
+    "prefers-reduced-motion suppresses nonessential CSS animations",
+    "Reviewer summary and decision forms use real authorized records; desktop no page overflow"
+  ],
+  "screenshots": [
+    "after-login-desktop.png",
+    "after-login-mobile.png",
+    "after-workspace-desktop.png",
+    "after-workspace-mobile.png",
+    "after-conflict-desktop.png",
+    "after-conflict-mobile.png",
+    "after-reviewer-desktop.png"
+  ],
+  "startedAt": "2026-11-25T18:54:54.153Z",
+  "chromium": "151.0.7922.34",
+  "pageErrors": [],
+  "finishedAt": "2026-11-25T18:54:56.524Z"
+}

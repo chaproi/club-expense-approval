@@ -1,0 +1,11 @@
+{
+  "label": "before-render",
+  "command": "node ../reviewer-breakpoints.mjs before",
+  "source": "ad7c7bf798b6dcc987b58e11c8bfe6a303c8375d",
+  "startedAt": "2026-11-26T04:57:14.909Z",
+  "finishedAt": "2026-11-26T04:57:23.327Z",
+  "elapsedMs": 8418,
+  "exit": 1,
+  "signal": null,
+  "spawnError": null
+}
