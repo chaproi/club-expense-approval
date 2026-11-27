@@ -1,0 +1,5 @@
+2026-11-27T09:21:49.010Z $ docker exec <owned> psql <final domain/client counts>
+0|0|0|0|0
+
+
+{"id":"cleanup-domain","command":"docker exec <owned> psql <final domain/client counts>","startedAt":"2026-11-27T09:21:49.010Z","elapsedMs":235,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

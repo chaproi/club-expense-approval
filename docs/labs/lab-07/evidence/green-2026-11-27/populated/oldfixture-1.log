@@ -1,0 +1,5 @@
+2026-11-27T09:18:07.969Z $ node --import tsx server/test/lab7-upgrade-worker.ts baseline <actual4535280 checkout>
+{"mode":"baseline","success":true,"checks":["Actual4535280 application created24 old-range rows /42 events across3 categories,1/100000 and4 valid states","Owner/assigned readback exact; old CHECK verified; writers/listener/Prisma quiesced before migration"]}
+
+
+{"id":"oldfixture-1","command":"node --import tsx server/test/lab7-upgrade-worker.ts baseline <actual4535280 checkout>","startedAt":"2026-11-27T09:18:07.969Z","elapsedMs":1958,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

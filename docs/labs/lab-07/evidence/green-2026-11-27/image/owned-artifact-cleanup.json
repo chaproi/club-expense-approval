@@ -1,0 +1,7 @@
+{
+  "OwnedTemporaryBaselineRemoved": true,
+  "OwnedImageTagRemoved": true,
+  "ImageId": "sha256:5ffe6c91e841a0656c9d0a3b403f78bff5335943d09e3f3ff6bc3722049a1f0d",
+  "Timestamp": "2026-11-27T09:21:48.8292103Z",
+  "PriorCleanupFailure": "git worktree remove: Filename too long; corrected only with verified native extended-length path cleanup"
+}

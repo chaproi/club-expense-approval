@@ -1,0 +1,5 @@
+2026-11-27T09:17:46.547Z $ docker exec <owned> psql <read-only guard>
+<owned-test-database>|<owned-test-database>|public|0|17.12 (Debian 17.12-1.pgdg12+1)
+
+
+{"id":"setup-target","command":"docker exec <owned> psql <read-only guard>","startedAt":"2026-11-27T09:17:46.547Z","elapsedMs":187,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

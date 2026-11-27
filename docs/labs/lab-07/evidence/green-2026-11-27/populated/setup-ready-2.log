@@ -1,0 +1,5 @@
+2026-11-27T09:17:46.385Z $ docker exec <owned> pg_isready
+/var/run/postgresql:5432 - accepting connections
+
+
+{"id":"setup-ready-2","command":"docker exec <owned> pg_isready","startedAt":"2026-11-27T09:17:46.385Z","elapsedMs":161,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

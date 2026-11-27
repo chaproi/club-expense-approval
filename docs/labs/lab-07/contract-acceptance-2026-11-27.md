@@ -31,3 +31,7 @@ Future fresh/populated **new-policy migration** verification and changed/preserv
 ## Subsequent RED execution
 
 The later [27November tests-first execution record](red-verification-2026-11-27.md) links committed tests, actual failures/passing controls, unreached assertions and independent cleanup. This appends execution evidence after the handoff above; it does not rewrite the original pre-execution checkpoint or promote implementation/deployment acceptance.
+
+## Subsequent local GREEN verification
+
+[Actual local GREEN evidence](green-verification-2026-11-27.md) records implementation ec10dd4 and supplementary verification a0d1e9d, including formerly unreached assertions, full184/23 results and fresh/populated/image cleanup. This is not peer implementation approval, staging/main integration or new-policy deployment. The accepted contract and instructor-announcement provenance remain unchanged.

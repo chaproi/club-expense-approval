@@ -1,0 +1,16 @@
+{
+  "mode": "candidate",
+  "success": true,
+  "checks": [
+    "Immediate24 requests/42 events plus assignments,fields,timestamps,revisions,private users/sessions preserved exactly;3 old checksums unchanged",
+    "Six legacy SUBMITTED rows traversed Return/maximum Save/Resubmit/Approve;exact24 retained IDs and66 final events;12 old terminal rows read-only",
+    "High-value auth/ownership/Origin/stale/invalid denials unchanged;assigned counts0/6/12/6 and unassigned zeros",
+    "New application listener/Prisma and HTTP read clients preserve all final fields/history/counts after restart;no browser-storage preservation claim",
+    "Only owned requests/events/sessions/accounts removed;all clients/listeners disconnected"
+  ],
+  "requestCountBefore": 24,
+  "eventCountBefore": 42,
+  "requestCountAfter": 24,
+  "eventCountAfter": 66,
+  "timestamp": "2026-11-27T09:18:14.581Z"
+}

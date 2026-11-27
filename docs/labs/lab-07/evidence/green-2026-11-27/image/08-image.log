@@ -1,0 +1,4 @@
+2026-11-27T09:20:37.548Z $ docker image <owned>
+sha256:5ffe6c91e841a0656c9d0a3b403f78bff5335943d09e3f3ff6bc3722049a1f0d
+
+{"id":"08-image","command":"docker image <owned>","startedAt":"2026-11-27T09:20:37.548Z","elapsedMs":161,"exit":0,"signal":null,"spawnError":null,"terminated":false}

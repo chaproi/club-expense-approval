@@ -1,5 +1,7 @@
 # F-05 — Edit and resubmit returned requests
 
+**27 November 2026 — Lab7 candidate amendment:** current pair validation follows accepted [AC-L7/STS](../labs/lab-07/contract-proposed-v1.md) and [local GREEN](../labs/lab-07/green-verification-2026-11-27.md). F-05 v1.1 draft/revision/history and BF-01 behavior are unchanged. Earlier planning/verification checkpoints below retain their original SHAs; the pre-change contract remains available at4535280. This update is locally verified, pending independent code review/integration/deployment.
+
 Contract v1.1 · 25 Nov 2026 · TH-038 · draft recovery design pending review. The original v1.0 design was recorded on 24 Nov 2026.
 
 Original [Issue #36](https://github.com/chaproi/club-expense-approval/issues/36). Draft-recovery defect [Issue #42](https://github.com/chaproi/club-expense-approval/issues/42). Requirements: FR-05; BR-01, BR-05/06/09; NFR-01/02. Author: chaproi with AI assistance. Review: pending independent peer review.
@@ -22,7 +24,7 @@ UI: display edit title/category/whole-baht amount and Save changes/Resubmit only
 
 **Impact.** Draft snapshots, field reconciliation, recovery controls and message framing belong in the Requester UI. The existing detail and list reads return authorized saved state and revision. The existing PATCH and POST endpoints already enforce owner, state, Origin and revision and return `409 INVALID_STATE` without inserting another event. No API, database schema or migration changes are needed. No client-only draft produces a history event.
 
-API: PATCH `/api/expense-requests/:id` accepts exactly `{title,category,amountBaht,expectedRevision}`; POST `/:id/resubmit` accepts exactly `{expectedRevision}`. Both return 200 saved detail, increment revision once and append EDITED or RESUBMITTED event atomically. Validation matches existing BR-01 (trimmed title1–120 UTF-16 code units, existing categories, integer baht1–100000); existing title Unicode limitation is retained and disclosed. expectedRevision must be nonnegative int32 and current. Stale/wrong state409; hidden owner404; reviewer403. UI and all post-first-round decision calls send the returned revision.
+API: PATCH `/api/expense-requests/:id` accepts exactly `{title,category,amountBaht,expectedRevision}`; POST `/:id/resubmit` accepts exactly `{expectedRevision}`. Both return 200 saved detail, increment revision once and append EDITED or RESUBMITTED event atomically. Validation matches candidate BR-01 (trimmed title1–120 UTF-16 code units, known category paired with integer baht1–150000 for ACTIVITY,1–120000 for EQUIPMENT,1–100000 for TRAVEL; no unknown-category fallback); existing title Unicode limitation is retained and disclosed. expectedRevision must be nonnegative int32 and current. Stale/wrong state409; hidden owner404; reviewer403. UI and all post-first-round decision calls send the returned revision.
 
 Data: use F-04 revision/event migration, conditional owner+RETURNED+revision updates and event transaction. No second schema reset or owner/reviewer reassignment. Preserve createdAt and old event IDs/timestamps; updatedAt changes. Reject overflow rather than increment past int32.
 
@@ -35,7 +37,7 @@ Original Sprint 1 AC-04/T-04 PATCH404 meant no edit endpoint existed. From this 
 | AC | Observable outcome | Test / level / input → expected |
 |---|---|---|
 | AC-F05-01 | Owner saves valid fields on RETURNED; reads persisted values and EDITED event | T-F05-01 API/DB: return→PATCH rev1→200 rev2, same ID/assignment/createdAt, prior history preserved |
-| AC-F05-02 | Invalid/forged edits leave record unchanged | T-F05-02 API/DB: baht0/1/100000/100001/decimal, title empty/120/121/NUL/surrogate, invalid category/extra status → appropriate200/400; negatives exact unchanged |
+| AC-F05-02 | Invalid/forged edits leave record unchanged | T-F05-02 API/DB: baht0/1/100000/category-max/category-max+1/decimal (ACTIVITY150001 is the superseding invalid upper boundary; full literal pair coverage is in AC-L7-01/02), title empty/120/121/NUL/surrogate, invalid category/extra status → appropriate200/400; negatives exact unchanged |
 | AC-F05-03 | Only owner/RETURNED and exact Origin may edit/resubmit | T-F05-03 API/DB: other requester404, reviewer403, anonymous401, evil Origin403, SUBMITTED/APPROVED/REJECTED409; no protected mutation |
 | AC-F05-04 | Resubmit is one atomic transition retaining old history | T-F05-04 API/DB: return→save→resubmit→SUBMITTED rev3 and RESUBMITTED event; later reviewer decide with rev3 succeeds |
 | AC-F05-05 | Stale and concurrent saves/resubmits/old-round decisions fail safely | T-F05-05 API/DB: two same-revision writes exactly one200/one409; replay older revision409; legacy decision without revision after return/resubmit409; no duplicate event |

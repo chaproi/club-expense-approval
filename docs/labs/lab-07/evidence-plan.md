@@ -1,5 +1,7 @@
 # Lab 7 evidence and readiness plan
 
+**Current local GREEN checkpoint,27 November 2026:** [executed candidate results and AC/STS scope](green-verification-2026-11-27.md). Implementation/migration ec10dd4; supplementary checks a0d1e9d;184/184 unit/API and23/23 browser plus fresh/populated/image verification pass. Prior Proposed/Planned/Unexecuted and RED wording below is historical, preserving its actual checkpoint. Contract acceptance is verified; independent implementation review, integration, new-policy release/deployment and STS-L7-10 remain Pending. Instructor/TA approval remains **Not required under updated instructor announcement**.
+
 **Current RED execution,27November2026:** [actual tests-first results and limitations](red-verification-2026-11-27.md):116 collected/executed,87 pass,29 semantic fail,zero skipped/cancelled at tests commit f08672d against unchanged4535280 production/original CHECK. TypeScript and27 inherited API controls pass. GREEN, new-policy migration/deployment and later acceptance remain unexecuted. The handoff and revision0.2 text below remain historical checkpoints, not current execution totals.
 
 **Current checkpoint,27November2026:** [contract review accepted and merged; RED-only handoff](contract-acceptance-2026-11-27.md). Prior Pending review wording below is historical and superseded for the contract gate only. Implementation, all RED/GREEN results and new-policy deployment remain unexecuted at this handoff. Instructor/TA approval remains Not required under updated instructor announcement.

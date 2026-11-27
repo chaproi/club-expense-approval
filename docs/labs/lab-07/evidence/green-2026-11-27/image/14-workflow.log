@@ -1,0 +1,4 @@
+2026-11-27T09:20:42.441Z $ node docs/labs/lab-07/verification/image-workflow.cjs
+{"success":true,"checks":["Actual image root HTTP200","ACTIVITY maximum creation/returned Save/resubmit/decision/history PASS;max+1/access/Origin/stale denials preserve domain","EQUIPMENT maximum creation/returned Save/resubmit/decision/history PASS;max+1/access/Origin/stale denials preserve domain","TRAVEL maximum creation/returned Save/resubmit/decision/history PASS;max+1/access/Origin/stale denials preserve domain","Three exact requests/fifteen events;assigned counts;logout/revoked-cookie denial PASS","Owned image schema fixtures/session rows cleared"]}
+
+{"id":"14-workflow","command":"node docs/labs/lab-07/verification/image-workflow.cjs","startedAt":"2026-11-27T09:20:42.441Z","elapsedMs":922,"exit":0,"signal":null,"spawnError":null,"terminated":false}

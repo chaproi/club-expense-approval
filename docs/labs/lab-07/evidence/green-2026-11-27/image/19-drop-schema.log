@@ -1,0 +1,14 @@
+2026-11-27T09:20:44.800Z $ docker exec <owned> psql <guarded image-schema query>
+NOTICE:  drop cascades to 9 other objects
+DETAIL:  drop cascades to table lab7_image_6043eabea85f58f6._prisma_migrations
+drop cascades to type lab7_image_6043eabea85f58f6."Role"
+drop cascades to table lab7_image_6043eabea85f58f6."User"
+drop cascades to table lab7_image_6043eabea85f58f6."Session"
+drop cascades to type lab7_image_6043eabea85f58f6."ExpenseCategory"
+drop cascades to type lab7_image_6043eabea85f58f6."ExpenseStatus"
+drop cascades to type lab7_image_6043eabea85f58f6."RequestEventType"
+drop cascades to table lab7_image_6043eabea85f58f6."ExpenseRequest"
+drop cascades to table lab7_image_6043eabea85f58f6."RequestEvent"
+DROP SCHEMA
+
+{"id":"19-drop-schema","command":"docker exec <owned> psql <guarded image-schema query>","startedAt":"2026-11-27T09:20:44.800Z","elapsedMs":184,"exit":0,"signal":null,"spawnError":null,"terminated":false}

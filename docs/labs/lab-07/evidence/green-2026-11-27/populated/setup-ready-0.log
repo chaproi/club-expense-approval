@@ -1,0 +1,5 @@
+2026-11-27T09:17:44.980Z $ docker exec <owned> pg_isready
+/var/run/postgresql:5432 - no response
+
+
+{"id":"setup-ready-0","command":"docker exec <owned> pg_isready","startedAt":"2026-11-27T09:17:44.980Z","elapsedMs":215,"exit":2,"signal":null,"spawnError":null,"runnerTerminated":false}

@@ -1,5 +1,7 @@
 # Lab 7 category-dependent amount contract and STS — proposed v1.1
 
+**Current local GREEN checkpoint,27 November 2026:** [executed candidate results and AC/STS scope](green-verification-2026-11-27.md). Implementation/migration ec10dd4; supplementary checks a0d1e9d;184/184 unit/API and23/23 browser plus fresh/populated/image verification pass. Prior Proposed/Planned/Unexecuted and RED wording below is historical, preserving its actual checkpoint. Contract acceptance is verified; independent implementation review, integration, new-policy release/deployment and STS-L7-10 remain Pending. Instructor/TA approval remains **Not required under updated instructor announcement**.
+
 **Current checkpoint,27November2026:** this exact v1.1 contract is accepted for tests-first implementation by the [verified independent review and staging merge](contract-acceptance-2026-11-27.md). Old Pending/status text below preserves the pre-review checkpoint; the AC/STS policy remains unchanged. No implementation/operational acceptance follows from that review. Instructor/TA approval remains Not required under updated instructor announcement.
 
 27 November 2026 (Asia/Bangkok). **PROPOSED / NOT EFFECTIVE. Independent peer contract review PENDING before implementation.** Instructor/TA approval: **Not required under updated instructor announcement** ([student-supplied evidence](instructor-announcement-2026-11-27.md)). No personal Approved status. Implementation and all RED/GREEN remain **UNEXECUTED**.

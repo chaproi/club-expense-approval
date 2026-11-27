@@ -1,0 +1,5 @@
+2026-11-27T09:21:49.828Z $ docker volume <owned resource>
+club-expense-approval-lab5_db-data
+
+
+{"id":"cleanup-volume-absence","command":"docker volume <owned resource>","startedAt":"2026-11-27T09:21:49.828Z","elapsedMs":75,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

@@ -1,0 +1,5 @@
+2026-11-27T09:17:44.288Z $ node.exe -e console.log(JSON.stringify({node:process.version,prisma:require('@prisma/client/package.json').version,cli:require('prisma/package.json').version,typescript:require('typescript/package.json').version,playwright:require('@playwright/test/package.json').version}))
+{"node":"v24.14.0","prisma":"6.19.3","cli":"6.19.3","typescript":"5.9.3","playwright":"1.62.1"}
+
+
+{"id":"setup-versions","command":"node.exe -e console.log(JSON.stringify({node:process.version,prisma:require('@prisma/client/package.json').version,cli:require('prisma/package.json').version,typescript:require('typescript/package.json').version,playwright:require('@playwright/test/package.json').version}))","startedAt":"2026-11-27T09:17:44.288Z","elapsedMs":82,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

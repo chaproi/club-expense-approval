@@ -1,0 +1,5 @@
+2026-11-27T09:18:28.751Z $ docker inspect <owned resource>
+6c207025f2035b5e
+
+
+{"id":"cleanup-owner","command":"docker inspect <owned resource>","startedAt":"2026-11-27T09:18:28.751Z","elapsedMs":81,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

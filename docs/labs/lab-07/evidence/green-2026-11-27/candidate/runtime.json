@@ -1,0 +1,322 @@
+{
+  "commands": [
+    {
+      "id": "setup-inventory",
+      "command": "docker ps <owned resource>",
+      "startedAt": "2026-11-27T09:12:00.152Z",
+      "elapsedMs": 69,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-versions",
+      "command": "node.exe -e console.log(JSON.stringify({node:process.version,prisma:require('@prisma/client/package.json').version,cli:require('prisma/package.json').version,typescript:require('typescript/package.json').version,playwright:require('@playwright/test/package.json').version}))",
+      "startedAt": "2026-11-27T09:12:00.224Z",
+      "elapsedMs": 74,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-container",
+      "command": "docker run <owned resource>",
+      "startedAt": "2026-11-27T09:12:00.301Z",
+      "elapsedMs": 4354,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-port",
+      "command": "docker port <owned resource>",
+      "startedAt": "2026-11-27T09:12:04.657Z",
+      "elapsedMs": 99,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-ready-0",
+      "command": "docker exec <owned> pg_isready",
+      "startedAt": "2026-11-27T09:12:04.760Z",
+      "elapsedMs": 170,
+      "exit": 2,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-ready-1",
+      "command": "docker exec <owned> pg_isready",
+      "startedAt": "2026-11-27T09:12:05.443Z",
+      "elapsedMs": 159,
+      "exit": 2,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-ready-2",
+      "command": "docker exec <owned> pg_isready",
+      "startedAt": "2026-11-27T09:12:06.107Z",
+      "elapsedMs": 158,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-target",
+      "command": "docker exec <owned> psql <read-only guard>",
+      "startedAt": "2026-11-27T09:12:06.265Z",
+      "elapsedMs": 153,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-migrate",
+      "command": "npm.cmd run db:migrate",
+      "startedAt": "2026-11-27T09:12:06.419Z",
+      "elapsedMs": 1891,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-old-check",
+      "command": "docker exec <owned> psql <read-only guard>",
+      "startedAt": "2026-11-27T09:12:08.311Z",
+      "elapsedMs": 136,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-migration-inventory",
+      "command": "docker exec <owned> psql <read-only guard>",
+      "startedAt": "2026-11-27T09:12:08.449Z",
+      "elapsedMs": 150,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "types-1",
+      "command": "npm.cmd exec -- tsc --noEmit",
+      "startedAt": "2026-11-27T09:12:17.184Z",
+      "elapsedMs": 3361,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "unit-1",
+      "command": "node --import tsx --test server/test/expense-input.test.ts",
+      "startedAt": "2026-11-27T09:12:20.618Z",
+      "elapsedMs": 289,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "api-1",
+      "command": "node --import tsx --test server/test/category-limits.test.ts",
+      "startedAt": "2026-11-27T09:12:20.957Z",
+      "elapsedMs": 2719,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "browser-1",
+      "command": "npm.cmd run test:e2e -- client/test/category-limits.spec.ts --reporter=list,json",
+      "startedAt": "2026-11-27T09:12:30.501Z",
+      "elapsedMs": 16056,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "types-2",
+      "command": "npm.cmd exec -- tsc --noEmit",
+      "startedAt": "2026-11-27T09:15:05.074Z",
+      "elapsedMs": 3538,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "additional-1",
+      "command": "node --import tsx --test server/test/category-limits-additional.test.ts",
+      "startedAt": "2026-11-27T09:15:08.682Z",
+      "elapsedMs": 3385,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "full-1",
+      "command": "npm.cmd test",
+      "startedAt": "2026-11-27T09:15:23.514Z",
+      "elapsedMs": 5937,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "build-1",
+      "command": "npm.cmd run build",
+      "startedAt": "2026-11-27T09:15:29.552Z",
+      "elapsedMs": 5572,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "fullbrowser-1",
+      "command": "npm.cmd run test:e2e -- --reporter=list,json",
+      "startedAt": "2026-11-27T09:15:35.197Z",
+      "elapsedMs": 63999,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "docker-1",
+      "command": "docker build -t <owned candidate tag> .",
+      "startedAt": "2026-11-27T09:18:29.886Z",
+      "elapsedMs": 25838,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-owner",
+      "command": "docker inspect <owned resource>",
+      "startedAt": "2026-11-27T09:21:48.918Z",
+      "elapsedMs": 88,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-domain",
+      "command": "docker exec <owned> psql <final domain/client counts>",
+      "startedAt": "2026-11-27T09:21:49.010Z",
+      "elapsedMs": 235,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-volumes",
+      "command": "docker inspect <owned resource>",
+      "startedAt": "2026-11-27T09:21:49.246Z",
+      "elapsedMs": 89,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-remove",
+      "command": "docker rm <owned resource>",
+      "startedAt": "2026-11-27T09:21:49.336Z",
+      "elapsedMs": 413,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-container-absence",
+      "command": "docker ps <owned resource>",
+      "startedAt": "2026-11-27T09:21:49.750Z",
+      "elapsedMs": 77,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-volume-absence",
+      "command": "docker volume <owned resource>",
+      "startedAt": "2026-11-27T09:21:49.828Z",
+      "elapsedMs": 75,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-original-inventory",
+      "command": "docker ps <owned resource>",
+      "startedAt": "2026-11-27T09:21:49.904Z",
+      "elapsedMs": 99,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    }
+  ],
+  "startedAt": "2026-11-27T09:12:00.149Z",
+  "node": "v24.14.0",
+  "platform": "win32 10.0.26200",
+  "isolation": {
+    "newOwnedContainer": true,
+    "loopbackEphemeralPort": true,
+    "randomDisposableDatabase": true,
+    "schema": "public",
+    "initialPublicTables": 0,
+    "liveIdentityMatches": true,
+    "postgres": "17.12 (Debian 17.12-1.pgdg12+1)",
+    "existingEnvironmentUsed": false
+  },
+  "candidateConstraint": "CHECK ((((category = 'ACTIVITY'::\"ExpenseCategory\") AND ((\"amountBaht\" >= 1) AND (\"amountBaht\" <= 150000))) OR ((category = 'EQUIPMENT'::\"ExpenseCategory\") AND ((\"amountBaht\" >= 1) AND (\"amountBaht\" <= 120000))) OR ((category = 'TRAVEL'::\"ExpenseCategory\") AND ((\"amountBaht\" >= 1) AND (\"amountBaht\" <= 100000)))))",
+  "migrations": [
+    "20261106000000_auth_foundation",
+    "20261107000000_expense_requests",
+    "20261124000000_return_resubmit",
+    "20261127000000_category_amount_limits"
+  ],
+  "prepared": true,
+  "cleanupCounts": "0|0|0|0|0",
+  "cleanup": {
+    "allDomainFixturesSessionsClientsRemoved": true,
+    "ownedContainerVolumesRemoved": true,
+    "existingContainersUnchanged": true,
+    "privateSettingsRemoved": true
+  },
+  "finishedAt": "2026-11-27T09:21:50.005Z",
+  "originalContainerCount": 3,
+  "provenance": {
+    "production": "ec10dd44140ee41f41826763c1500097d9b626e9",
+    "focusedTests": "f08672dda573907cba0ef686c5d80e74f81a53e2",
+    "supplementaryAndFull": "a0d1e9d57058b6377c44cf8c3e8a0e9a965d396d",
+    "imageHelper": "d406cb88eb0d8c3009350cd6d8db370c138d6be7",
+    "baseline": "453528073038a3122ecd7abb0adac7bf09a1dc41",
+    "environmentFilesUsed": false
+  }
+}

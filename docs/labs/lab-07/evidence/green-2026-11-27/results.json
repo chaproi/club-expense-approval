@@ -1,0 +1,62 @@
+[
+  {
+    "id": "unit-1",
+    "collected": 34,
+    "executed": 34,
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "runnerDurationMs": 226.2607
+  },
+  {
+    "id": "api-1",
+    "collected": 51,
+    "executed": 51,
+    "passed": 51,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "runnerDurationMs": 2658.5266
+  },
+  {
+    "id": "additional-1",
+    "collected": 54,
+    "executed": 54,
+    "passed": 54,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "runnerDurationMs": 3320.6367
+  },
+  {
+    "id": "full-1",
+    "collected": 184,
+    "executed": 184,
+    "passed": 184,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "runnerDurationMs": 5268.6284
+  },
+  {
+    "id": "browser-1",
+    "collected": 4,
+    "executed": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "runnerDurationMs": 15090.421
+  },
+  {
+    "id": "fullbrowser-1",
+    "collected": 23,
+    "executed": 23,
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "runnerDurationMs": 62886.458999999995
+  }
+]

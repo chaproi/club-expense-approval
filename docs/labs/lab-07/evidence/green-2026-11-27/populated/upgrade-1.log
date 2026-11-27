@@ -1,0 +1,22 @@
+2026-11-27T09:18:09.984Z $ npm.cmd run db:migrate
+
+> club-expense-approval@0.1.0 db:migrate
+> prisma migrate deploy
+
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": PostgreSQL database "<owned-test-database>", schema "public" at "127.0.0.1:57852"
+
+4 migrations found in prisma/migrations
+
+Applying migration `20261127000000_category_amount_limits`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261127000000_category_amount_limits/
+    └─ migration.sql
+
+All migrations have been successfully applied.
+
+
+{"id":"upgrade-1","command":"npm.cmd run db:migrate","startedAt":"2026-11-27T09:18:09.984Z","elapsedMs":1974,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

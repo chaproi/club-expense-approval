@@ -1,0 +1,5 @@
+2026-11-27T09:17:48.569Z $ docker exec <owned> psql <read-only guard>
+CHECK ((("amountBaht" >= 1) AND ("amountBaht" <= 100000)))
+
+
+{"id":"setup-old-check","command":"docker exec <owned> psql <read-only guard>","startedAt":"2026-11-27T09:17:48.569Z","elapsedMs":167,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

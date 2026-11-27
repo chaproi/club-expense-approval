@@ -1,0 +1,262 @@
+{
+  "startedAt": "2026-11-27T09:20:36.472Z",
+  "imageBuiltAt": "a0d1e9d57058b6377c44cf8c3e8a0e9a965d396d",
+  "commands": [
+    {
+      "id": "01-owner",
+      "command": "docker inspect <owned>",
+      "startedAt": "2026-11-27T09:20:36.475Z",
+      "elapsedMs": 100,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "02-identity",
+      "command": "docker exec <owned> psql <guarded image-schema query>",
+      "startedAt": "2026-11-27T09:20:36.577Z",
+      "elapsedMs": 149,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "03-schema-absent",
+      "command": "docker exec <owned> psql <guarded image-schema query>",
+      "startedAt": "2026-11-27T09:20:36.727Z",
+      "elapsedMs": 158,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "04-create-schema",
+      "command": "docker exec <owned> psql <guarded image-schema query>",
+      "startedAt": "2026-11-27T09:20:36.887Z",
+      "elapsedMs": 149,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "05-empty-schema",
+      "command": "docker exec <owned> psql <guarded image-schema query>",
+      "startedAt": "2026-11-27T09:20:37.036Z",
+      "elapsedMs": 150,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "06-network",
+      "command": "docker network <owned>",
+      "startedAt": "2026-11-27T09:20:37.188Z",
+      "elapsedMs": 140,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "07-attach",
+      "command": "docker network <owned>",
+      "startedAt": "2026-11-27T09:20:37.329Z",
+      "elapsedMs": 202,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "08-image",
+      "command": "docker image <owned>",
+      "startedAt": "2026-11-27T09:20:37.548Z",
+      "elapsedMs": 161,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "09-image-files",
+      "command": "docker run --rm <candidate> node <versions and actual migration inventory>",
+      "startedAt": "2026-11-27T09:20:37.710Z",
+      "elapsedMs": 522,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "10-migrate",
+      "command": "docker run --rm <candidate/private env> npm run db:migrate",
+      "startedAt": "2026-11-27T09:20:38.233Z",
+      "elapsedMs": 1821,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "11-applied",
+      "command": "docker exec <owned> psql <guarded image-schema query>",
+      "startedAt": "2026-11-27T09:20:40.057Z",
+      "elapsedMs": 174,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "12-seed",
+      "command": "docker run --rm <candidate/private env> npm run db:seed (new owned schema only)",
+      "startedAt": "2026-11-27T09:20:40.234Z",
+      "elapsedMs": 1269,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "13-start",
+      "command": "docker run -d <owned candidate> (ephemeral loopback HTTP)",
+      "startedAt": "2026-11-27T09:20:41.505Z",
+      "elapsedMs": 352,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "14-workflow",
+      "command": "node docs/labs/lab-07/verification/image-workflow.cjs",
+      "startedAt": "2026-11-27T09:20:42.441Z",
+      "elapsedMs": 922,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "15-stop",
+      "command": "docker stop <owned>",
+      "startedAt": "2026-11-27T09:20:43.366Z",
+      "elapsedMs": 996,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "16-app-logs",
+      "command": "docker logs <owned image app>",
+      "startedAt": "2026-11-27T09:20:44.364Z",
+      "elapsedMs": 124,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "17-remove-app",
+      "command": "docker rm <owned>",
+      "startedAt": "2026-11-27T09:20:44.490Z",
+      "elapsedMs": 133,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "18-final-counts",
+      "command": "docker exec <owned> psql <guarded image-schema query>",
+      "startedAt": "2026-11-27T09:20:44.626Z",
+      "elapsedMs": 171,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "19-drop-schema",
+      "command": "docker exec <owned> psql <guarded image-schema query>",
+      "startedAt": "2026-11-27T09:20:44.800Z",
+      "elapsedMs": 184,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "20-schema-absence",
+      "command": "docker exec <owned> psql <guarded image-schema query>",
+      "startedAt": "2026-11-27T09:20:44.986Z",
+      "elapsedMs": 195,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "21-detach",
+      "command": "docker network <owned>",
+      "startedAt": "2026-11-27T09:20:45.183Z",
+      "elapsedMs": 263,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    },
+    {
+      "id": "22-network-remove",
+      "command": "docker network <owned>",
+      "startedAt": "2026-11-27T09:20:45.448Z",
+      "elapsedMs": 337,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "terminated": false
+    }
+  ],
+  "cleanupErrors": [],
+  "targetGuard": {
+    "liveOwnedDatabaseRole": true,
+    "newOwnedSchema": true
+  },
+  "imageId": "sha256:5ffe6c91e841a0656c9d0a3b403f78bff5335943d09e3f3ff6bc3722049a1f0d",
+  "httpReadiness": [
+    {
+      "elapsedMs": 48,
+      "status": "not-ready"
+    },
+    {
+      "elapsedMs": 310,
+      "status": "not-ready"
+    },
+    {
+      "elapsedMs": 580,
+      "status": 200
+    }
+  ],
+  "verdict": "PASS",
+  "appStoppedRemoved": true,
+  "finalCounts": "0|0|0|0|0",
+  "schemaDrainedRemoved": true,
+  "networkDetached": true,
+  "networkRemoved": true,
+  "privateEnvRemoved": true,
+  "finishedAt": "2026-11-27T09:20:45.789Z",
+  "provenance": {
+    "production": "ec10dd44140ee41f41826763c1500097d9b626e9",
+    "focusedTests": "f08672dda573907cba0ef686c5d80e74f81a53e2",
+    "supplementaryAndFull": "a0d1e9d57058b6377c44cf8c3e8a0e9a965d396d",
+    "imageHelper": "d406cb88eb0d8c3009350cd6d8db370c138d6be7",
+    "baseline": "453528073038a3122ecd7abb0adac7bf09a1dc41",
+    "environmentFilesUsed": false
+  }
+}

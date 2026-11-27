@@ -1,0 +1,38 @@
+2026-11-27T09:17:46.736Z $ npm.cmd run db:migrate
+
+> club-expense-approval@0.1.0 db:migrate
+> prisma migrate deploy
+
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": PostgreSQL database "<owned-test-database>", schema "public" at "127.0.0.1:57852"
+
+3 migrations found in prisma/migrations
+
+Applying migration `20261106000000_auth_foundation`
+Applying migration `20261107000000_expense_requests`
+Applying migration `20261124000000_return_resubmit`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261106000000_auth_foundation/
+    └─ migration.sql
+  └─ 20261107000000_expense_requests/
+    └─ migration.sql
+  └─ 20261124000000_return_resubmit/
+    └─ migration.sql
+
+All migrations have been successfully applied.
+
+┌─────────────────────────────────────────────────────────┐
+│  Update available 6.19.3 -> 8.0.0-rc.36                 │
+│                                                         │
+│  This is a major update - please follow the guide at    │
+│  https://pris.ly/d/major-version-upgrade                │
+│                                                         │
+│  Run the following to update                            │
+│    npm i --save-dev prisma@latest                       │
+│    npm i @prisma/client@latest                          │
+└─────────────────────────────────────────────────────────┘
+
+{"id":"setup-migrate","command":"npm.cmd run db:migrate","startedAt":"2026-11-27T09:17:46.736Z","elapsedMs":1830,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

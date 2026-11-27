@@ -1,0 +1,5 @@
+2026-11-27T09:20:37.036Z $ docker exec <owned> psql <guarded image-schema query>
+SET
+<owned-test-database>|<owned-test-database>|lab7_image_6043eabea85f58f6|0
+
+{"id":"05-empty-schema","command":"docker exec <owned> psql <guarded image-schema query>","startedAt":"2026-11-27T09:20:37.036Z","elapsedMs":150,"exit":0,"signal":null,"spawnError":null,"terminated":false}

@@ -1,0 +1,5 @@
+2026-11-27T09:12:04.657Z $ docker port <owned resource>
+127.0.0.1:50131
+
+
+{"id":"setup-port","command":"docker port <owned resource>","startedAt":"2026-11-27T09:12:04.657Z","elapsedMs":99,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}
