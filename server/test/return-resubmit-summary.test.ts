@@ -137,7 +137,8 @@ test("T-F05-01/04: edit then resubmit preserves ID, assignment, createdAt and ol
 test("T-F05-02: invalid and forged edits do not mutate returned fields/history", async () => {
   const item = await returned(); const before = await detail(item.id);
   const bodies = [
-    ...[0, 100001, 1.5, "100"].map(amountBaht => ({ ...valid, amountBaht, expectedRevision: 1 })),
+    // AC-L7-01/02: ACTIVITY upper invalid boundary changes; unrelated negatives remain.
+    ...[0, 150001, 1.5, "100"].map(amountBaht => ({ ...valid, amountBaht, expectedRevision: 1 })),
     ...["", " ", "x".repeat(121), "bad\0title", "\ud800"].map(title => ({ ...valid, title, expectedRevision: 1 })),
     { ...valid, category: "UNKNOWN", expectedRevision: 1 }, { ...valid, expectedRevision: 1, status: "APPROVED" },
     { ...valid }, { ...valid, expectedRevision: "1" },
