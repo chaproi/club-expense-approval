@@ -1,0 +1,7 @@
+2026-11-27T09:21:49.904Z $ docker ps <owned resource>
+d92b438be64d|club-expense-approval-lab5-app-1|exited
+d819b2dcf7b8|club-expense-approval-lab5-migrate-1|exited
+407f732fc17d|club-expense-approval-lab5-db-1|exited
+
+
+{"id":"cleanup-original-inventory","command":"docker ps <owned resource>","startedAt":"2026-11-27T09:21:49.904Z","elapsedMs":99,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

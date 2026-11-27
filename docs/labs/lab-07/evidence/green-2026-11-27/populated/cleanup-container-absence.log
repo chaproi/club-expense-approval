@@ -1,0 +1,4 @@
+2026-11-27T09:18:29.476Z $ docker ps <owned resource>
+
+
+{"id":"cleanup-container-absence","command":"docker ps <owned resource>","startedAt":"2026-11-27T09:18:29.476Z","elapsedMs":85,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

@@ -1,0 +1,46 @@
+2026-11-27T09:12:20.618Z $ node --import tsx --test server/test/expense-input.test.ts
+✔ T-05: expense input accepts valid title and whole-baht boundaries (1.4165ms)
+✔ T-05: expense input rejects invalid title, category, amount and extra fields (0.209ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 1 accepted (0.1006ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 150000 accepted (0.0585ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 150001 rejected (0.0497ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: EQUIPMENT 1 accepted (0.0456ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: EQUIPMENT 120000 accepted (0.0669ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: EQUIPMENT 120001 rejected (0.0455ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: TRAVEL 1 accepted (0.0924ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: TRAVEL 100000 accepted (0.1201ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: TRAVEL 100001 rejected (0.0738ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 125000 accepted (0.065ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: EQUIPMENT 125000 rejected (0.027ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: TRAVEL 125000 rejected (0.0217ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 110000 accepted (0.0366ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: EQUIPMENT 110000 accepted (0.0289ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: TRAVEL 110000 rejected (0.0219ms)
+✔ AC-L7-02 STS-L7-01 unit creation: unchanged invalid amount/category controls (0.1054ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 1 accepted (0.1041ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 150000 accepted (0.0339ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 150001 rejected (0.0232ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: EQUIPMENT 1 accepted (0.023ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: EQUIPMENT 120000 accepted (0.0205ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: EQUIPMENT 120001 rejected (0.0227ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: TRAVEL 1 accepted (0.0202ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: TRAVEL 100000 accepted (0.0196ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: TRAVEL 100001 rejected (0.0274ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 125000 accepted (0.0319ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: EQUIPMENT 125000 rejected (0.0205ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: TRAVEL 125000 rejected (0.0208ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 110000 accepted (0.0243ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: EQUIPMENT 110000 accepted (0.0215ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: TRAVEL 110000 rejected (0.0322ms)
+✔ AC-L7-02 STS-L7-01 unit returned Save: unchanged invalid amount/category controls (0.0654ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 226.2607
+
+
+{"id":"unit-1","command":"node --import tsx --test server/test/expense-input.test.ts","startedAt":"2026-11-27T09:12:20.618Z","elapsedMs":289,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

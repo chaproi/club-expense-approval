@@ -1,0 +1,4 @@
+2026-11-27T09:20:36.727Z $ docker exec <owned> psql <guarded image-schema query>
+0
+
+{"id":"03-schema-absent","command":"docker exec <owned> psql <guarded image-schema query>","startedAt":"2026-11-27T09:20:36.727Z","elapsedMs":158,"exit":0,"signal":null,"spawnError":null,"terminated":false}

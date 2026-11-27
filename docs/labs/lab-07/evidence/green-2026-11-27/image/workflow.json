@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "checks": [
+    "Actual image root HTTP200",
+    "ACTIVITY maximum creation/returned Save/resubmit/decision/history PASS;max+1/access/Origin/stale denials preserve domain",
+    "EQUIPMENT maximum creation/returned Save/resubmit/decision/history PASS;max+1/access/Origin/stale denials preserve domain",
+    "TRAVEL maximum creation/returned Save/resubmit/decision/history PASS;max+1/access/Origin/stale denials preserve domain",
+    "Three exact requests/fifteen events;assigned counts;logout/revoked-cookie denial PASS",
+    "Owned image schema fixtures/session rows cleared"
+  ],
+  "finalRequestsBeforeCleanup": 3,
+  "finalEventsBeforeCleanup": 15,
+  "cleanup": true,
+  "timestamp": "2026-11-27T09:20:43.342Z"
+}

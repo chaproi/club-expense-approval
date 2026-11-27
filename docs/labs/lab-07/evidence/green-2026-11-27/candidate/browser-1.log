@@ -1,0 +1,25 @@
+2026-11-27T09:12:30.501Z $ npm.cmd run test:e2e -- client/test/category-limits.spec.ts --reporter=list,json
+
+> club-expense-approval@0.1.0 test:e2e
+> node --env-file-if-exists=.env node_modules/@playwright/test/cli.js test client/test/category-limits.spec.ts --reporter=list,json
+
+
+Running 4 tests using 1 worker
+
+  ok 1 client\test\category-limits.spec.ts:33:1 › AC-L7-03 STS-L7-03 creation category switches retain amount, explain the pair and never auto-write (1.3s)
+  ok 2 client\test\category-limits.spec.ts:62:1 › AC-L7-03/04 STS-L7-04 returned category switch retains values and requires explicit valid Save (1.6s)
+  ok 3 client\test\category-limits.spec.ts:85:1 › AC-L7-04 STS-L7-04 real stale amount draft restored over newer TRAVEL stays invalid without clamping or auto-write (1.8s)
+LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed
+  ok 4 client\test\category-limits.spec.ts:123:1 › AC-L7-01/03/07 browser preserved TRAVEL max/max+1 control creates one real request (1.2s)
+
+  4 passed (15.1s)
+
+.env not found. Continuing without it.
+[WebServer] (node:51424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] .env not found. Continuing without it.
+.env not found. Continuing without it.
+(node:45724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+{"id":"browser-1","command":"npm.cmd run test:e2e -- client/test/category-limits.spec.ts --reporter=list,json","startedAt":"2026-11-27T09:12:30.501Z","elapsedMs":16056,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

@@ -54,3 +54,7 @@
 - Requester detail adds owner-only edit/save/resubmit controls only in RETURNED. Reviewer detail adds a separate Return reason form and shows actual saved history. UI always sends the loaded revision.
 - F-06 count summary groups current requests scoped by assignedReviewerId in one DB query; server enforces REVIEWER. No data migration for summary. UI displays DB-sourced values and refreshes after changes.
 - F-07/F-08 sections above remain target designs, not claims that current code implements two-stage approval or filters. Add current implementation/status rows to feature inventory as tests/reviews run.
+
+## Lab7 category-pair candidate invariant —27 November2026
+
+[Lab7 local GREEN evidence](labs/lab-07/green-verification-2026-11-27.md). Server and both UI forms use known-category ceilings ACTIVITY150000/EQUIPMENT120000/TRAVEL100000, integer minimum1, no permissive fallback. New migration20261127000000_category_amount_limits holds a transactional table lock, verifies the validated inherited named CHECK and replaces only that CHECK with explicit paired branches. Existing INTEGER/enum/NOT NULL, models, indexes, API shapes and auth/Origin/state/revision/atomic-history protocols remain. No row/event rewrite. Fresh and populated4535280 migrations pass; larger valid rows make restoring the old uniform CHECK unsafe. Do not clamp/delete/narrow data for rollback; use reviewed forward correction or separately reviewed data-policy changes. Application/schema migration is not yet operationally deployed; preceding SDS sections preserve Sprint1 design history.

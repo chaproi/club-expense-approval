@@ -1,0 +1,68 @@
+2026-11-27T09:15:08.682Z $ node --import tsx --test server/test/category-limits-additional.test.ts
+✔ STS-L7-08 additional SQL insert: ACTIVITY 1 true (373.1499ms)
+✔ STS-L7-08 additional SQL insert: ACTIVITY 100000 true (22.0835ms)
+✔ STS-L7-08 additional SQL insert: ACTIVITY 150000 true (20.1965ms)
+✔ STS-L7-08 additional SQL insert: ACTIVITY 150001 false (44.7303ms)
+✔ STS-L7-08 additional SQL insert: EQUIPMENT 1 true (31.9518ms)
+✔ STS-L7-08 additional SQL insert: EQUIPMENT 100000 true (40.972ms)
+✔ STS-L7-08 additional SQL insert: EQUIPMENT 120000 true (39.7116ms)
+✔ STS-L7-08 additional SQL insert: EQUIPMENT 120001 false (25.3952ms)
+✔ STS-L7-08 additional SQL insert: TRAVEL 1 true (23.8981ms)
+✔ STS-L7-08 additional SQL insert: TRAVEL 100000 true (25.1195ms)
+✔ STS-L7-08 additional SQL insert: TRAVEL 100001 false (30.7782ms)
+✔ STS-L7-08 additional SQL insert: ACTIVITY 125000 true (35.12ms)
+✔ STS-L7-08 additional SQL insert: EQUIPMENT 125000 false (27.1111ms)
+✔ STS-L7-08 additional SQL insert: TRAVEL 125000 false (28.3007ms)
+✔ STS-L7-08 additional SQL insert: ACTIVITY 110000 true (26.1402ms)
+✔ STS-L7-08 additional SQL insert: EQUIPMENT 110000 true (25.7819ms)
+✔ STS-L7-08 additional SQL insert: TRAVEL 110000 false (28.8148ms)
+✔ STS-L7-08 additional SQL amount: ACTIVITY 1 true (26.6193ms)
+✔ STS-L7-08 additional SQL amount: ACTIVITY 100000 true (29.6597ms)
+✔ STS-L7-08 additional SQL amount: ACTIVITY 150000 true (27.8529ms)
+✔ STS-L7-08 additional SQL amount: ACTIVITY 150001 false (32.0362ms)
+✔ STS-L7-08 additional SQL amount: EQUIPMENT 1 true (37.8345ms)
+✔ STS-L7-08 additional SQL amount: EQUIPMENT 100000 true (29.8625ms)
+✔ STS-L7-08 additional SQL amount: EQUIPMENT 120000 true (32.4199ms)
+✔ STS-L7-08 additional SQL amount: EQUIPMENT 120001 false (27.0189ms)
+✔ STS-L7-08 additional SQL amount: TRAVEL 1 true (40.8431ms)
+✔ STS-L7-08 additional SQL amount: TRAVEL 100000 true (54.9145ms)
+✔ STS-L7-08 additional SQL amount: TRAVEL 100001 false (39.2787ms)
+✔ STS-L7-08 additional SQL amount: ACTIVITY 125000 true (43.5039ms)
+✔ STS-L7-08 additional SQL amount: EQUIPMENT 125000 false (54.0942ms)
+✔ STS-L7-08 additional SQL amount: TRAVEL 125000 false (41.4004ms)
+✔ STS-L7-08 additional SQL amount: ACTIVITY 110000 true (24.5911ms)
+✔ STS-L7-08 additional SQL amount: EQUIPMENT 110000 true (24.6525ms)
+✔ STS-L7-08 additional SQL amount: TRAVEL 110000 false (23.4889ms)
+✔ STS-L7-08 additional SQL category-only: ACTIVITY125000 to ACTIVITY true (26.8458ms)
+✔ STS-L7-08 additional SQL category-only: ACTIVITY125000 to EQUIPMENT false (22.1229ms)
+✔ STS-L7-08 additional SQL category-only: ACTIVITY125000 to TRAVEL false (25.5557ms)
+✔ STS-L7-08 additional SQL category-only: ACTIVITY110000 to ACTIVITY true (20.7613ms)
+✔ STS-L7-08 additional SQL category-only: ACTIVITY110000 to EQUIPMENT true (22.3875ms)
+✔ STS-L7-08 additional SQL category-only: ACTIVITY110000 to TRAVEL false (24.9844ms)
+✔ STS-L7-08 additional SQL category-only: ACTIVITY120000 to ACTIVITY true (20.3084ms)
+✔ STS-L7-08 additional SQL category-only: ACTIVITY120000 to EQUIPMENT true (23.9957ms)
+✔ STS-L7-08 additional SQL category-only: ACTIVITY120000 to TRAVEL false (36.1934ms)
+✔ STS-L7-08 additional SQL category-only: ACTIVITY100000 to ACTIVITY true (47.9832ms)
+✔ STS-L7-08 additional SQL category-only: ACTIVITY100000 to EQUIPMENT true (31.04ms)
+✔ STS-L7-08 additional SQL category-only: ACTIVITY100000 to TRAVEL true (47.9569ms)
+✔ STS-L7-05/06 high valid ACTIVITY: access, Origin, state and stale guards preserve exact state (211.5387ms)
+✔ STS-L7-06 high valid ACTIVITY: same-revision edit/resubmit race writes exactly once (50.0437ms)
+✔ STS-L7-05/06 high valid EQUIPMENT: access, Origin, state and stale guards preserve exact state (151.9046ms)
+✔ STS-L7-06 high valid EQUIPMENT: same-revision edit/resubmit race writes exactly once (39.447ms)
+✔ STS-L7-05/06 high valid TRAVEL: access, Origin, state and stale guards preserve exact state (151.2891ms)
+✔ STS-L7-06 high valid TRAVEL: same-revision edit/resubmit race writes exactly once (42.4364ms)
+LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed
+✔ STS-L7-05 revoked real sessions deny all three high valid pairs without domain changes (396.126ms)
+✔ STS-L7-02 accurate category-specific API feedback and unknown-category denial (53.8935ms)
+LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed
+ℹ tests 54
+ℹ suites 0
+ℹ pass 54
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3320.6367
+
+
+{"id":"additional-1","command":"node --import tsx --test server/test/category-limits-additional.test.ts","startedAt":"2026-11-27T09:15:08.682Z","elapsedMs":3385,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

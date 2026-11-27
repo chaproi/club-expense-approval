@@ -1,0 +1,5 @@
+2026-11-27T09:12:08.311Z $ docker exec <owned> psql <read-only guard>
+CHECK ((((category = 'ACTIVITY'::"ExpenseCategory") AND (("amountBaht" >= 1) AND ("amountBaht" <= 150000))) OR ((category = 'EQUIPMENT'::"ExpenseCategory") AND (("amountBaht" >= 1) AND ("amountBaht" <= 120000))) OR ((category = 'TRAVEL'::"ExpenseCategory") AND (("amountBaht" >= 1) AND ("amountBaht" <= 100000)))))
+
+
+{"id":"setup-old-check","command":"docker exec <owned> psql <read-only guard>","startedAt":"2026-11-27T09:12:08.311Z","elapsedMs":136,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

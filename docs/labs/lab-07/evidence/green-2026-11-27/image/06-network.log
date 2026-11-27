@@ -1,0 +1,4 @@
+2026-11-27T09:20:37.188Z $ docker network <owned>
+7cd09f73e926f05a354fe855cfc15f5e4e8edfe35fab00bc8d1132e0de879bb5
+
+{"id":"06-network","command":"docker network <owned>","startedAt":"2026-11-27T09:20:37.188Z","elapsedMs":140,"exit":0,"signal":null,"spawnError":null,"terminated":false}

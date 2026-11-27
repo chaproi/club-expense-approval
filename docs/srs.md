@@ -1,5 +1,7 @@
 # Current product SRS — Deliverable 2 working baseline
 
+**27 November 2026 — Lab 7 candidate amendment:** BR-01 below uses the peer-reviewed category-pair contract (PR50), implemented locally at ec10dd4 and verified with supplementary tests at a0d1e9d. [Lab7 local GREEN evidence](labs/lab-07/green-verification-2026-11-27.md). This feature-branch rule is not yet peer-code-approved, integrated or deployed. Main cc6b04c retains the historical uniform100000 policy. Earlier v0.4 status prose remains a historical D2 checkpoint; the original Sprint1 baseline is unchanged. Instructor/TA approval is **Not required under updated instructor announcement**.
+
 v0.4-candidate · 24 Nov 2026 · initial design preceded code; implementation/source verification now recorded, independent acceptance pending
 
 
@@ -8,14 +10,14 @@ v0.4-candidate · 24 Nov 2026 · initial design preceded code; implementation/so
 - **Requester** สมาชิกที่ส่งคำขอและติดตามคำขอของตน
 - **Reviewer** ผู้ตรวจคำขอที่ได้รับมอบหมาย ใน Final ใช้บัญชี Reviewer คนละบัญชีสำหรับผู้ตรวจเบื้องต้นและผู้อนุมัติขั้นสุดท้าย
 - ขอบเขตจบที่การอนุมัติคำขอ ผลอนุมัติหมายถึงอนุญาตให้เบิก การโอนเงิน การตัดงบ การอัปโหลดหลักฐาน การสมัครบัญชี และหน้าตั้งค่าลำดับอนุมัติอยู่นอกขอบเขต
-- ใช้บัญชีและข้อมูลจำลอง หมวดค่าใช้จ่ายคงที่คืออุปกรณ์ กิจกรรม และเดินทาง รับยอดเต็มบาทตั้งแต่ 1 ถึง 100,000 บาท เพดานนี้เป็นกติกาที่โครงการกำหนด ใช้รหัสหมวด `EQUIPMENT`, `ACTIVITY`, `TRAVEL` ตามลำดับ
+- ใช้บัญชีและข้อมูลจำลอง หมวดค่าใช้จ่ายคงที่คืออุปกรณ์ กิจกรรม และเดินทาง รับยอดเต็มบาทตั้งแต่ 1 บาท โดย ACTIVITY ไม่เกิน 150,000, EQUIPMENT ไม่เกิน 120,000 และ TRAVEL ไม่เกิน 100,000 บาทใน Lab7 candidate ต้องตรวจหมวดและยอดร่วมกัน เพดานนี้เป็นกติกาที่นักศึกษาเสนอและ peer ตรวจ contract แล้ว ใช้รหัสหมวด `EQUIPMENT`, `ACTIVITY`, `TRAVEL` ตามลำดับ
 
 | ID | ข้อกำหนด | ฟีเจอร์ | Sprint | วิธีตรวจ |
 |---|---|---|---:|---|
 | FR-01 | ผู้ใช้ล็อกอิน ตรวจบัญชีปัจจุบัน และออกจากระบบได้ | F-01 | 1 | AC-01–03 |
 | FR-02 | Requester ส่งคำขอและเปิดรายการ รายละเอียด และประวัติของตนได้ | F-02 | 1 | AC-04–06 |
 | FR-03 | Reviewer เปิดคำขอที่ได้รับมอบหมายและอนุมัติหรือปฏิเสธได้ ผู้ขอเห็นผลที่บันทึกไว้ | F-03 | 1 | AC-06–08 |
-| BR-01 | รายการหลัง trim มี 1–120 ตัวอักษร หมวดต้องอยู่ในรายการที่กำหนด ยอดเป็นจำนวนเต็ม 1–100,000 บาท | F-02 | 1 | AC-04–05 |
+| BR-01 | รายการหลัง trim มี 1–120 ตัวอักษร หมวดต้องอยู่ในรายการที่กำหนด ยอดเป็นจำนวนเต็มตั้งแต่1: ACTIVITY≤150000, EQUIPMENT≤120000, TRAVEL≤100000; ตรวจคู่หมวด/ยอด | F-02,F-05 | 1 / Lab7 | AC-04–05; AC-L7-01–07 |
 | BR-02 | สร้างคำขอในสถานะ SUBMITTED และมอบหมาย Reviewer ฝั่งเซิร์ฟเวอร์ | F-02 | 1 | AC-04 |
 | BR-03 | ผู้ตัดสินต้องเป็น Reviewer ที่ได้รับมอบหมายและคนละบัญชีกับผู้ขอ | F-03 | 1 | AC-06, AC-09 |
 | BR-04 | Sprint 1 ตัดสินได้จาก SUBMITTED ครั้งเดียว และบันทึกสถานะกับเหตุการณ์ใน transaction เดียว | F-03 | 1 | AC-07, AC-08, AC-10 |

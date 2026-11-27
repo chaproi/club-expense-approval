@@ -1,0 +1,5 @@
+2026-11-27T09:18:29.081Z $ docker rm <owned resource>
+f843065500a8af4bc028eb300004e92e84fd28e6e73d1eea7ba197ef197e233d
+
+
+{"id":"cleanup-remove","command":"docker rm <owned resource>","startedAt":"2026-11-27T09:18:29.081Z","elapsedMs":394,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

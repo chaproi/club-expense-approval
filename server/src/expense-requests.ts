@@ -1,7 +1,7 @@
 import type { ExpenseRequest, Prisma, PrismaClient, User } from "@prisma/client";
 import { Router, type Request, type Response } from "express";
 import { readSessionUser, requireSameOrigin } from "./auth.js";
-import { parseDecisionInput, parseExpenseInput, parseReturnedInput } from "./expense-input.js";
+import { expenseValidationMessage, parseDecisionInput, parseExpenseInput, parseReturnedInput } from "./expense-input.js";
 
 const listFields = {
   id: true, title: true, category: true, amountBaht: true, status: true, revision: true, createdAt: true,
@@ -60,7 +60,7 @@ export function createExpenseRouter(database: PrismaClient, appOrigin: string, d
     const input = parseExpenseInput(request.body);
     if (!input) {
       response.status(400).json({
-        error: { code: "INVALID_INPUT", message: "Enter a title of 1–120 characters, a valid category, and a whole amount of 1–100,000 baht." },
+        error: { code: "INVALID_INPUT", message: expenseValidationMessage(request.body) },
       });
       return;
     }
@@ -177,7 +177,7 @@ export function createExpenseRouter(database: PrismaClient, appOrigin: string, d
     const id = request.params.id;
     const input = parseReturnedInput(request.body, edit);
     if (typeof id !== "string" || id.includes("\0") || !input) {
-      response.status(400).json({ error: { code: "INVALID_INPUT", message: "Enter valid saved fields and the current request revision." } });
+      response.status(400).json({ error: { code: "INVALID_INPUT", message: "Enter valid saved fields and the current request revision." + (edit ? " " + expenseValidationMessage(request.body) : "") } });
       return;
     }
     const result = await database.$transaction(async transaction => {

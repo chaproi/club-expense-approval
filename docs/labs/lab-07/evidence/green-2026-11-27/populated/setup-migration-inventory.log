@@ -1,0 +1,7 @@
+2026-11-27T09:17:48.737Z $ docker exec <owned> psql <read-only guard>
+20261106000000_auth_foundation
+20261107000000_expense_requests
+20261124000000_return_resubmit
+
+
+{"id":"setup-migration-inventory","command":"docker exec <owned> psql <read-only guard>","startedAt":"2026-11-27T09:17:48.737Z","elapsedMs":156,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

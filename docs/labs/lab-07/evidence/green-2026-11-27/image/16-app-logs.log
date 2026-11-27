@@ -1,0 +1,19 @@
+2026-11-27T09:20:44.364Z $ docker logs <owned image app>
+
+> club-expense-approval@0.1.0 start
+> node --env-file-if-exists=.env dist/server/index.js
+
+API listening on port 3000
+.env not found. Continuing without it.
+npm error path /app
+npm error command failed
+npm error signal SIGTERM
+npm error command sh -c node --env-file-if-exists=.env dist/server/index.js
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+npm error A complete log of this run can be found in: /home/node/.npm/_logs/2026-11-27T09_20_41_898Z-debug-0.log
+
+{"id":"16-app-logs","command":"docker logs <owned image app>","startedAt":"2026-11-27T09:20:44.364Z","elapsedMs":124,"exit":0,"signal":null,"spawnError":null,"terminated":false}

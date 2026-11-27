@@ -1,0 +1,333 @@
+2026-11-27T08:13:22.136Z $ node --import tsx --test server/test/expense-input.test.ts
+✔ T-05: expense input accepts valid title and whole-baht boundaries (3.4053ms)
+✔ T-05: expense input rejects invalid title, category, amount and extra fields (0.5958ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 1 accepted (0.1809ms)
+✖ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 150000 accepted (3.0998ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 150001 rejected (0.5544ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: EQUIPMENT 1 accepted (0.1271ms)
+✖ AC-L7-01/02 STS-L7-01 unit creation: EQUIPMENT 120000 accepted (0.4813ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: EQUIPMENT 120001 rejected (0.1062ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: TRAVEL 1 accepted (0.1067ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: TRAVEL 100000 accepted (0.1525ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: TRAVEL 100001 rejected (0.1959ms)
+✖ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 125000 accepted (0.4871ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: EQUIPMENT 125000 rejected (0.0738ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: TRAVEL 125000 rejected (0.0812ms)
+✖ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 110000 accepted (0.2195ms)
+✖ AC-L7-01/02 STS-L7-01 unit creation: EQUIPMENT 110000 accepted (0.2122ms)
+✔ AC-L7-01/02 STS-L7-01 unit creation: TRAVEL 110000 rejected (0.0485ms)
+✔ AC-L7-02 STS-L7-01 unit creation: unchanged invalid amount/category controls (0.1898ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 1 accepted (0.1962ms)
+✖ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 150000 accepted (0.2774ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 150001 rejected (0.0492ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: EQUIPMENT 1 accepted (0.0529ms)
+✖ AC-L7-01/02 STS-L7-01 unit returned Save: EQUIPMENT 120000 accepted (0.2134ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: EQUIPMENT 120001 rejected (0.043ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: TRAVEL 1 accepted (0.0359ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: TRAVEL 100000 accepted (0.0305ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: TRAVEL 100001 rejected (0.0352ms)
+✖ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 125000 accepted (0.3185ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: EQUIPMENT 125000 rejected (0.0986ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: TRAVEL 125000 rejected (0.0419ms)
+✖ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 110000 accepted (0.245ms)
+✖ AC-L7-01/02 STS-L7-01 unit returned Save: EQUIPMENT 110000 accepted (0.2355ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: TRAVEL 110000 rejected (0.0477ms)
+✔ AC-L7-02 STS-L7-01 unit returned Save: unchanged invalid amount/category controls (0.0857ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 24
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 445.5897
+
+✖ failing tests:
+
+test at server\test\expense-input.test.ts:1:1673
+✖ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 150000 accepted (3.0998ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + null
+  - {
+  -   amountBaht: 150000,
+  -   category: 'ACTIVITY',
+  -   title: 'Club supplies'
+  - }
+
+      at TestContext.<anonymous> (<WORKTREE>\server\test\expense-input.test.ts:49:14)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { title: 'Club supplies', category: 'ACTIVITY', amountBaht: 150000 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at server\test\expense-input.test.ts:1:1673
+✖ AC-L7-01/02 STS-L7-01 unit creation: EQUIPMENT 120000 accepted (0.4813ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + null
+  - {
+  -   amountBaht: 120000,
+  -   category: 'EQUIPMENT',
+  -   title: 'Club supplies'
+  - }
+
+      at TestContext.<anonymous> (<WORKTREE>\server\test\expense-input.test.ts:49:14)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { title: 'Club supplies', category: 'EQUIPMENT', amountBaht: 120000 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at server\test\expense-input.test.ts:1:1673
+✖ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 125000 accepted (0.4871ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + null
+  - {
+  -   amountBaht: 125000,
+  -   category: 'ACTIVITY',
+  -   title: 'Club supplies'
+  - }
+
+      at TestContext.<anonymous> (<WORKTREE>\server\test\expense-input.test.ts:49:14)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { title: 'Club supplies', category: 'ACTIVITY', amountBaht: 125000 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at server\test\expense-input.test.ts:1:1673
+✖ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 110000 accepted (0.2195ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + null
+  - {
+  -   amountBaht: 110000,
+  -   category: 'ACTIVITY',
+  -   title: 'Club supplies'
+  - }
+
+      at TestContext.<anonymous> (<WORKTREE>\server\test\expense-input.test.ts:49:14)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { title: 'Club supplies', category: 'ACTIVITY', amountBaht: 110000 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at server\test\expense-input.test.ts:1:1673
+✖ AC-L7-01/02 STS-L7-01 unit creation: EQUIPMENT 110000 accepted (0.2122ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + null
+  - {
+  -   amountBaht: 110000,
+  -   category: 'EQUIPMENT',
+  -   title: 'Club supplies'
+  - }
+
+      at TestContext.<anonymous> (<WORKTREE>\server\test\expense-input.test.ts:49:14)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { title: 'Club supplies', category: 'EQUIPMENT', amountBaht: 110000 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at server\test\expense-input.test.ts:1:1673
+✖ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 150000 accepted (0.2774ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + null
+  - {
+  -   expectedRevision: 7,
+  -   fields: {
+  -     amountBaht: 150000,
+  -     category: 'ACTIVITY',
+  -     title: 'Club supplies'
+  -   }
+  - }
+
+      at TestContext.<anonymous> (<WORKTREE>\server\test\expense-input.test.ts:49:14)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { expectedRevision: 7, fields: { title: 'Club supplies', category: 'ACTIVITY', amountBaht: 150000 } },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at server\test\expense-input.test.ts:1:1673
+✖ AC-L7-01/02 STS-L7-01 unit returned Save: EQUIPMENT 120000 accepted (0.2134ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + null
+  - {
+  -   expectedRevision: 7,
+  -   fields: {
+  -     amountBaht: 120000,
+  -     category: 'EQUIPMENT',
+  -     title: 'Club supplies'
+  -   }
+  - }
+
+      at TestContext.<anonymous> (<WORKTREE>\server\test\expense-input.test.ts:49:14)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { expectedRevision: 7, fields: { title: 'Club supplies', category: 'EQUIPMENT', amountBaht: 120000 } },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at server\test\expense-input.test.ts:1:1673
+✖ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 125000 accepted (0.3185ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + null
+  - {
+  -   expectedRevision: 7,
+  -   fields: {
+  -     amountBaht: 125000,
+  -     category: 'ACTIVITY',
+  -     title: 'Club supplies'
+  -   }
+  - }
+
+      at TestContext.<anonymous> (<WORKTREE>\server\test\expense-input.test.ts:49:14)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { expectedRevision: 7, fields: { title: 'Club supplies', category: 'ACTIVITY', amountBaht: 125000 } },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at server\test\expense-input.test.ts:1:1673
+✖ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 110000 accepted (0.245ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + null
+  - {
+  -   expectedRevision: 7,
+  -   fields: {
+  -     amountBaht: 110000,
+  -     category: 'ACTIVITY',
+  -     title: 'Club supplies'
+  -   }
+  - }
+
+      at TestContext.<anonymous> (<WORKTREE>\server\test\expense-input.test.ts:49:14)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { expectedRevision: 7, fields: { title: 'Club supplies', category: 'ACTIVITY', amountBaht: 110000 } },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at server\test\expense-input.test.ts:1:1673
+✖ AC-L7-01/02 STS-L7-01 unit returned Save: EQUIPMENT 110000 accepted (0.2355ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + null
+  - {
+  -   expectedRevision: 7,
+  -   fields: {
+  -     amountBaht: 110000,
+  -     category: 'EQUIPMENT',
+  -     title: 'Club supplies'
+  -   }
+  - }
+
+      at TestContext.<anonymous> (<WORKTREE>\server\test\expense-input.test.ts:49:14)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { expectedRevision: 7, fields: { title: 'Club supplies', category: 'EQUIPMENT', amountBaht: 110000 } },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+
+{"id":"unit-1","command":"node --import tsx --test server/test/expense-input.test.ts","startedAt":"2026-11-27T08:13:22.136Z","elapsedMs":563,"exit":1,"signal":null,"spawnError":null,"runnerTerminated":false}

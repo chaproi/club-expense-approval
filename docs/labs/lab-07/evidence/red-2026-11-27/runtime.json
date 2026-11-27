@@ -1,0 +1,278 @@
+{
+  "commands": [
+    {
+      "id": "setup-inventory",
+      "command": "docker ps <owned resource>",
+      "startedAt": "2026-11-27T08:06:25.992Z",
+      "elapsedMs": 97,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-npm-ci",
+      "command": "npm.cmd ci",
+      "startedAt": "2026-11-27T08:06:26.094Z",
+      "elapsedMs": 29681,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-container",
+      "command": "docker run <owned resource>",
+      "startedAt": "2026-11-27T08:06:55.778Z",
+      "elapsedMs": 8123,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-port",
+      "command": "docker port <owned resource>",
+      "startedAt": "2026-11-27T08:07:03.904Z",
+      "elapsedMs": 170,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-ready-0",
+      "command": "docker exec <owned> pg_isready",
+      "startedAt": "2026-11-27T08:07:04.079Z",
+      "elapsedMs": 323,
+      "exit": 2,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-ready-1",
+      "command": "docker exec <owned> pg_isready",
+      "startedAt": "2026-11-27T08:07:04.913Z",
+      "elapsedMs": 246,
+      "exit": 2,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-ready-2",
+      "command": "docker exec <owned> pg_isready",
+      "startedAt": "2026-11-27T08:07:05.674Z",
+      "elapsedMs": 221,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-target",
+      "command": "docker exec <owned> psql <read-only guard>",
+      "startedAt": "2026-11-27T08:07:05.897Z",
+      "elapsedMs": 241,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-migrate",
+      "command": "npm.cmd run db:migrate",
+      "startedAt": "2026-11-27T08:07:06.140Z",
+      "elapsedMs": 3379,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-old-check",
+      "command": "docker exec <owned> psql <read-only guard>",
+      "startedAt": "2026-11-27T08:07:09.522Z",
+      "elapsedMs": 257,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "setup-migration-inventory",
+      "command": "docker exec <owned> psql <read-only guard>",
+      "startedAt": "2026-11-27T08:07:09.782Z",
+      "elapsedMs": 202,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "types-1",
+      "command": "npm.cmd exec -- tsc --noEmit",
+      "startedAt": "2026-11-27T08:13:06.870Z",
+      "elapsedMs": 7515,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "unit-1",
+      "command": "node --import tsx --test server/test/expense-input.test.ts",
+      "startedAt": "2026-11-27T08:13:22.136Z",
+      "elapsedMs": 563,
+      "exit": 1,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "api-1",
+      "command": "node --import tsx --test server/test/category-limits.test.ts",
+      "startedAt": "2026-11-27T08:13:30.168Z",
+      "elapsedMs": 5050,
+      "exit": 1,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "inherited-1",
+      "command": "node --import tsx --test server/test/expense-requests.test.ts server/test/return-resubmit-summary.test.ts",
+      "startedAt": "2026-11-27T08:13:44.001Z",
+      "elapsedMs": 5775,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "browser-1",
+      "command": "npm.cmd run test:e2e -- client/test/category-limits.spec.ts --reporter=list,json",
+      "startedAt": "2026-11-27T08:13:57.785Z",
+      "elapsedMs": 42826,
+      "exit": 1,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-owner",
+      "command": "docker inspect <owned resource>",
+      "startedAt": "2026-11-27T08:15:07.740Z",
+      "elapsedMs": 123,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-domain",
+      "command": "docker exec <owned> psql <final domain/client counts>",
+      "startedAt": "2026-11-27T08:15:07.866Z",
+      "elapsedMs": 365,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-volumes",
+      "command": "docker inspect <owned resource>",
+      "startedAt": "2026-11-27T08:15:08.233Z",
+      "elapsedMs": 112,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-remove",
+      "command": "docker rm <owned resource>",
+      "startedAt": "2026-11-27T08:15:08.345Z",
+      "elapsedMs": 560,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-container-absence",
+      "command": "docker ps <owned resource>",
+      "startedAt": "2026-11-27T08:15:08.908Z",
+      "elapsedMs": 100,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-volume-absence",
+      "command": "docker volume <owned resource>",
+      "startedAt": "2026-11-27T08:15:09.011Z",
+      "elapsedMs": 94,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    },
+    {
+      "id": "cleanup-original-inventory",
+      "command": "docker ps <owned resource>",
+      "startedAt": "2026-11-27T08:15:09.106Z",
+      "elapsedMs": 154,
+      "exit": 0,
+      "signal": null,
+      "spawnError": null,
+      "runnerTerminated": false
+    }
+  ],
+  "startedAt": "2026-11-27T08:06:25.989Z",
+  "node": "v24.14.0",
+  "platform": "win32 10.0.26200",
+  "isolation": {
+    "newOwnedContainer": true,
+    "loopbackEphemeralPort": true,
+    "randomDisposableDatabase": true,
+    "schema": "public",
+    "initialPublicTables": 0,
+    "liveIdentityMatches": true,
+    "postgres": "17.12 (Debian 17.12-1.pgdg12+1)",
+    "existingEnvironmentUsed": false
+  },
+  "originalConstraint": "CHECK (((\"amountBaht\" >= 1) AND (\"amountBaht\" <= 100000)))",
+  "migrations": [
+    "20261106000000_auth_foundation",
+    "20261107000000_expense_requests",
+    "20261124000000_return_resubmit"
+  ],
+  "prepared": true,
+  "cleanupCounts": "0|0|0|0|0",
+  "cleanup": {
+    "allDomainFixturesSessionsClientsRemoved": true,
+    "ownedContainerVolumesRemoved": true,
+    "existingContainersUnchanged": true,
+    "privateSettingsRemoved": true
+  },
+  "finishedAt": "2026-11-27T08:15:09.263Z",
+  "npm": "11.9.0",
+  "prisma": "6.19.3",
+  "typescript": "5.9.3",
+  "playwright": "1.62.1",
+  "productionSha": "453528073038a3122ecd7abb0adac7bf09a1dc41",
+  "testsSha": "f08672dda573907cba0ef686c5d80e74f81a53e2",
+  "independentHostCleanup": {
+    "ownedWorktreeProcesses": 0,
+    "listening4173": 0
+  },
+  "nonTestCheckFailure": {
+    "action": "elevated git status during host cleanup inspection",
+    "exit": 128,
+    "reason": "Git ownership protection under different Windows account",
+    "remedy": "Repository-scoped safe.directory for later elevated Git operations; no global setting or source edit"
+  }
+}

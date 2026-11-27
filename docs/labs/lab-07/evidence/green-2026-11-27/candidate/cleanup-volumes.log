@@ -1,0 +1,6 @@
+2026-11-27T09:21:49.246Z $ docker inspect <owned resource>
+5cc192c23b32b21d4849e796835c99f244bdbc368d19ff37b9a6f16553e5b921
+
+
+
+{"id":"cleanup-volumes","command":"docker inspect <owned resource>","startedAt":"2026-11-27T09:21:49.246Z","elapsedMs":89,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

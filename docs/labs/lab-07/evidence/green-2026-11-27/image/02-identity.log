@@ -1,0 +1,4 @@
+2026-11-27T09:20:36.577Z $ docker exec <owned> psql <guarded image-schema query>
+<owned-test-database>|<owned-test-database>|public
+
+{"id":"02-identity","command":"docker exec <owned> psql <guarded image-schema query>","startedAt":"2026-11-27T09:20:36.577Z","elapsedMs":149,"exit":0,"signal":null,"spawnError":null,"terminated":false}

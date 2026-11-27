@@ -1,0 +1,23 @@
+2026-11-27T08:06:26.094Z $ npm.cmd ci
+
+> club-expense-approval@0.1.0 postinstall
+> prisma generate
+
+Prisma schema loaded from prisma\schema.prisma
+
+✔ Generated Prisma Client (v6.19.3) to .\node_modules\@prisma\client in 87ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+
+added 152 packages, and audited 153 packages in 29s
+
+41 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+
+{"id":"setup-npm-ci","command":"npm.cmd ci","startedAt":"2026-11-27T08:06:26.094Z","elapsedMs":29681,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

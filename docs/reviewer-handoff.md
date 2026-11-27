@@ -1,5 +1,7 @@
 # Deliverable 2 — independent reviewer handoff
 
+**27 November 2026 — Lab7 candidate handoff:** [Lab7 local GREEN evidence](labs/lab-07/green-verification-2026-11-27.md) records implementation ec10dd4, additional verification a0d1e9d and image HTTP helper d406cb8. Contract PR50 approved c7f1c88 and merged4535280 before RED f08672d. Local184API/unit and23browser passes, fresh/populated/image migrations and cleanup do not constitute independent code review or deployment. Review the bounded category rule/migration/UI diff next; no PR is opened in this batch. Main/deployedcc6b04c is unchanged. The old D2 checkpoints and Lab7 approval-dependency text below are historical; Instructor/TA approval is **Not required under updated instructor announcement**. Preserve the completed D2 packet.
+
 Updated 26 Nov 2026 / chaproi. **PRs #43 and #45 are independently source-approved and merged into Sprint 2 staging. Integration checks passed at 7175362. Main release and deployed acceptance remain pending.** Do not merge evidence-only PR17.
 
 The earlier 24–25 Nov handoff below described #42 as ready for source review. Its then-pending review/integration instructions are retained as historical context. The current checkpoint follows.

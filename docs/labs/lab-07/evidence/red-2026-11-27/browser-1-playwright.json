@@ -1,0 +1,351 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "<WORKTREE>\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "client/test/category-limits.spec.ts",
+      "--reporter=list,json"
+    ],
+    "configFile": "<WORKTREE>\\playwright.config.ts",
+    "rootDir": "<WORKTREE>/client/test",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "<WORKTREE>/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "<WORKTREE>/client/test",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run build && npm run db:migrate && npm start",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false,
+      "timeout": 120000,
+      "env": {
+        "DATABASE_URL": "[database-url redacted]",
+        "APP_ORIGIN": "http://127.0.0.1:4173",
+        "PORT": "4173",
+        "DEFAULT_REVIEWER_EMAIL": "reviewer-b4675f841f17f600@example.test"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "category-limits.spec.ts",
+      "file": "category-limits.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "AC-L7-03 STS-L7-03 creation category switches retain amount, explain the pair and never auto-write",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6234,
+                  "error": {
+                    "message": "Error: ACTIVITY must expose its150000 ceiling\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('Amount (baht)', { exact: true })\nExpected: \u001b[32m\"1\u001b[7m5\u001b[27m0000\"\u001b[39m\nReceived: \u001b[31m\"1\u001b[7m0\u001b[27m0000\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - ACTIVITY must expose its150000 ceiling with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Amount (baht)', { exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <input min=\"1\" step=\"1\" required=\"\" max=\"100000\" type=\"number\" name=\"amountBaht\"/>\u001b[22m\n\u001b[2m       - unexpected value \"100000\"\u001b[22m\n",
+                    "stack": "Error: ACTIVITY must expose its150000 ceiling\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('Amount (baht)', { exact: true })\nExpected: \u001b[32m\"1\u001b[7m5\u001b[27m0000\"\u001b[39m\nReceived: \u001b[31m\"1\u001b[7m0\u001b[27m0000\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - ACTIVITY must expose its150000 ceiling with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Amount (baht)', { exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <input min=\"1\" step=\"1\" required=\"\" max=\"100000\" type=\"number\" name=\"amountBaht\"/>\u001b[22m\n\u001b[2m       - unexpected value \"100000\"\u001b[22m\n\n    at <WORKTREE>\\client\\test\\category-limits.spec.ts:39:72",
+                    "location": {
+                      "file": "<WORKTREE>\\client\\test\\category-limits.spec.ts",
+                      "column": 72,
+                      "line": 39
+                    },
+                    "snippet": "  37 |   await category.selectOption(\"ACTIVITY\"); await amount(page).fill(\"125000\");\n  38 |   // First new-behavior assertion; old UI's100000 is meaningful RED, not a click timeout.\n> 39 |   await expect(amount(page), \"ACTIVITY must expose its150000 ceiling\").toHaveAttribute(\"max\", \"150000\");\n     |                                                                        ^\n  40 |   await category.selectOption(\"EQUIPMENT\");\n  41 |   await expect(amount(page)).toHaveValue(\"125000\"); await expect(category).toHaveValue(\"EQUIPMENT\");\n  42 |   await expect(amount(page)).toHaveAttribute(\"max\", \"120000\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "<WORKTREE>\\client\\test\\category-limits.spec.ts",
+                        "column": 72,
+                        "line": 39
+                      },
+                      "message": "Error: ACTIVITY must expose its150000 ceiling\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('Amount (baht)', { exact: true })\nExpected: \u001b[32m\"1\u001b[7m5\u001b[27m0000\"\u001b[39m\nReceived: \u001b[31m\"1\u001b[7m0\u001b[27m0000\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - ACTIVITY must expose its150000 ceiling with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Amount (baht)', { exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <input min=\"1\" step=\"1\" required=\"\" max=\"100000\" type=\"number\" name=\"amountBaht\"/>\u001b[22m\n\u001b[2m       - unexpected value \"100000\"\u001b[22m\n\n\n  37 |   await category.selectOption(\"ACTIVITY\"); await amount(page).fill(\"125000\");\n  38 |   // First new-behavior assertion; old UI's100000 is meaningful RED, not a click timeout.\n> 39 |   await expect(amount(page), \"ACTIVITY must expose its150000 ceiling\").toHaveAttribute(\"max\", \"150000\");\n     |                                                                        ^\n  40 |   await category.selectOption(\"EQUIPMENT\");\n  41 |   await expect(amount(page)).toHaveValue(\"125000\"); await expect(category).toHaveValue(\"EQUIPMENT\");\n  42 |   await expect(amount(page)).toHaveAttribute(\"max\", \"120000\");\n    at <WORKTREE>\\client\\test\\category-limits.spec.ts:39:72"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-27T08:14:15.972Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "<WORKTREE>\\test-results\\category-limits-AC-L7-03-S-ed1a7-e-pair-and-never-auto-write\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "<WORKTREE>\\test-results\\category-limits-AC-L7-03-S-ed1a7-e-pair-and-never-auto-write\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "<WORKTREE>\\client\\test\\category-limits.spec.ts",
+                    "column": 72,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "df9f365c695aae0dafb3-9210a9fa8fa961ed08c8",
+          "file": "category-limits.spec.ts",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "AC-L7-03/04 STS-L7-04 returned category switch retains values and requires explicit valid Save",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6500,
+                  "error": {
+                    "message": "Error: returned ACTIVITY must expose150000\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('Corrected amount (baht)', { exact: true })\nExpected: \u001b[32m\"1\u001b[7m5\u001b[27m0000\"\u001b[39m\nReceived: \u001b[31m\"1\u001b[7m0\u001b[27m0000\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - returned ACTIVITY must expose150000 with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Corrected amount (baht)', { exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <input min=\"1\" step=\"1\" required=\"\" max=\"100000\" type=\"number\" value=\"125000\" name=\"editAmount\"/>\u001b[22m\n\u001b[2m       - unexpected value \"100000\"\u001b[22m\n",
+                    "stack": "Error: returned ACTIVITY must expose150000\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('Corrected amount (baht)', { exact: true })\nExpected: \u001b[32m\"1\u001b[7m5\u001b[27m0000\"\u001b[39m\nReceived: \u001b[31m\"1\u001b[7m0\u001b[27m0000\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - returned ACTIVITY must expose150000 with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Corrected amount (baht)', { exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <input min=\"1\" step=\"1\" required=\"\" max=\"100000\" type=\"number\" value=\"125000\" name=\"editAmount\"/>\u001b[22m\n\u001b[2m       - unexpected value \"100000\"\u001b[22m\n\n    at <WORKTREE>\\client\\test\\category-limits.spec.ts:68:73",
+                    "location": {
+                      "file": "<WORKTREE>\\client\\test\\category-limits.spec.ts",
+                      "column": 73,
+                      "line": 68
+                    },
+                    "snippet": "  66 |   await expect(editAmount(page)).toHaveValue(\"250\"); const writes = track(page);\n  67 |   await editAmount(page).fill(\"125000\");\n> 68 |   await expect(editAmount(page), \"returned ACTIVITY must expose150000\").toHaveAttribute(\"max\", \"150000\");\n     |                                                                         ^\n  69 |   await editCategory(page).selectOption(\"EQUIPMENT\");\n  70 |   await expect(editAmount(page)).toHaveValue(\"125000\"); await expect(editCategory(page)).toHaveValue(\"EQUIPMENT\");\n  71 |   await expect(editAmount(page)).toHaveAttribute(\"max\", \"120000\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "<WORKTREE>\\client\\test\\category-limits.spec.ts",
+                        "column": 73,
+                        "line": 68
+                      },
+                      "message": "Error: returned ACTIVITY must expose150000\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('Corrected amount (baht)', { exact: true })\nExpected: \u001b[32m\"1\u001b[7m5\u001b[27m0000\"\u001b[39m\nReceived: \u001b[31m\"1\u001b[7m0\u001b[27m0000\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - returned ACTIVITY must expose150000 with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Corrected amount (baht)', { exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <input min=\"1\" step=\"1\" required=\"\" max=\"100000\" type=\"number\" value=\"125000\" name=\"editAmount\"/>\u001b[22m\n\u001b[2m       - unexpected value \"100000\"\u001b[22m\n\n\n  66 |   await expect(editAmount(page)).toHaveValue(\"250\"); const writes = track(page);\n  67 |   await editAmount(page).fill(\"125000\");\n> 68 |   await expect(editAmount(page), \"returned ACTIVITY must expose150000\").toHaveAttribute(\"max\", \"150000\");\n     |                                                                         ^\n  69 |   await editCategory(page).selectOption(\"EQUIPMENT\");\n  70 |   await expect(editAmount(page)).toHaveValue(\"125000\"); await expect(editCategory(page)).toHaveValue(\"EQUIPMENT\");\n  71 |   await expect(editAmount(page)).toHaveAttribute(\"max\", \"120000\");\n    at <WORKTREE>\\client\\test\\category-limits.spec.ts:68:73"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-27T08:14:25.421Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "<WORKTREE>\\test-results\\category-limits-AC-L7-03-0-d8f92-equires-explicit-valid-Save\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "<WORKTREE>\\test-results\\category-limits-AC-L7-03-0-d8f92-equires-explicit-valid-Save\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "<WORKTREE>\\client\\test\\category-limits.spec.ts",
+                    "column": 73,
+                    "line": 68
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "df9f365c695aae0dafb3-3cf51054b9060f4e2625",
+          "file": "category-limits.spec.ts",
+          "line": 62,
+          "column": 1
+        },
+        {
+          "title": "AC-L7-04 STS-L7-04 real stale amount draft restored over newer TRAVEL stays invalid without clamping or auto-write",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1724,
+                  "error": {
+                    "message": "Error: ACTIVITY125000 must be valid before the deliberate stale Save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: ACTIVITY125000 must be valid before the deliberate stale Save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at <WORKTREE>\\client\\test\\category-limits.spec.ts:95:152",
+                    "location": {
+                      "file": "<WORKTREE>\\client\\test\\category-limits.spec.ts",
+                      "column": 152,
+                      "line": 95
+                    },
+                    "snippet": "  93 |   expect(writes).toEqual([]);\n  94 |   // On old UI this fails directly; the real409 and restored-invalid-pair checks below are then unreached.\n> 95 |   expect(await editAmount(page).evaluate((e: HTMLInputElement) => e.checkValidity()), \"ACTIVITY125000 must be valid before the deliberate stale Save\").toBe(true);\n     |                                                                                                                                                        ^\n  96 |   const conflict = page.waitForResponse(r => matches(r.url(), r.request().method(), \"/\" + item.id, \"PATCH\"));\n  97 |   await save(page).click(); const failed = await conflict;\n  98 |   expect(failed.status()).toBe(409); expect(await failed.json()).toMatchObject({ error: { code: \"INVALID_STATE\" } });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "<WORKTREE>\\client\\test\\category-limits.spec.ts",
+                        "column": 152,
+                        "line": 95
+                      },
+                      "message": "Error: ACTIVITY125000 must be valid before the deliberate stale Save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  93 |   expect(writes).toEqual([]);\n  94 |   // On old UI this fails directly; the real409 and restored-invalid-pair checks below are then unreached.\n> 95 |   expect(await editAmount(page).evaluate((e: HTMLInputElement) => e.checkValidity()), \"ACTIVITY125000 must be valid before the deliberate stale Save\").toBe(true);\n     |                                                                                                                                                        ^\n  96 |   const conflict = page.waitForResponse(r => matches(r.url(), r.request().method(), \"/\" + item.id, \"PATCH\"));\n  97 |   await save(page).click(); const failed = await conflict;\n  98 |   expect(failed.status()).toBe(409); expect(await failed.json()).toMatchObject({ error: { code: \"INVALID_STATE\" } });\n    at <WORKTREE>\\client\\test\\category-limits.spec.ts:95:152"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-27T08:14:33.596Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "<WORKTREE>\\test-results\\category-limits-AC-L7-04-S-704a3-hout-clamping-or-auto-write\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "<WORKTREE>\\test-results\\category-limits-AC-L7-04-S-704a3-hout-clamping-or-auto-write\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "<WORKTREE>\\client\\test\\category-limits.spec.ts",
+                    "column": 152,
+                    "line": 95
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "df9f365c695aae0dafb3-8541ec62a0e3f38eeb85",
+          "file": "category-limits.spec.ts",
+          "line": 85,
+          "column": 1
+        },
+        {
+          "title": "AC-L7-01/03/07 browser preserved TRAVEL max/max+1 control creates one real request",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1727,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-27T08:14:37.254Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df9f365c695aae0dafb3-9d2143cd2b65336b50f0",
+          "file": "category-limits.spec.ts",
+          "line": 123,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-27T08:13:59.324Z",
+    "duration": 41230.486000000004,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}
