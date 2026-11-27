@@ -1,5 +1,7 @@
 # Lab 7 proposal: category-dependent whole-baht expense ceilings
 
+**Current checkpoint,27November2026:** the revised contract was independently approved by thananun-7203 on c7f1c88 and merged at4535280. See [verified acceptance and RED-only handoff](contract-acceptance-2026-11-27.md). Earlier Pending wording below is the retained proposal checkpoint, superseded only for peer contract review. The normative category policy is unchanged; production/deployment remain pre-change. Instructor/TA approval remains Not required under updated instructor announcement.
+
 Version **0.2**, 27 November 2026 (Asia/Bangkok). **PROPOSED / NOT EFFECTIVE; independent peer contract review PENDING.** Instructor/TA approval: **Not required under updated instructor announcement**. This is not personal approval. Production remains1–100000 for every category until a reviewed implementation is released. Implementation and all Lab7 RED/GREEN executions remain **UNEXECUTED**.
 
 Same [Issue49](https://github.com/chaproi/club-expense-approval/issues/49) and [contract-review PR50](https://github.com/chaproi/club-expense-approval/pull/50). Author/owner: chaproi (นายสิริกร ฝันนิมิตร,67070507215,TH-038, Solo with previously documented instructor permission). ChatGPT/Codex assistance is not independent peer review.

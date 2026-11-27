@@ -1,5 +1,7 @@
 # Lab 7 evidence and readiness plan
 
+**Current checkpoint,27November2026:** [contract review accepted and merged; RED-only handoff](contract-acceptance-2026-11-27.md). Prior Pending review wording below is historical and superseded for the contract gate only. Implementation, all RED/GREEN results and new-policy deployment remain unexecuted at this handoff. Instructor/TA approval remains Not required under updated instructor announcement.
+
 Revision0.2,27 November 2026 (Asia/Bangkok). [Current proposal](proposal.md) / [proposed category contract v1.1 and STS](contract-proposed-v1.md). **Proposal only; implementation and all RED/GREEN results UNEXECUTED.** Instructor/TA approval: **Not required under updated instructor announcement** ([student-supplied evidence and limits](instructor-announcement-2026-11-27.md)); not Approved. Independent peer contract review before implementation remains PENDING. The supplied Lab7 rubric has PartsA/B/C/D weighted25/50/15/10; weights are not awarded marks. Due29November2026 at23:59Thailand; no extension claimed. [Original plan](https://github.com/chaproi/club-expense-approval/blob/12d40ecf571d50a012045b324d48ae50459c21eb/docs/labs/lab-07/evidence-plan.md) retains its superseded instructor gate and uniform150000 proposal.
 
 The current **student-proposed** policy is ACTIVITY1–150000, EQUIPMENT1–120000, TRAVEL1–100000 on creation and owner-authorized RETURNED Save. The instructor announcement removes a prerequisite; it does not select this policy or certify its complexity. Peer review must assess that point along with paired validation, category-switch/no-clamp feedback, draft interactions, preservation and rollback.
@@ -18,7 +20,7 @@ Checkboxes describe evidence collected, not author/AI acceptance of the lab. Onl
 - [x] Inspect accepted Sprint1 rule, current implementation/callers and original database constraint; identify actual pre-change SHA.
 - [x] Prepare explicit NOT EFFECTIVE old/new proposal, impact, AC/STS, migration rationale and future evidence plan before tests/code.
 - [x] Record supplied announcement and its source limits: instructor/TA approval Not required under updated instructor announcement, not Approved; preserve earlier Pending record as history.
-- [ ] Record independent peer contract review and exact reviewed document SHA; resolve contract findings before implementation.
+- [x] Record independent peer contract review atc7f1c88, approval2026-11-27T06:11:30Z, staging merge4535280 at07:05:24Z; see acceptance record. No binding contract findings; implementation guidance retained.
 - [ ] After substantive peer contract review, commit and run revised-policy RED tests on pre-change production; preserve semantic versus infrastructure failures.
 - [ ] Commit minimal GREEN separately; record same tests, affected regressions and all attempted results on actual source.
 - [ ] Obtain substantive code/migration peer review and passing required CI; retain failed checks and reviewed SHA.

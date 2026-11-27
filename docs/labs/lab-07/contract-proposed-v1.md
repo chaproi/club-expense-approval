@@ -1,5 +1,7 @@
 # Lab 7 category-dependent amount contract and STS — proposed v1.1
 
+**Current checkpoint,27November2026:** this exact v1.1 contract is accepted for tests-first implementation by the [verified independent review and staging merge](contract-acceptance-2026-11-27.md). Old Pending/status text below preserves the pre-review checkpoint; the AC/STS policy remains unchanged. No implementation/operational acceptance follows from that review. Instructor/TA approval remains Not required under updated instructor announcement.
+
 27 November 2026 (Asia/Bangkok). **PROPOSED / NOT EFFECTIVE. Independent peer contract review PENDING before implementation.** Instructor/TA approval: **Not required under updated instructor announcement** ([student-supplied evidence](instructor-announcement-2026-11-27.md)). No personal Approved status. Implementation and all RED/GREEN remain **UNEXECUTED**.
 
 [Current proposal/impact](proposal.md) / [evidence plan](evidence-plan.md). This same file path now carries v1.1; [v1.0 at12d40ec](https://github.com/chaproi/club-expense-approval/blob/12d40ecf571d50a012045b324d48ae50459c21eb/docs/labs/lab-07/contract-proposed-v1.md) preserves the original uniform150000 proposal and earlier pending gate. No AC IDs are retired; AC-L7-01–08 and STS-L7-01–10 are prospectively revised below, not historical executions.
