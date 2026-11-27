@@ -1,0 +1,65 @@
+{
+  "description": "Redacted copies of existing actual execution outputs; no result reconstructed. JSON results independently parsed from retained outputs.",
+  "files": [
+    {
+      "path": "api-1.log",
+      "bytes": 16171,
+      "sha256": "09e67579095185653fa35d1239407b08cf9e54725cebbec501d3bfb502b42ddc"
+    },
+    {
+      "path": "browser-1-playwright.json",
+      "bytes": 21885,
+      "sha256": "539a058badbec390b5d5093261a9a9c21d7a20cffa37836ffb08f9dd67f58717"
+    },
+    {
+      "path": "browser-1.log",
+      "bytes": 7718,
+      "sha256": "971ba636dc45d050b44615fd00a0f167291096bb4963476051231731f24609e1"
+    },
+    {
+      "path": "cleanup-domain.log",
+      "bytes": 304,
+      "sha256": "c025ecf10ab2c36fd3ec5ed030909f0dcf2a23eb79eec393642ec0e82fcd5d3d"
+    },
+    {
+      "path": "inherited-1.log",
+      "bytes": 3083,
+      "sha256": "dbd3c27f87aef9bd937825b494ca05329828f4ee607605ce65941ed5db8bd11e"
+    },
+    {
+      "path": "results.json",
+      "bytes": 2944,
+      "sha256": "312081e54dbf723f0fe0c0037bdf68ad111f3ff0b9d5fe982be780c8755f3f32"
+    },
+    {
+      "path": "runtime.json",
+      "bytes": 7776,
+      "sha256": "0d391dcd8bd207b9c3aa88b81dfd1e750c0a7bf14df666cafd4cabe66ddb8dd5"
+    },
+    {
+      "path": "setup-migrate.log",
+      "bytes": 1824,
+      "sha256": "150a409d86a5ddd9ea7de5236c99f28b66ad734a2815e21c108086c42cd6d708"
+    },
+    {
+      "path": "setup-npm-ci.log",
+      "bytes": 698,
+      "sha256": "3d24e613064ae2e677cfac6d403130e97adc4634f39e3fc2a5bae322da61d275"
+    },
+    {
+      "path": "setup-old-check.log",
+      "bytes": 332,
+      "sha256": "f8203ff0dfb344215db4121c59f402f1011b24e4a65c71ce210be69a1f662aa7"
+    },
+    {
+      "path": "types-1.log",
+      "bytes": 238,
+      "sha256": "d5d8ab10e79560ac9c9ced18a358b82ffb224b1dac1d13f59b1671a02c1e79e3"
+    },
+    {
+      "path": "unit-1.log",
+      "bytes": 13913,
+      "sha256": "94fe92f44f91456a5926229fcc62d420bf6ecce888d9df66d40145fa6226a128"
+    }
+  ]
+}

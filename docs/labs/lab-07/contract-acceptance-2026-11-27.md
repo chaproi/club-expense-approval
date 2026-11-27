@@ -27,3 +27,7 @@ Original12d40ec proposal, revisedc7f1c88 contract, former Pending text, original
 4. Keep exact commands, tested source/tests SHA, UTC/runtime/isolation/counts/exit/error/reached and cleanup evidence, including any setup corrections. No GREEN, production/UI/SQL/dependency/configuration change, PR, merge, deployment or Issue closure.
 
 Future fresh/populated **new-policy migration** verification and changed/preserved live checks remain unexecuted. Current direct SQL RED concerns the original migrated database, not migration adoption. Historical47API/19browser proposal CI atc7f1c88 is unchanged-production evidence only and is not Lab7 GREEN.
+
+## Subsequent RED execution
+
+The later [27November tests-first execution record](red-verification-2026-11-27.md) links committed tests, actual failures/passing controls, unreached assertions and independent cleanup. This appends execution evidence after the handoff above; it does not rewrite the original pre-execution checkpoint or promote implementation/deployment acceptance.

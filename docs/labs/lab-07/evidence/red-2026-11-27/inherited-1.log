@@ -1,0 +1,39 @@
+2026-11-27T08:13:44.001Z $ node --import tsx --test server/test/expense-requests.test.ts server/test/return-resubmit-summary.test.ts
+✔ T-04: requester submits a read-only expense and reads its stored history (1095.8431ms)
+✔ T-05: API rejects an invalid amount or client-supplied assignment without inserting a record (49.2888ms)
+✔ T-06: only the owner and assigned reviewer can read an expense, and reviewers cannot submit (126.1828ms)
+✔ expense detail rejects a malformed URL segment (/%00) (12.9243ms)
+✔ expense detail rejects a malformed URL segment (/%E0%A4%A) (11.1135ms)
+✔ T-05: API rejects a title with an unpaired UTF-16 surrogate without inserting a record (33.1308ms)
+✔ T-03 extension: anonymous requests cannot list, read, submit or decide expenses (8.5778ms)
+✔ T-07: assigned reviewer approves or rejects and the owner reads the recorded decision (231.4421ms)
+✔ T-06 / T-10: requesters, unassigned reviewers and a self-reviewer cannot decide (107.3877ms)
+✔ T-11: sequential decisions return 200 then 409 and keep one decision event (85.3924ms)
+✔ T-11: concurrent decisions produce one success, one conflict and one decision event (90.3101ms)
+✔ T-08: owner reads the decision after restarting the app and database client (133.9332ms)
+✔ an authenticated browser cannot submit an expense from another origin (8.7549ms)
+✔ submission fails without creating an expense when the assigned account is not a reviewer (54.7522ms)
+✔ T-F04-01: return persists one trimmed reason, owner identity and atomic history (1090.2198ms)
+✔ T-F04-02: return reason/revision/shape boundaries reject without state changes (476.4699ms)
+✔ T-F04-03: wrong principals and origins cannot return or alter protected history (176.119ms)
+✔ T-F04-04: terminal, repeated and concurrent decisions produce only one transition (515.9165ms)
+✔ T-F05-01/04: edit then resubmit preserves ID, assignment, createdAt and older history (130.5747ms)
+✔ T-F05-02: invalid and forged edits do not mutate returned fields/history (549.8888ms)
+✔ T-F05-03: owner/role/state/Origin restrictions protect both edit and resubmit (724.5942ms)
+✔ T-F05-05: stale edits and repeated concurrent resubmits never duplicate events (312.4958ms)
+✔ T-F05-05: edit-versus-resubmit race uses the same revision predicate (102.2899ms)
+✔ T-F04-05/T-F05-06: return/edit/resubmit detail survives a new app and Prisma client (165.3589ms)
+✔ T-F06-01/02/03: real DB counts include only assigned current records and explicit zeros (94.9583ms)
+✔ T-F06-01: returning, editing and resubmitting change counts without inflating total (155.4229ms)
+✔ T-F06-03: empty summary and readback after restart remain exact (98.8977ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5663.4798
+
+
+{"id":"inherited-1","command":"node --import tsx --test server/test/expense-requests.test.ts server/test/return-resubmit-summary.test.ts","startedAt":"2026-11-27T08:13:44.001Z","elapsedMs":5775,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

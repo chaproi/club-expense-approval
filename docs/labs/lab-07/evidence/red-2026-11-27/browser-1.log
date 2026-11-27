@@ -1,0 +1,126 @@
+2026-11-27T08:13:57.785Z $ npm.cmd run test:e2e -- client/test/category-limits.spec.ts --reporter=list,json
+
+> club-expense-approval@0.1.0 test:e2e
+> node --env-file-if-exists=.env node_modules/@playwright/test/cli.js test client/test/category-limits.spec.ts --reporter=list,json
+
+
+Running 4 tests using 1 worker
+
+LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed
+  x  1 client\test\category-limits.spec.ts:33:1 › AC-L7-03 STS-L7-03 creation category switches retain amount, explain the pair and never auto-write (6.2s)
+LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed
+  x  2 client\test\category-limits.spec.ts:62:1 › AC-L7-03/04 STS-L7-04 returned category switch retains values and requires explicit valid Save (6.5s)
+LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed
+  x  3 client\test\category-limits.spec.ts:85:1 › AC-L7-04 STS-L7-04 real stale amount draft restored over newer TRAVEL stays invalid without clamping or auto-write (1.7s)
+LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed
+  ok 4 client\test\category-limits.spec.ts:123:1 › AC-L7-01/03/07 browser preserved TRAVEL max/max+1 control creates one real request (1.7s)
+
+
+  1) client\test\category-limits.spec.ts:33:1 › AC-L7-03 STS-L7-03 creation category switches retain amount, explain the pair and never auto-write
+
+    Error: ACTIVITY must expose its150000 ceiling
+
+    expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByLabel('Amount (baht)', { exact: true })
+    Expected: "150000"
+    Received: "100000"
+    Timeout:  5000ms
+
+    Call log:
+      - ACTIVITY must expose its150000 ceiling with timeout 5000ms
+      - waiting for getByLabel('Amount (baht)', { exact: true })
+        14 × locator resolved to <input min="1" step="1" required="" max="100000" type="number" name="amountBaht"/>
+           - unexpected value "100000"
+
+
+      37 |   await category.selectOption("ACTIVITY"); await amount(page).fill("125000");
+      38 |   // First new-behavior assertion; old UI's100000 is meaningful RED, not a click timeout.
+    > 39 |   await expect(amount(page), "ACTIVITY must expose its150000 ceiling").toHaveAttribute("max", "150000");
+         |                                                                        ^
+      40 |   await category.selectOption("EQUIPMENT");
+      41 |   await expect(amount(page)).toHaveValue("125000"); await expect(category).toHaveValue("EQUIPMENT");
+      42 |   await expect(amount(page)).toHaveAttribute("max", "120000");
+        at <WORKTREE>\client\test\category-limits.spec.ts:39:72
+
+    Error Context: test-results\category-limits-AC-L7-03-S-ed1a7-e-pair-and-never-auto-write\error-context.md
+
+    Error Context: test-results\category-limits-AC-L7-03-S-ed1a7-e-pair-and-never-auto-write\error-context.md
+
+  2) client\test\category-limits.spec.ts:62:1 › AC-L7-03/04 STS-L7-04 returned category switch retains values and requires explicit valid Save
+
+    Error: returned ACTIVITY must expose150000
+
+    expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByLabel('Corrected amount (baht)', { exact: true })
+    Expected: "150000"
+    Received: "100000"
+    Timeout:  5000ms
+
+    Call log:
+      - returned ACTIVITY must expose150000 with timeout 5000ms
+      - waiting for getByLabel('Corrected amount (baht)', { exact: true })
+        14 × locator resolved to <input min="1" step="1" required="" max="100000" type="number" value="125000" name="editAmount"/>
+           - unexpected value "100000"
+
+
+      66 |   await expect(editAmount(page)).toHaveValue("250"); const writes = track(page);
+      67 |   await editAmount(page).fill("125000");
+    > 68 |   await expect(editAmount(page), "returned ACTIVITY must expose150000").toHaveAttribute("max", "150000");
+         |                                                                         ^
+      69 |   await editCategory(page).selectOption("EQUIPMENT");
+      70 |   await expect(editAmount(page)).toHaveValue("125000"); await expect(editCategory(page)).toHaveValue("EQUIPMENT");
+      71 |   await expect(editAmount(page)).toHaveAttribute("max", "120000");
+        at <WORKTREE>\client\test\category-limits.spec.ts:68:73
+
+    Error Context: test-results\category-limits-AC-L7-03-0-d8f92-equires-explicit-valid-Save\error-context.md
+
+    Error Context: test-results\category-limits-AC-L7-03-0-d8f92-equires-explicit-valid-Save\error-context.md
+
+  3) client\test\category-limits.spec.ts:85:1 › AC-L7-04 STS-L7-04 real stale amount draft restored over newer TRAVEL stays invalid without clamping or auto-write
+
+    Error: ACTIVITY125000 must be valid before the deliberate stale Save
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      93 |   expect(writes).toEqual([]);
+      94 |   // On old UI this fails directly; the real409 and restored-invalid-pair checks below are then unreached.
+    > 95 |   expect(await editAmount(page).evaluate((e: HTMLInputElement) => e.checkValidity()), "ACTIVITY125000 must be valid before the deliberate stale Save").toBe(true);
+         |                                                                                                                                                        ^
+      96 |   const conflict = page.waitForResponse(r => matches(r.url(), r.request().method(), "/" + item.id, "PATCH"));
+      97 |   await save(page).click(); const failed = await conflict;
+      98 |   expect(failed.status()).toBe(409); expect(await failed.json()).toMatchObject({ error: { code: "INVALID_STATE" } });
+        at <WORKTREE>\client\test\category-limits.spec.ts:95:152
+
+    Error Context: test-results\category-limits-AC-L7-04-S-704a3-hout-clamping-or-auto-write\error-context.md
+
+    Error Context: test-results\category-limits-AC-L7-04-S-704a3-hout-clamping-or-auto-write\error-context.md
+
+  3 failed
+    client\test\category-limits.spec.ts:33:1 › AC-L7-03 STS-L7-03 creation category switches retain amount, explain the pair and never auto-write
+    client\test\category-limits.spec.ts:62:1 › AC-L7-03/04 STS-L7-04 returned category switch retains values and requires explicit valid Save
+    client\test\category-limits.spec.ts:85:1 › AC-L7-04 STS-L7-04 real stale amount draft restored over newer TRAVEL stays invalid without clamping or auto-write
+  1 passed (41.2s)
+
+.env not found. Continuing without it.
+[WebServer] (node:53036) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] .env not found. Continuing without it.
+.env not found. Continuing without it.
+(node:45296) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+.env not found. Continuing without it.
+(node:47520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+.env not found. Continuing without it.
+(node:48268) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+.env not found. Continuing without it.
+(node:2608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+{"id":"browser-1","command":"npm.cmd run test:e2e -- client/test/category-limits.spec.ts --reporter=list,json","startedAt":"2026-11-27T08:13:57.785Z","elapsedMs":42826,"exit":1,"signal":null,"spawnError":null,"runnerTerminated":false}
