@@ -5,9 +5,12 @@
   "checks": {
     "ACs": 8,
     "STS": 10,
-    "pdfPages": 30,
-    "internalPageLinks": 4,
-    "localLinksResolved": 91,
+    "pdfPages": 35,
+    "internalPageLinks": 17,
+    "existingEvidenceIDs": 13,
+    "verbatimReviews": 3,
+    "matchedGreenSuite": "34/34 at ec10dd4; original226.2607ms runner/289ms process",
+    "localLinksResolved": 95,
     "interpretationWords": 70,
     "liveCaseRequirements": 8,
     "liveContinuationExecuted": 6,
@@ -15,7 +18,7 @@
     "retainedSyntheticRecords": 5,
     "actorReadSamples": 6,
     "distinctOldRecords": 3,
-    "utf8FilesInspected": 32
+    "utf8FilesInspected": 37
   },
   "issues": []
 }

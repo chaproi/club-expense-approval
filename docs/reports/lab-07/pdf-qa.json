@@ -1,19 +1,19 @@
 {
   "date": "2026-11-28 Asia/Bangkok",
   "release": "c259afe45eb49311c1f7bb9e166c4443041b9b82",
-  "pages": 30,
-  "pdfSha256": "4d89faf09b47e36f9b2051f1417bfc3d7a9b6dfa1b329c68673f402e3c0490c8",
-  "sourceSha256": "8fb2cad68f57dd650d7f1070c4683d00217785880d0d8badfdab9e144ea54685",
+  "pages": 35,
+  "pdfSha256": "a7e0ca380a27e5389810885fdb28f4393919c92d671970aa3634c07f5f3d7318",
+  "sourceSha256": "f48a819eb8e008319421ad18aa53c025cf2c0ed425972b44db04b9ace80242c1",
   "fonts": [
     {
       "name": "AAAAAA+Tahoma",
       "format": "ttf",
-      "embeddedBytes": 205944
+      "embeddedBytes": 206432
     },
     {
       "name": "BAAAAA+Tahoma-Bold",
       "format": "ttf",
-      "embeddedBytes": 66668
+      "embeddedBytes": 67492
     },
     {
       "name": "CAAAAA+Consolas",
@@ -23,192 +23,222 @@
     {
       "name": "DAAAAA+SegoeUISymbol",
       "format": "ttf",
-      "embeddedBytes": 46504
+      "embeddedBytes": 46644
     }
   ],
   "pageChecks": [
     {
       "page": 1,
-      "textCharacters": 1288,
+      "textCharacters": 1476,
       "raster": "page-01.png",
-      "sha256": "16c4a0c4b2a2a79f058ad5661ec33f0b5381f9494656403650a218f4d61d7156"
+      "sha256": "5a2b67cfe2056b12e33cf62ea3f105b6b91a43c1a4f35fcb63ee9c7c767fb8c1"
     },
     {
       "page": 2,
       "textCharacters": 1758,
       "raster": "page-02.png",
-      "sha256": "847878909117261e12271ecd651a7c77c35129554adcf169f14cb477e83d85b9"
+      "sha256": "c3ab446c2fe3928779bc5942a1f52e9711fb570e5d3e8dcea6182c48efb9d221"
     },
     {
       "page": 3,
-      "textCharacters": 2389,
+      "textCharacters": 2131,
       "raster": "page-03.png",
-      "sha256": "7f646cee6a6bd69d3b7dc172c6bb1fbee16de41d0d04b96223055a6a0fe43eb2"
+      "sha256": "ec28d23899717cc3846bd37cb4a4a977e354ed86a5c9e80cc21f6b4690434bc5"
     },
     {
       "page": 4,
-      "textCharacters": 2463,
+      "textCharacters": 2389,
       "raster": "page-04.png",
-      "sha256": "77f5bcdad9723f2d407dc1eb97a215a11cecd5d48e154d076881dbebed2ec3f3"
+      "sha256": "195cbf42e56bcf85d6e4406020d06f38eab46d703a3b74fd60b82e95271e2627"
     },
     {
       "page": 5,
-      "textCharacters": 2056,
+      "textCharacters": 2463,
       "raster": "page-05.png",
-      "sha256": "3666a2843c6902501c856f305a6d4aad7fb6d5703b00ce72cda98755e4a5093c"
+      "sha256": "bdc77a3cf73a3c082b3bf0098482772fe0037bd2141780ec5c9c0a37e67ec336"
     },
     {
       "page": 6,
-      "textCharacters": 1934,
+      "textCharacters": 2056,
       "raster": "page-06.png",
-      "sha256": "9fba5210ad8c2ce51e1c13a092c8195489090f016b02abcedf21381cb14d13e7"
+      "sha256": "04e7ac7f274b92d14e258312c43d2ff89c320119e42412ba0a24d911b62207ce"
     },
     {
       "page": 7,
-      "textCharacters": 2238,
+      "textCharacters": 1934,
       "raster": "page-07.png",
-      "sha256": "765dc156b13323451e3e5ba345d0a9f242cc3b2561d755351c60315a2f49f024"
+      "sha256": "e3632511a70e06479753f0ee1a2f61d58fa9e4c8773e4f94d1e03e6f561ad05e"
     },
     {
       "page": 8,
-      "textCharacters": 1564,
+      "textCharacters": 2238,
       "raster": "page-08.png",
-      "sha256": "a0a1467663bb0e09b57568a3f4c95a30f47c186da227c768970649e63a134d42"
+      "sha256": "8c964b476e7d7590311fd3d8da19cddc5a4c9f38cf70f871597b90dc54a6b70e"
     },
     {
       "page": 9,
-      "textCharacters": 1610,
+      "textCharacters": 1564,
       "raster": "page-09.png",
-      "sha256": "52fb03cdc763845be33f8b778c51ecd43746f8542fcfffcf4d92929bd61649aa"
+      "sha256": "aeec5a3a265f7eb5b92d96166351444feff980eb1c664469d284b75c309e8622"
     },
     {
       "page": 10,
-      "textCharacters": 2576,
+      "textCharacters": 3169,
       "raster": "page-10.png",
-      "sha256": "fcc526b7ca5c0b3c32187898c9f8adf7705653a4b7ef2ff75c4bd9a7d34bedf0"
+      "sha256": "2ae113f7016e7dea63e30c6ef210924c83f801bb635f21413fa8c011a4b5efc6"
     },
     {
       "page": 11,
-      "textCharacters": 2782,
+      "textCharacters": 1611,
       "raster": "page-11.png",
-      "sha256": "8b1bf328dcd90e857f26d8cf9c29de0c9acd5c79a7826212832f1644f6ce8af7"
+      "sha256": "7ae3c21d6ead0cd88d740fe17c21be1b4215111d041afe7f7cef20323802b819"
     },
     {
       "page": 12,
-      "textCharacters": 2569,
+      "textCharacters": 2576,
       "raster": "page-12.png",
-      "sha256": "695121993bb2180e53b50a0551bbfc258671617559e32a55cea5465c67ba8c1b"
+      "sha256": "fa42135664d2c93dca48af9e2483cca65117daaa9816d0cc03f1aa1d7fa87bb8"
     },
     {
       "page": 13,
-      "textCharacters": 3332,
+      "textCharacters": 1797,
       "raster": "page-13.png",
-      "sha256": "5d8f49398696f591b8338280f297ed8d29c4bb6b7952256d57ca1ec6d22a441a"
+      "sha256": "e76a77a523711efdcc40a9fa71ed18f9aa47bfec39ed2ffc6968d03416d43845"
     },
     {
       "page": 14,
-      "textCharacters": 1825,
+      "textCharacters": 2782,
       "raster": "page-14.png",
-      "sha256": "d8b9611e54473559148a70b4e3ac776a0049956b5d7ac5b09ea1bde2c020f025"
+      "sha256": "6ea436b222e7d137e3d1f3023babc718994ab4990bc801d92d4fbd04a098e1ed"
     },
     {
       "page": 15,
-      "textCharacters": 1757,
+      "textCharacters": 2569,
       "raster": "page-15.png",
-      "sha256": "380080cf447301ed21e4137285eed92bd6f404864fe5edbcedaedc57cd1c0490"
+      "sha256": "fe3439f47e4aa4d69d834d4f7d36fd89b56df753188dc2562a17355da03b0b06"
     },
     {
       "page": 16,
-      "textCharacters": 1644,
+      "textCharacters": 3332,
       "raster": "page-16.png",
-      "sha256": "ba0cfbf3438df5a8daee7fdfe2f25a30446588a509b41d0bbf7a1b7e02007b78"
+      "sha256": "4d3674f4ec8436b145760ef90ec525e8a54c927796f3ebd818f1fff2cd62a2a2"
     },
     {
       "page": 17,
-      "textCharacters": 1474,
+      "textCharacters": 1825,
       "raster": "page-17.png",
-      "sha256": "e7b765117d98ed6051494236b90c0d104d491d717b62e1e597f0e2bd09248617"
+      "sha256": "56a985962023a8bc4348d0e4c4ff3bcc846b43d42a39a03c151553f6173b14ac"
     },
     {
       "page": 18,
-      "textCharacters": 1694,
+      "textCharacters": 1757,
       "raster": "page-18.png",
-      "sha256": "8cbbb57a83a8884b4a5342934c5d2f4aeeda84ec506fd9a9129638625acf8bd2"
+      "sha256": "e0731773dabbf5e12508578e63ca576787ff7fd657afbc5ba24b8e6fba1336f6"
     },
     {
       "page": 19,
-      "textCharacters": 2379,
+      "textCharacters": 1644,
       "raster": "page-19.png",
-      "sha256": "55f1dde66be28bfd20a6b65f0e015f6d5f46d67b7976d45d6fd8543491a5400f"
+      "sha256": "fc8503f142f1bf49b9f0a85ed254ed029540119d0054f7b0d2bf41e3930daaad"
     },
     {
       "page": 20,
-      "textCharacters": 824,
+      "textCharacters": 2191,
       "raster": "page-20.png",
-      "sha256": "198ac5b6665337758b36b9b8c9f2d8b4621cc8a89bb2951b9db43e1a8c89807d"
+      "sha256": "70216464fc3a61e18a1d3d62c02d9a884b28882fd7a2ffd25481ce28cf9d267d"
     },
     {
       "page": 21,
-      "textCharacters": 1491,
+      "textCharacters": 1474,
       "raster": "page-21.png",
-      "sha256": "14efe822e3701cbb494e763b76745188cbacb29312ae889c1fad7c85a95e2fc5"
+      "sha256": "4dd81e8f1fbc90726797abefad01b68c9d77f8c6e46bbdb41f1ffce4af19a40f"
     },
     {
       "page": 22,
-      "textCharacters": 658,
+      "textCharacters": 2529,
       "raster": "page-22.png",
-      "sha256": "01b19f0990b436921bf8b76c1f577a671891b39986a6cbd4074caa5825d470eb"
+      "sha256": "0804f64e7cffbe7e60e6141fc613539b6c3ca4e474da481d2d9dabaf493ed3c1"
     },
     {
       "page": 23,
-      "textCharacters": 1037,
+      "textCharacters": 1694,
       "raster": "page-23.png",
-      "sha256": "3e2fbca999ad4266a57b7523ad6d07d05434513c1a960f8d0b486b2d37966f24"
+      "sha256": "98ad9cdc53814675e12aa1049d0a54653700ec0c450315b74477a59572820a65"
     },
     {
       "page": 24,
-      "textCharacters": 1825,
+      "textCharacters": 2379,
       "raster": "page-24.png",
-      "sha256": "88b67a86e3796b3be1f5c4f96fd8296af3dbc1f1ba61ca1a6a701ad5164bf899"
+      "sha256": "9f53953829d0d3aa357b73a903c27dd78a303d0f793c282894fb29f89052f1d6"
     },
     {
       "page": 25,
       "textCharacters": 824,
       "raster": "page-25.png",
-      "sha256": "ae465109dd097e7defe4d8ce41a62a95541414be3f022f49f8b3d7a0956eb7e1"
+      "sha256": "6e1f2cc0463188c8913772422e45f8568cdf2d5a68b2f8abd54667aff8dd11f2"
     },
     {
       "page": 26,
-      "textCharacters": 1011,
+      "textCharacters": 1491,
       "raster": "page-26.png",
-      "sha256": "42677d12fe8399ec74cb82d7f1c16181df0517d7dce9e7d26115ddeb10e752ab"
+      "sha256": "d07538f7d34e0f8be5fabd60442a65fc675b19aaf744aaba4ea21f941180bf8f"
     },
     {
       "page": 27,
-      "textCharacters": 1298,
+      "textCharacters": 658,
       "raster": "page-27.png",
-      "sha256": "4ad4d1f34beb97b48473a89cf28af14f390a1079b3f8299ece0e0801f2539621"
+      "sha256": "88fa3d9bd0f777b2619e45788d3f6f2eb1b4092dc2b67bdd6ac0b986d93eb429"
     },
     {
       "page": 28,
-      "textCharacters": 1767,
+      "textCharacters": 1037,
       "raster": "page-28.png",
-      "sha256": "341210c7ee5199b469c3528eb7d7bd282770ffda307be5c63ff227ead0f43a62"
+      "sha256": "d8371e76b735c4ce82d47b6c95eff9a6be669d9b769808b16a3e8e0969ee6ae1"
     },
     {
       "page": 29,
-      "textCharacters": 2412,
+      "textCharacters": 1825,
       "raster": "page-29.png",
-      "sha256": "76313ac04d18220019f369c70a967c2e431ce7e71ec515ea1d31cbcf2593bcba"
+      "sha256": "57b19204d3cdb349bc8b3646ca33dec6662a04b9c3edae1d63ad67ac5b51ea18"
     },
     {
       "page": 30,
-      "textCharacters": 2251,
+      "textCharacters": 824,
       "raster": "page-30.png",
-      "sha256": "8e3652119fe3f90abcfe67a45f9508bec952392aea98636655495d79bd3bd3c9"
+      "sha256": "1f5a3ead1e92b5f5115ec43e5b915335436710c5294da312b238e7b00d449bca"
+    },
+    {
+      "page": 31,
+      "textCharacters": 1011,
+      "raster": "page-31.png",
+      "sha256": "34484b46276387b5b3152aa0e5ee3b2c5acc4443a32364d9339458600111d0f8"
+    },
+    {
+      "page": 32,
+      "textCharacters": 1298,
+      "raster": "page-32.png",
+      "sha256": "565b8c4bb79dbda383473cffff03852e438e41d188d14a3c1658907684f658bb"
+    },
+    {
+      "page": 33,
+      "textCharacters": 1767,
+      "raster": "page-33.png",
+      "sha256": "d819539a3c54e7457f1e09a18f5ec86a1c276f4ac5702acbf1cc9c4789a36f9b"
+    },
+    {
+      "page": 34,
+      "textCharacters": 2412,
+      "raster": "page-34.png",
+      "sha256": "e2dc9b2a8cb176f4975b076bf9011ca14fcf5a70fd301ca529a079a7542ae1ac"
+    },
+    {
+      "page": 35,
+      "textCharacters": 2251,
+      "raster": "page-35.png",
+      "sha256": "1212502fdd370f7f2e5c14567ddf8530f190ff133e5ae659352e948b98ff2acb"
     }
   ],
-  "links": 9,
+  "links": 25,
   "structuralIssues": [],
   "visualInspection": {
     "result": "PASS",
@@ -242,21 +272,27 @@
       27,
       28,
       29,
-      30
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
     ],
     "checks": [
-      "Thai identity/fonts",
-      "Readable code/tables/screenshots",
-      "No clipping or overlap",
-      "Page numbers/captions/navigation"
+      "Readable Thai identity and embedded fonts",
+      "All tables/code/logs/screenshots readable without clipping",
+      "Verbatim excerpts distinct from author summary/disposition",
+      "Actual A-D weights25/50/15/10 and35-page navigation",
+      "17 resolved internal destinations and correctly captioned evidence",
+      "No credentials visible in retained screenshots"
     ],
-    "finalRevision": "All30 pages individually inspected; subsequent readability change affected only page24, reinspected; whitespace/raw-diff clarification affected only page12, reinspected. Remaining raster hashes identical.",
-    "qualification": "AI visual QA, not peer/student acceptance"
+    "qualification": "AI visual QA; no new student/peer/live/submission acceptance"
   },
-  "documentationCheckAttempts": [
-    "Initial26-page layout overflow: split dense content instead of shrinking fonts",
-    "Windows default cp874 decode failure: explicit UTF-8 corrected authoring",
-    "Offline validator initially ran before manifest generation and assumed numeric-link type; generated manifest and checked resolved named destinations",
-    "First staged whitespace check failed on Markdown hard breaks and unified-diff blank context; preserve raw diff in JSON and normalize print whitespace; final check rerun"
+  "historicalQaCommit": "ba14511a728c0afc55a44d293629adde84ad0126",
+  "correctionAttempts": [
+    "Collector initially selected wrong Markdown row split index; fixed extraction and required exact source substrings",
+    "First quotation validator compared raw multi-line Markdown despite added blockquote prefixes; retained exact source check and normalized rendered-word check",
+    "Bold inline code in review excerpts produced synthetic Type3 glyph fonts; identified actual path spans, set regular embedded Mono style and regenerated. Final four font programs embedded; no glyph issues."
   ]
 }

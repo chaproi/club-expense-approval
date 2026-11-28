@@ -1,6 +1,6 @@
 {
   "release": "c259afe45eb49311c1f7bb9e166c4443041b9b82",
-  "hashBasis": "Publication worktree bytes; Git text normalization can change text line endings on another Windows checkout. PDF/image hashes are byte-exact. Self and validation omitted to avoid circular metadata.",
+  "hashBasis": "Publication worktree bytes; Git text normalization can change text line endings on another Windows checkout. PDF/image hashes byte-exact; self and validation omitted to avoid circular metadata.",
   "files": [
     {
       "path": "docs/labs/lab-07/postdeploy-2026-11-28/command-excerpts.log",
@@ -115,7 +115,7 @@
     {
       "path": "docs/labs/lab-07/postdeploy-2026-11-28/README.md",
       "bytes": 8047,
-      "sha256": "2dd661f8fb54f3c1c4223e5385b6dcb6a9326e3f3ceaf0651cada2065ab44bda"
+      "sha256": "ca692bc05a25785f29b3d522638e6f4d3a8efee67059b760038d1e60be42e8e9"
     },
     {
       "path": "docs/labs/lab-07/postdeploy-2026-11-28/review-chain.json",
@@ -158,39 +158,64 @@
       "sha256": "0f88601552777a4475dc8b80463e399a2d6f7230885dab02e64a655264e8cf96"
     },
     {
+      "path": "docs/reports/lab-07/correction-evidence.json",
+      "bytes": 8297,
+      "sha256": "a1f49ddce386377e7e325b3f20308e3970b6ff0f71f1a7c5f7f9683421737efe"
+    },
+    {
+      "path": "docs/reports/lab-07/corrections-2026-11-28.md",
+      "bytes": 3645,
+      "sha256": "c66ab7bb7bc77346f0dfacfceeb622a7582a69528c32cb3f7f674ff1cfe8f702"
+    },
+    {
+      "path": "docs/reports/lab-07/evidence-index.json",
+      "bytes": 2830,
+      "sha256": "4f65f09d17cb3985735804aed5dd655d0a169a74ab38bfa13a3597d60c25684f"
+    },
+    {
       "path": "docs/reports/lab-07/layout-check.json",
-      "bytes": 2424,
-      "sha256": "4dc288ad5aae53f0ecec16eb0b25cd9d99ccf38dfc05079dc6bb59c31ca5fbb0"
+      "bytes": 2829,
+      "sha256": "b48ce6139e428cba0fe1707c45aa5ab2ddddced550165f1950eb876a98cda84d"
     },
     {
       "path": "docs/reports/lab-07/output/pdf/club-expense-approval-lab7.pdf",
-      "bytes": 713984,
-      "sha256": "4d89faf09b47e36f9b2051f1417bfc3d7a9b6dfa1b329c68673f402e3c0490c8"
+      "bytes": 816628,
+      "sha256": "a7e0ca380a27e5389810885fdb28f4393919c92d671970aa3634c07f5f3d7318"
     },
     {
       "path": "docs/reports/lab-07/pages.json",
-      "bytes": 3103,
-      "sha256": "ac51eaf7fb3f4349603c58df18cf841d928cc4176b6154a187cef79fbe6be420"
+      "bytes": 3582,
+      "sha256": "8f40e004b42dde59711302e5587a9918873d7cc9b53710e5a7873ff5b03275ef"
     },
     {
       "path": "docs/reports/lab-07/pdf-qa.json",
-      "bytes": 7640,
-      "sha256": "3c369df0370b48077047f0528f8c74f9f7470d814c6f0eb8f58187e9da84b63f"
+      "bytes": 8687,
+      "sha256": "3b3a2129faa69e76d1627860802a05c42635cd3142f18522d9fe81b26dafb555"
     },
     {
       "path": "docs/reports/lab-07/README.md",
-      "bytes": 4142,
-      "sha256": "5ec611f0e114a2e2b1590897f99276244892a8e530bd8d91c5ccedd489677e28"
+      "bytes": 6474,
+      "sha256": "da5cc35c1bd23c13ac0f87f892b69460bd64ba1babc4c693f886ae66ec8b2efa"
     },
     {
       "path": "docs/reports/lab-07/report.md",
-      "bytes": 57800,
-      "sha256": "8fb2cad68f57dd650d7f1070c4683d00217785880d0d8badfdab9e144ea54685"
+      "bytes": 70791,
+      "sha256": "f48a819eb8e008319421ad18aa53c025cf2c0ed425972b44db04b9ace80242c1"
+    },
+    {
+      "path": "docs/reports/lab-07/review-corroboration-2026-11-28.json",
+      "bytes": 1130,
+      "sha256": "c26cfdf82999c67e5188b1927c041b9c911a5b5a60c9416b2e87c7ec98a4b8eb"
     },
     {
       "path": "docs/reports/lab-07/scripts/assemble-packet.py",
-      "bytes": 59889,
-      "sha256": "34c81fecccbf8663a5fc26eddc4dab586414457373e94df5e85e70b7be01a437"
+      "bytes": 68618,
+      "sha256": "e5fb54e832eb3b7e1ff30e033dbd1e03323dadc89361be381a8e7375f2bf1ee2"
+    },
+    {
+      "path": "docs/reports/lab-07/scripts/collect-corrections.py",
+      "bytes": 3297,
+      "sha256": "5d4fe40a95879e507f0a6b78f79ed3937cf74df85c44ca97fc6bcb892abf6d6e"
     },
     {
       "path": "docs/reports/lab-07/scripts/qa-pdf.py",
@@ -204,8 +229,8 @@
     },
     {
       "path": "docs/reports/lab-07/scripts/validate-packet.py",
-      "bytes": 5530,
-      "sha256": "b866896d7b77848d246c6822f43aa5d1e5ea18c743203b06d10019aa9e4d71c2"
+      "bytes": 7580,
+      "sha256": "7a37b3ca5a1d572b213e4cca888b55e8b59f7098db72ada7a369124dceb3bf5d"
     }
   ]
 }

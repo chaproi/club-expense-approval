@@ -1,0 +1,106 @@
+[
+  {
+    "id": "L7-A1",
+    "part": "A",
+    "firstPage": 2,
+    "lastPage": 3,
+    "firstSection": "A. Old/new rule and authority (25)",
+    "lastSection": "A. Original student-proposed rationale"
+  },
+  {
+    "id": "L7-A2",
+    "part": "A",
+    "firstPage": 4,
+    "lastPage": 4,
+    "firstSection": "A. Impact and revised interfaces",
+    "lastSection": "A. Impact and revised interfaces"
+  },
+  {
+    "id": "L7-A3",
+    "part": "A",
+    "firstPage": 5,
+    "lastPage": 10,
+    "firstSection": "A. Accepted AC-L7-01 through08",
+    "lastSection": "Contract review verbatim #50"
+  },
+  {
+    "id": "L7-B1",
+    "part": "B",
+    "firstPage": 11,
+    "lastPage": 14,
+    "firstSection": "B. Tests-first chronology and versions (50)",
+    "lastSection": "B. PostgreSQL RED and newly reached browser path"
+  },
+  {
+    "id": "L7-B2",
+    "part": "B",
+    "firstPage": 15,
+    "lastPage": 17,
+    "firstSection": "B. Bounded server correction - actual diff",
+    "lastSection": "B. New additive migration and rollback limits"
+  },
+  {
+    "id": "L7-B3",
+    "part": "B",
+    "firstPage": 18,
+    "lastPage": 18,
+    "firstSection": "B. Verification and data-preservation boundaries",
+    "lastSection": "B. Verification and data-preservation boundaries"
+  },
+  {
+    "id": "L7-B4",
+    "part": "B",
+    "firstPage": 19,
+    "lastPage": 24,
+    "firstSection": "B. Independent implementation review #51",
+    "lastSection": "B. Actual deployment identity and limitations"
+  },
+  {
+    "id": "L7-B5",
+    "part": "B",
+    "firstPage": 24,
+    "lastPage": 28,
+    "firstSection": "B. Actual deployment identity and limitations",
+    "lastSection": "B. Live final history and execution provenance"
+  },
+  {
+    "id": "L7-C1",
+    "part": "C",
+    "firstPage": 29,
+    "lastPage": 30,
+    "firstSection": "C. Five dated metrics (15)",
+    "lastSection": "C. Offline-reconcilable source lists"
+  },
+  {
+    "id": "L7-C2",
+    "part": "C",
+    "firstPage": 31,
+    "lastPage": 31,
+    "firstSection": "C. Workflow outcomes and interpretation",
+    "lastSection": "C. Workflow outcomes and interpretation"
+  },
+  {
+    "id": "L7-D1",
+    "part": "D",
+    "firstPage": 32,
+    "lastPage": 34,
+    "firstSection": "D. Scoped readiness and defects (10)",
+    "lastSection": "D. Debt, runbook and retrospective"
+  },
+  {
+    "id": "L7-D2",
+    "part": "D",
+    "firstPage": 34,
+    "lastPage": 34,
+    "firstSection": "D. Debt, runbook and retrospective",
+    "lastSection": "D. Debt, runbook and retrospective"
+  },
+  {
+    "id": "L7-D3",
+    "part": "D",
+    "firstPage": 35,
+    "lastPage": 35,
+    "firstSection": "D. Contributions, limitations and source map",
+    "lastSection": "D. Contributions, limitations and source map"
+  }
+]

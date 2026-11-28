@@ -34,7 +34,7 @@ The before/after samples were captured **after deployment and before continuatio
 
 ## Retained synthetic records and cleanup
 
-All five records have `UAT-L7-20261128T074029Z` titles. Exact IDs/final fields/history are in [inventory](live-checks.json) and PDF page21. Final states: two APPROVED (Activity150000, revisions1/5), one REJECTED (Equipment120000,revision1), two SUBMITTED (Travel100000 and Equipment110000,revision0). No records were deleted; no shared/real record was modified, seeded or reset.
+All five records have `UAT-L7-20261128T074029Z` titles. Exact IDs/final fields/history are in [inventory](live-checks.json) and PDF page26. Final states: two APPROVED (Activity150000, revisions1/5), one REJECTED (Equipment120000,revision1), two SUBMITTED (Travel100000 and Equipment110000,revision0). No records were deleted; no shared/real record was modified, seeded or reset.
 
 Both attempts logged out R1/R2/V1/second-R1 sessions with HTTP204, closed all contexts and Chromium, and completed before documentation work. The temporary private credential file was removed after continuation. No browser process/listener/database/pool was created outside the owned browser run. No passwords, cookies, tokens or raw private snapshots are in this directory. Screenshots mask unrelated request cards. [Lossless crop provenance](screenshot-crops.json) distinguishes print crops from original captures.
 
@@ -42,7 +42,7 @@ Both attempts logged out R1/R2/V1/second-R1 sessions with HTTP204, closed all co
 
 Common activity window: **2026-11-27T00:00:00+07:00 through2026-11-28T07:22:14.1862118Z**. [Paginated underlying sources](metrics-source.json):6 completed Issues (0Lab7/6other),3 merged Lab7 PRs (2staging/1main), named exact-main npm test184/184,8 known defect records (6resolved/2deferred Low;1High/3Medium/3Low/1unclassified),5 workflow attempts all successful. No Issue was closed to affect counts. [Defect Issue corroboration](defect-issues.json) was a later read; retests remain version-specific.
 
-**READY on the bounded maintained-scope technical evidence**, with explicit direct-cloud, pre-deployment snapshot, inherited Low and dependency-override limitations. The owner's final acceptance/submission remains separate. No new external UAT gate is invented. F-06 totals/F-07/F-08 remain Planned. The [self-contained30-page report](../../../reports/lab-07/report.md) and [PDF](../../../reports/lab-07/output/pdf/club-expense-approval-lab7.pdf) include A/B/C/D weights25/50/15/10, complete relevant AC/STS, actual code/test/SQL/log excerpts, reviews, metrics and limitations.
+**READY on the bounded maintained-scope technical evidence**, with explicit direct-cloud, pre-deployment snapshot, inherited Low and dependency-override limitations. The owner's final acceptance/submission remains separate. No new external UAT gate is invented. F-06 totals/F-07/F-08 remain Planned. The [self-contained35-page report](../../../reports/lab-07/report.md) and [PDF](../../../reports/lab-07/output/pdf/club-expense-approval-lab7.pdf) include A/B/C/D weights25/50/15/10, complete relevant AC/STS, actual code/test/SQL/log excerpts, reviews, metrics and limitations.
 
 ## Reproduction and safety
 

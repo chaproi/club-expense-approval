@@ -1,0 +1,71 @@
+{
+  "rationale": {
+    "sourceCommit": "c7f1c88e0b3bc78322d1dcc34c9ceb4c397361eb",
+    "path": "docs/labs/lab-07/proposal.md",
+    "verbatim": "**Student-proposed rationale:** distinguish activity planning, equipment purchases and travel requests while retaining bounded whole-baht values and existing approval workflow. The policy introduces category/amount dependency, category-switch validation and coordinated API/UI/SQL migration work. This is not a stakeholder request, instructor-selected policy or financial-authority approval. The peer must assess scope and sufficient complexity; publication does not certify acceptance.",
+    "sourceSha256": "ffe62dc293623e53fd2653a7ee2866dc7e97e176a65138d706beb172e43d8312"
+  },
+  "reviews": [
+    {
+      "pr": 50,
+      "reviewer": "thananun-7203",
+      "reviewedSha": "c7f1c88e0b3bc78322d1dcc34c9ceb4c397361eb",
+      "submittedAt": "2026-11-27T06:11:30Z",
+      "state": "APPROVED",
+      "url": "https://github.com/chaproi/club-expense-approval/pull/50#pullrequestreview-6084244796",
+      "bodySha256": "568b81c2082dd65ce8456bab57f1e853b6365d1b51cd2a36484330b8a5c7f3e7",
+      "verbatimExcerpts": [
+        "- **Decision:** **APPROVE** *(substantive pre-implementation Lab 7 contract review approval only — authorizes proceeding to tests-first RED → GREEN implementation in the normal workflow; does **not** merge `#50`, certify instructor grading/complexity acceptance, or establish implementation/release readiness)*",
+        "1. **Complexity & scope:** Paired category/amount validation across server, two interactive UI forms (including category switches and F-05 restored-draft cross-category mismatches), and a new PostgreSQL `CHECK` migration is clearly more substantive than a trivial constant bump while staying tightly bounded to BR-01 / F-02 / F-05.",
+        "   - **Controlled state in the Create form (`client/src/expense-requests.tsx`):** `New expense request` currently uses uncontrolled inputs (`defaultValue=\"\"` + `FormData`). To update `max` and expose live accessible category-limit feedback on category change without clamping/resetting the entered amount (`AC-L7-03` / `STS-L7-03`), keep local React state for at least `category` and `amountBaht` (ensuring `201` submit resets both cleanly and empty category `\"\"` implies no permissive fallback).",
+        "   - **Category-specific API error messages (`server/src/expense-input.ts` & `server/src/expense-requests.ts`):** `parseExpenseInput` currently returns `null` for all validation failures. To satisfy F-02's contract (*explain the known category's maximum/lower bound, or request a supported category when unknown/missing, without inventing a default*), return a small structured validation result/message from the parser (keeping the exact `{ error: { code: \"INVALID_INPUT\", message } }` envelope).",
+        "   - **Restored invalid pair guard (`STS-L7-04`):** When `Restore draft` stages a previously valid amount (e.g., `125,000`) over a newer saved lower-ceiling category (`TRAVEL`), verify that `Save changes` prevents submitting an invalid `PATCH` with accessible linked feedback (`aria-describedby` / `role=\"alert\"`) while keeping both values visible without clamping and keeping `Resubmit request` disabled while dirty.",
+        "3. **Cosmetic spacing:** Minor missing spaces around numbers/tokens in Markdown prose (e.g., `1–150000`, `returns400`, `original12d40ec`); optional cleanup only."
+      ]
+    },
+    {
+      "pr": 51,
+      "reviewer": "thananun-7203",
+      "reviewedSha": "b7cbdd1552f0cd0c3c818bb478c467577b1b44a1",
+      "submittedAt": "2026-11-27T19:02:13Z",
+      "state": "APPROVED",
+      "url": "https://github.com/chaproi/club-expense-approval/pull/51#pullrequestreview-6092360927",
+      "bodySha256": "927d8c743a8ab902d1dc44774bf98d3e48e97712f05b4c7660b78803262a651a",
+      "verbatimExcerpts": [
+        "- **Decision:** **APPROVE** *(Lab 7 implementation & migration source PR approval only — not a merge, not `main` release approval, and not deployed or final Lab 7 submission acceptance)*",
+        "Single cohesive implementation PR (`MERGEABLE`, `CLEAN`) addressing all 3 non-blocking notes from `#50` (controlled create form, category-specific API validation messages, restored invalid-pair guard), zero unresolved threads, and no premature issue closure (`#49` stays open until release/deploy/Lab 7 completion).",
+        "**Binding findings:** None.",
+        "**Non-blocking release note:**\n- Before merging into `main` for Lab 7 deployment, verify that the live Cloud SQL `ExpenseRequest_amountBaht_check` constraint matches the exact PostgreSQL 17 definition checked by `20261127000000_category_amount_limits/migration.sql` (it was created by the unchanged `20261107000000_expense_requests` migration, so it is expected to match, and the fail-closed `DO $$` guard protects against unexpected drift), and record the actual `main` SHA, migration job execution, Cloud Run revision/digest/traffic, and live synthetic checks separately."
+      ]
+    },
+    {
+      "pr": 52,
+      "reviewer": "thananun-7203",
+      "reviewedSha": "cc4b732cc6709cfdc400033403c3b8815538baf1",
+      "submittedAt": "2026-11-28T05:26:51Z",
+      "state": "APPROVED",
+      "url": "https://github.com/chaproi/club-expense-approval/pull/52#pullrequestreview-6096017531",
+      "bodySha256": "685bc17920ac5f1ef2034748fce46efa659be8002398329c206a6c1c05036d98",
+      "verbatimExcerpts": [
+        "- **Decision:** **APPROVE** *(independent Lab 7 release PR approval for `staging/sprint-2` `cc4b732c` → `main` only — this review does **not** merge to `main`, trigger Cloud Run migration/deployment, close `#49`, or establish post-deployment / Lab 7 submission acceptance)*",
+        "Independently verified zero byte changes across all protected release/infra/auth files (`deploy.yml`, `Dockerfile`, `compose.yaml`, `package.json`, `package-lock.json`, `prisma/schema.prisma`, all 3 previously applied migrations, `server/src/auth.ts`, `app.ts`, `index.ts`, `seed.ts`). Migration `20261127000000_category_amount_limits/migration.sql` runs transactionally with an exclusive table lock, verifies the exact validated inherited CHECK definition before replacing it (failing closed on unexpected drift), and `deploy.yml` executes the migration job with `--wait` prior to updating the Cloud Run service. Server, both UI forms, draft recovery/BF-01, and auth/Origin/revision invariants remain intact.",
+        "**Binding findings:** None.",
+        "**Post-merge deployment checklist reminder (non-blocking):**\n- After the owner merges PR `#52` into `main`, record the immutable merged `main` SHA, the triggered `Deploy to Google Cloud` run, confirmation that the Cloud Run migration job (`s981b09c9-migrate`) succeeded with `20261127000000_category_amount_limits` before service update, the serving Cloud Run revision/digest/traffic, and the changed/preserved synthetic live checks without resetting or seeding operational data."
+      ]
+    }
+  ],
+  "green": {
+    "sourceCommit": "ec10dd44140ee41f41826763c1500097d9b626e9",
+    "path": "docs/labs/lab-07/evidence/green-2026-11-27/candidate/unit-1.log",
+    "originalLogSha256": "9ed058e9d77e1f405e94de507be96ae0832c66203852a642198cd89d9765ecc8",
+    "verbatimExcerpt": "2026-11-27T09:12:20.618Z $ node --import tsx --test server/test/expense-input.test.ts\n✔ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 150000 accepted (0.0585ms)\n✔ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 150000 accepted (0.0339ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 226.2607\n{\"id\":\"unit-1\",\"command\":\"node --import tsx --test server/test/expense-input.test.ts\",\"startedAt\":\"2026-11-27T09:12:20.618Z\",\"elapsedMs\":289,\"exit\":0,\"signal\":null,\"spawnError\":null,\"runnerTerminated\":false}",
+    "suiteCommand": "node --import tsx --test server/test/expense-input.test.ts",
+    "executed": 34,
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "runnerMs": 226.2607,
+    "elapsedMs": 289,
+    "qualification": "Retained original run, not re-executed. Source attribution is corroborated by the original GREEN ledger."
+  }
+}

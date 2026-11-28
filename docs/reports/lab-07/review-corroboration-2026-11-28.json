@@ -1,0 +1,29 @@
+﻿[
+    {
+        "pr":  50,
+        "reviewUrl":  "https://github.com/chaproi/club-expense-approval/pull/50#pullrequestreview-6084244796",
+        "reviewer":  "thananun-7203",
+        "reviewedSha":  "c7f1c88e0b3bc78322d1dcc34c9ceb4c397361eb",
+        "submittedAt":  "2026-11-27T06:11:30Z",
+        "state":  "APPROVED",
+        "preservedBodyMatches":  true
+    },
+    {
+        "pr":  51,
+        "reviewUrl":  "https://github.com/chaproi/club-expense-approval/pull/51#pullrequestreview-6092360927",
+        "reviewer":  "thananun-7203",
+        "reviewedSha":  "b7cbdd1552f0cd0c3c818bb478c467577b1b44a1",
+        "submittedAt":  "2026-11-27T19:02:13Z",
+        "state":  "APPROVED",
+        "preservedBodyMatches":  true
+    },
+    {
+        "pr":  52,
+        "reviewUrl":  "https://github.com/chaproi/club-expense-approval/pull/52#pullrequestreview-6096017531",
+        "reviewer":  "thananun-7203",
+        "reviewedSha":  "cc4b732cc6709cfdc400033403c3b8815538baf1",
+        "submittedAt":  "2026-11-28T05:26:51Z",
+        "state":  "APPROVED",
+        "preservedBodyMatches":  true
+    }
+]

@@ -12,140 +12,165 @@
   {
     "page": 3,
     "area": "A",
-    "title": "A. Impact and revised interfaces"
+    "title": "A. Original student-proposed rationale"
   },
   {
     "page": 4,
     "area": "A",
-    "title": "A. Accepted AC-L7-01 through08"
+    "title": "A. Impact and revised interfaces"
   },
   {
     "page": 5,
     "area": "A",
-    "title": "A. Accepted STS inputs and expectations 1-3"
+    "title": "A. Accepted AC-L7-01 through08"
   },
   {
     "page": 6,
     "area": "A",
-    "title": "A. Accepted STS inputs and expectations 4-6"
+    "title": "A. Accepted STS inputs and expectations 1-3"
   },
   {
     "page": 7,
     "area": "A",
-    "title": "A. Accepted STS inputs and expectations 7-10"
+    "title": "A. Accepted STS inputs and expectations 4-6"
   },
   {
     "page": 8,
     "area": "A",
-    "title": "A. Substantive review before implementation"
+    "title": "A. Accepted STS inputs and expectations 7-10"
   },
   {
     "page": 9,
-    "area": "B",
-    "title": "B. Tests-first chronology and versions (50)"
+    "area": "A",
+    "title": "A. Substantive review before implementation"
   },
   {
     "page": 10,
-    "area": "B",
-    "title": "B. Meaningful unit RED and same-test GREEN"
+    "area": "A",
+    "title": "Contract review verbatim #50"
   },
   {
     "page": 11,
     "area": "B",
-    "title": "B. PostgreSQL RED and newly reached browser path"
+    "title": "B. Tests-first chronology and versions (50)"
   },
   {
     "page": 12,
     "area": "B",
-    "title": "B. Bounded server correction - actual diff"
+    "title": "B. Meaningful unit RED and same-test GREEN"
   },
   {
     "page": 13,
     "area": "B",
-    "title": "B. UI correction and unchanged draft reconciliation"
+    "title": "B. Matched original unit GREEN output"
   },
   {
     "page": 14,
     "area": "B",
-    "title": "B. New additive migration and rollback limits"
+    "title": "B. PostgreSQL RED and newly reached browser path"
   },
   {
     "page": 15,
     "area": "B",
-    "title": "B. Verification and data-preservation boundaries"
+    "title": "B. Bounded server correction - actual diff"
   },
   {
     "page": 16,
     "area": "B",
-    "title": "B. Independent implementation review #51"
+    "title": "B. UI correction and unchanged draft reconciliation"
   },
   {
     "page": 17,
     "area": "B",
-    "title": "B. Independent release review #52"
+    "title": "B. New additive migration and rollback limits"
   },
   {
     "page": 18,
     "area": "B",
-    "title": "B. Exact-main CI - actual command output"
+    "title": "B. Verification and data-preservation boundaries"
   },
   {
     "page": 19,
     "area": "B",
-    "title": "B. Actual deployment identity and limitations"
+    "title": "B. Independent implementation review #51"
   },
   {
     "page": 20,
     "area": "B",
-    "title": "B. Public deployed checks and screen evidence"
+    "title": "Implementation review verbatim #51"
   },
   {
     "page": 21,
     "area": "B",
-    "title": "B. Authenticated live coverage and retained records"
+    "title": "B. Independent release review #52"
   },
   {
     "page": 22,
     "area": "B",
-    "title": "B. Live category-switch and recovery captures"
+    "title": "Release review verbatim #52"
   },
   {
     "page": 23,
     "area": "B",
-    "title": "B. Live final history and execution provenance"
+    "title": "B. Exact-main CI - actual command output"
   },
   {
     "page": 24,
+    "area": "B",
+    "title": "B. Actual deployment identity and limitations"
+  },
+  {
+    "page": 25,
+    "area": "B",
+    "title": "B. Public deployed checks and screen evidence"
+  },
+  {
+    "page": 26,
+    "area": "B",
+    "title": "B. Authenticated live coverage and retained records"
+  },
+  {
+    "page": 27,
+    "area": "B",
+    "title": "B. Live category-switch and recovery captures"
+  },
+  {
+    "page": 28,
+    "area": "B",
+    "title": "B. Live final history and execution provenance"
+  },
+  {
+    "page": 29,
     "area": "C",
     "title": "C. Five dated metrics (15)"
   },
   {
-    "page": 25,
+    "page": 30,
     "area": "C",
     "title": "C. Offline-reconcilable source lists"
   },
   {
-    "page": 26,
+    "page": 31,
     "area": "C",
     "title": "C. Workflow outcomes and interpretation"
   },
   {
-    "page": 27,
+    "page": 32,
     "area": "D",
     "title": "D. Scoped readiness and defects (10)"
   },
   {
-    "page": 28,
+    "page": 33,
     "area": "D",
     "title": "D. Version-specific defect register"
   },
   {
-    "page": 29,
+    "page": 34,
     "area": "D",
     "title": "D. Debt, runbook and retrospective"
   },
   {
-    "page": 30,
+    "page": 35,
     "area": "D",
     "title": "D. Contributions, limitations and source map"
   }

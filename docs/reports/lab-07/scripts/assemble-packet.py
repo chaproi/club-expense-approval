@@ -478,6 +478,72 @@ Three reviewed PRs and five successful workflows connect the contract to deploym
   replacements={'at most100':'at most100','Issue49':'Issue49','made29':'made29','before5-7December':'before5-7 December','Weights25/50/15/10':'Weights25/50/15/10','Deadline29November2026,23:59Thailand':'Deadline29 November2026,23:59 Thailand'}
   for a,b in replacements.items():x['text']=x['text'].replace(a,b)
 
+# Four report-only corrections, extracted from immutable original evidence.
+correction=json.loads(read(packet/'correction-evidence.json'))
+def quote_exact(s):return '\n'.join('> '+line if line else '>' for line in s.splitlines())+'\n\n'
+def insert_after(title,page):
+ index=next(i for i,x in enumerate(pages) if x['title']==title)
+ pages.insert(index+1,page)
+insert_after('A. Old/new rule and authority (25)',{'area':'A','title':'A. Original student-proposed rationale','small':False,'text':'''## Student-proposed rationale - recorded before implementation
+Source: proposal.md at reviewed contract commit **c7f1c88e0b3bc78322d1dcc34c9ceb4c397361eb**, section2. This is the student's proposed policy, not a stakeholder request or an instructor/financial-authority choice.
+
+**Verbatim original rationale:**
+'''+quote_exact(correction['rationale']['verbatim'])+'''**Author explanation of that original proposal:** the categories distinguish activity planning, equipment purchases and travel requests. Activity receives the proposed150000 maximum, Equipment120000 and Travel retains100000. The distinction creates a category/amount dependency rather than one larger global ceiling. Amounts remain bounded integer whole-baht values, and the same paired rule applies to creation and owner-authorized RETURNED Save.
+
+The original proposal preserves the existing assigned-reviewer approval workflow, authorization, revision/history rules and explicit Save/Resubmit. Category switches and restored drafts require validation without clamping or automatic writes. Because every proposed cap is at least the previous100000 ceiling, existing valid records remain valid without rewriting history.
+
+The source gives this qualitative maintenance rationale; it does not establish that the numerical ceilings were financially optimized or demanded by a stakeholder. No retrospective stakeholder request, financial approval or new student confirmation is invented.
+
+This source was peer-reviewed before tests and implementation. Its then-Proposed/Unexecuted status remains historical; later technical results retain their actual source revisions.
+'''})
+insert_after('B. Meaningful unit RED and same-test GREEN',{'area':'B','title':'B. Matched original unit GREEN output','small':True,'text':'''## Same expense-input suite - actual retained GREEN output
+Suite: **server/test/expense-input.test.ts**. Recorded command: `node --import tsx --test server/test/expense-input.test.ts`.
+
+Tested clean source: **ec10dd44140ee41f41826763c1500097d9b626e9**. The original GREEN ledger attributes unit-1 to this source. The preceding page retains the same suite's pre-change RED; this page quotes the original GREEN log, not a later full suite or a newly executed run.
+
+**Verbatim selected output:** command, two newly accepted boundary assertions, complete runner summary and actual runner envelope, in original order. Nonselected passing test lines are omitted; no line is reconstructed.
+'''+fence(correction['green']['verbatimExcerpt'])+'''Actual result: **34 executed,34 passed,0 failed,0 skipped** (also0 cancelled). Original runner time **226.2607ms**; process envelope **289ms**, exit0, no signal/spawn error/runner termination. These are different timing measures from the same recorded command.
+
+Original log: docs/labs/lab-07/evidence/green-2026-11-27/candidate/unit-1.log. Its byte hash and exact excerpt are in correction-evidence.json. The RED assertions were preserved through GREEN. No application test was rerun for this correction.
+'''})
+for rv in correction['reviews']:
+ number=rv['pr'];kind={50:'contract',51:'implementation',52:'release'}[number]
+ after='A. Substantive review before implementation' if number==50 else 'B. Independent '+kind+' review #'+str(number)
+ disposition={
+  50:'PR51 later explicitly records all three implementation notes addressed: controlled Create state/reset, category-specific API messages, and the restored-invalid-pair guard. Optional cosmetic spacing was non-blocking; no claim of universal prose cleanup is made. This remains pre-implementation contract approval, not code/release approval.',
+  51:'Release preparation disclosed direct live SQL access unavailable and retained the fail-closed migration guard; it did not invent a successful CHECK read. Subsequent main deployment logs and bounded synthetic checks are recorded separately. Direct SQL and directly resolved revision-digest limitations remain. This approval concerns the implementation/migration source, not main or final submission.',
+  52:'The owner later merged c259afe and the existing deployment run46120371207 succeeded. Migration execution preceded service update; log-reported revision/traffic and pushed registry digest, plus owner-directed live checks, are separately evidenced. Direct Cloud Run/SQL reads remain unavailable. No independent live UAT or final submission acceptance is attributed to this release review.'
+ }[number]
+ text='## PR #'+str(number)+' - actual submitted '+kind+' review excerpts\n\n'+table(['Reviewer / original UTC','Reviewed exact SHA / submitted state'],[[rv['reviewer']+' / '+rv['submittedAt'],rv['reviewedSha']+' / '+rv['state']]])
+ text+='**Verbatim excerpts** below retain the reviewer\'s original wording and scope. Separate source passages are quoted separately; omitted review text is not replaced by an author summary. Full submitted text remains in the preserved JSON.\n\n'
+ text+=''.join(quote_exact(ex) for ex in rv['verbatimExcerpts'])
+ text+='**Author disposition (not a quotation):** '+disposition+'\n\n[Original submitted review]('+rv['url']+'). Original body/SHA/timestamp/state match authenticated GitHub records; corroboration is recorded in review-corroboration-2026-11-28.json.\n'
+ insert_after(after,{'area':'A' if number==50 else 'B','title':kind.title()+' review verbatim #'+str(number),'small':True,'text':text})
+
+page_number=lambda title:next(i+1 for i,x in enumerate(pages) if x['title']==title)
+# Resolve old print references against the new actual sections rather than shifting prose blindly.
+for x in pages:
+ if x['title']=='C. Five dated metrics (15)':
+  for oldtitle,newtitle in [('page25','C. Offline-reconcilable source lists'),('page18','B. Exact-main CI - actual command output'),('page28','D. Version-specific defect register'),('page26','C. Workflow outcomes and interpretation')]:
+   x['text']=x['text'].replace(oldtitle,'page'+str(page_number(newtitle)))
+  x['text']=x['text'].replace('pages25-26','pages'+str(page_number('C. Offline-reconcilable source lists'))+'-'+str(page_number('C. Workflow outcomes and interpretation')))
+evidence_spans=[
+ ('L7-A1','A','A. Old/new rule and authority (25)','A. Original student-proposed rationale'),
+ ('L7-A2','A','A. Impact and revised interfaces','A. Impact and revised interfaces'),
+ ('L7-A3','A','A. Accepted AC-L7-01 through08','Contract review verbatim #50'),
+ ('L7-B1','B','B. Tests-first chronology and versions (50)','B. PostgreSQL RED and newly reached browser path'),
+ ('L7-B2','B','B. Bounded server correction - actual diff','B. New additive migration and rollback limits'),
+ ('L7-B3','B','B. Verification and data-preservation boundaries','B. Verification and data-preservation boundaries'),
+ ('L7-B4','B','B. Independent implementation review #51','B. Actual deployment identity and limitations'),
+ ('L7-B5','B','B. Actual deployment identity and limitations','B. Live final history and execution provenance'),
+ ('L7-C1','C','C. Five dated metrics (15)','C. Offline-reconcilable source lists'),
+ ('L7-C2','C','C. Workflow outcomes and interpretation','C. Workflow outcomes and interpretation'),
+ ('L7-D1','D','D. Scoped readiness and defects (10)','D. Debt, runbook and retrospective'),
+ ('L7-D2','D','D. Debt, runbook and retrospective','D. Debt, runbook and retrospective'),
+ ('L7-D3','D','D. Contributions, limitations and source map','D. Contributions, limitations and source map')]
+index=[{'id':id,'part':part,'firstPage':page_number(start),'lastPage':page_number(end),'firstSection':start,'lastSection':end} for id,part,start,end in evidence_spans]
+(packet/'evidence-index.json').write_text(json.dumps(index,indent=2)+'\n',encoding='utf8')
+
 # Assets embedded from current evidence; no hotlinks or D2 edits.
 fontdir=pathlib.Path(os.environ.get('WINDIR','C:/Windows'))/'Fonts'
 font=lambda name:base64.b64encode((fontdir/name).read_bytes()).decode()
@@ -485,8 +551,11 @@ css="""@page{size:A4;margin:0}*{box-sizing:border-box}body{margin:0;color:#19343
 css="@font-face{font-family:Body;src:url(data:font/ttf;base64,"+font('tahoma.ttf')+")}@font-face{font-family:Body;src:url(data:font/ttf;base64,"+font('tahomabd.ttf')+");font-weight:700}@font-face{font-family:Mono;src:url(data:font/ttf;base64,"+font('consola.ttf')+")}"+css
 nav=[]
 for area,weight in [('A',25),('B',50),('C',15),('D',10)]:
- inds=[i+1 for i,x in enumerate(pages) if x['area']==area];nav.append([area,str(weight),'<a href="#page-'+str(min(inds))+'">'+str(min(inds))+'-'+str(max(inds))+'</a>'])
-navigation=md.render(table(['Part','Weight','Actual PDF pages'],nav))
+ inds=[i+1 for i,x in enumerate(pages) if x['area']==area]
+ ids='<br>'.join('<a href="#page-'+str(row['firstPage'])+'">'+row['id']+'</a> ('+str(row['firstPage'])+('-'+str(row['lastPage']) if row['lastPage']!=row['firstPage'] else '')+')' for row in index if row['part']==area)
+ nav.append([area,str(weight),'<a href="#page-'+str(min(inds))+'">'+str(min(inds))+'-'+str(max(inds))+'</a>',ids])
+navigation='<div class="contents">'+md.render(table(['Part','Weight','PDF pages','Existing evidence IDs / pages'],nav))+'</div>'
+css+='.contents th:nth-child(1){width:10%}.contents th:nth-child(2){width:12%}.contents th:nth-child(3){width:18%}.contents th:nth-child(4){width:60%}em{font-style:normal}code{font-weight:400;font-style:normal}'
 pages[0]['text']=pages[0]['text'].replace('<MAIN_NAV>',navigation)
 for x in pages:
  x['text']=re.sub(r'(?m)^(\|[^\n]*\|)\n(?=[^\n|])',r'\1\n\n',x['text'])

@@ -14,38 +14,43 @@ Report dated28November2026 (Asia/Bangkok). Due29November2026,23:59 Thailand. The
 
 **Owner-directed automated checks**, not external peer UAT. This packet is not a claim of final owner acceptance or LEB2 submission.
 
-<table>
+<div class="contents"><table>
 <thead>
 <tr>
 <th>Part</th>
 <th>Weight</th>
-<th>Actual PDF pages</th>
+<th>PDF pages</th>
+<th>Existing evidence IDs / pages</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>A</td>
 <td>25</td>
-<td><a href="#page-2">2-8</a></td>
+<td><a href="#page-2">2-10</a></td>
+<td><a href="#page-2">L7-A1</a> (2-3)<br><a href="#page-4">L7-A2</a> (4)<br><a href="#page-5">L7-A3</a> (5-10)</td>
 </tr>
 <tr>
 <td>B</td>
 <td>50</td>
-<td><a href="#page-9">9-23</a></td>
+<td><a href="#page-11">11-28</a></td>
+<td><a href="#page-11">L7-B1</a> (11-14)<br><a href="#page-15">L7-B2</a> (15-17)<br><a href="#page-18">L7-B3</a> (18)<br><a href="#page-19">L7-B4</a> (19-24)<br><a href="#page-24">L7-B5</a> (24-28)</td>
 </tr>
 <tr>
 <td>C</td>
 <td>15</td>
-<td><a href="#page-24">24-26</a></td>
+<td><a href="#page-29">29-31</a></td>
+<td><a href="#page-29">L7-C1</a> (29-30)<br><a href="#page-31">L7-C2</a> (31)</td>
 </tr>
 <tr>
 <td>D</td>
 <td>10</td>
-<td><a href="#page-27">27-30</a></td>
+<td><a href="#page-32">32-35</a></td>
+<td><a href="#page-32">L7-D1</a> (32-34)<br><a href="#page-34">L7-D2</a> (34)<br><a href="#page-35">L7-D3</a> (35)</td>
 </tr>
 </tbody>
 </table>
-
+</div>
 
 ### Scope and current verdict
 **READY for the bounded maintained functionality on the recorded evidence; owner final acceptance/submission is separate.**
@@ -80,6 +85,24 @@ Student supplied this text; recorded27November2026. Original publication date/UR
 ---
 
 <!-- PDF page 3 /A -->
+## Student-proposed rationale - recorded before implementation
+Source: proposal.md at reviewed contract commit **c7f1c88e0b3bc78322d1dcc34c9ceb4c397361eb**, section2. This is the student's proposed policy, not a stakeholder request or an instructor/financial-authority choice.
+
+**Verbatim original rationale:**
+> **Student-proposed rationale:** distinguish activity planning, equipment purchases and travel requests while retaining bounded whole-baht values and existing approval workflow. The policy introduces category/amount dependency, category-switch validation and coordinated API/UI/SQL migration work. This is not a stakeholder request, instructor-selected policy or financial-authority approval. The peer must assess scope and sufficient complexity; publication does not certify acceptance.
+
+**Author explanation of that original proposal:** the categories distinguish activity planning, equipment purchases and travel requests. Activity receives the proposed150000 maximum, Equipment120000 and Travel retains100000. The distinction creates a category/amount dependency rather than one larger global ceiling. Amounts remain bounded integer whole-baht values, and the same paired rule applies to creation and owner-authorized RETURNED Save.
+
+The original proposal preserves the existing assigned-reviewer approval workflow, authorization, revision/history rules and explicit Save/Resubmit. Category switches and restored drafts require validation without clamping or automatic writes. Because every proposed cap is at least the previous100000 ceiling, existing valid records remain valid without rewriting history.
+
+The source gives this qualitative maintenance rationale; it does not establish that the numerical ceilings were financially optimized or demanded by a stakeholder. No retrospective stakeholder request, financial approval or new student confirmation is invented.
+
+This source was peer-reviewed before tests and implementation. Its then-Proposed/Unexecuted status remains historical; later technical results retain their actual source revisions.
+
+
+---
+
+<!-- PDF page 4 /A -->
 ## A3. Impact analysis and unchanged guarantees
 | Requirement / feature | Affected contract and module | Impact / preserved guarantee |
 |---|---|---|
@@ -100,7 +123,7 @@ Both forms keep number/min1/step1/required and existing accessible names. Catego
 
 ---
 
-<!-- PDF page 4 /A -->
+<!-- PDF page 5 /A -->
 The following complete observable ACs are the accepted pre-implementation contract. Their original planning labels remain historical; current executions are mapped in PartB. Requirement IDs were not renumbered.
 
 | AC | Required observable outcome | STS |
@@ -118,7 +141,7 @@ No scope is moved into future Issues to excuse an incomplete maintenance require
 
 ---
 
-<!-- PDF page 5 /A -->
+<!-- PDF page 6 /A -->
 These are the actual accepted input/precondition/expected-result cases, versioned at c7f1c88 before test/code work. Status phrases such as future/unexecuted describe that design checkpoint; current results appear in PartB.
 
 | STS | Preconditions / inputs / level | Independent expected results |
@@ -131,7 +154,7 @@ Source: docs/labs/lab-07/contract-proposed-v1.md at reviewedc7f1c88; original un
 
 ---
 
-<!-- PDF page 6 /A -->
+<!-- PDF page 7 /A -->
 These are the actual accepted input/precondition/expected-result cases, versioned at c7f1c88 before test/code work. Status phrases such as future/unexecuted describe that design checkpoint; current results appear in PartB.
 
 | STS | Preconditions / inputs / level | Independent expected results |
@@ -144,7 +167,7 @@ Source: docs/labs/lab-07/contract-proposed-v1.md at reviewedc7f1c88; original un
 
 ---
 
-<!-- PDF page 7 /A -->
+<!-- PDF page 8 /A -->
 These are the actual accepted input/precondition/expected-result cases, versioned at c7f1c88 before test/code work. Status phrases such as future/unexecuted describe that design checkpoint; current results appear in PartB.
 
 | STS | Preconditions / inputs / level | Independent expected results |
@@ -158,7 +181,7 @@ Source: docs/labs/lab-07/contract-proposed-v1.md at reviewedc7f1c88; original un
 
 ---
 
-<!-- PDF page 8 /A -->
+<!-- PDF page 9 /A -->
 ## A5. PR50 independent contract review
 | Field | Verified value |
 |---|---|
@@ -185,7 +208,35 @@ Chronology is objective: review c7f1c88 at06:11:30Z and merge4535280 at07:05:24Z
 
 ---
 
-<!-- PDF page 9 /B -->
+<!-- PDF page 10 /A -->
+## PR #50 - actual submitted contract review excerpts
+
+| Reviewer / original UTC | Reviewed exact SHA / submitted state |
+|---|---|
+| thananun-7203 / 2026-11-27T06:11:30Z | c7f1c88e0b3bc78322d1dcc34c9ceb4c397361eb / APPROVED |
+
+**Verbatim excerpts** below retain the reviewer's original wording and scope. Separate source passages are quoted separately; omitted review text is not replaced by an author summary. Full submitted text remains in the preserved JSON.
+
+> - **Decision:** **APPROVE** *(substantive pre-implementation Lab 7 contract review approval only — authorizes proceeding to tests-first RED → GREEN implementation in the normal workflow; does **not** merge `#50`, certify instructor grading/complexity acceptance, or establish implementation/release readiness)*
+
+> 1. **Complexity & scope:** Paired category/amount validation across server, two interactive UI forms (including category switches and F-05 restored-draft cross-category mismatches), and a new PostgreSQL `CHECK` migration is clearly more substantive than a trivial constant bump while staying tightly bounded to BR-01 / F-02 / F-05.
+
+>    - **Controlled state in the Create form (`client/src/expense-requests.tsx`):** `New expense request` currently uses uncontrolled inputs (`defaultValue=""` + `FormData`). To update `max` and expose live accessible category-limit feedback on category change without clamping/resetting the entered amount (`AC-L7-03` / `STS-L7-03`), keep local React state for at least `category` and `amountBaht` (ensuring `201` submit resets both cleanly and empty category `""` implies no permissive fallback).
+
+>    - **Category-specific API error messages (`server/src/expense-input.ts` & `server/src/expense-requests.ts`):** `parseExpenseInput` currently returns `null` for all validation failures. To satisfy F-02's contract (*explain the known category's maximum/lower bound, or request a supported category when unknown/missing, without inventing a default*), return a small structured validation result/message from the parser (keeping the exact `{ error: { code: "INVALID_INPUT", message } }` envelope).
+
+>    - **Restored invalid pair guard (`STS-L7-04`):** When `Restore draft` stages a previously valid amount (e.g., `125,000`) over a newer saved lower-ceiling category (`TRAVEL`), verify that `Save changes` prevents submitting an invalid `PATCH` with accessible linked feedback (`aria-describedby` / `role="alert"`) while keeping both values visible without clamping and keeping `Resubmit request` disabled while dirty.
+
+> 3. **Cosmetic spacing:** Minor missing spaces around numbers/tokens in Markdown prose (e.g., `1–150000`, `returns400`, `original12d40ec`); optional cleanup only.
+
+**Author disposition (not a quotation):** PR51 later explicitly records all three implementation notes addressed: controlled Create state/reset, category-specific API messages, and the restored-invalid-pair guard. Optional cosmetic spacing was non-blocking; no claim of universal prose cleanup is made. This remains pre-implementation contract approval, not code/release approval.
+
+[Original submitted review](https://github.com/chaproi/club-expense-approval/pull/50#pullrequestreview-6084244796). Original body/SHA/timestamp/state match authenticated GitHub records; corroboration is recorded in review-corroboration-2026-11-28.json.
+
+
+---
+
+<!-- PDF page 11 /B -->
 ## B1. Immutable evidence sequence
 | Stage | Actual source / outcome |
 |---|---|
@@ -206,7 +257,7 @@ Legitimately superseded negatives only: EQUIPMENT100001-invalid became120001-inv
 
 ---
 
-<!-- PDF page 10 /B -->
+<!-- PDF page 12 /B -->
 ## B2. Independent policy fixture and assertion - exact test excerpt
 File server/test/expense-input.test.ts, committedf08672d before production changes. Current interfaces only; no missing-helper or compile-error RED.
 
@@ -265,7 +316,36 @@ TestsSHAf08672d; unchanged production4535280. Output:
 
 ---
 
-<!-- PDF page 11 /B -->
+<!-- PDF page 13 /B -->
+## Same expense-input suite - actual retained GREEN output
+Suite: **server/test/expense-input.test.ts**. Recorded command: `node --import tsx --test server/test/expense-input.test.ts`.
+
+Tested clean source: **ec10dd44140ee41f41826763c1500097d9b626e9**. The original GREEN ledger attributes unit-1 to this source. The preceding page retains the same suite's pre-change RED; this page quotes the original GREEN log, not a later full suite or a newly executed run.
+
+**Verbatim selected output:** command, two newly accepted boundary assertions, complete runner summary and actual runner envelope, in original order. Nonselected passing test lines are omitted; no line is reconstructed.
+
+~~~text
+2026-11-27T09:12:20.618Z $ node --import tsx --test server/test/expense-input.test.ts
+✔ AC-L7-01/02 STS-L7-01 unit creation: ACTIVITY 150000 accepted (0.0585ms)
+✔ AC-L7-01/02 STS-L7-01 unit returned Save: ACTIVITY 150000 accepted (0.0339ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 226.2607
+{"id":"unit-1","command":"node --import tsx --test server/test/expense-input.test.ts","startedAt":"2026-11-27T09:12:20.618Z","elapsedMs":289,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}
+~~~
+Actual result: **34 executed,34 passed,0 failed,0 skipped** (also0 cancelled). Original runner time **226.2607ms**; process envelope **289ms**, exit0, no signal/spawn error/runner termination. These are different timing measures from the same recorded command.
+
+Original log: docs/labs/lab-07/evidence/green-2026-11-27/candidate/unit-1.log. Its byte hash and exact excerpt are in correction-evidence.json. The RED assertions were preserved through GREEN. No application test was rerun for this correction.
+
+
+---
+
+<!-- PDF page 14 /B -->
 ## B3. Actual CHECK probe with valid prerequisites
 Fixture: guard verifies owned loopback database/role/public schema; real authenticated old-range250-baht creation. Probe uses savepoint rollback before independent policy assertion.
 
@@ -301,7 +381,7 @@ Browser4/4 at ec10dd4 now reaches actual stale409, latest TRAVEL100000 versus dr
 
 ---
 
-<!-- PDF page 12 /B -->
+<!-- PDF page 15 /B -->
 ## B4. Shared creation / returned parser
 Actual ec10dd4 diff excerpt; no auth/revision/transaction implementation changes.
 
@@ -348,7 +428,7 @@ Object.hasOwn prevents prototype/unknown category keys from obtaining a maximum.
 
 ---
 
-<!-- PDF page 13 /B -->
+<!-- PDF page 16 /B -->
 ## B5. Actual released UI excerpts
 
 ~~~tsx
@@ -398,7 +478,7 @@ Same draft functions captureDraft, stageRestoredDraft, restoreDraft, discardDraf
 
 ---
 
-<!-- PDF page 14 /B -->
+<!-- PDF page 17 /B -->
 ## B6. Complete new migration - exact released SQL
 
 ~~~sql
@@ -437,7 +517,7 @@ Rollback cannot safely restore the old CHECK while larger values exist. Never de
 
 ---
 
-<!-- PDF page 15 /B -->
+<!-- PDF page 18 /B -->
 ## B7. Actual local and hosted results - distinct sources
 | Source | Actual counts / result |
 |---|---|
@@ -458,7 +538,7 @@ Image builtoa0d1e9d contained4 real migrations with matching hashes. Actual imag
 
 ---
 
-<!-- PDF page 16 /B -->
+<!-- PDF page 19 /B -->
 ## B9. Substantive peer review and disposition
 | Field | Actual verified metadata |
 |---|---|
@@ -479,7 +559,32 @@ The packet review-chain.json retains all actual submitted review text/URLs. No n
 
 ---
 
-<!-- PDF page 17 /B -->
+<!-- PDF page 20 /B -->
+## PR #51 - actual submitted implementation review excerpts
+
+| Reviewer / original UTC | Reviewed exact SHA / submitted state |
+|---|---|
+| thananun-7203 / 2026-11-27T19:02:13Z | b7cbdd1552f0cd0c3c818bb478c467577b1b44a1 / APPROVED |
+
+**Verbatim excerpts** below retain the reviewer's original wording and scope. Separate source passages are quoted separately; omitted review text is not replaced by an author summary. Full submitted text remains in the preserved JSON.
+
+> - **Decision:** **APPROVE** *(Lab 7 implementation & migration source PR approval only — not a merge, not `main` release approval, and not deployed or final Lab 7 submission acceptance)*
+
+> Single cohesive implementation PR (`MERGEABLE`, `CLEAN`) addressing all 3 non-blocking notes from `#50` (controlled create form, category-specific API validation messages, restored invalid-pair guard), zero unresolved threads, and no premature issue closure (`#49` stays open until release/deploy/Lab 7 completion).
+
+> **Binding findings:** None.
+
+> **Non-blocking release note:**
+> - Before merging into `main` for Lab 7 deployment, verify that the live Cloud SQL `ExpenseRequest_amountBaht_check` constraint matches the exact PostgreSQL 17 definition checked by `20261127000000_category_amount_limits/migration.sql` (it was created by the unchanged `20261107000000_expense_requests` migration, so it is expected to match, and the fail-closed `DO $$` guard protects against unexpected drift), and record the actual `main` SHA, migration job execution, Cloud Run revision/digest/traffic, and live synthetic checks separately.
+
+**Author disposition (not a quotation):** Release preparation disclosed direct live SQL access unavailable and retained the fail-closed migration guard; it did not invent a successful CHECK read. Subsequent main deployment logs and bounded synthetic checks are recorded separately. Direct SQL and directly resolved revision-digest limitations remain. This approval concerns the implementation/migration source, not main or final submission.
+
+[Original submitted review](https://github.com/chaproi/club-expense-approval/pull/51#pullrequestreview-6092360927). Original body/SHA/timestamp/state match authenticated GitHub records; corroboration is recorded in review-corroboration-2026-11-28.json.
+
+
+---
+
+<!-- PDF page 21 /B -->
 ## B9. Substantive peer review and disposition
 | Field | Actual verified metadata |
 |---|---|
@@ -500,7 +605,32 @@ The packet review-chain.json retains all actual submitted review text/URLs. No n
 
 ---
 
-<!-- PDF page 18 /B -->
+<!-- PDF page 22 /B -->
+## PR #52 - actual submitted release review excerpts
+
+| Reviewer / original UTC | Reviewed exact SHA / submitted state |
+|---|---|
+| thananun-7203 / 2026-11-28T05:26:51Z | cc4b732cc6709cfdc400033403c3b8815538baf1 / APPROVED |
+
+**Verbatim excerpts** below retain the reviewer's original wording and scope. Separate source passages are quoted separately; omitted review text is not replaced by an author summary. Full submitted text remains in the preserved JSON.
+
+> - **Decision:** **APPROVE** *(independent Lab 7 release PR approval for `staging/sprint-2` `cc4b732c` → `main` only — this review does **not** merge to `main`, trigger Cloud Run migration/deployment, close `#49`, or establish post-deployment / Lab 7 submission acceptance)*
+
+> Independently verified zero byte changes across all protected release/infra/auth files (`deploy.yml`, `Dockerfile`, `compose.yaml`, `package.json`, `package-lock.json`, `prisma/schema.prisma`, all 3 previously applied migrations, `server/src/auth.ts`, `app.ts`, `index.ts`, `seed.ts`). Migration `20261127000000_category_amount_limits/migration.sql` runs transactionally with an exclusive table lock, verifies the exact validated inherited CHECK definition before replacing it (failing closed on unexpected drift), and `deploy.yml` executes the migration job with `--wait` prior to updating the Cloud Run service. Server, both UI forms, draft recovery/BF-01, and auth/Origin/revision invariants remain intact.
+
+> **Binding findings:** None.
+
+> **Post-merge deployment checklist reminder (non-blocking):**
+> - After the owner merges PR `#52` into `main`, record the immutable merged `main` SHA, the triggered `Deploy to Google Cloud` run, confirmation that the Cloud Run migration job (`s981b09c9-migrate`) succeeded with `20261127000000_category_amount_limits` before service update, the serving Cloud Run revision/digest/traffic, and the changed/preserved synthetic live checks without resetting or seeding operational data.
+
+**Author disposition (not a quotation):** The owner later merged c259afe and the existing deployment run46120371207 succeeded. Migration execution preceded service update; log-reported revision/traffic and pushed registry digest, plus owner-directed live checks, are separately evidenced. Direct Cloud Run/SQL reads remain unavailable. No independent live UAT or final submission acceptance is attributed to this release review.
+
+[Original submitted review](https://github.com/chaproi/club-expense-approval/pull/52#pullrequestreview-6096017531). Original body/SHA/timestamp/state match authenticated GitHub records; corroboration is recorded in review-corroboration-2026-11-28.json.
+
+
+---
+
+<!-- PDF page 23 /B -->
 ## B10. Named complete suite on the released main
 Run46120371207, job140903331799, ci/verify. Checkout and git log identify **c259afe45eb49311c1f7bb9e166c4443041b9b82**, not a PR merge. Commands: npm ci; npm run db:migrate; npm test; npm run build; npm run test:e2e; docker build.
 
@@ -529,7 +659,7 @@ This new main execution is separate from local a0d1e9d, PR51eee3f1b and PR525207
 
 ---
 
-<!-- PDF page 19 /B -->
+<!-- PDF page 24 /B -->
 ## B11. Existing pipeline completed successfully
 | Identity | Observed value |
 |---|---|
@@ -570,7 +700,7 @@ The production job used the same main-tagged image and completed before service 
 
 ---
 
-<!-- PDF page 20 /B -->
+<!-- PDF page 25 /B -->
 ## B12. Owner-directed public browser/HTTP results
 | Case | Precondition / expected | Actual |
 |---|---|---|
@@ -587,7 +717,7 @@ Executed28Nov07:22:45-07:22:56Z with Chromium151.0.7922.34 against the stated or
 
 ---
 
-<!-- PDF page 21 /B -->
+<!-- PDF page 26 /B -->
 ## B13. Selected changed/preserved checks
 | Case | Requirement / expected live observation | Status |
 |---|---|---|
@@ -614,7 +744,7 @@ New records are labelled UAT-L7 and retained. No reset/seed/delete or real-recor
 
 ---
 
-<!-- PDF page 22 /B -->
+<!-- PDF page 27 /B -->
 ## B14. Actual live UI captures - selected synthetic record only
 <div style="display:flex;gap:5mm;align-items:flex-start"><div style="width:39%"><img src="ASSET/live-create-form-crop.png" style="width:100%" alt="Category change retains invalid 125000 amount"><p class="caption">Creation: TRAVEL retains125000, linked100000 ceiling feedback and disabled Submit. No automatic write.</p></div><div style="width:59%"><img src="ASSET/live-restored-detail-crop.png" style="width:100%;max-height:208mm;object-fit:contain" alt="Restored invalid Travel150000 with disabled Save and Resubmit"><p class="caption">Real stale409 then Restore: latest TRAVEL100000 remains saved; draft amount150000 is retained and invalid. Save/Resubmit disabled until explicit correction.</p></div></div>
 
@@ -622,7 +752,7 @@ These are lossless crops of actual masked screenshots, not regenerated UI. Sourc
 
 ---
 
-<!-- PDF page 23 /B -->
+<!-- PDF page 28 /B -->
 ## B15. Real final readback and preserved first attempt
 <div style="display:flex;gap:6mm;align-items:flex-start"><img src="ASSET/live-final-detail-crop.png" style="width:57%;max-height:207mm;object-fit:contain" alt="Final approved150000 record and six history events"><div style="width:41%">
 
@@ -638,24 +768,24 @@ Six actor-specific snapshot comparisons cover three distinct pre-existing record
 
 ---
 
-<!-- PDF page 24 /C -->
+<!-- PDF page 29 /C -->
 ## C1. Definitions, fixed window and values
 Repository: chaproi/club-expense-approval only. Common window: **27 November2026 00:00+07 (26 November17:00Z) through28 November07:22:14.1862118Z**. This is a fixed snapshot, not submission time. Later defect-status corroboration retains its actual read time; version-specific retest attribution remains explicit.
 
 | Metric | Definition / actual value | Source / qualification |
 |---|---|---|
-| M1 Completed Issues | 6 completed:0 Lab7,6 other project. No duplicate/cancelled closure counted. | #34/#35/#36/#37/#42/#44, each completed within the window. Issue49 stays open. Full list on page25. |
-| M2 Merged PRs | 3 Lab7 PRs:2 to staging,1 to main. No unrelated merge in window. | PR50/51/52 are three PR activities, not three different completed features. Full list on page25. |
-| M3 Automated suite | npm test at exact main c259afe:184 collected/executed/passed;0 failed/skipped/cancelled. | Run46120371207, ci/verify. Actual summary on page18. Browser23 is separate; not207 unit/API. |
-| M4 Defect status | 8 known records:6 resolved,2 deferred Low. Severity:1 High,3 Medium,3 Low,1 unclassified. | Version-specific register on page28. No binding finding in three submitted Lab7 reviews; not zero undiscovered/live defects. |
-| M5 CI outcomes | 5 run-attempts:5 success;0 failed/cancelled/timed-out/other/running. Completed success5/5=100%. | Proposal, implementation, release and main run inventory on page26. Reusable jobs are not extra workflow runs. |
+| M1 Completed Issues | 6 completed:0 Lab7,6 other project. No duplicate/cancelled closure counted. | #34/#35/#36/#37/#42/#44, each completed within the window. Issue49 stays open. Full list on page30. |
+| M2 Merged PRs | 3 Lab7 PRs:2 to staging,1 to main. No unrelated merge in window. | PR50/51/52 are three PR activities, not three different completed features. Full list on page30. |
+| M3 Automated suite | npm test at exact main c259afe:184 collected/executed/passed;0 failed/skipped/cancelled. | Run46120371207, ci/verify. Actual summary on page23. Browser23 is separate; not207 unit/API. |
+| M4 Defect status | 8 known records:6 resolved,2 deferred Low. Severity:1 High,3 Medium,3 Low,1 unclassified. | Version-specific register on page33. No binding finding in three submitted Lab7 reviews; not zero undiscovered/live defects. |
+| M5 CI outcomes | 5 run-attempts:5 success;0 failed/cancelled/timed-out/other/running. Completed success5/5=100%. | Proposal, implementation, release and main run inventory on page31. Reusable jobs are not extra workflow runs. |
 
-GitHub pagination read52 Issue/PR entries,29 PRs and45 workflow runs, ending below100 per page. Compact source lists are embedded on pages25-26 and retained in metrics-source.json. Earlier29 semantic RED failures and setup failures remain distinct from CI outcomes and are not erased by these values.
+GitHub pagination read52 Issue/PR entries,29 PRs and45 workflow runs, ending below100 per page. Compact source lists are embedded on pages30-31 and retained in metrics-source.json. Earlier29 semantic RED failures and setup failures remain distinct from CI outcomes and are not erased by these values.
 
 
 ---
 
-<!-- PDF page 25 /C -->
+<!-- PDF page 30 /C -->
 ## C2. Completed Issues -6 (all other project work)
 | Issue | Closed UTC / reason | Scope |
 |---|---|---|
@@ -681,7 +811,7 @@ The UTC26Nov closures are inside the window because27Nov00:00Bangkok=26Nov17:00Z
 
 ---
 
-<!-- PDF page 26 /C -->
+<!-- PDF page 31 /C -->
 ## C4. Workflow attempts -5
 | Run / attempt | Scope / head | Outcome |
 |---|---|---|
@@ -698,7 +828,7 @@ Three reviewed PRs and five successful workflows connect the contract to deploym
 
 ---
 
-<!-- PDF page 27 /D -->
+<!-- PDF page 32 /D -->
 ## D1. Maintained Sprint1 functionality - READY on bounded technical evidence
 
 | Readiness item | Actual state / owner action |
@@ -714,7 +844,7 @@ Three reviewed PRs and five successful workflows connect the contract to deploym
 
 ---
 
-<!-- PDF page 28 /D -->
+<!-- PDF page 33 /D -->
 ## D2. Defects - known records, not an undiscovered-defect count
 
 | ID / source | Severity / status | Version-specific resolution or limitation |
@@ -734,7 +864,7 @@ Resolved requires a recorded fix and relevant retest, not closed status alone. I
 
 ---
 
-<!-- PDF page 29 /D -->
+<!-- PDF page 34 /D -->
 ## D3. Technical debt, separate from defects
 | Debt / impact | Priority | Disposition / owner |
 |---|---|---|
@@ -758,7 +888,7 @@ These are conclusions grounded in commits/logs, not a quotation of newly confirm
 
 ---
 
-<!-- PDF page 30 /D -->
+<!-- PDF page 35 /D -->
 ## D6. Contributions and AI use
 **นายสิริกร ฝันนิมิตร /67070507215 /TH-038**, solo with instructor permission, directed requirements and implementation, reviewed AI-assisted work and checked recorded results. The earlier student-confirmed factual declaration is retained: AI tools assisted analysis, implementation, tests and report preparation. **ChatGPT and Codex** assisted these tasks. Reviews by thananun-7203 and original Lab6 UAT retain their actual attribution. No new student confirmation or long personal reflection is claimed.
 
