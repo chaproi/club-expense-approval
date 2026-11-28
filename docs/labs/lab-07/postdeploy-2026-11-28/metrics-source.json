@@ -1,0 +1,174 @@
+{
+    "repository":  "chaproi/club-expense-approval",
+    "windowStart":  "2026-11-27T00:00:00.0000000+07:00",
+    "snapshotUtc":  "2026-11-28T07:22:14.1862118Z",
+    "sourceCounts":  {
+                         "allIssuesAndPRs":  52,
+                         "allPRs":  29,
+                         "allRuns":  45
+                     },
+    "completedIssueEntries":  [
+                                  {
+                                      "number":  44,
+                                      "title":  "Dependency remediation: scoped Prisma config security overrides",
+                                      "closedAt":  "2026-11-26T17:18:33Z",
+                                      "reason":  "completed",
+                                      "scope":  "other project",
+                                      "url":  "https://github.com/chaproi/club-expense-approval/issues/44"
+                                  },
+                                  {
+                                      "number":  42,
+                                      "title":  "F-05 defect: preserve the Requester’s draft after a stale Save conflict",
+                                      "closedAt":  "2026-11-26T17:18:31Z",
+                                      "reason":  "completed",
+                                      "scope":  "other project",
+                                      "url":  "https://github.com/chaproi/club-expense-approval/issues/42"
+                                  },
+                                  {
+                                      "number":  37,
+                                      "title":  "F-06 — Reviewer status-count summary for the Sprint 3 checkpoint",
+                                      "closedAt":  "2026-11-26T17:18:29Z",
+                                      "reason":  "completed",
+                                      "scope":  "other project",
+                                      "url":  "https://github.com/chaproi/club-expense-approval/issues/37"
+                                  },
+                                  {
+                                      "number":  36,
+                                      "title":  "F-05 — Edit and resubmit returned expenses with stale-round protection",
+                                      "closedAt":  "2026-11-26T17:18:26Z",
+                                      "reason":  "completed",
+                                      "scope":  "other project",
+                                      "url":  "https://github.com/chaproi/club-expense-approval/issues/36"
+                                  },
+                                  {
+                                      "number":  35,
+                                      "title":  "F-04 — Return an assigned expense for correction",
+                                      "closedAt":  "2026-11-26T17:18:25Z",
+                                      "reason":  "completed",
+                                      "scope":  "other project",
+                                      "url":  "https://github.com/chaproi/club-expense-approval/issues/35"
+                                  },
+                                  {
+                                      "number":  34,
+                                      "title":  "Deliverable 2 — Contracts, CI and Sprint 2/3 delivery baseline",
+                                      "closedAt":  "2026-11-26T17:18:23Z",
+                                      "reason":  "completed",
+                                      "scope":  "other project",
+                                      "url":  "https://github.com/chaproi/club-expense-approval/issues/34"
+                                  }
+                              ],
+    "completedIssueCount":  6,
+    "excludedClosures":  [
+
+                         ],
+    "mergedPRCount":  3,
+    "mergedPRs":  [
+                      {
+                          "number":  52,
+                          "title":  "Release Lab 7 category-dependent expense limits",
+                          "head":  "staging/sprint-2",
+                          "headSha":  "cc4b732cc6709cfdc400033403c3b8815538baf1",
+                          "base":  "main",
+                          "mergedAt":  "2026-11-28T07:15:32Z",
+                          "mergeSha":  "c259afe45eb49311c1f7bb9e166c4443041b9b82",
+                          "scope":  "Lab7",
+                          "url":  "https://github.com/chaproi/club-expense-approval/pull/52"
+                      },
+                      {
+                          "number":  51,
+                          "title":  "Lab 7: Implement category-dependent expense limits",
+                          "head":  "feat/lab7-category-limits",
+                          "headSha":  "b7cbdd1552f0cd0c3c818bb478c467577b1b44a1",
+                          "base":  "staging/sprint-2",
+                          "mergedAt":  "2026-11-27T19:38:24Z",
+                          "mergeSha":  "cc4b732cc6709cfdc400033403c3b8815538baf1",
+                          "scope":  "Lab7",
+                          "url":  "https://github.com/chaproi/club-expense-approval/pull/51"
+                      },
+                      {
+                          "number":  50,
+                          "title":  "Lab 7: Review category-dependent expense ceiling contract",
+                          "head":  "docs/lab7-amount-limit-proposal",
+                          "headSha":  "c7f1c88e0b3bc78322d1dcc34c9ceb4c397361eb",
+                          "base":  "staging/sprint-2",
+                          "mergedAt":  "2026-11-27T07:05:24Z",
+                          "mergeSha":  "453528073038a3122ecd7abb0adac7bf09a1dc41",
+                          "scope":  "Lab7",
+                          "url":  "https://github.com/chaproi/club-expense-approval/pull/50"
+                      }
+                  ],
+    "ciAttempts":  [
+                       {
+                           "id":  46120371207,
+                           "attempt":  1,
+                           "workflow":  "Deploy to Google Cloud",
+                           "event":  "push",
+                           "branch":  "main",
+                           "sha":  "c259afe45eb49311c1f7bb9e166c4443041b9b82",
+                           "createdAt":  "2026-11-28T07:15:35Z",
+                           "status":  "completed",
+                           "conclusion":  "success",
+                           "url":  "https://github.com/chaproi/club-expense-approval/actions/runs/46120371207"
+                       },
+                       {
+                           "id":  46103018541,
+                           "attempt":  1,
+                           "workflow":  "CI and Docker build",
+                           "event":  "pull_request",
+                           "branch":  "staging/sprint-2",
+                           "sha":  "cc4b732cc6709cfdc400033403c3b8815538baf1",
+                           "createdAt":  "2026-11-28T03:28:31Z",
+                           "status":  "completed",
+                           "conclusion":  "success",
+                           "url":  "https://github.com/chaproi/club-expense-approval/actions/runs/46103018541"
+                       },
+                       {
+                           "id":  45978536607,
+                           "attempt":  1,
+                           "workflow":  "CI and Docker build",
+                           "event":  "pull_request",
+                           "branch":  "feat/lab7-category-limits",
+                           "sha":  "b7cbdd1552f0cd0c3c818bb478c467577b1b44a1",
+                           "createdAt":  "2026-11-27T10:01:16Z",
+                           "status":  "completed",
+                           "conclusion":  "success",
+                           "url":  "https://github.com/chaproi/club-expense-approval/actions/runs/45978536607"
+                       },
+                       {
+                           "id":  45876424340,
+                           "attempt":  1,
+                           "workflow":  "CI and Docker build",
+                           "event":  "pull_request",
+                           "branch":  "docs/lab7-amount-limit-proposal",
+                           "sha":  "c7f1c88e0b3bc78322d1dcc34c9ceb4c397361eb",
+                           "createdAt":  "2026-11-26T18:30:10Z",
+                           "status":  "completed",
+                           "conclusion":  "success",
+                           "url":  "https://github.com/chaproi/club-expense-approval/actions/runs/45876424340"
+                       },
+                       {
+                           "id":  45874483795,
+                           "attempt":  1,
+                           "workflow":  "CI and Docker build",
+                           "event":  "pull_request",
+                           "branch":  "docs/lab7-amount-limit-proposal",
+                           "sha":  "12d40ecf571d50a012045b324d48ae50459c21eb",
+                           "createdAt":  "2026-11-26T18:15:41Z",
+                           "status":  "completed",
+                           "conclusion":  "success",
+                           "url":  "https://github.com/chaproi/club-expense-approval/actions/runs/45874483795"
+                       }
+                   ],
+    "ciOutcomeCounts":  [
+                            {
+                                "outcome":  "success",
+                                "count":  5
+                            }
+                        ],
+    "issue49":  {
+                    "title":  "Lab 7 proposal: category-dependent expense ceilings",
+                    "url":  "https://github.com/chaproi/club-expense-approval/issues/49",
+                    "state":  "open"
+                },
+    "qualification":  "Repository-only fixed snapshot; original proposal and accepted maintenance runs included by explicit SHA inventory; reusable jobs are not separate runs"
+}

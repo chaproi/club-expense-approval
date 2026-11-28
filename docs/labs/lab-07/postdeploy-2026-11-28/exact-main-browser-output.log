@@ -1,0 +1,46 @@
+2026-11-28T07:16:29.2278638Z ##[group]Run set -o pipefail
+2026-11-28T07:16:29.2278922Z set -o pipefail
+2026-11-28T07:16:29.2279160Z mkdir -p docs/evidence/deliverable-2
+2026-11-28T07:16:29.2279520Z npm run test:e2e 2>&1 | tee docs/evidence/deliverable-2/ci-browser-results.txt
+2026-11-28T07:16:29.2307997Z shell: /usr/bin/bash -e {0}
+2026-11-28T07:16:29.2308531Z env:
+2026-11-28T07:16:29.2309196Z   DATABASE_URL: ***127.0.0.1:5432/test_lab7_4f8d8e1f84547a34?schema=public
+2026-11-28T07:16:29.2309867Z   TEST_DATABASE_URL: ***127.0.0.1:5432/test_lab7_4f8d8e1f84547a34?schema=public
+2026-11-28T07:16:29.2310201Z   LAB7_TEST_DATABASE_NAME: test_lab7_4f8d8e1f84547a34
+2026-11-28T07:16:29.2310449Z ##[endgroup]
+2026-11-28T07:16:29.3234896Z
+2026-11-28T07:16:29.3235648Z > club-expense-approval@0.1.0 test:e2e
+2026-11-28T07:16:29.3236399Z > node --env-file-if-exists=.env node_modules/@playwright/test/cli.js test
+2026-11-28T07:16:29.3236797Z
+2026-11-28T07:16:29.3295662Z .env not found. Continuing without it.
+2026-11-28T07:16:34.9978741Z [WebServer] .env not found. Continuing without it.
+2026-11-28T07:16:35.9588612Z
+2026-11-28T07:16:35.9619086Z Running 23 tests using 1 worker
+2026-11-28T07:16:35.9619712Z
+2026-11-28T07:16:35.9889325Z .env not found. Continuing without it.
+2026-11-28T07:16:38.1265898Z   ✓   1 client/test/category-limits.spec.ts:33:1 › AC-L7-03 STS-L7-03 creation category switches retain amount, explain the pair and never auto-write (1.2s)
+2026-11-28T07:16:39.4981545Z   ✓   2 client/test/category-limits.spec.ts:62:1 › AC-L7-03/04 STS-L7-04 returned category switch retains values and requires explicit valid Save (1.4s)
+2026-11-28T07:16:41.0467222Z   ✓   3 client/test/category-limits.spec.ts:85:1 › AC-L7-04 STS-L7-04 real stale amount draft restored over newer TRAVEL stays invalid without clamping or auto-write (1.5s)
+2026-11-28T07:16:42.1595733Z LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed
+2026-11-28T07:16:42.1650973Z   ✓   4 client/test/category-limits.spec.ts:123:1 › AC-L7-01/03/07 browser preserved TRAVEL max/max+1 control creates one real request (1.1s)
+2026-11-28T07:16:46.5523467Z   ✓   5 client/test/expense-decisions.spec.ts:50:1 › T-09: requester submits, reviewer approves or rejects, and requester reads both outcomes (4.3s)
+2026-11-28T07:16:48.8539498Z   ✓   6 client/test/expense-decisions.spec.ts:79:1 › reviewer reloads the latest status after a stale decision returns 409 (2.3s)
+2026-11-28T07:16:55.9989659Z   ✓   7 client/test/expense-decisions.spec.ts:102:1 › T-F04-05/T-F05-06/T-F06-04: return, saved correction, resubmit and final readback update the DB summary (7.1s)
+2026-11-28T07:16:57.7347918Z   ✓   8 client/test/f05-draft-recovery.spec.ts:196:1 › T-F05-07 keeps latest values and the conflicted draft separate after real stale Save (1.5s)
+2026-11-28T07:16:59.3853045Z   ✓   9 client/test/f05-draft-recovery.spec.ts:218:3 › T-F05-08a Restore keeps the latest untouched category and waits for manual Save (1.6s)
+2026-11-28T07:17:00.8794984Z   ✓  10 client/test/f05-draft-recovery.spec.ts:218:3 › T-F05-08a Restore keeps the latest untouched amount and waits for manual Save (1.5s)
+2026-11-28T07:17:02.3181645Z   ✓  11 client/test/f05-draft-recovery.spec.ts:252:1 › T-F05-08b Discard keeps latest saved fields and performs no mutation (1.4s)
+2026-11-28T07:17:03.7423063Z   ✓  12 client/test/f05-draft-recovery.spec.ts:272:3 › T-F05-09a shows read-only draft when the latest state is SUBMITTED (1.4s)
+2026-11-28T07:17:05.1774393Z   ✓  13 client/test/f05-draft-recovery.spec.ts:272:3 › T-F05-09a shows read-only draft when the latest state is APPROVED (1.4s)
+2026-11-28T07:17:07.1757234Z   ✓  14 client/test/f05-draft-recovery.spec.ts:305:1 › T-F05-09a revoked owner session cannot read or recover the stale draft (2.0s)
+2026-11-28T07:17:09.4323405Z   ✓  15 client/test/f05-draft-recovery.spec.ts:343:1 › T-F05-09a real access denial clears an established draft without ending the account session (2.2s)
+2026-11-28T07:17:12.3106136Z   ✓  16 client/test/f05-draft-recovery.spec.ts:401:1 › T-F05-09b keeps a draft only for its request and clears it when the account changes (2.9s)
+2026-11-28T07:17:14.1646524Z   ✓  17 client/test/f05-draft-recovery.spec.ts:435:1 › T-F05-09b warns about reload and clears the draft on page reload (1.8s)
+2026-11-28T07:17:15.6131358Z   ✓  18 client/test/f05-draft-recovery.spec.ts:450:1 › T-F05-10a a failed refresh retains the draft and deliberate retry makes only reads (1.4s)
+2026-11-28T07:17:17.1394302Z   ✓  19 client/test/f05-draft-recovery.spec.ts:491:1 › T-F05-10b a second stale Save retains the new attempt and the newer database revision (1.5s)
+2026-11-28T07:17:18.5518503Z   ✓  20 client/test/f05-draft-recovery.spec.ts:519:3 › T-F05-11a Save transport error retains state and identifies the failed action (1.4s)
+2026-11-28T07:17:19.9159834Z   ✓  21 client/test/f05-draft-recovery.spec.ts:519:3 › T-F05-11b Resubmit transport error retains state and identifies the failed action (1.4s)
+2026-11-28T07:17:21.4406819Z   ✓  22 client/test/f05-draft-recovery.spec.ts:629:1 › BF-01 AC-F05-08/09 same-value Restore clears the clean draft before explicit Resubmit (1.5s)
+2026-11-28T07:17:22.9651915Z   ✓  23 client/test/f05-draft-recovery.spec.ts:644:1 › BF-01 AC-F05-08/09 reverting a dirty restored draft clears it before explicit Resubmit (1.5s)
+2026-11-28T07:17:23.0219594Z
+2026-11-28T07:17:23.0224366Z   23 passed (53.3s)

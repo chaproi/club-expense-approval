@@ -1,0 +1,57 @@
+[
+    {
+        "number":  30,
+        "title":  "Lab 6 DEF-TH038-01: reject malformed Unicode login email before database lookup",
+        "state":  "closed",
+        "reason":  "completed",
+        "closedAt":  "2026-11-22T14:42:04Z",
+        "labels":  [
+                       "bug"
+                   ],
+        "url":  "https://github.com/chaproi/club-expense-approval/issues/30"
+    },
+    {
+        "number":  31,
+        "title":  "Lab 6 DEF-TH038-02: redirect Cloud Run alias navigation to the configured app origin",
+        "state":  "closed",
+        "reason":  "completed",
+        "closedAt":  "2026-11-22T14:42:05Z",
+        "labels":  [
+                       "bug"
+                   ],
+        "url":  "https://github.com/chaproi/club-expense-approval/issues/31"
+    },
+    {
+        "number":  42,
+        "title":  "F-05 defect: preserve the Requester’s draft after a stale Save conflict",
+        "state":  "closed",
+        "reason":  "completed",
+        "closedAt":  "2026-11-26T17:18:31Z",
+        "labels":  [
+
+                   ],
+        "url":  "https://github.com/chaproi/club-expense-approval/issues/42"
+    },
+    {
+        "number":  44,
+        "title":  "Dependency remediation: scoped Prisma config security overrides",
+        "state":  "closed",
+        "reason":  "completed",
+        "closedAt":  "2026-11-26T17:18:33Z",
+        "labels":  [
+
+                   ],
+        "url":  "https://github.com/chaproi/club-expense-approval/issues/44"
+    },
+    {
+        "number":  49,
+        "title":  "Lab 7 proposal: category-dependent expense ceilings",
+        "state":  "open",
+        "reason":  null,
+        "closedAt":  null,
+        "labels":  [
+
+                   ],
+        "url":  "https://github.com/chaproi/club-expense-approval/issues/49"
+    }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "source": "live-create-invalid-pair.png",
+    "sourceSha256": "c7b5b81e82055efda2e92b9dc0f19157c542f24d7748e75adc79ae8c7d418eba",
+    "crop": "live-create-form-crop.png",
+    "coordinatesXYXY": [
+      50,
+      300,
+      395,
+      845
+    ],
+    "operation": "Lossless screenshot region crop for readable print layout; no content fabrication or recapture"
+  },
+  {
+    "source": "live-restored-invalid-pair.png",
+    "sourceSha256": "2ebca1988363c9b205af0fea0ea928441c405647f6ffc053dee4b6eaeb0283de",
+    "crop": "live-restored-detail-crop.png",
+    "coordinatesXYXY": [
+      840,
+      305,
+      1395,
+      1430
+    ],
+    "operation": "Lossless screenshot region crop for readable print layout; no content fabrication or recapture"
+  },
+  {
+    "source": "live-final-history.png",
+    "sourceSha256": "86bdb0095c20d246937c42e0b64ded2603c11ef5145005d52e5125fe63f48c99",
+    "crop": "live-final-detail-crop.png",
+    "coordinatesXYXY": [
+      840,
+      305,
+      1395,
+      1274
+    ],
+    "operation": "Lossless screenshot region crop for readable print layout; no content fabrication or recapture"
+  }
+]

@@ -1,0 +1,77 @@
+{
+  "release": "c259afe45eb49311c1f7bb9e166c4443041b9b82",
+  "revisionLogReported": "s981b09c9-00009-fwv",
+  "url": "https://s981b09c9-4d7hbszvwq-as.a.run.app",
+  "startedAt": "2026-11-28T07:22:45.895Z",
+  "cases": [
+    {
+      "id": "L7-P01",
+      "role": "Anonymous",
+      "expected": "Public root200 and real login form",
+      "startedAt": "2026-11-28T07:22:47.894Z",
+      "actual": {
+        "rootStatus": 200,
+        "finalUrl": "https://s981b09c9-4d7hbszvwq-as.a.run.app/"
+      },
+      "status": "PASS",
+      "finishedAt": "2026-11-28T07:22:56.093Z"
+    },
+    {
+      "id": "L7-P02",
+      "role": "Anonymous",
+      "expected": "Safe401 for protected anonymous reads",
+      "startedAt": "2026-11-28T07:22:56.093Z",
+      "actual": [
+        {
+          "path": "/api/auth/me",
+          "status": 401,
+          "code": "UNAUTHENTICATED"
+        },
+        {
+          "path": "/api/expense-requests",
+          "status": 401,
+          "code": "UNAUTHENTICATED"
+        },
+        {
+          "path": "/api/expense-requests/summary",
+          "status": 401,
+          "code": "UNAUTHENTICATED"
+        }
+      ],
+      "status": "PASS",
+      "finishedAt": "2026-11-28T07:22:56.433Z"
+    },
+    {
+      "id": "L7-P03",
+      "role": "Anonymous",
+      "expected": "Mobile login usable without horizontal overflow",
+      "startedAt": "2026-11-28T07:22:56.433Z",
+      "actual": {
+        "scroll": 390,
+        "viewport": 390
+      },
+      "status": "PASS",
+      "finishedAt": "2026-11-28T07:22:56.525Z"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "public-login-desktop.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "public-login-mobile.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "qualification": "Owner-directed automated browser/HTTP checks; no direct cloud inspection or independent peer UAT",
+  "browser": "151.0.7922.34",
+  "cleanup": "Owned context/browser closed",
+  "finishedAt": "2026-11-28T07:22:56.641Z"
+}

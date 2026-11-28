@@ -1,0 +1,262 @@
+{
+  "date": "2026-11-28 Asia/Bangkok",
+  "release": "c259afe45eb49311c1f7bb9e166c4443041b9b82",
+  "pages": 30,
+  "pdfSha256": "4d89faf09b47e36f9b2051f1417bfc3d7a9b6dfa1b329c68673f402e3c0490c8",
+  "sourceSha256": "8fb2cad68f57dd650d7f1070c4683d00217785880d0d8badfdab9e144ea54685",
+  "fonts": [
+    {
+      "name": "AAAAAA+Tahoma",
+      "format": "ttf",
+      "embeddedBytes": 205944
+    },
+    {
+      "name": "BAAAAA+Tahoma-Bold",
+      "format": "ttf",
+      "embeddedBytes": 66668
+    },
+    {
+      "name": "CAAAAA+Consolas",
+      "format": "ttf",
+      "embeddedBytes": 33228
+    },
+    {
+      "name": "DAAAAA+SegoeUISymbol",
+      "format": "ttf",
+      "embeddedBytes": 46504
+    }
+  ],
+  "pageChecks": [
+    {
+      "page": 1,
+      "textCharacters": 1288,
+      "raster": "page-01.png",
+      "sha256": "16c4a0c4b2a2a79f058ad5661ec33f0b5381f9494656403650a218f4d61d7156"
+    },
+    {
+      "page": 2,
+      "textCharacters": 1758,
+      "raster": "page-02.png",
+      "sha256": "847878909117261e12271ecd651a7c77c35129554adcf169f14cb477e83d85b9"
+    },
+    {
+      "page": 3,
+      "textCharacters": 2389,
+      "raster": "page-03.png",
+      "sha256": "7f646cee6a6bd69d3b7dc172c6bb1fbee16de41d0d04b96223055a6a0fe43eb2"
+    },
+    {
+      "page": 4,
+      "textCharacters": 2463,
+      "raster": "page-04.png",
+      "sha256": "77f5bcdad9723f2d407dc1eb97a215a11cecd5d48e154d076881dbebed2ec3f3"
+    },
+    {
+      "page": 5,
+      "textCharacters": 2056,
+      "raster": "page-05.png",
+      "sha256": "3666a2843c6902501c856f305a6d4aad7fb6d5703b00ce72cda98755e4a5093c"
+    },
+    {
+      "page": 6,
+      "textCharacters": 1934,
+      "raster": "page-06.png",
+      "sha256": "9fba5210ad8c2ce51e1c13a092c8195489090f016b02abcedf21381cb14d13e7"
+    },
+    {
+      "page": 7,
+      "textCharacters": 2238,
+      "raster": "page-07.png",
+      "sha256": "765dc156b13323451e3e5ba345d0a9f242cc3b2561d755351c60315a2f49f024"
+    },
+    {
+      "page": 8,
+      "textCharacters": 1564,
+      "raster": "page-08.png",
+      "sha256": "a0a1467663bb0e09b57568a3f4c95a30f47c186da227c768970649e63a134d42"
+    },
+    {
+      "page": 9,
+      "textCharacters": 1610,
+      "raster": "page-09.png",
+      "sha256": "52fb03cdc763845be33f8b778c51ecd43746f8542fcfffcf4d92929bd61649aa"
+    },
+    {
+      "page": 10,
+      "textCharacters": 2576,
+      "raster": "page-10.png",
+      "sha256": "fcc526b7ca5c0b3c32187898c9f8adf7705653a4b7ef2ff75c4bd9a7d34bedf0"
+    },
+    {
+      "page": 11,
+      "textCharacters": 2782,
+      "raster": "page-11.png",
+      "sha256": "8b1bf328dcd90e857f26d8cf9c29de0c9acd5c79a7826212832f1644f6ce8af7"
+    },
+    {
+      "page": 12,
+      "textCharacters": 2569,
+      "raster": "page-12.png",
+      "sha256": "695121993bb2180e53b50a0551bbfc258671617559e32a55cea5465c67ba8c1b"
+    },
+    {
+      "page": 13,
+      "textCharacters": 3332,
+      "raster": "page-13.png",
+      "sha256": "5d8f49398696f591b8338280f297ed8d29c4bb6b7952256d57ca1ec6d22a441a"
+    },
+    {
+      "page": 14,
+      "textCharacters": 1825,
+      "raster": "page-14.png",
+      "sha256": "d8b9611e54473559148a70b4e3ac776a0049956b5d7ac5b09ea1bde2c020f025"
+    },
+    {
+      "page": 15,
+      "textCharacters": 1757,
+      "raster": "page-15.png",
+      "sha256": "380080cf447301ed21e4137285eed92bd6f404864fe5edbcedaedc57cd1c0490"
+    },
+    {
+      "page": 16,
+      "textCharacters": 1644,
+      "raster": "page-16.png",
+      "sha256": "ba0cfbf3438df5a8daee7fdfe2f25a30446588a509b41d0bbf7a1b7e02007b78"
+    },
+    {
+      "page": 17,
+      "textCharacters": 1474,
+      "raster": "page-17.png",
+      "sha256": "e7b765117d98ed6051494236b90c0d104d491d717b62e1e597f0e2bd09248617"
+    },
+    {
+      "page": 18,
+      "textCharacters": 1694,
+      "raster": "page-18.png",
+      "sha256": "8cbbb57a83a8884b4a5342934c5d2f4aeeda84ec506fd9a9129638625acf8bd2"
+    },
+    {
+      "page": 19,
+      "textCharacters": 2379,
+      "raster": "page-19.png",
+      "sha256": "55f1dde66be28bfd20a6b65f0e015f6d5f46d67b7976d45d6fd8543491a5400f"
+    },
+    {
+      "page": 20,
+      "textCharacters": 824,
+      "raster": "page-20.png",
+      "sha256": "198ac5b6665337758b36b9b8c9f2d8b4621cc8a89bb2951b9db43e1a8c89807d"
+    },
+    {
+      "page": 21,
+      "textCharacters": 1491,
+      "raster": "page-21.png",
+      "sha256": "14efe822e3701cbb494e763b76745188cbacb29312ae889c1fad7c85a95e2fc5"
+    },
+    {
+      "page": 22,
+      "textCharacters": 658,
+      "raster": "page-22.png",
+      "sha256": "01b19f0990b436921bf8b76c1f577a671891b39986a6cbd4074caa5825d470eb"
+    },
+    {
+      "page": 23,
+      "textCharacters": 1037,
+      "raster": "page-23.png",
+      "sha256": "3e2fbca999ad4266a57b7523ad6d07d05434513c1a960f8d0b486b2d37966f24"
+    },
+    {
+      "page": 24,
+      "textCharacters": 1825,
+      "raster": "page-24.png",
+      "sha256": "88b67a86e3796b3be1f5c4f96fd8296af3dbc1f1ba61ca1a6a701ad5164bf899"
+    },
+    {
+      "page": 25,
+      "textCharacters": 824,
+      "raster": "page-25.png",
+      "sha256": "ae465109dd097e7defe4d8ce41a62a95541414be3f022f49f8b3d7a0956eb7e1"
+    },
+    {
+      "page": 26,
+      "textCharacters": 1011,
+      "raster": "page-26.png",
+      "sha256": "42677d12fe8399ec74cb82d7f1c16181df0517d7dce9e7d26115ddeb10e752ab"
+    },
+    {
+      "page": 27,
+      "textCharacters": 1298,
+      "raster": "page-27.png",
+      "sha256": "4ad4d1f34beb97b48473a89cf28af14f390a1079b3f8299ece0e0801f2539621"
+    },
+    {
+      "page": 28,
+      "textCharacters": 1767,
+      "raster": "page-28.png",
+      "sha256": "341210c7ee5199b469c3528eb7d7bd282770ffda307be5c63ff227ead0f43a62"
+    },
+    {
+      "page": 29,
+      "textCharacters": 2412,
+      "raster": "page-29.png",
+      "sha256": "76313ac04d18220019f369c70a967c2e431ce7e71ec515ea1d31cbcf2593bcba"
+    },
+    {
+      "page": 30,
+      "textCharacters": 2251,
+      "raster": "page-30.png",
+      "sha256": "8e3652119fe3f90abcfe67a45f9508bec952392aea98636655495d79bd3bd3c9"
+    }
+  ],
+  "links": 9,
+  "structuralIssues": [],
+  "visualInspection": {
+    "result": "PASS",
+    "pagesIndividuallyInspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "checks": [
+      "Thai identity/fonts",
+      "Readable code/tables/screenshots",
+      "No clipping or overlap",
+      "Page numbers/captions/navigation"
+    ],
+    "finalRevision": "All30 pages individually inspected; subsequent readability change affected only page24, reinspected; whitespace/raw-diff clarification affected only page12, reinspected. Remaining raster hashes identical.",
+    "qualification": "AI visual QA, not peer/student acceptance"
+  },
+  "documentationCheckAttempts": [
+    "Initial26-page layout overflow: split dense content instead of shrinking fonts",
+    "Windows default cp874 decode failure: explicit UTF-8 corrected authoring",
+    "Offline validator initially ran before manifest generation and assumed numeric-link type; generated manifest and checked resolved named destinations",
+    "First staged whitespace check failed on Markdown hard breaks and unified-diff blank context; preserve raw diff in JSON and normalize print whitespace; final check rerun"
+  ]
+}

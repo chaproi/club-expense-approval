@@ -1,0 +1,20 @@
+{
+  "release": "c259afe45eb49311c1f7bb9e166c4443041b9b82",
+  "run": 46120371207,
+  "job": 140903331799,
+  "command": "npm test",
+  "collected": 184,
+  "executed": 184,
+  "passed": 184,
+  "failed": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "runnerMs": 5252.856194,
+  "browser": {
+    "command": "npm run test:e2e",
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0,
+    "reportSeconds": 53.3
+  }
+}

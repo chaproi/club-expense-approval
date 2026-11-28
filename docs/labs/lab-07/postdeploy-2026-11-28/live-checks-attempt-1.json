@@ -1,0 +1,453 @@
+{
+  "release": "c259afe45eb49311c1f7bb9e166c4443041b9b82",
+  "revisionLogReported": "s981b09c9-00009-fwv",
+  "url": "https://s981b09c9-4d7hbszvwq-as.a.run.app",
+  "marker": "UAT-L7-20261128T074029Z",
+  "startedAt": "2026-11-28T07:40:29.896Z",
+  "cases": [
+    {
+      "id": "L7-A01",
+      "role": "R1/R2/V1 plus secondR1",
+      "expected": "Real login/current role; capture representative authorized existing records before writes",
+      "startedAt": "2026-11-28T07:40:30.014Z",
+      "status": "PASS",
+      "actual": {
+        "authenticatedContexts": 4,
+        "existingReadSamples": 6
+      },
+      "finishedAt": "2026-11-28T07:40:47.136Z"
+    },
+    {
+      "id": "L7-A02",
+      "role": "R1",
+      "expected": "All category maxima accepted and retrieved exactly",
+      "startedAt": "2026-11-28T07:40:47.137Z",
+      "status": "PASS",
+      "actual": {
+        "rows": [
+          {
+            "id": "5946ce6a-9909-4c41-8149-32f164a87b81",
+            "category": "ACTIVITY",
+            "amount": 150000,
+            "revision": 0
+          },
+          {
+            "id": "38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+            "category": "EQUIPMENT",
+            "amount": 120000,
+            "revision": 0
+          },
+          {
+            "id": "aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+            "category": "TRAVEL",
+            "amount": 100000,
+            "revision": 0
+          }
+        ]
+      },
+      "finishedAt": "2026-11-28T07:40:47.684Z"
+    },
+    {
+      "id": "L7-A03",
+      "role": "R1",
+      "expected": "Maximum+1 and cross-category invalid pairs rejected400 without domain change;110000 valid forEQUIPMENT",
+      "startedAt": "2026-11-28T07:40:47.685Z",
+      "status": "PASS",
+      "actual": {
+        "rejectedPairs": 6,
+        "validCrossRecord": "9629ba59-e4c6-4cb4-88ba-eaee7795fb35",
+        "validCrossAmount": 110000
+      },
+      "finishedAt": "2026-11-28T07:40:48.886Z"
+    },
+    {
+      "id": "L7-A04",
+      "role": "R1/browser",
+      "expected": "Category changes retain125000,update linked feedback,prevent invalid writes;switch back explicitlycreates",
+      "startedAt": "2026-11-28T07:40:48.887Z",
+      "status": "FAIL",
+      "error": {
+        "name": "TimeoutError",
+        "message": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Category', { exact: true })\u001b[22m\n"
+      },
+      "finishedAt": "2026-11-28T07:41:19.199Z"
+    }
+  ],
+  "http": [
+    {
+      "at": "2026-11-28T07:40:46.561Z",
+      "caseId": "L7-A01",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:46.660Z",
+      "caseId": "L7-A01",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:46.744Z",
+      "caseId": "L7-A01",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:46.820Z",
+      "caseId": "L7-A01",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:46.892Z",
+      "caseId": "L7-A01",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:46.974Z",
+      "caseId": "L7-A01",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:47.049Z",
+      "caseId": "L7-A01",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:47.136Z",
+      "caseId": "L7-A01",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:47.259Z",
+      "caseId": "L7-A02",
+      "actor": "R1",
+      "method": "POST",
+      "path": "/api/expense-requests",
+      "status": 201
+    },
+    {
+      "at": "2026-11-28T07:40:47.357Z",
+      "caseId": "L7-A02",
+      "actor": "R1",
+      "method": "POST",
+      "path": "/api/expense-requests",
+      "status": 201
+    },
+    {
+      "at": "2026-11-28T07:40:47.452Z",
+      "caseId": "L7-A02",
+      "actor": "R1",
+      "method": "POST",
+      "path": "/api/expense-requests",
+      "status": 201
+    },
+    {
+      "at": "2026-11-28T07:40:47.528Z",
+      "caseId": "L7-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:47.606Z",
+      "caseId": "L7-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:47.684Z",
+      "caseId": "L7-A02",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:47.759Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:47.834Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:47.913Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:47.982Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:48.165Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "POST",
+      "path": "/api/expense-requests",
+      "status": 400,
+      "error": {
+        "code": "INVALID_INPUT",
+        "message": "Enter a title of 1–120 characters and a whole amount of 1–150,000 baht for ACTIVITY."
+      }
+    },
+    {
+      "at": "2026-11-28T07:40:48.231Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "POST",
+      "path": "/api/expense-requests",
+      "status": 400,
+      "error": {
+        "code": "INVALID_INPUT",
+        "message": "Enter a title of 1–120 characters and a whole amount of 1–120,000 baht for EQUIPMENT."
+      }
+    },
+    {
+      "at": "2026-11-28T07:40:48.298Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "POST",
+      "path": "/api/expense-requests",
+      "status": 400,
+      "error": {
+        "code": "INVALID_INPUT",
+        "message": "Enter a title of 1–120 characters and a whole amount of 1–100,000 baht for TRAVEL."
+      }
+    },
+    {
+      "at": "2026-11-28T07:40:48.362Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "POST",
+      "path": "/api/expense-requests",
+      "status": 400,
+      "error": {
+        "code": "INVALID_INPUT",
+        "message": "Enter a title of 1–120 characters and a whole amount of 1–120,000 baht for EQUIPMENT."
+      }
+    },
+    {
+      "at": "2026-11-28T07:40:48.424Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "POST",
+      "path": "/api/expense-requests",
+      "status": 400,
+      "error": {
+        "code": "INVALID_INPUT",
+        "message": "Enter a title of 1–120 characters and a whole amount of 1–100,000 baht for TRAVEL."
+      }
+    },
+    {
+      "at": "2026-11-28T07:40:48.483Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "POST",
+      "path": "/api/expense-requests",
+      "status": 400,
+      "error": {
+        "code": "INVALID_INPUT",
+        "message": "Enter a title of 1–120 characters and a whole amount of 1–100,000 baht for TRAVEL."
+      }
+    },
+    {
+      "at": "2026-11-28T07:40:48.556Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:48.627Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:48.702Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:48.791Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:40:48.885Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "POST",
+      "path": "/api/expense-requests",
+      "status": 201
+    },
+    {
+      "at": "2026-11-28T07:41:19.295Z",
+      "caseId": "L7-A04",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:41:19.374Z",
+      "caseId": "L7-A04",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:41:19.451Z",
+      "caseId": "L7-A04",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:41:19.540Z",
+      "caseId": "L7-A04",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/9629ba59-e4c6-4cb4-88ba-eaee7795fb35",
+      "status": 200
+    }
+  ],
+  "inventory": [
+    {
+      "id": "5946ce6a-9909-4c41-8149-32f164a87b81",
+      "title": "UAT-L7-20261128T074029Z-ACTIVITY-max",
+      "category": "ACTIVITY",
+      "amountBaht": 150000,
+      "status": "SUBMITTED",
+      "revision": 0,
+      "historyTypes": [
+        "SUBMITTED"
+      ],
+      "retained": true
+    },
+    {
+      "id": "38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "title": "UAT-L7-20261128T074029Z-EQUIPMENT-max",
+      "category": "EQUIPMENT",
+      "amountBaht": 120000,
+      "status": "SUBMITTED",
+      "revision": 0,
+      "historyTypes": [
+        "SUBMITTED"
+      ],
+      "retained": true
+    },
+    {
+      "id": "aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+      "title": "UAT-L7-20261128T074029Z-TRAVEL-max",
+      "category": "TRAVEL",
+      "amountBaht": 100000,
+      "status": "SUBMITTED",
+      "revision": 0,
+      "historyTypes": [
+        "SUBMITTED"
+      ],
+      "retained": true
+    },
+    {
+      "id": "9629ba59-e4c6-4cb4-88ba-eaee7795fb35",
+      "title": "UAT-L7-20261128T074029Z-cross110000",
+      "category": "EQUIPMENT",
+      "amountBaht": 110000,
+      "status": "SUBMITTED",
+      "revision": 0,
+      "historyTypes": [
+        "SUBMITTED"
+      ],
+      "retained": true
+    }
+  ],
+  "screenshots": [],
+  "qualification": "Owner-directed real browser/HTTP checks; not independent external UAT. New synthetic records retained; no cloud SQL direct inspection.",
+  "browser": "151.0.7922.34",
+  "preservation": {
+    "sampleCount": 6,
+    "scope": "Up to3 existing authorized records per owner/assigned role; captured after deployment, before these writes. No pre-deployment preservation claim."
+  },
+  "failure": {
+    "name": "TimeoutError",
+    "message": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Category', { exact: true })\u001b[22m\n"
+  },
+  "cleanup": {
+    "recordsDeleted": 0,
+    "retainedCount": 4,
+    "logout": [
+      {
+        "alias": "R1",
+        "status": 204
+      },
+      {
+        "alias": "R2",
+        "status": 204
+      },
+      {
+        "alias": "V1",
+        "status": 204
+      },
+      {
+        "alias": "S2",
+        "status": 204
+      }
+    ],
+    "contextsClosed": true,
+    "browserClosed": true
+  },
+  "finishedAt": "2026-11-28T07:41:20.013Z",
+  "status": "FAIL"
+}

@@ -1,0 +1,19 @@
+{
+  "release": "c259afe45eb49311c1f7bb9e166c4443041b9b82",
+  "run": "https://github.com/chaproi/club-expense-approval/actions/runs/46120371207",
+  "outcome": "success",
+  "evidenceSource": "GitHub deployment logs;not direct cloud reads",
+  "imageTag": "asia-southeast1-docker.pkg.dev/cpe-se-course-2026/s981b09c9/s981b09c9:c259afe45eb49311c1f7bb9e166c4443041b9b82",
+  "pushedRegistryDigest": "sha256:4f5d6c40bafbbf959c27aea5541aef76a6d2a17400c733e209338aaafe9455c2",
+  "migrationJob": "s981b09c9-migrate",
+  "execution": "s981b09c9-migrate-b9khk",
+  "migrationCompletionUtc": "2026-11-28T07:19:49.7350443Z",
+  "serviceDeployStepStartedUtc": "2026-11-28T07:19:49.8765835Z",
+  "revision": "s981b09c9-00009-fwv",
+  "reportedTrafficPercent": 100,
+  "url": "https://s981b09c9-4d7hbszvwq-as.a.run.app",
+  "reportedServiceUrl": "https://s981b09c9-670075229477.asia-southeast1.run.app",
+  "directRevisionDigest": null,
+  "directCloudSqlCheck": null,
+  "categoryMigrationEvidence": "Exact-main CI reports all4 migrations including20261127000000_category_amount_limits;deployed image tagged actual main,job updated to same image,execution successful. Runtime job Prisma stdout/applied-migration rows not directly available;no direct SQL claim."
+}

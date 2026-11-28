@@ -1,0 +1,54 @@
+## MAIN-CHECKOUT | actual original log excerpts
+2026-11-28T07:15:53.5965737Z c259afe45eb49311c1f7bb9e166c4443041b9b82
+2026-11-28T07:15:53.6345880Z [command]/usr/bin/git log -1 --format=%H
+2026-11-28T07:15:53.6368003Z c259afe45eb49311c1f7bb9e166c4443041b9b82
+
+## MAIN-MIGRATIONS | actual original log excerpts
+2026-11-28T07:16:02.3445382Z 4 migrations found in prisma/migrations
+2026-11-28T07:16:02.3792809Z Applying migration `20261106000000_auth_foundation`
+2026-11-28T07:16:02.3840835Z Applying migration `20261107000000_expense_requests`
+2026-11-28T07:16:02.3895693Z Applying migration `20261124000000_return_resubmit`
+2026-11-28T07:16:02.3915546Z Applying migration `20261127000000_category_amount_limits`
+2026-11-28T07:16:02.3967468Z The following migration(s) have been applied:
+2026-11-28T07:16:02.3968293Z migrations/
+2026-11-28T07:16:02.3968872Z   └─ 20261106000000_auth_foundation/
+2026-11-28T07:16:02.3969247Z     └─ migration.sql
+2026-11-28T07:16:02.3969626Z   └─ 20261107000000_expense_requests/
+2026-11-28T07:16:02.3970016Z     └─ migration.sql
+2026-11-28T07:16:02.3970356Z   └─ 20261124000000_return_resubmit/
+2026-11-28T07:16:02.3970703Z     └─ migration.sql
+2026-11-28T07:16:02.3971132Z   └─ 20261127000000_category_amount_limits/
+2026-11-28T07:16:02.3971500Z     └─ migration.sql
+2026-11-28T07:16:02.3972131Z All migrations have been successfully applied.
+
+## MAIN-UNIT | actual original log excerpts
+2026-11-28T07:16:07.7993183Z ℹ tests 184
+2026-11-28T07:16:07.7994083Z ℹ pass 184
+2026-11-28T07:16:07.7994407Z ℹ fail 0
+2026-11-28T07:16:07.7994752Z ℹ cancelled 0
+2026-11-28T07:16:07.7995103Z ℹ skipped 0
+2026-11-28T07:16:07.7995821Z ℹ duration_ms 5252.856194
+
+## MAIN-BROWSER | actual original log excerpts
+2026-11-28T07:16:35.9619086Z Running 23 tests using 1 worker
+2026-11-28T07:17:23.0224366Z   23 passed (53.3s)
+
+## MAIN-BUILD | actual original log excerpts
+2026-11-28T07:16:07.9296570Z > tsc --noEmit && tsc -p tsconfig.server.json && vite build
+2026-11-28T07:16:11.4793367Z vite v7.3.7 building client environment for production...
+2026-11-28T07:16:12.3248515Z ✓ built in 822ms
+
+## DEPLOY-PUSH | actual original log excerpts
+2026-11-28T07:19:11.3564637Z c259afe45eb49311c1f7bb9e166c4443041b9b82: digest: sha256:4f5d6c40bafbbf959c27aea5541aef76a6d2a17400c733e209338aaafe9455c2 size: 856
+
+## DEPLOY-MIGRATION | actual original log excerpts
+2026-11-28T07:19:11.3610357Z gcloud run jobs execute "$MIGRATE_JOB_NAME" --region "$REGION" --project "$PROJECT_ID" --wait
+2026-11-28T07:19:11.3643972Z   MIGRATE_COMMAND: npm run db:migrate
+2026-11-28T07:19:17.3937674Z Creating execution...
+2026-11-28T07:19:48.6280776Z Running execution...............................................................................done
+2026-11-28T07:19:49.7350443Z Execution [s981b09c9-migrate-b9khk] has successfully completed.
+
+## DEPLOY-SERVICE | actual original log excerpts
+2026-11-28T07:19:49.8772391Z   IMAGE: asia-southeast1-docker.pkg.dev/cpe-se-course-2026/s981b09c9/s981b09c9:c259afe45eb49311c1f7bb9e166c4443041b9b82
+2026-11-28T07:20:05.2030318Z Service [s981b09c9] revision [s981b09c9-00009-fwv] has been deployed and is serving 100 percent of traffic.
+2026-11-28T07:20:05.2030988Z Service URL: https://s981b09c9-670075229477.asia-southeast1.run.app

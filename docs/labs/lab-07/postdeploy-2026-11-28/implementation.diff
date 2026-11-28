@@ -1,0 +1,197 @@
+diff --git a/server/src/expense-input.ts b/server/src/expense-input.ts
+index b3167f5..d9859cb 100644
+--- a/server/src/expense-input.ts
++++ b/server/src/expense-input.ts
+@@ -3,12 +3,28 @@ import { ExpenseCategory } from "@prisma/client";
+ // Unicode mode matches unpaired surrogates while allowing valid surrogate pairs.
+ const invalidText = /[\0\uD800-\uDFFF]/u;
+
++const categoryCeilings = { ACTIVITY: 150_000, EQUIPMENT: 120_000, TRAVEL: 100_000 } as const;
++
++function amountCeiling(category: unknown) {
++  return typeof category === "string" && Object.hasOwn(categoryCeilings, category)
++    ? categoryCeilings[category as keyof typeof categoryCeilings] : undefined;
++}
++
++export function expenseValidationMessage(body: unknown) {
++  const category = body && typeof body === "object" ? (body as Record<string, unknown>).category : undefined;
++  const ceiling = amountCeiling(category);
++  return ceiling === undefined
++    ? "Enter a title of 1–120 characters and select Activity, Equipment or Travel with a whole-baht amount."
++    : `Enter a title of 1–120 characters and a whole amount of 1–${ceiling.toLocaleString("en-US")} baht for ${category}.`;
++}
++
+ export function parseExpenseInput(body: unknown) {
+   if (!body || typeof body !== "object" || Object.keys(body).length !== 3) return null;
+
+   const { title, category, amountBaht } = body as Record<string, unknown>;
++  const ceiling = amountCeiling(category);
+   if (typeof title !== "string" || typeof amountBaht !== "number" ||
+-      !Number.isInteger(amountBaht) || amountBaht < 1 || amountBaht > 100_000 ||
++      ceiling === undefined || !Number.isInteger(amountBaht) || amountBaht < 1 || amountBaht > ceiling ||
+       !Object.values(ExpenseCategory).includes(category as ExpenseCategory)) return null;
+
+   const trimmedTitle = title.trim();
+diff --git a/server/src/expense-requests.ts b/server/src/expense-requests.ts
+index 2919606..75966e0 100644
+--- a/server/src/expense-requests.ts
++++ b/server/src/expense-requests.ts
+@@ -1,7 +1,7 @@
+ import type { ExpenseRequest, Prisma, PrismaClient, User } from "@prisma/client";
+ import { Router, type Request, type Response } from "express";
+ import { readSessionUser, requireSameOrigin } from "./auth.js";
+-import { parseDecisionInput, parseExpenseInput, parseReturnedInput } from "./expense-input.js";
++import { expenseValidationMessage, parseDecisionInput, parseExpenseInput, parseReturnedInput } from "./expense-input.js";
+
+ const listFields = {
+   id: true, title: true, category: true, amountBaht: true, status: true, revision: true, createdAt: true,
+@@ -60,7 +60,7 @@ export function createExpenseRouter(database: PrismaClient, appOrigin: string, d
+     const input = parseExpenseInput(request.body);
+     if (!input) {
+       response.status(400).json({
+-        error: { code: "INVALID_INPUT", message: "Enter a title of 1–120 characters, a valid category, and a whole amount of 1–100,000 baht." },
++        error: { code: "INVALID_INPUT", message: expenseValidationMessage(request.body) },
+       });
+       return;
+     }
+@@ -177,7 +177,7 @@ export function createExpenseRouter(database: PrismaClient, appOrigin: string, d
+     const id = request.params.id;
+     const input = parseReturnedInput(request.body, edit);
+     if (typeof id !== "string" || id.includes("\0") || !input) {
+-      response.status(400).json({ error: { code: "INVALID_INPUT", message: "Enter valid saved fields and the current request revision." } });
++      response.status(400).json({ error: { code: "INVALID_INPUT", message: "Enter valid saved fields and the current request revision." + (edit ? " " + expenseValidationMessage(request.body) : "") } });
+       return;
+     }
+     const result = await database.$transaction(async transaction => {
+diff --git a/client/src/expense-requests.tsx b/client/src/expense-requests.tsx
+index eb312fc..1b949ad 100644
+--- a/client/src/expense-requests.tsx
++++ b/client/src/expense-requests.tsx
+@@ -2,6 +2,19 @@ import { useCallback, useEffect, useState, type Dispatch, type FormEvent, type S
+
+ const endpoint = "/api/expense-requests";
+ const categoryLabels = { EQUIPMENT: "Equipment", ACTIVITY: "Activity", TRAVEL: "Travel" };
++const categoryCeilings = { EQUIPMENT: 120000, ACTIVITY: 150000, TRAVEL: 100000 };
++
++function amountPolicy(category: string, amount: string) {
++  const known = Object.hasOwn(categoryCeilings, category);
++  const ceiling = known ? categoryCeilings[category as keyof typeof categoryCeilings] : undefined;
++  const number = Number(amount);
++  return {
++    ceiling,
++    valid: ceiling !== undefined && Number.isInteger(number) && number >= 1 && number <= ceiling,
++    message: ceiling === undefined ? "Select a category to see its whole-baht range."
++      : `${categoryLabels[category as keyof typeof categoryLabels]}: enter a whole amount from 1 to ${ceiling.toLocaleString("en-US")} baht.`,
++  };
++}
+
+ type Expense = {
+   id: string;
+@@ -127,6 +140,7 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
+   const editable = role === "REQUESTER" && detail?.status === "RETURNED" && !recovering;
+   const values = editValues ?? (draft?.restored && !recovering ? draft.values : current);
+   const dirty = !!current && !!values && editFields.some(field => !sameValue(field, current, values));
++  const editAmountPolicy = amountPolicy(values?.category ?? "", values?.amountBaht ?? "");
+
+   function refreshDetail() {
+     setDetail(null);
+@@ -224,7 +238,7 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
+
+   function saveEdit(event: FormEvent<HTMLFormElement>) {
+     event.preventDefault();
+-    if (!detail || !editable || !values || !dirty) return;
++    if (!detail || !editable || !values || !dirty || !editAmountPolicy.valid) return;
+     void mutate("save", { ...values, amountBaht: Number(values.amountBaht) }, captureDraft(detail, values));
+   }
+
+@@ -274,8 +288,9 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
+                 <p><label htmlFor="expense-edit-category">Corrected category</label>{" "}<select id="expense-edit-category" name="editCategory" value={values.category} onChange={event => changeEdit({ ...values, category: event.currentTarget.value as Expense["category"] })} disabled={pending}>
+                   {Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+                 </select></p>
+-                <p><label>Corrected amount (baht) <input name="editAmount" type="number" min="1" max="100000" step="1" value={values.amountBaht} onChange={event => changeEdit({ ...values, amountBaht: event.currentTarget.value })} required disabled={pending} /></label></p>
+-                <button type="submit" disabled={pending || !dirty}>Save changes</button>
++                <p><label>Corrected amount (baht) <input name="editAmount" type="number" min="1" max={editAmountPolicy.ceiling} step="1" value={values.amountBaht} onChange={event => changeEdit({ ...values, amountBaht: event.currentTarget.value })} required disabled={pending} aria-describedby="expense-edit-limit" aria-invalid={!editAmountPolicy.valid || undefined} /></label></p>
++                <p id="expense-edit-limit" role={!editAmountPolicy.valid ? "alert" : undefined}>{editAmountPolicy.message}</p>
++                <button type="submit" disabled={pending || !dirty || !editAmountPolicy.valid}>Save changes</button>
+               </form>
+               {dirty && <p role="status">Save your changes before resubmitting.</p>}
+               <button type="button" disabled={pending || dirty} onClick={() => void mutate("resubmit", {})}>Resubmit request</button>
+@@ -332,6 +347,9 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
+   const [refresh, setRefresh] = useState(0);
+   const [pending, setPending] = useState(false);
+   const [submission, setSubmission] = useState<{ message: string; ok: boolean } | null>(null);
++  const [newCategory, setNewCategory] = useState("");
++  const [newAmount, setNewAmount] = useState("");
++  const newAmountPolicy = amountPolicy(newCategory, newAmount);
+
+   useEffect(() => {
+     const controller = new AbortController();
+@@ -355,6 +373,7 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
+
+   async function submitExpense(event: FormEvent<HTMLFormElement>) {
+     event.preventDefault();
++    if (pending || !newAmountPolicy.valid) return;
+     const form = event.currentTarget;
+     const values = new FormData(form);
+     setPending(true);
+@@ -375,6 +394,8 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
+         return;
+       }
+       form.reset();
++      setNewCategory("");
++      setNewAmount("");
+       setSubmission({ ok: true, message: "Request submitted." });
+       setSelectedId(data.id);
+       setItems(null);
+@@ -403,14 +424,15 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
+           <p><label>Title <input name="title" required /></label></p>
+           <p>
+             <label>Category{" "}
+-              <select name="category" defaultValue="" required>
++              <select name="category" value={newCategory} onChange={event => setNewCategory(event.currentTarget.value)} required disabled={pending}>
+                 <option value="" disabled>Select a category</option>
+                 {Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+               </select>
+             </label>
+           </p>
+-          <p><label>Amount (baht) <input name="amountBaht" type="number" min="1" max="100000" step="1" required /></label></p>
+-          <button type="submit" disabled={pending}>Submit request</button>
++          <p><label>Amount (baht) <input name="amountBaht" type="number" min="1" max={newAmountPolicy.ceiling} step="1" value={newAmount} onChange={event => setNewAmount(event.currentTarget.value)} required disabled={pending} aria-describedby="expense-create-limit" aria-invalid={newAmount !== "" && !newAmountPolicy.valid || undefined} /></label></p>
++          <p id="expense-create-limit" role={newAmount !== "" && !newAmountPolicy.valid ? "alert" : undefined}>{newAmountPolicy.message}</p>
++          <button type="submit" disabled={pending || !newAmountPolicy.valid}>Submit request</button>
+           {submission && <p role={submission.ok ? "status" : "alert"}>{submission.message}</p>}
+         </form>
+       )}
+diff --git a/prisma/migrations/20261127000000_category_amount_limits/migration.sql b/prisma/migrations/20261127000000_category_amount_limits/migration.sql
+new file mode 100644
+index 0000000..592808c
+--- /dev/null
++++ b/prisma/migrations/20261127000000_category_amount_limits/migration.sql
+@@ -0,0 +1,27 @@
++BEGIN;
++
++LOCK TABLE "ExpenseRequest" IN ACCESS EXCLUSIVE MODE;
++
++-- Fail closed if the inherited named CHECK is missing, unvalidated or changed.
++DO $$
++DECLARE old_definition TEXT;
++BEGIN
++  SELECT pg_get_constraintdef(oid) INTO old_definition
++  FROM pg_constraint
++  WHERE conrelid = '"ExpenseRequest"'::regclass
++    AND conname = 'ExpenseRequest_amountBaht_check' AND contype = 'c' AND convalidated;
++  IF old_definition IS DISTINCT FROM 'CHECK ((("amountBaht" >= 1) AND ("amountBaht" <= 100000)))' THEN
++    RAISE EXCEPTION 'Unexpected pre-change expense amount CHECK; migration stopped';
++  END IF;
++END $$;
++
++ALTER TABLE "ExpenseRequest" DROP CONSTRAINT "ExpenseRequest_amountBaht_check";
++ALTER TABLE "ExpenseRequest" ADD CONSTRAINT "ExpenseRequest_amountBaht_check"
++CHECK (
++  ("category" = 'ACTIVITY' AND "amountBaht" BETWEEN 1 AND 150000)
++  OR ("category" = 'EQUIPMENT' AND "amountBaht" BETWEEN 1 AND 120000)
++  OR ("category" = 'TRAVEL' AND "amountBaht" BETWEEN 1 AND 100000)
++);
++
++-- No row/event rewrites. Do not restore the old CHECK over newly valid larger rows.
++COMMIT;

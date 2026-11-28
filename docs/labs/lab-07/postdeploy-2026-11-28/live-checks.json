@@ -1,0 +1,824 @@
+{
+  "release": "c259afe45eb49311c1f7bb9e166c4443041b9b82",
+  "revisionLogReported": "s981b09c9-00009-fwv",
+  "url": "https://s981b09c9-4d7hbszvwq-as.a.run.app",
+  "marker": "UAT-L7-20261128T074029Z",
+  "startedAt": "2026-11-28T07:42:32.578Z",
+  "cases": [
+    {
+      "id": "L7-A01",
+      "role": "R1/R2/V1 plus secondR1",
+      "expected": "Real login/current role; capture representative authorized existing records before writes",
+      "startedAt": "2026-11-28T07:42:32.676Z",
+      "status": "PASS",
+      "actual": {
+        "authenticatedContexts": 4,
+        "existingReadSamples": 6
+      },
+      "finishedAt": "2026-11-28T07:42:38.082Z"
+    },
+    {
+      "id": "L7-A02",
+      "role": "R1",
+      "expected": "All category maxima accepted and retrieved exactly",
+      "startedAt": "2026-11-28T07:40:47.137Z",
+      "status": "PASS",
+      "actual": {
+        "rows": [
+          {
+            "id": "5946ce6a-9909-4c41-8149-32f164a87b81",
+            "category": "ACTIVITY",
+            "amount": 150000,
+            "revision": 0
+          },
+          {
+            "id": "38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+            "category": "EQUIPMENT",
+            "amount": 120000,
+            "revision": 0
+          },
+          {
+            "id": "aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+            "category": "TRAVEL",
+            "amount": 100000,
+            "revision": 0
+          }
+        ]
+      },
+      "finishedAt": "2026-11-28T07:40:47.684Z",
+      "sourceAttempt": "live-checks-attempt-1.json; preserved original execution, not rerun"
+    },
+    {
+      "id": "L7-A03",
+      "role": "R1",
+      "expected": "Maximum+1 and cross-category invalid pairs rejected400 without domain change;110000 valid forEQUIPMENT",
+      "startedAt": "2026-11-28T07:40:47.685Z",
+      "status": "PASS",
+      "actual": {
+        "rejectedPairs": 6,
+        "validCrossRecord": "9629ba59-e4c6-4cb4-88ba-eaee7795fb35",
+        "validCrossAmount": 110000
+      },
+      "finishedAt": "2026-11-28T07:40:48.886Z",
+      "sourceAttempt": "live-checks-attempt-1.json; preserved original execution, not rerun"
+    },
+    {
+      "id": "L7-A04",
+      "role": "R1/browser",
+      "expected": "Category changes retain125000,update linked feedback,prevent invalid writes;switch back explicitlycreates",
+      "startedAt": "2026-11-28T07:42:38.519Z",
+      "status": "PASS",
+      "actual": {
+        "retainedAmount": 125000,
+        "automaticWrites": 0,
+        "explicitCreate": "37c48111-b1c2-4aaa-a142-34b85406c17e"
+      },
+      "finishedAt": "2026-11-28T07:42:39.664Z"
+    },
+    {
+      "id": "L7-A05",
+      "role": "R1/R2/V1",
+      "expected": "Important role/owner/Origin/stale-state denials preserve exact synthetic state",
+      "startedAt": "2026-11-28T07:42:39.665Z",
+      "status": "PASS",
+      "actual": {
+        "denials": 6,
+        "noDomainChange": true
+      },
+      "finishedAt": "2026-11-28T07:42:41.036Z"
+    },
+    {
+      "id": "L7-A06",
+      "role": "V1 decisions/R1 read",
+      "expected": "Preserved approve/reject,reason and owner history;terminal edits denied",
+      "startedAt": "2026-11-28T07:42:41.038Z",
+      "status": "PASS",
+      "actual": {
+        "approval": "5946ce6a-9909-4c41-8149-32f164a87b81",
+        "rejection": "38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f"
+      },
+      "finishedAt": "2026-11-28T07:42:41.963Z"
+    },
+    {
+      "id": "L7-A07",
+      "role": "Two realR1 sessions/V1",
+      "expected": "Real409→latest/draft→invalid restoredTRAVEL150000→manual correction/Save/Resubmit",
+      "startedAt": "2026-11-28T07:42:41.965Z",
+      "status": "PASS",
+      "actual": {
+        "id": "37c48111-b1c2-4aaa-a142-34b85406c17e",
+        "realStaleStatus": 409,
+        "recoveryControlWrites": 0,
+        "explicitManualSave": true,
+        "finalRevision": 5,
+        "historyTypes": [
+          "SUBMITTED",
+          "RETURNED",
+          "EDITED",
+          "EDITED",
+          "RESUBMITTED",
+          "APPROVED"
+        ]
+      },
+      "finishedAt": "2026-11-28T07:42:44.354Z"
+    },
+    {
+      "id": "L7-A08",
+      "role": "R1 reload/V1 scopedreads",
+      "expected": "Browser reload retains final details/history;summary matches assigned list;existing sampled records preserved",
+      "startedAt": "2026-11-28T07:42:44.356Z",
+      "status": "PASS",
+      "actual": {
+        "reloadExact": true,
+        "existingSamplesUnchanged": 6,
+        "summaryMatchesAuthorizedList": true,
+        "directDatabaseCountInspection": false
+      },
+      "finishedAt": "2026-11-28T07:42:47.057Z"
+    }
+  ],
+  "http": [
+    {
+      "at": "2026-11-28T07:42:37.552Z",
+      "caseId": "L7-A01",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:37.630Z",
+      "caseId": "L7-A01",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:37.703Z",
+      "caseId": "L7-A01",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:37.774Z",
+      "caseId": "L7-A01",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:37.842Z",
+      "caseId": "L7-A01",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:37.915Z",
+      "caseId": "L7-A01",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:37.989Z",
+      "caseId": "L7-A01",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:38.082Z",
+      "caseId": "L7-A01",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:38.232Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:38.325Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:38.429Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:38.519Z",
+      "caseId": "L7-A03",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/9629ba59-e4c6-4cb4-88ba-eaee7795fb35",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:39.757Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:39.834Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:39.908Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:39.984Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/9629ba59-e4c6-4cb4-88ba-eaee7795fb35",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:40.066Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/37c48111-b1c2-4aaa-a142-34b85406c17e",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:40.139Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:40.203Z",
+      "caseId": "L7-A05",
+      "actor": "V1",
+      "method": "POST",
+      "path": "/api/expense-requests",
+      "status": 403,
+      "error": {
+        "code": "FORBIDDEN",
+        "message": "Only requesters can submit expenses."
+      }
+    },
+    {
+      "at": "2026-11-28T07:42:40.268Z",
+      "caseId": "L7-A05",
+      "actor": "R2",
+      "method": "GET",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 404,
+      "error": {
+        "code": "NOT_FOUND",
+        "message": "Expense request not found."
+      }
+    },
+    {
+      "at": "2026-11-28T07:42:40.347Z",
+      "caseId": "L7-A05",
+      "actor": "R2",
+      "method": "PATCH",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 404,
+      "error": {
+        "code": "NOT_FOUND",
+        "message": "Expense request not found."
+      }
+    },
+    {
+      "at": "2026-11-28T07:42:40.425Z",
+      "caseId": "L7-A05",
+      "actor": "V1",
+      "method": "PATCH",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 403,
+      "error": {
+        "code": "FORBIDDEN",
+        "message": "Only request owners can edit or resubmit."
+      }
+    },
+    {
+      "at": "2026-11-28T07:42:40.488Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "PATCH",
+      "path": "/api/expense-requests/aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+      "status": 403,
+      "error": {
+        "code": "FORBIDDEN_ORIGIN",
+        "message": "Request origin is not allowed."
+      }
+    },
+    {
+      "at": "2026-11-28T07:42:40.582Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "PATCH",
+      "path": "/api/expense-requests/aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+      "status": 409,
+      "error": {
+        "code": "INVALID_STATE",
+        "message": "This request changed or is not returned. Reload its latest details."
+      }
+    },
+    {
+      "at": "2026-11-28T07:42:40.658Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:40.732Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:40.806Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:40.877Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/9629ba59-e4c6-4cb4-88ba-eaee7795fb35",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:40.966Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/37c48111-b1c2-4aaa-a142-34b85406c17e",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:41.036Z",
+      "caseId": "L7-A05",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:41.153Z",
+      "caseId": "L7-A06",
+      "actor": "V1",
+      "method": "POST",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81/decision",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:41.287Z",
+      "caseId": "L7-A06",
+      "actor": "V1",
+      "method": "POST",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f/decision",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:41.370Z",
+      "caseId": "L7-A06",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:41.441Z",
+      "caseId": "L7-A06",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:41.518Z",
+      "caseId": "L7-A06",
+      "actor": "R1",
+      "method": "PATCH",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 409,
+      "error": {
+        "code": "INVALID_STATE",
+        "message": "This request changed or is not returned. Reload its latest details."
+      }
+    },
+    {
+      "at": "2026-11-28T07:42:41.611Z",
+      "caseId": "L7-A06",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:41.686Z",
+      "caseId": "L7-A06",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:41.768Z",
+      "caseId": "L7-A06",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:41.878Z",
+      "caseId": "L7-A06",
+      "actor": "R1",
+      "method": "PATCH",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "status": 409,
+      "error": {
+        "code": "INVALID_STATE",
+        "message": "This request changed or is not returned. Reload its latest details."
+      }
+    },
+    {
+      "at": "2026-11-28T07:42:41.963Z",
+      "caseId": "L7-A06",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:42.075Z",
+      "caseId": "L7-A07",
+      "actor": "V1",
+      "method": "POST",
+      "path": "/api/expense-requests/37c48111-b1c2-4aaa-a142-34b85406c17e/decision",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:43.064Z",
+      "caseId": "L7-A07",
+      "actor": "S2",
+      "method": "PATCH",
+      "path": "/api/expense-requests/37c48111-b1c2-4aaa-a142-34b85406c17e",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:43.570Z",
+      "caseId": "L7-A07",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/37c48111-b1c2-4aaa-a142-34b85406c17e",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:44.231Z",
+      "caseId": "L7-A07",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/37c48111-b1c2-4aaa-a142-34b85406c17e",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:44.354Z",
+      "caseId": "L7-A07",
+      "actor": "V1",
+      "method": "POST",
+      "path": "/api/expense-requests/37c48111-b1c2-4aaa-a142-34b85406c17e/decision",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:46.095Z",
+      "caseId": "L7-A08",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/37c48111-b1c2-4aaa-a142-34b85406c17e",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:46.446Z",
+      "caseId": "L7-A08",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:46.517Z",
+      "caseId": "L7-A08",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/summary",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:46.584Z",
+      "caseId": "L7-A08",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/summary",
+      "status": 403,
+      "error": {
+        "code": "FORBIDDEN",
+        "message": "Only reviewers can read summaries."
+      }
+    },
+    {
+      "at": "2026-11-28T07:42:46.663Z",
+      "caseId": "L7-A08",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:46.746Z",
+      "caseId": "L7-A08",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:46.823Z",
+      "caseId": "L7-A08",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:46.902Z",
+      "caseId": "L7-A08",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:46.979Z",
+      "caseId": "L7-A08",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:47.056Z",
+      "caseId": "L7-A08",
+      "actor": "V1",
+      "method": "GET",
+      "path": "/api/expense-requests/[existing-or-denied]",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:47.131Z",
+      "caseId": "L7-A08",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/5946ce6a-9909-4c41-8149-32f164a87b81",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:47.227Z",
+      "caseId": "L7-A08",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:47.309Z",
+      "caseId": "L7-A08",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:47.403Z",
+      "caseId": "L7-A08",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/9629ba59-e4c6-4cb4-88ba-eaee7795fb35",
+      "status": 200
+    },
+    {
+      "at": "2026-11-28T07:42:47.480Z",
+      "caseId": "L7-A08",
+      "actor": "R1",
+      "method": "GET",
+      "path": "/api/expense-requests/37c48111-b1c2-4aaa-a142-34b85406c17e",
+      "status": 200
+    }
+  ],
+  "inventory": [
+    {
+      "id": "5946ce6a-9909-4c41-8149-32f164a87b81",
+      "title": "UAT-L7-20261128T074029Z-ACTIVITY-max",
+      "category": "ACTIVITY",
+      "amountBaht": 150000,
+      "status": "APPROVED",
+      "revision": 1,
+      "historyTypes": [
+        "SUBMITTED",
+        "APPROVED"
+      ],
+      "retained": true
+    },
+    {
+      "id": "38a6c4ce-4e03-491d-8d3a-a08e42d9fb2f",
+      "title": "UAT-L7-20261128T074029Z-EQUIPMENT-max",
+      "category": "EQUIPMENT",
+      "amountBaht": 120000,
+      "status": "REJECTED",
+      "revision": 1,
+      "historyTypes": [
+        "SUBMITTED",
+        "REJECTED"
+      ],
+      "retained": true
+    },
+    {
+      "id": "aca6d08c-f6e5-4847-802c-d88d7cf7ad15",
+      "title": "UAT-L7-20261128T074029Z-TRAVEL-max",
+      "category": "TRAVEL",
+      "amountBaht": 100000,
+      "status": "SUBMITTED",
+      "revision": 0,
+      "historyTypes": [
+        "SUBMITTED"
+      ],
+      "retained": true
+    },
+    {
+      "id": "9629ba59-e4c6-4cb4-88ba-eaee7795fb35",
+      "title": "UAT-L7-20261128T074029Z-cross110000",
+      "category": "EQUIPMENT",
+      "amountBaht": 110000,
+      "status": "SUBMITTED",
+      "revision": 0,
+      "historyTypes": [
+        "SUBMITTED"
+      ],
+      "retained": true
+    },
+    {
+      "id": "37c48111-b1c2-4aaa-a142-34b85406c17e",
+      "title": "UAT-L7-20261128T074029Z-recovery",
+      "category": "ACTIVITY",
+      "amountBaht": 150000,
+      "status": "APPROVED",
+      "revision": 5,
+      "historyTypes": [
+        "SUBMITTED",
+        "RETURNED",
+        "EDITED",
+        "EDITED",
+        "RESUBMITTED",
+        "APPROVED"
+      ],
+      "retained": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "live-create-invalid-pair.png",
+      "actor": "R1",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "at": "2026-11-28T07:42:39.459Z",
+      "redaction": "Unrelated request cards masked; only selected owned synthetic detail unmasked"
+    },
+    {
+      "file": "live-restored-invalid-pair.png",
+      "actor": "R1",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "at": "2026-11-28T07:42:43.788Z",
+      "redaction": "Unrelated request cards masked; only selected owned synthetic detail unmasked"
+    },
+    {
+      "file": "live-final-history.png",
+      "actor": "R1",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "at": "2026-11-28T07:42:46.365Z",
+      "redaction": "Unrelated request cards masked; only selected owned synthetic detail unmasked"
+    }
+  ],
+  "qualification": "Owner-directed real browser/HTTP checks; not independent external UAT. New synthetic records retained; no cloud SQL direct inspection.",
+  "continuationOf": "live-checks-attempt-1.json",
+  "correction": "Use inherited /^Category/ combobox locator instead of unsupported exact label; reuse four previously created synthetic records. Original failed attempt preserved.",
+  "browser": "151.0.7922.34",
+  "preservation": {
+    "sampleCount": 6,
+    "scope": "Up to3 existing authorized records per owner/assigned role; captured after deployment, before these writes. No pre-deployment preservation claim.",
+    "R1:sample:bb3feee1": {
+      "beforeHash": "26391ac0258aae7e5b3500aa9e16e5c9324e9171baa7f3a6bd900f45e73301cc",
+      "afterHash": "26391ac0258aae7e5b3500aa9e16e5c9324e9171baa7f3a6bd900f45e73301cc",
+      "unchanged": true
+    },
+    "R1:sample:b0d724de": {
+      "beforeHash": "a3ff89930f5848c5784b9605f9e9c1c6415f32e397cef5b99db1d765b9be4c65",
+      "afterHash": "a3ff89930f5848c5784b9605f9e9c1c6415f32e397cef5b99db1d765b9be4c65",
+      "unchanged": true
+    },
+    "R1:sample:769a8500": {
+      "beforeHash": "a98499c1d74a4465179c79dca152f29610f8c0d2e5dfe704b1f8073a71914c78",
+      "afterHash": "a98499c1d74a4465179c79dca152f29610f8c0d2e5dfe704b1f8073a71914c78",
+      "unchanged": true
+    },
+    "V1:sample:bb3feee1": {
+      "beforeHash": "26391ac0258aae7e5b3500aa9e16e5c9324e9171baa7f3a6bd900f45e73301cc",
+      "afterHash": "26391ac0258aae7e5b3500aa9e16e5c9324e9171baa7f3a6bd900f45e73301cc",
+      "unchanged": true
+    },
+    "V1:sample:b0d724de": {
+      "beforeHash": "a3ff89930f5848c5784b9605f9e9c1c6415f32e397cef5b99db1d765b9be4c65",
+      "afterHash": "a3ff89930f5848c5784b9605f9e9c1c6415f32e397cef5b99db1d765b9be4c65",
+      "unchanged": true
+    },
+    "V1:sample:769a8500": {
+      "beforeHash": "a98499c1d74a4465179c79dca152f29610f8c0d2e5dfe704b1f8073a71914c78",
+      "afterHash": "a98499c1d74a4465179c79dca152f29610f8c0d2e5dfe704b1f8073a71914c78",
+      "unchanged": true
+    },
+    "outcome": "PASS"
+  },
+  "cleanup": {
+    "recordsDeleted": 0,
+    "retainedCount": 5,
+    "logout": [
+      {
+        "alias": "R1",
+        "status": 204
+      },
+      {
+        "alias": "R2",
+        "status": 204
+      },
+      {
+        "alias": "V1",
+        "status": 204
+      },
+      {
+        "alias": "S2",
+        "status": 204
+      }
+    ],
+    "contextsClosed": true,
+    "browserClosed": true
+  },
+  "finishedAt": "2026-11-28T07:42:47.895Z",
+  "status": "PASS"
+}

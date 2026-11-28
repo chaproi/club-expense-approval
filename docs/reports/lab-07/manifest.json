@@ -1,0 +1,211 @@
+{
+  "release": "c259afe45eb49311c1f7bb9e166c4443041b9b82",
+  "hashBasis": "Publication worktree bytes; Git text normalization can change text line endings on another Windows checkout. PDF/image hashes are byte-exact. Self and validation omitted to avoid circular metadata.",
+  "files": [
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/command-excerpts.log",
+      "bytes": 3306,
+      "sha256": "a1a7da3cce60170c3a09177b29f0a1ad0bdd23e2c8a5dd0f02972e29a47120e5"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/commands.json",
+      "bytes": 3215,
+      "sha256": "6f8d79f47a981ddbb320fb098be7dc09c9ec2ebea85c28e1c7f2ec4b103f482d"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/defect-issues.json",
+      "bytes": 1857,
+      "sha256": "5236ec04ae0ff8d1543f82a54c046a604ceef844cf78be870248fa1b8881eb2f"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/deployment-identity.json",
+      "bytes": 1237,
+      "sha256": "e707f758eab2e79dded5db7f586fd0358320dc68c85e9ecef3c9a414596ea04f"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/exact-main-browser-output.log",
+      "bytes": 5532,
+      "sha256": "b5d7e3f82bd8739bdaf8632157941c8e06b6f0d6932f6958560e25c3c174df3a"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/exact-main-results.json",
+      "bytes": 396,
+      "sha256": "7757d79588def8c02d5ddd6258f1becfbd40073092bdaa23d33d6bea7844193f"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/exact-main-unit-output.log",
+      "bytes": 22500,
+      "sha256": "f48df517458381a47ad7c221006a68124e7a40dcd10338242127e95a00c2d1a3"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/implementation-diff.json",
+      "bytes": 12406,
+      "sha256": "995f51a673a6e0c95853f511643cfb2072544f0a7c19e883fdf8710ceca556b0"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/implementation.diff",
+      "bytes": 12073,
+      "sha256": "226b208698612f94ab617eaffa842e56eb2a7e65961f11ebfa62c93d31a67e3a"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/jobs.json",
+      "bytes": 18139,
+      "sha256": "13f2f0e0ffcde81fe6b232cba22569a5b4ebba39330bb7e1d9be36799636942e"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/live-checks-attempt-1.json",
+      "bytes": 12875,
+      "sha256": "f9e6a7f37e3892c128661c89aae1a1277b86a82cd0c477a85a6453439da6877c"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/live-checks.json",
+      "bytes": 24329,
+      "sha256": "79511fa10eb07408f6f9f9c2b0a74089afcd5c3947652326b09a4648eb6c6649"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/live-create-form-crop.png",
+      "bytes": 17044,
+      "sha256": "f9d01be9508c8df6495ec13dbaedd391a03bdd15146ad964d17be5e6282d71e9"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/live-create-invalid-pair.png",
+      "bytes": 60882,
+      "sha256": "c7b5b81e82055efda2e92b9dc0f19157c542f24d7748e75adc79ae8c7d418eba"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/live-final-detail-crop.png",
+      "bytes": 35168,
+      "sha256": "d00f90883e64523bde4a9de59e364ef0dc2f9c3aed46c8316f3063734d23c27e"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/live-final-history.png",
+      "bytes": 79761,
+      "sha256": "86bdb0095c20d246937c42e0b64ded2603c11ef5145005d52e5125fe63f48c99"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/live-restored-detail-crop.png",
+      "bytes": 46798,
+      "sha256": "499ce513efae710aa7728c11899a5c543cda7af743b8a879efc6194d6cb23539"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/live-restored-invalid-pair.png",
+      "bytes": 93436,
+      "sha256": "2ebca1988363c9b205af0fea0ea928441c405647f6ffc053dee4b6eaeb0283de"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/metrics-source.json",
+      "bytes": 9913,
+      "sha256": "4253e61346ec31133ec12060fea5bc17e8e886cd0a2f89f831fb42d7d1240c63"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/public-checks.json",
+      "bytes": 2055,
+      "sha256": "469371fec8d4788ffaf7b5c0ab839ce4fa3e76244e52174e55ce7518ea61d877"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/public-login-desktop.png",
+      "bytes": 164213,
+      "sha256": "a6b2bfcf060f5060d6b435c12f836a79426eb332e4ce23e922cde72498909d19"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/public-login-mobile.png",
+      "bytes": 58944,
+      "sha256": "b75d7f4c35b605ee98ea569d82f459b026e053fca21c31febe2588872e5a4c27"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/README.md",
+      "bytes": 8047,
+      "sha256": "2dd661f8fb54f3c1c4223e5385b6dcb6a9326e3f3ceaf0651cada2065ab44bda"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/review-chain.json",
+      "bytes": 21707,
+      "sha256": "bda4aaf634e1d4f4028f2b87d01bf2221478fa0d3e6e0e0b8982cd4bb57ea211"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/run.json",
+      "bytes": 19403,
+      "sha256": "f6446cce6eb6ab634ab47154ea0edaab2986c83edb0024be30a9de3ed01c86b7"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/screenshot-crops.json",
+      "bytes": 1164,
+      "sha256": "4841493639a852f6677f423b4c7f75084560bf07d1caf0bb88156eb6380b4d43"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/scripts/collect-metrics.ps1",
+      "bytes": 5079,
+      "sha256": "544489e3c1251ed9d0b5943956303cb361b7aa928ae7a35c8a10117db155f5cf"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/scripts/live-checks-attempt-1.cjs",
+      "bytes": 15883,
+      "sha256": "bb367f0b678958ca12755b1f0cd7b2e025a2986095e21e1b38744571ad408762"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/scripts/live-checks.cjs",
+      "bytes": 16748,
+      "sha256": "007f012544751efb65e0424a1a9c67f97a530b5595078cec5b8420bbd6ecd2d6"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/scripts/prepare-evidence.cjs",
+      "bytes": 4583,
+      "sha256": "20fbafd9add6d56ff87cda90e86ccc80b67a35900d6f837d74752616b4c7e388"
+    },
+    {
+      "path": "docs/labs/lab-07/postdeploy-2026-11-28/scripts/public-checks.cjs",
+      "bytes": 2962,
+      "sha256": "0f88601552777a4475dc8b80463e399a2d6f7230885dab02e64a655264e8cf96"
+    },
+    {
+      "path": "docs/reports/lab-07/layout-check.json",
+      "bytes": 2424,
+      "sha256": "4dc288ad5aae53f0ecec16eb0b25cd9d99ccf38dfc05079dc6bb59c31ca5fbb0"
+    },
+    {
+      "path": "docs/reports/lab-07/output/pdf/club-expense-approval-lab7.pdf",
+      "bytes": 713984,
+      "sha256": "4d89faf09b47e36f9b2051f1417bfc3d7a9b6dfa1b329c68673f402e3c0490c8"
+    },
+    {
+      "path": "docs/reports/lab-07/pages.json",
+      "bytes": 3103,
+      "sha256": "ac51eaf7fb3f4349603c58df18cf841d928cc4176b6154a187cef79fbe6be420"
+    },
+    {
+      "path": "docs/reports/lab-07/pdf-qa.json",
+      "bytes": 7640,
+      "sha256": "3c369df0370b48077047f0528f8c74f9f7470d814c6f0eb8f58187e9da84b63f"
+    },
+    {
+      "path": "docs/reports/lab-07/README.md",
+      "bytes": 4142,
+      "sha256": "5ec611f0e114a2e2b1590897f99276244892a8e530bd8d91c5ccedd489677e28"
+    },
+    {
+      "path": "docs/reports/lab-07/report.md",
+      "bytes": 57800,
+      "sha256": "8fb2cad68f57dd650d7f1070c4683d00217785880d0d8badfdab9e144ea54685"
+    },
+    {
+      "path": "docs/reports/lab-07/scripts/assemble-packet.py",
+      "bytes": 59889,
+      "sha256": "34c81fecccbf8663a5fc26eddc4dab586414457373e94df5e85e70b7be01a437"
+    },
+    {
+      "path": "docs/reports/lab-07/scripts/qa-pdf.py",
+      "bytes": 2574,
+      "sha256": "aac43e1b7a0eacb54926d98770e26fe47c16fc5f24d43f1363543331c940c58a"
+    },
+    {
+      "path": "docs/reports/lab-07/scripts/render-packet.cjs",
+      "bytes": 1125,
+      "sha256": "ecbd969e7054e968362c414a9ea4e26755193045fe7a4e21c850a986a592f445"
+    },
+    {
+      "path": "docs/reports/lab-07/scripts/validate-packet.py",
+      "bytes": 5530,
+      "sha256": "b866896d7b77848d246c6822f43aa5d1e5ea18c743203b06d10019aa9e4d71c2"
+    }
+  ]
+}

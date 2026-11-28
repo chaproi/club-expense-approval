@@ -1,0 +1,93 @@
+{
+  "release": "c259afe45eb49311c1f7bb9e166c4443041b9b82",
+  "sourceState": "Documentation worktree branched at released main; pending docs/evidence only. Browser runner modules from unchanged b7cbdd1 worktree.",
+  "attempts": [
+    {
+      "id": "public",
+      "command": "node public-checks.cjs <existing-playwright-worktree> <outside-repo-output>",
+      "exit": 0,
+      "cases": {
+        "pass": 3,
+        "fail": 0
+      },
+      "startedAt": "2026-11-28T07:22:45.895Z",
+      "finishedAt": "2026-11-28T07:22:56.641Z",
+      "elapsedSeconds": 10.746
+    },
+    {
+      "id": "live-1",
+      "command": "node live-checks.cjs <existing-playwright-worktree> <outside-repo-output> <private-handoff-path>",
+      "exit": 1,
+      "startedAt": "2026-11-28T07:40:29.896Z",
+      "finishedAt": "2026-11-28T07:41:20.013Z",
+      "cases": {
+        "pass": 3,
+        "fail": 1,
+        "unreached": 4
+      },
+      "classification": "Test locator/setup failure in A04; not a category-policy defect. A01-A03 business assertions passed. No A04 write; four records retained. All four sessions logged out204.",
+      "elapsedSeconds": 50.117,
+      "archivedExecutedRunner": "scripts/live-checks-attempt-1.cjs"
+    },
+    {
+      "id": "live-continuation",
+      "command": "node live-checks.cjs <existing-playwright-worktree> <outside-repo-output> <private-handoff-path> <retained-live-1.json>",
+      "exit": 0,
+      "startedAt": "2026-11-28T07:42:32.578Z",
+      "finishedAt": "2026-11-28T07:42:47.895Z",
+      "casesExecutedHere": [
+        "L7-A01",
+        "L7-A04",
+        "L7-A05",
+        "L7-A06",
+        "L7-A07",
+        "L7-A08"
+      ],
+      "casesReusedWithoutRerun": [
+        "L7-A02",
+        "L7-A03"
+      ],
+      "result": "Six executed cases pass; two original passing cases retained with original timestamps. Combined selected case coverage8/8; not eight new executions.",
+      "elapsedSeconds": 15.317
+    }
+  ],
+  "runtime": {
+    "browser": "151.0.7922.34",
+    "server": "Deployed Cloud Run image at released main; server Node/PostgreSQL versions not directly queried in this live check.",
+    "controllerNode": "v24.14.0",
+    "controllerNpm": "11.9.0",
+    "controllerWindows": "Microsoft Windows NT 10.0.26200.0"
+  },
+  "cleanup": {
+    "recordsDeleted": 0,
+    "retainedCount": 5,
+    "logout": [
+      {
+        "alias": "R1",
+        "status": 204
+      },
+      {
+        "alias": "R2",
+        "status": 204
+      },
+      {
+        "alias": "V1",
+        "status": 204
+      },
+      {
+        "alias": "S2",
+        "status": 204
+      }
+    ],
+    "contextsClosed": true,
+    "browserClosed": true
+  },
+  "noLocalApplicationSuitesRerun": true,
+  "independentCleanup": {
+    "initialCimProbe": "Access denied in sandbox; its zero pipeline count was not evidence",
+    "authorizedReadOnlyCimProbe": "Succeeded: zero node.exe/chrome.exe command lines matching owned lab7-postdeploy-qa directory",
+    "temporaryCredentialFileExists": false,
+    "D2PdfSha256Unchanged": "DDFB35C5772E1CD217F1188B36D7512FF880CFC8553C4068B1E798A104E9B226",
+    "D2UserPendingRenamePreserved": true
+  }
+}
