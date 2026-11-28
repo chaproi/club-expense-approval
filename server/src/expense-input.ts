@@ -3,12 +3,28 @@ import { ExpenseCategory } from "@prisma/client";
 // Unicode mode matches unpaired surrogates while allowing valid surrogate pairs.
 const invalidText = /[\0\uD800-\uDFFF]/u;
 
+const categoryCeilings = { ACTIVITY: 150_000, EQUIPMENT: 120_000, TRAVEL: 100_000 } as const;
+
+function amountCeiling(category: unknown) {
+  return typeof category === "string" && Object.hasOwn(categoryCeilings, category)
+    ? categoryCeilings[category as keyof typeof categoryCeilings] : undefined;
+}
+
+export function expenseValidationMessage(body: unknown) {
+  const category = body && typeof body === "object" ? (body as Record<string, unknown>).category : undefined;
+  const ceiling = amountCeiling(category);
+  return ceiling === undefined
+    ? "Enter a title of 1–120 characters and select Activity, Equipment or Travel with a whole-baht amount."
+    : `Enter a title of 1–120 characters and a whole amount of 1–${ceiling.toLocaleString("en-US")} baht for ${category}.`;
+}
+
 export function parseExpenseInput(body: unknown) {
   if (!body || typeof body !== "object" || Object.keys(body).length !== 3) return null;
 
   const { title, category, amountBaht } = body as Record<string, unknown>;
+  const ceiling = amountCeiling(category);
   if (typeof title !== "string" || typeof amountBaht !== "number" ||
-      !Number.isInteger(amountBaht) || amountBaht < 1 || amountBaht > 100_000 ||
+      ceiling === undefined || !Number.isInteger(amountBaht) || amountBaht < 1 || amountBaht > ceiling ||
       !Object.values(ExpenseCategory).includes(category as ExpenseCategory)) return null;
 
   const trimmedTitle = title.trim();

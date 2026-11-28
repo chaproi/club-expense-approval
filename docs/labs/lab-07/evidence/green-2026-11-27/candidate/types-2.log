@@ -1,0 +1,4 @@
+2026-11-27T09:15:05.074Z $ npm.cmd exec -- tsc --noEmit
+
+
+{"id":"types-2","command":"npm.cmd exec -- tsc --noEmit","startedAt":"2026-11-27T09:15:05.074Z","elapsedMs":3538,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

@@ -1,0 +1,5 @@
+2026-11-27T09:18:12.045Z $ node --import tsx server/test/lab7-upgrade-worker.ts candidate <candidate checkout>
+{"mode":"candidate","success":true,"checks":["Immediate24 requests/42 events plus assignments,fields,timestamps,revisions,private users/sessions preserved exactly;3 old checksums unchanged","Six legacy SUBMITTED rows traversed Return/maximum Save/Resubmit/Approve;exact24 retained IDs and66 final events;12 old terminal rows read-only","High-value auth/ownership/Origin/stale/invalid denials unchanged;assigned counts0/6/12/6 and unassigned zeros","New application listener/Prisma and HTTP read clients preserve all final fields/history/counts after restart;no browser-storage preservation claim","Only owned requests/events/sessions/accounts removed;all clients/listeners disconnected"]}
+
+
+{"id":"verifyupgrade-1","command":"node --import tsx server/test/lab7-upgrade-worker.ts candidate <candidate checkout>","startedAt":"2026-11-27T09:18:12.045Z","elapsedMs":2562,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

@@ -1,0 +1,4 @@
+2026-11-27T09:20:41.505Z $ docker run -d <owned candidate> (ephemeral loopback HTTP)
+f86b9eecf0b60b2d9fa22a4e07059696dd453909121b3ecc65369574bbc2338a
+
+{"id":"13-start","command":"docker run -d <owned candidate> (ephemeral loopback HTTP)","startedAt":"2026-11-27T09:20:41.505Z","elapsedMs":352,"exit":0,"signal":null,"spawnError":null,"terminated":false}

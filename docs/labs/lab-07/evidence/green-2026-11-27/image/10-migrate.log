@@ -1,0 +1,35 @@
+2026-11-27T09:20:38.233Z $ docker run --rm <candidate/private env> npm run db:migrate
+
+> club-expense-approval@0.1.0 db:migrate
+> prisma migrate deploy
+
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": PostgreSQL database "<owned-test-database>", schema "lab7_image_6043eabea85f58f6" at "lab7-database:5432"
+
+4 migrations found in prisma/migrations
+
+Applying migration `20261106000000_auth_foundation`
+Applying migration `20261107000000_expense_requests`
+Applying migration `20261124000000_return_resubmit`
+Applying migration `20261127000000_category_amount_limits`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261106000000_auth_foundation/
+    └─ migration.sql
+  └─ 20261107000000_expense_requests/
+    └─ migration.sql
+  └─ 20261124000000_return_resubmit/
+    └─ migration.sql
+  └─ 20261127000000_category_amount_limits/
+    └─ migration.sql
+
+All migrations have been successfully applied.
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+
+{"id":"10-migrate","command":"docker run --rm <candidate/private env> npm run db:migrate","startedAt":"2026-11-27T09:20:38.233Z","elapsedMs":1821,"exit":0,"signal":null,"spawnError":null,"terminated":false}

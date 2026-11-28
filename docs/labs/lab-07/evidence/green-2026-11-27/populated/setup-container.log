@@ -1,0 +1,5 @@
+2026-11-27T09:17:44.373Z $ docker run <owned resource>
+f843065500a8af4bc028eb300004e92e84fd28e6e73d1eea7ba197ef197e233d
+
+
+{"id":"setup-container","command":"docker run <owned resource>","startedAt":"2026-11-27T09:17:44.373Z","elapsedMs":446,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}

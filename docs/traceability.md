@@ -1,5 +1,7 @@
 # Full requirement-to-verification matrix — current candidate
 
+**Current Lab7 candidate,27 November 2026:** [Lab7 local GREEN evidence](labs/lab-07/green-verification-2026-11-27.md) and the appended AC-L7/STS map supersede only current BR-01/F-02/F-05 amount-policy status. Original requirement IDs, D2/Sprint1 evidence and earlier failed RED attempts remain historical records. No new-policy code approval/integration/deployment is claimed.
+
 24 Nov 2026 baseline, updated 26 Nov 2026 after PR #43/#45 integration. All baseline FR/BR and important NFR retained. Initial design was committed before code in c7539ee; this revision adds actual test/file mappings. PASS below records source verification. Current independent source-review and staging integration evidence is linked at the end. Main release/deployment acceptance remains pending. Version evidence is in the hosted/local ledger; planned Final tests are never counted as executed.
 
 | Requirement / description | Feature / sprint | AC / planned verification | Actual evidence / result / version |
@@ -7,7 +9,7 @@
 | FR-01: ผู้ใช้ล็อกอิน ตรวจบัญชีปัจจุบัน และออกจากระบบได้ | F-01 / 1 | AC-01–03 / historical server/test and client/test mappings | server/test/auth.test.ts T-01/02/03 + DEF-TH038-01; canonical-origin.test.ts DEF-TH038-02; client/test/expense-decisions.spec.ts original journeys; PASS |
 | FR-02: Requester ส่งคำขอและเปิดรายการ รายละเอียด และประวัติของตนได้ | F-02 / 1 | AC-04–06 / historical server/test and client/test mappings | server/test/expense-requests.test.ts T-04/05/06/08; client/test/expense-decisions.spec.ts T-09; PASS |
 | FR-03: Reviewer เปิดคำขอที่ได้รับมอบหมายและอนุมัติหรือปฏิเสธได้ ผู้ขอเห็นผลที่บันทึกไว้ | F-03 / 1 | AC-06–08 / historical server/test and client/test mappings | server/test/expense-requests.test.ts T-07/08/10/11; expense-decision.test.ts T-07/10; both original browser journeys; PASS |
-| BR-01: รายการหลัง trim มี 1–120 ตัวอักษร หมวดต้องอยู่ในรายการที่กำหนด ยอดเป็นจำนวนเต็ม 1–100,000 บาท | F-02 / 1 | AC-04–05 / historical server/test and client/test mappings | server/test/expense-input.test.ts T-05; expense-requests.test.ts T-05; return-resubmit-summary.test.ts T-F05-02; PASS (UTF-16 limitation disclosed) |
+| BR-01: รายการหลัง trim มี 1–120 ตัวอักษร หมวดต้องอยู่ในรายการที่กำหนด ยอดเป็นจำนวนเต็มขั้นต่ำ1; ACTIVITY≤150000/EQUIPMENT≤120000/TRAVEL≤100000 ใน Lab7 candidate | F-02,F-05 / Lab7 | AC-04–05; AC-L7-01–07 / STS-L7-01–09 | Local GREEN at ec10dd4/a0d1e9d; appended map/evidence below. Original100000 contract/history retained at4535280. UTF-16 limitation unchanged; reviewed deployment pending |
 | BR-02: สร้างคำขอในสถานะ SUBMITTED และมอบหมาย Reviewer ฝั่งเซิร์ฟเวอร์ | F-02 / 1 | AC-04 / historical server/test and client/test mappings | server/test/expense-requests.test.ts T-04/05 and assignment configuration failure test; PASS |
 | BR-03: ผู้ตัดสินต้องเป็น Reviewer ที่ได้รับมอบหมายและคนละบัญชีกับผู้ขอ | F-03 / 1 | AC-06, AC-09 / historical server/test and client/test mappings | server/test/expense-requests.test.ts T-06/T-10; expense-decision.test.ts T-10; return-resubmit-summary.test.ts T-F04-03; PASS |
 | BR-04: Sprint 1 ตัดสินได้จาก SUBMITTED ครั้งเดียว และบันทึกสถานะกับเหตุการณ์ใน transaction เดียว | F-03 / 1 | AC-07, AC-08, AC-10 / historical server/test and client/test mappings | server/test/expense-requests.test.ts T-11; return-resubmit-summary.test.ts T-F04-04/T-F05-05; one decision per current SUBMITTED revision; PASS |
@@ -78,3 +80,20 @@ Version/result provenance: baseline34/34; meaningful new RED0/13; GREEN47/47; ho
 ## Current integrated verification, 26 November 2026
 
 [Evidence and exact executed cases](evidence/deliverable-2/integration-2026-11-26/evidence.md) records 47/47 unit/API and 19/19 browser PASS at `717536287117118d508e08d6cc68764a5df537c7`, zero failed/skipped, plus build/Docker and zero findings in both audits. This reconfirms the existing AC-F04-01 through AC-F04-05, AC-F05-01 through AC-F05-11/BF-01 and count-only AC-F06-01 through AC-F06-04 through their mapped assertions. It does not execute planned Final AC. [BF-01 RED and GREEN](https://github.com/chaproi/club-expense-approval/blob/f487956511a79951656a2392bec002cde555ec67/docs/evidence/deliverable-2/f05-draft-recovery-bf01.md), [dependency verification](https://github.com/chaproi/club-expense-approval/blob/d385c231c315154cc496a2b781f18d822e682058/docs/evidence/deliverable-2/dependency-remediation/verification.md) and [populated upgrade at a6c93ab](https://github.com/chaproi/club-expense-approval/blob/d385c231c315154cc496a2b781f18d822e682058/docs/evidence/deliverable-2/dependency-remediation/verification.md#populated-baseline-upgrade-on-the-new-candidate) retain distinct source/candidate provenance. Independent approvals of PR #43 and #45 are linked in that record. Release approval and deployed acceptance remain pending.
+
+## Lab7 category-pair local candidate —27 November2026
+
+[Accepted contract/AC/STS](labs/lab-07/contract-proposed-v1.md), [contract acceptance](labs/lab-07/contract-acceptance-2026-11-27.md), [original RED](labs/lab-07/red-verification-2026-11-27.md), [current GREEN and exact source/commands/results](labs/lab-07/green-verification-2026-11-27.md). This updates BR-01/F-02/F-05 candidate status, preserving historical Sprint1/D2 tests and IDs.
+
+| AC | STS | Actual verification / local status |
+|---|---|---|
+| AC-L7-01 | STS-L7-01/03/04 | expense-input.test.ts and category-limits.test.ts literal category min/max/max+1/cross125000/110000 matrix; exact high-value persistence now reached; PASS |
+| AC-L7-02 | STS-L7-01/02 | Same paths invalid types/category/body/title controls, exact unchanged state; category-limits-additional.test.ts truthful range/unknown/prototype feedback; PASS |
+| AC-L7-03 | STS-L7-03/04 | category-limits.spec.ts create/edit category switches, retained amount, dynamic max/linked feedback, invalid no-write and explicit reset;4/4 PASS |
+| AC-L7-04 | STS-L7-04/06/07 | category-limits.spec.ts real409→Restore invalid pair→explicit correction/manual Save/Resubmit, exact history; full f05-draft-recovery.spec.ts lifecycle/Retry/repeated conflict/BF-01 PASS |
+| AC-L7-05 | STS-L7-05/06 | category-limits-additional.test.ts high valid auth/ownership/Origin/state/stale/revoked tests; original API guards in full184 PASS; safe DTOs preserved |
+| AC-L7-06 | STS-L7-08/09 | category-limits*.test.ts actual SQL insert/pair/amount-only/category-only enforcement; lab7-upgrade-worker.ts4535280→candidate immediate24requests/42events preservation then intentional workflows24/66; fresh/image4-migration chains PASS. No destructive rollback executed |
+| AC-L7-07 | STS-L7-04/07/09 | Complete184 unit/API and23 browser PASS at a0d1e9d; old decisions/access/races/drafts/counts/restart preserved; no F-06 totals/F-07/F-08 implementation |
+| AC-L7-08 | STS-L7-10 | Contract review complete before RED; local GREEN recorded. Implementation peer review/CI/integration/new-policy deployment/live acceptance Pending/Unexecuted. Instructor/TA approval Not required |
+
+Source ec10dd4; supplementary tests/full verification a0d1e9d; image-helper d406cb8. Local evidence is neither hosted CI nor publication-HEAD execution. No previous run is relabelled. F-06 totals,F-07,F-08 remain Planned.

@@ -1,0 +1,4 @@
+2026-11-27T09:20:45.448Z $ docker network <owned>
+lab7-image-6043eabea85f58f6
+
+{"id":"22-network-remove","command":"docker network <owned>","startedAt":"2026-11-27T09:20:45.448Z","elapsedMs":337,"exit":0,"signal":null,"spawnError":null,"terminated":false}

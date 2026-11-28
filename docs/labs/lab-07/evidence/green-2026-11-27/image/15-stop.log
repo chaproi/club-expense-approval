@@ -1,0 +1,5 @@
+2026-11-27T09:20:43.366Z $ docker stop <owned>
+Flag --time has been deprecated, use --timeout instead
+f86b9eecf0b60b2d9fa22a4e07059696dd453909121b3ecc65369574bbc2338a
+
+{"id":"15-stop","command":"docker stop <owned>","startedAt":"2026-11-27T09:20:43.366Z","elapsedMs":996,"exit":0,"signal":null,"spawnError":null,"terminated":false}

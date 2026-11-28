@@ -1,0 +1,4 @@
+2026-11-27T09:20:36.475Z $ docker inspect <owned>
+6043eabea85f58f6
+
+{"id":"01-owner","command":"docker inspect <owned>","startedAt":"2026-11-27T09:20:36.475Z","elapsedMs":100,"exit":0,"signal":null,"spawnError":null,"terminated":false}

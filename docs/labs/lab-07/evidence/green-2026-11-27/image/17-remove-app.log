@@ -1,0 +1,4 @@
+2026-11-27T09:20:44.490Z $ docker rm <owned>
+f86b9eecf0b60b2d9fa22a4e07059696dd453909121b3ecc65369574bbc2338a
+
+{"id":"17-remove-app","command":"docker rm <owned>","startedAt":"2026-11-27T09:20:44.490Z","elapsedMs":133,"exit":0,"signal":null,"spawnError":null,"terminated":false}

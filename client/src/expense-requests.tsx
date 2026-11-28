@@ -2,6 +2,19 @@ import { useCallback, useEffect, useState, type Dispatch, type FormEvent, type S
 
 const endpoint = "/api/expense-requests";
 const categoryLabels = { EQUIPMENT: "Equipment", ACTIVITY: "Activity", TRAVEL: "Travel" };
+const categoryCeilings = { EQUIPMENT: 120000, ACTIVITY: 150000, TRAVEL: 100000 };
+
+function amountPolicy(category: string, amount: string) {
+  const known = Object.hasOwn(categoryCeilings, category);
+  const ceiling = known ? categoryCeilings[category as keyof typeof categoryCeilings] : undefined;
+  const number = Number(amount);
+  return {
+    ceiling,
+    valid: ceiling !== undefined && Number.isInteger(number) && number >= 1 && number <= ceiling,
+    message: ceiling === undefined ? "Select a category to see its whole-baht range."
+      : `${categoryLabels[category as keyof typeof categoryLabels]}: enter a whole amount from 1 to ${ceiling.toLocaleString("en-US")} baht.`,
+  };
+}
 
 type Expense = {
   id: string;
@@ -127,6 +140,7 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
   const editable = role === "REQUESTER" && detail?.status === "RETURNED" && !recovering;
   const values = editValues ?? (draft?.restored && !recovering ? draft.values : current);
   const dirty = !!current && !!values && editFields.some(field => !sameValue(field, current, values));
+  const editAmountPolicy = amountPolicy(values?.category ?? "", values?.amountBaht ?? "");
 
   function refreshDetail() {
     setDetail(null);
@@ -224,7 +238,7 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
 
   function saveEdit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!detail || !editable || !values || !dirty) return;
+    if (!detail || !editable || !values || !dirty || !editAmountPolicy.valid) return;
     void mutate("save", { ...values, amountBaht: Number(values.amountBaht) }, captureDraft(detail, values));
   }
 
@@ -274,8 +288,9 @@ function ExpenseDetail({ id, role, onRefresh, draft, setDrafts }: {
                 <p><label htmlFor="expense-edit-category">Corrected category</label>{" "}<select id="expense-edit-category" name="editCategory" value={values.category} onChange={event => changeEdit({ ...values, category: event.currentTarget.value as Expense["category"] })} disabled={pending}>
                   {Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
                 </select></p>
-                <p><label>Corrected amount (baht) <input name="editAmount" type="number" min="1" max="100000" step="1" value={values.amountBaht} onChange={event => changeEdit({ ...values, amountBaht: event.currentTarget.value })} required disabled={pending} /></label></p>
-                <button type="submit" disabled={pending || !dirty}>Save changes</button>
+                <p><label>Corrected amount (baht) <input name="editAmount" type="number" min="1" max={editAmountPolicy.ceiling} step="1" value={values.amountBaht} onChange={event => changeEdit({ ...values, amountBaht: event.currentTarget.value })} required disabled={pending} aria-describedby="expense-edit-limit" aria-invalid={!editAmountPolicy.valid || undefined} /></label></p>
+                <p id="expense-edit-limit" role={!editAmountPolicy.valid ? "alert" : undefined}>{editAmountPolicy.message}</p>
+                <button type="submit" disabled={pending || !dirty || !editAmountPolicy.valid}>Save changes</button>
               </form>
               {dirty && <p role="status">Save your changes before resubmitting.</p>}
               <button type="button" disabled={pending || dirty} onClick={() => void mutate("resubmit", {})}>Resubmit request</button>
@@ -332,6 +347,9 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
   const [refresh, setRefresh] = useState(0);
   const [pending, setPending] = useState(false);
   const [submission, setSubmission] = useState<{ message: string; ok: boolean } | null>(null);
+  const [newCategory, setNewCategory] = useState("");
+  const [newAmount, setNewAmount] = useState("");
+  const newAmountPolicy = amountPolicy(newCategory, newAmount);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -355,6 +373,7 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
 
   async function submitExpense(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (pending || !newAmountPolicy.valid) return;
     const form = event.currentTarget;
     const values = new FormData(form);
     setPending(true);
@@ -375,6 +394,8 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
         return;
       }
       form.reset();
+      setNewCategory("");
+      setNewAmount("");
       setSubmission({ ok: true, message: "Request submitted." });
       setSelectedId(data.id);
       setItems(null);
@@ -403,14 +424,15 @@ export function ExpenseRequests({ role }: { role: "REQUESTER" | "REVIEWER" }) {
           <p><label>Title <input name="title" required /></label></p>
           <p>
             <label>Category{" "}
-              <select name="category" defaultValue="" required>
+              <select name="category" value={newCategory} onChange={event => setNewCategory(event.currentTarget.value)} required disabled={pending}>
                 <option value="" disabled>Select a category</option>
                 {Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
               </select>
             </label>
           </p>
-          <p><label>Amount (baht) <input name="amountBaht" type="number" min="1" max="100000" step="1" required /></label></p>
-          <button type="submit" disabled={pending}>Submit request</button>
+          <p><label>Amount (baht) <input name="amountBaht" type="number" min="1" max={newAmountPolicy.ceiling} step="1" value={newAmount} onChange={event => setNewAmount(event.currentTarget.value)} required disabled={pending} aria-describedby="expense-create-limit" aria-invalid={newAmount !== "" && !newAmountPolicy.valid || undefined} /></label></p>
+          <p id="expense-create-limit" role={newAmount !== "" && !newAmountPolicy.valid ? "alert" : undefined}>{newAmountPolicy.message}</p>
+          <button type="submit" disabled={pending || !newAmountPolicy.valid}>Submit request</button>
           {submission && <p role={submission.ok ? "status" : "alert"}>{submission.message}</p>}
         </form>
       )}

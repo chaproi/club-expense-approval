@@ -1,0 +1,4 @@
+2026-11-27T09:20:37.710Z $ docker run --rm <candidate> node <versions and actual migration inventory>
+{"node":"v24.22.3","prisma":"6.19.3","client":"6.19.3","migrations":[{"name":"20261106000000_auth_foundation","sha256":"3256a8d2659a5cee3dd4ec314c656f422caada38bd1a0c3862f59e0dd54dfd95"},{"name":"20261107000000_expense_requests","sha256":"81138ff4cbc644c0853d16326895094ab78d37c9229dcdefc7291adf57fd3c1c"},{"name":"20261124000000_return_resubmit","sha256":"5f0fee114714c1e850d668be6d80907847fe8642d8ba7eb54f8edafdf0191269"},{"name":"20261127000000_category_amount_limits","sha256":"32926d02c40acb7497360689e2c81127d89b82a9fba50c00435d8303ecbf4a29"}]}
+
+{"id":"09-image-files","command":"docker run --rm <candidate> node <versions and actual migration inventory>","startedAt":"2026-11-27T09:20:37.710Z","elapsedMs":522,"exit":0,"signal":null,"spawnError":null,"terminated":false}

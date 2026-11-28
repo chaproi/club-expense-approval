@@ -1,5 +1,7 @@
 # Feature inventory — current review candidate
 
+**Current Lab7 candidate,27 November 2026:** F-02 creation and F-05 owner RETURNED Save now implement paired ceilings ACTIVITY150000/EQUIPMENT120000/TRAVEL100000, integer minimum1, with retained category-switch values, linked range feedback and unchanged draft reconciliation. [Lab7 local GREEN evidence](labs/lab-07/green-verification-2026-11-27.md) records184/184 unit/API and23/23 browser, build/Docker and fresh/populated/image verification. Independent code review, integration and new-policy deployment remain Pending; F-06 totals,F-07,F-08 remain Planned. Historical D2 checkpoint rows below retain their original source/result attribution.
+
 24 Nov 2026 baseline, updated 26 Nov 2026 after reviewed PRs #43/#45 and staging integration. Contracts preceded code in c7539ee. Implementation/test status does not imply peer acceptance, main integration or deployment.
 
 | Feature | Sprint / dependency | Contract | Implementation and actual verification | Acceptance / remaining work |

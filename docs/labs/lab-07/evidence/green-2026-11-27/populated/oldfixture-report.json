@@ -1,0 +1,11 @@
+{
+  "mode": "baseline",
+  "success": true,
+  "checks": [
+    "Actual4535280 application created24 old-range rows /42 events across3 categories,1/100000 and4 valid states",
+    "Owner/assigned readback exact; old CHECK verified; writers/listener/Prisma quiesced before migration"
+  ],
+  "requestCountBefore": 24,
+  "eventCountBefore": 42,
+  "timestamp": "2026-11-27T09:18:09.908Z"
+}

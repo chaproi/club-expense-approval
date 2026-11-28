@@ -1,0 +1,64 @@
+2026-11-27T09:12:20.957Z $ node --import tsx --test server/test/category-limits.test.ts
+✔ AC-L7-01/02 API creation: ACTIVITY 1 accepted (367.2501ms)
+✔ AC-L7-01/02 API creation: ACTIVITY 150000 accepted (23.2396ms)
+✔ AC-L7-01/02 API creation: ACTIVITY 150001 rejected (23.9877ms)
+✔ AC-L7-01/02 API creation: EQUIPMENT 1 accepted (21.3803ms)
+✔ AC-L7-01/02 API creation: EQUIPMENT 120000 accepted (23.4887ms)
+✔ AC-L7-01/02 API creation: EQUIPMENT 120001 rejected (9.4695ms)
+✔ AC-L7-01/02 API creation: TRAVEL 1 accepted (27.22ms)
+✔ AC-L7-01/02 API creation: TRAVEL 100000 accepted (23.6343ms)
+✔ AC-L7-01/02 API creation: TRAVEL 100001 rejected (11.0778ms)
+✔ AC-L7-01/02 API creation: ACTIVITY 125000 accepted (27.5623ms)
+✔ AC-L7-01/02 API creation: EQUIPMENT 125000 rejected (17.1185ms)
+✔ AC-L7-01/02 API creation: TRAVEL 125000 rejected (13.7067ms)
+✔ AC-L7-01/02 API creation: ACTIVITY 110000 accepted (62.7603ms)
+✔ AC-L7-01/02 API creation: EQUIPMENT 110000 accepted (21.2395ms)
+✔ AC-L7-01/02 API creation: TRAVEL 110000 rejected (8.8402ms)
+✔ AC-L7-02 API creation: preserved invalid types, categories and body shape (106.2317ms)
+✔ AC-L7-01/02 API returned Save: ACTIVITY 1 accepted (87.3187ms)
+✔ AC-L7-01/02 API returned Save: ACTIVITY 150000 accepted (53.614ms)
+✔ AC-L7-01/02 API returned Save: ACTIVITY 150001 rejected (33.3156ms)
+✔ AC-L7-01/02 API returned Save: EQUIPMENT 1 accepted (54.1959ms)
+✔ AC-L7-01/02 API returned Save: EQUIPMENT 120000 accepted (44.0365ms)
+✔ AC-L7-01/02 API returned Save: EQUIPMENT 120001 rejected (33.7041ms)
+✔ AC-L7-01/02 API returned Save: TRAVEL 1 accepted (39.1471ms)
+✔ AC-L7-01/02 API returned Save: TRAVEL 100000 accepted (45.0435ms)
+✔ AC-L7-01/02 API returned Save: TRAVEL 100001 rejected (32.2212ms)
+✔ AC-L7-01/02 API returned Save: ACTIVITY 125000 accepted (45.8853ms)
+✔ AC-L7-01/02 API returned Save: EQUIPMENT 125000 rejected (32.3031ms)
+✔ AC-L7-01/02 API returned Save: TRAVEL 125000 rejected (32.1608ms)
+✔ AC-L7-01/02 API returned Save: ACTIVITY 110000 accepted (46.5356ms)
+✔ AC-L7-01/02 API returned Save: EQUIPMENT 110000 accepted (49.3385ms)
+✔ AC-L7-01/02 API returned Save: TRAVEL 110000 rejected (31.3861ms)
+✔ AC-L7-02 API returned Save: preserved invalid types, categories and body shape (123.8638ms)
+✔ AC-L7-05 API: preserved ordinary/TRAVEL authentication, role, ownership and Origin controls (73.5573ms)
+✔ AC-L7-04/05 API: ordinary state, stale revision and workflow/history controls (158.5961ms)
+✔ AC-L7-06 STS-L7-08 SQL: ACTIVITY 1 permitted (34.6939ms)
+✔ AC-L7-06 STS-L7-08 SQL: ACTIVITY 150000 permitted (24.3754ms)
+✔ AC-L7-06 STS-L7-08 SQL: ACTIVITY 150001 CHECK rejected (71.3169ms)
+✔ AC-L7-06 STS-L7-08 SQL: EQUIPMENT 1 permitted (42.991ms)
+✔ AC-L7-06 STS-L7-08 SQL: EQUIPMENT 120000 permitted (29.4513ms)
+✔ AC-L7-06 STS-L7-08 SQL: EQUIPMENT 120001 CHECK rejected (20.2696ms)
+✔ AC-L7-06 STS-L7-08 SQL: TRAVEL 1 permitted (25.3763ms)
+✔ AC-L7-06 STS-L7-08 SQL: TRAVEL 100000 permitted (16.5154ms)
+✔ AC-L7-06 STS-L7-08 SQL: TRAVEL 100001 CHECK rejected (19.3139ms)
+✔ AC-L7-06 STS-L7-08 SQL: ACTIVITY 125000 permitted (17.7351ms)
+✔ AC-L7-06 STS-L7-08 SQL: EQUIPMENT 125000 CHECK rejected (18.7727ms)
+✔ AC-L7-06 STS-L7-08 SQL: TRAVEL 125000 CHECK rejected (17.6869ms)
+✔ AC-L7-06 STS-L7-08 SQL: ACTIVITY 110000 permitted (17.5602ms)
+✔ AC-L7-06 STS-L7-08 SQL: EQUIPMENT 110000 permitted (18.613ms)
+✔ AC-L7-06 STS-L7-08 SQL: TRAVEL 110000 CHECK rejected (17.0051ms)
+✔ AC-L7-06 SQL: ordinary category-only update control preserves old-range rows (30.5681ms)
+✔ AC-L7-06 SQL: newly permitted ACTIVITY125000 then category-only lower-cap update is rejected (31.533ms)
+LAB7_CLEANUP owned requests/events/sessions/users removed; listener closed
+ℹ tests 51
+ℹ suites 0
+ℹ pass 51
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2658.5266
+
+
+{"id":"api-1","command":"node --import tsx --test server/test/category-limits.test.ts","startedAt":"2026-11-27T09:12:20.957Z","elapsedMs":2719,"exit":0,"signal":null,"spawnError":null,"runnerTerminated":false}
